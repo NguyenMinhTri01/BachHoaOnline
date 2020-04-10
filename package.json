@@ -25,6 +25,7 @@
     "babel-preset-env": "^1.7.0",
     "cookie-parser": "^1.4.4",
     "debug": "^2.6.9",
+    "dotenv": "^8.2.0",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
     "express-extend": "0.0.1",

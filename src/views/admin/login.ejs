@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base href="http://127.0.0.1:3000/">
+    <base href="<%= base_Url %>">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="admin_template/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>Đăng Nhập Trang Quản Trị Website Bách Hóa Online</title>
     <!-- Custom CSS -->
     <link href="admin_template/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,36 +39,41 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark" >
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
                         <span class="db"><img src="admin_template/images/logo.png" alt="logo" /></span>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" id="loginform" action="#">
+                    <form class="form-horizontal m-t-20" id="loginform" action="admin/login" method="POST">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required="">
+                                    <input type="text" name="ad_userName" class="form-control form-control-lg" placeholder="Tên Đăng Nhập..." aria-label="Username" aria-describedby="basic-addon1" required="">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required="">
+                                    <input id="passInput" type="password" name="ad_password" class="form-control form-control-lg" placeholder="Mật Khẩu..." aria-label="Password" aria-describedby="basic-addon1" required="">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-gray"><i onclick="viewPassword()" class="fa fa-eye"></i></span>
+                                    </div>
                                 </div>
+                                <!-- alert -->
+                                <%- include("alert") %>
                             </div>
                         </div>
                         <div class="row border-top border-secondary">
                             <div class="col-12">
                                 <div class="form-group">
                                     <div class="p-t-20">
-                                        <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> Lost password?</button>
-                                        <button class="btn btn-success float-right" type="submit">Login</button>
+                                        <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> Quân Mật Khẩu?</button>
+                                        <button class="btn btn-success float-right" type="submit">Đăng Nhập</button>
                                     </div>
                                 </div>
                             </div>
@@ -77,23 +82,23 @@
                 </div>
                 <div id="recoverform">
                     <div class="text-center">
-                        <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a password.</span>
+                        <span class="text-white">Nhập địa chỉ email của bạn dưới đây và chúng tôi sẽ gửi cho bạn hướng dẫn cách khôi phục mật khẩu.</span>
                     </div>
                     <div class="row m-t-20">
-                        <!-- Form -->
-                        <form class="col-12" action="index.html">
+                        <!-- Form -->   
+                        <form class="col-12" action="admin/forgot-password" method="POST">
                             <!-- email -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
                                 </div>
-                                <input type="text" class="form-control form-control-lg" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control form-control-lg" placeholder="Địa Chỉ Email..." aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                             <!-- pwd -->
                             <div class="row m-t-20 p-t-20 border-top border-secondary">
                                 <div class="col-12">
-                                    <a class="btn btn-success" href="#" id="to-login" name="action">Back To Login</a>
-                                    <button class="btn btn-info float-right" type="button" name="action">Recover</button>
+                                    <a class="btn btn-success" href="#" id="to-login" name="action">Quay Lại Đăng Nhập</a>
+                                    <button class="btn btn-info float-right" type="submit" name="action">Gửi</button>
                                 </div>
                             </div>
                         </form>
@@ -122,11 +127,13 @@
     <!-- ============================================================== -->
     <script src="admin_template/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="admin_template/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="admin_template/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
+    <!-- config app -->
+    <script src="admin_template/js/appConfig.js"></script>
+
     <script>
 
     $('[data-toggle="tooltip"]').tooltip();

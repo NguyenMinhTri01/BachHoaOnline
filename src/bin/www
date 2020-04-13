@@ -1,7 +1,9 @@
 import app from '../app';
-let debug = require('debug')('bachhoaonline:server');
+import debuging from 'debug'
 import http from 'http';
 
+
+let debug = debuging('bachhoaonline:server');
 
 
  /**

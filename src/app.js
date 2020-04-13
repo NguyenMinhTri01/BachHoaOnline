@@ -1,45 +1,48 @@
 import createError from 'http-errors';
 import express from 'express';
-import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import initRouteAdmin from './routers/admin/index';
+import dotenv from 'dotenv' ;
+import initRouteAdmin from './routers/admin/web';
 import configViewEngine from './config/viewEngine';
+import connectDB from './config/connectDB';
+import connectFlash from 'connect-flash';
+import passport from 'passport';
+import configSession from './config/session';
+
 
 // config .env
-require('dotenv').config();
+//require('dotenv').config();
+dotenv.config();
 
 
 
 
 let app = express();
-// confind connection mongoose
-
+// config connection mongoose
+let db = connectDB();
 // view engine setup
 configViewEngine(app);
-
-
+// config session
+configSession(app, db);
+// config express
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//config cookieParser
 app.use(cookieParser());
+//Enable flash messages
+app.use(connectFlash());
+//config passport
+app.use(passport.initialize());
+app.use(passport.session());
 // init all router
 initRouteAdmin(app);
-
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', req.get('Origin') || '*');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  res.header('Access-Control-Expose-Headers', 'Content-Length');
-  res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
-  if (req.method === 'OPTIONS') {
-    return res.send(200);
-  } else {
-    return next();
-  }
-});
-
 // error handler
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  res.render('admin/error_500');
+})
 // app.use((err, req, res) => {
 //   // set locals, only providing error in development
 //   res.locals.messages = err.messages;
@@ -50,6 +53,4 @@ app.use(function(req, res, next) {
 //   res.send("loi");
 //   //res.render('error');
 // });
-
-
 module.exports = app;

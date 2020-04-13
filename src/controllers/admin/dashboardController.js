@@ -1,6 +1,9 @@
 let getDashboard = (req, res) => {
   try {
-    return res.render('admin/index',{base_Url : process.env.BASE_URL});
+    return res.render('admin/index',{
+      base_Url : process.env.BASE_URL, 
+      adminInfo: req.user
+    });
   } catch (error) {
     console.log(error);
     return res.render('admin/error_500');

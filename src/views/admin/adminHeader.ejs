@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="">    
     <meta name="author" content="">
     <base href="<%= base_Url %>">
     
@@ -16,7 +16,43 @@
     <!-- Custom CSS -->
     <link href="admin_template/libs/flot/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="admin_template/extra-libs/multicheck/multicheck.css">
+    <link href="admin_template/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="admin_template/css/style.min.css" rel="stylesheet">
+    <!-- notification css -->
+    <link href="admin_template/libs/toastr/build/toastr.min.css" rel="stylesheet">
+    
+
+
+    <script src="admin_template/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <!-- <script src="admin_template/libs/popper.js/dist/umd/popper.min.js"></script> -->
+    <script src="admin_template/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="admin_template/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="admin_template/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="admin_template/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="admin_template/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="admin_template/js/custom.min.js"></script>
+
+    <script src="admin_template/libs/flot/excanvas.js"></script>
+    <script src="admin_template/libs/flot/jquery.flot.js"></script>
+    <script src="admin_template/libs/flot/jquery.flot.pie.js"></script>
+    <script src="admin_template/libs/flot/jquery.flot.time.js"></script>
+    <script src="admin_template/libs/flot/jquery.flot.stack.js"></script>
+    <script src="admin_template/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="admin_template/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="admin_template/js/pages/chart/chart-page-init.js"></script>
+  
+    <script src="admin_template/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="admin_template/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="admin_template/extra-libs/DataTables/datatables.min.js"></script>
+    <!--notification-->
+    <script src="admin_template/libs/toastr/build/toastr.min.js"></script>
+  
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +79,7 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin5">
+        <header class="topbar position-fixed w-100" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <div class="navbar-header" data-logobg="skin5">
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
@@ -86,7 +122,7 @@
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                <div class="navbar-collapse collapse " id="navbarSupportedContent" data-navbarbg="skin5">
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
@@ -231,14 +267,14 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin5">
+        <aside class="left-sidebar position-fixed" data-sidebarbg="skin5">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/info" aria-expanded="false"><i class="mdi mdi-view-list"></i><span class="hide-menu">Danh Mục Sản Phẩm</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/category" aria-expanded="false"><i class="mdi mdi-view-list"></i><span class="hide-menu">Danh Mục Sản Phẩm</span></a></li>
                        <!-- khi nào them các chức năng thì them vào đây-->
                      <!--   key : minhtri0701 -->
                 
@@ -255,3 +291,6 @@
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper" style="margin-top:64px">

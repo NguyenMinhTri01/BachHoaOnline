@@ -21,7 +21,7 @@ let getLogout = (req, res) => {
 }
 let checkLogin = (req, res, next) => {
   if (!req.isAuthenticated()) {
-    return res.redirect("./login");
+    return res.redirect("/admin/login");
   }
  next();
 }

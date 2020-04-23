@@ -1,0 +1,97 @@
+<%- include("../adminHeader")  %>
+      <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
+                            <li class="breadcrumb-item"><a href="admin/category">Danh Mục Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sửa nhóm danh mục sản phẩm</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+      </div>
+      <br>
+      <div class="container-fluid">
+          <!--modal notification-->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLabel">Thông Báo !</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-danger">
+                  <span id='notifi'></span>
+                  <strong id='notifistr'></strong>
+                  <span>?</span>
+                </div>  
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                  <button id="comfirm" type="button" class="btn btn-danger">Tiếp tục</button>
+                </div>
+              </div>
+            </div>
+          </div>          
+          <!--end modal notification-->        
+      <div class="card">
+        <div class="card-body">
+            <h4 class="card-title m-b-0">Sửa nhóm danh mục sản phẩm</h4>
+            <form class="form-group m-t-20" id="form_input">
+                <label>Tên nhóm danh mục <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                <input value="<%= group.gc_name %>" name="gc_name" type="text" class="form-control" id="input-name" required>
+                <input name="_id" value="<%= group._id %>" type="hidden">
+                <br>
+                <a href="admin/category" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+                <button type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i> Lưu</button>
+            </form>
+            <div id="mgs"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Các Danh mục thuộc nhóm này</h4>
+          <a href="admin/category/add" class="btn btn-success" style="margin: 10px"><i class="fa fa-plus"></i> Thêm Mới</a>
+          <div class="table-responsive">
+              <table id="zero_config" class="table table-striped table-bordered">
+                  <thead>
+                      <tr>
+                          <th>STT</th>
+                          <th>Tên danh mục</th>
+                          <th>Trạng Thái</th>
+                          <th>Ngày tạo</th>    
+                          <th>Tùy Chọn</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+            <% if (typeof categories != "undefined") {%>
+                <% let count = 1 %>
+                <% categories.forEach(category => {%>
+                    <tr>
+                        <td class="text-center"><%= count %></td>
+                        <td class="cname"><%= category.c_name %></td>
+                        <td class="text-center">
+                           <a id="c_status" href="admin/category/active/<%= category._id %>" class="_Active_ badge <%= category.c_status ? 'badge-primary' :  'badge-secondary'%>">Active</a>
+                        </td>
+                        <td><%= new Date(category.c_createdAt).toLocaleString() %></td>
+                        <td class="text-center ">
+                            <a href="admin/category/delete/<%= category._id %>.<%= category.c_parent.id %>" class="btn btn-danger m-2 _delete" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash-alt"></i> Xóa</a>
+                        </td>
+                    </tr>
+                    <% count++ %>                    
+                <% })%>
+            <% } %>
+                  </tbody>
+              </table>
+          </div>
+          <a href="admin/category" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+        </div>  
+      </div>
+    </div>
+    <script type="text/javascript" src="admin_template/js/customPages/category/jqueryEditGroups.js"></script>
+<%- include("../adminFooter") %>

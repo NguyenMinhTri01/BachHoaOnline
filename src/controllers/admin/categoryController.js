@@ -3,7 +3,8 @@ import {category_S} from '../../services/admin/index'
 let getViewAddGroupCategory = (req, res) => {
   res.render("admin/category/addGroup", {
     base_Url : process.env.BASE_URL,
-    adminInfo: req.user
+    adminInfo: req.user,
+    title : "Bach Hóa Online | Thêm Nhóm Danh Mục Sản Phẩm"
   });
 };
 
@@ -12,7 +13,8 @@ let getViewAdd = async (req, res) => {
   res.render("admin/category/add", {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
-    groups: groups
+    groups: groups,
+    title : "Bach Hóa Online | Thêm Danh Mục Sản Phẩm"
   });
 }
 
@@ -23,7 +25,8 @@ let getViewIndex = async(req, res) => {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
     groups: groups,
-    categories : categories
+    categories : categories,
+    title : "Bach Hóa Online | Danh Mục Sản Phẩm"
   });
 }
 
@@ -59,7 +62,8 @@ let getViewEditCategory = async (req, res) => {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
     groups: groups,
-    category : category
+    category : category,
+    title : "Bach Hóa Online | Sửa Danh Mục Sản Phẩm"
   })
 };
 
@@ -84,7 +88,8 @@ let getViewEditGroupCategory = async (req, res) => {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
     group: group,
-    categories : categories
+    categories : categories,
+    title : "Bach Hóa Online | Sửa Nhóm Danh Mục Sản Phẩm"
   })};
 
   let getActiveGroup = async (req, res) => {

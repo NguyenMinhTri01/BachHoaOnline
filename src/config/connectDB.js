@@ -1,5 +1,4 @@
-import mongoose from 'mongoose';
-import bluebird from 'bluebird';
+import {mongoose, bluebird} from './configDB';
 
 /**
  * 

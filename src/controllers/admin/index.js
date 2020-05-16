@@ -1,11 +1,13 @@
 import authController from '../admin/authController';
-import dashboardController from '../admin/dashboardController';
+import homeController from './homeController';
 import adminController from '../admin/adminController';
 import categoryController from '../admin/categoryController';
+import brandController from '../admin/brandController';
 
 
 
 export const auth_C = authController;
-export const dashboard_C = dashboardController;
+export const home_C = homeController;
 export const admin_C = adminController;
 export const category_C = categoryController;
+export const brand_C = brandController;

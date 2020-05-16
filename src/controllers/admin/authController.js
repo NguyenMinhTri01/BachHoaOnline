@@ -26,7 +26,7 @@ let checkLogin = (req, res, next) => {
  next();
 }
 
-let checkLogedOut = (req, res, next) => {
+let checkLoggedOut = (req, res, next) => {
   if (req.isAuthenticated()) {
 
     return res.redirect("./");
@@ -50,7 +50,7 @@ module.exports = {
   functionExamples: functionExamples,
   getLogout : getLogout,
   checkLogin : checkLogin,
-  checkLogedOut: checkLogedOut
+  checkLoggedOut: checkLoggedOut
 
 }
 

@@ -1,8 +1,9 @@
-import mongoose from 'mongoose';
+import {mongoose, shortId} from '../config/configDB'
 
 let Schema = mongoose.Schema;
 
 let adminSchema = new Schema ({
+  _id: {type: String, default : shortId.generate},
   ad_name: {type: String},
   ad_userName: {type: String},
   ad_password: {type: String},

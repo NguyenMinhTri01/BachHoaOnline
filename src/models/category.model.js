@@ -1,8 +1,9 @@
-import mongoose from 'mongoose';
+import {mongoose, shortId} from '../config/configDB'
 
 let Schema = mongoose.Schema;
 
 let categorySchema = new Schema ({
+  _id: {type: String, default : shortId.generate},
   c_name : {type: String},
   c_slug : {type: String},
   c_parent : {

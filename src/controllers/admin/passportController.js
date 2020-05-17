@@ -16,6 +16,7 @@ let initPassportLocal = (local) => {
     passReqToCallback: true,  
   },async (req, ad_userName, ad_password, done) => {
     try {
+      
       let admin = await admin_M.findByUserName(ad_userName);
       if (!admin){
         return done(null, false, req.flash("errors", transErrors.login_failed));

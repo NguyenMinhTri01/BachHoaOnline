@@ -27,7 +27,7 @@ let createNewGroup = (gc_name) => {
         });
       }
     }
-    return resolve( {
+    return resolve({
       type : false,
       message : transErrors.add_data_failed
     });      

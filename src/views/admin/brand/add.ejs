@@ -6,7 +6,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
-                            <li class="breadcrumb-item"><a href="admin/category">Thương Hiệu Sản Phẩm</a></li>
+                            <li class="breadcrumb-item"><a href="admin/brand">Thương Hiệu Sản Phẩm</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Thêm Thương Hiệu Sản Phẩm</li>
                         </ol>
                     </nav>
@@ -14,16 +14,15 @@
             </div>
         </div>
       </div>
-      <br>
       <div class="container-fluid">
       <div class="card">
         <div class="card-body">
             <h4 class="card-title m-b-0">Thêm thương hiệu sản phẩm</h4>
-            <form class="form-group m-t-20" id="form_input">
+            <form class="form-group m-t-20" id="form_input" enctype="multipart/form-data" method="POST" action="#">
               <div class="row">
                 <div class="col-lg-7">
                   <label>Tên Thương hiệu <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
-                  <input name="c_name" type="text" class="form-control" id="input-name" placeholder="Nhập tên danh mục..." required>
+                  <input name="br_name" type="text" class="form-control" id="input-name" placeholder="Nhập tên danh mục..." required>
                   <br>
                   <label>Nhóm danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
                     <select class="form-control" id="list_group" name="group">
@@ -38,20 +37,20 @@
                     </select>
                     <br>
                     <label>Danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
-                    <select class="form-control" id="list_category" name="c_id" disabled>
+                    <select class="form-control" id="list_category" name="c_id">
                       <option value="0" class="selected" style="color:#dad4d4">Chọn danh mục phù hợp...</option>
                     </select>  
                     <br>                    
                 </div>
                 <div class="col-lg-5">
                   <div class="text-center" style="margin-top: 26px">
-                    <img src="admin_template/images/placeholder250x250.png" alt="brand image" class="image-preview border border-dark" width="260px" height="160px" style="border-radius: 17px!important;">
+                    <img src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png" alt="brand image" class="image-preview border border-dark" width="260px" height="160px" style="border-radius: 18px!important;">
                   </div>
-                  <div style="width:260px; margin-left: 78px; margin-top: 10px">
+                  <div style="width:260px; margin-left: 78px; margin-top: 10px">  
                     <div class="custom-file">
-                      <input type="file" name="brand_image" class="custom-file-input" id="fileImageBrand" required>
+                      <input type="file" name="br_image" class="custom-file-input form-control" id="fileImageBrand" accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
                       <label class="custom-file-label text-left" for="validatedCustomFile">Chọn File Ảnh...</label>
-                      <div class="invalid-feedback">Example invalid custom file feedback</div>
+                      <div class="feedback" style="color:red"></div>
                     </div>
                   </div>
                 </div>

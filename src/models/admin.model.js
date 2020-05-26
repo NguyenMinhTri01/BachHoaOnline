@@ -9,7 +9,7 @@ let adminSchema = new Schema ({
   ad_password: {type: String},
   ad_email: {type: String},
   ad_phoneNumber: {type: String},
-  ad_avatar: {type: String, default: "avatar-default.jpg"},
+  ad_avatar: {type: String, default: "https://res.cloudinary.com/nguyenminhtri/image/upload/v1589712366/BachHoaOnline/image_default/avatar-default_hdtvrv.jpg"},
   ad_createdAt: {type: String, default: Date.now},
   ad_updatedAt: {type: String, default: null},
 });

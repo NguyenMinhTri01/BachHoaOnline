@@ -6,7 +6,7 @@ function getModal (objectThis) {
     //get url delete form button delete to button comfirm
     var deleteUrl = objectThis.attr("href");
     $("#comfirm").click(function (){
-      $(".modal-content").html("<img style='margin: 100px 0px 100px 200px' src='admin_template/images/loading.gif' width='60px'>");
+      $(".modal-content").html("<img style='margin: 100px 0px 100px 200px' src='https://res.cloudinary.com/nguyenminhtri/image/upload/v1589710472/BachHoaOnline/effect/loading_xdywil.gif' width='60px'>");
      $.ajax({
            type : 'GET', //Sử dụng kiểu gửi dữ liệu POST
            url : deleteUrl, //gửi dữ liệu sang trang data.php
@@ -18,7 +18,7 @@ function getModal (objectThis) {
                           $(".modal-content").html("<p style='color: red'>server không phản hồi!");
                           location.reload();
                         }else{
-                          $(".modal-content").html("<img style='margin: 100px 0px 100px 200px' src='admin_template/images/OK.png' width='60px'>");
+                          $(".modal-content").html("<img style='margin: 100px 0px 100px 200px' src='https://res.cloudinary.com/nguyenminhtri/image/upload/v1589710472/BachHoaOnline/effect/OK_labqne.png' width='60px'>");
                           location.reload();
                         }
                      }

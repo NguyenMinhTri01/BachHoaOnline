@@ -1,0 +1,110 @@
+<%- include("../adminHeader")  %>
+    <div class="page-breadcrumb">
+      <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+              <div class="ml-auto text-right">
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Danh Thương Hiệu Sản Phẩm</li>
+                      </ol>
+                  </nav>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+          <!--modal notification-->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLabel">Thông Báo !</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-danger">
+                  <span id='notifi'></span>
+                  <strong id='notifistr'></strong>
+                  <span>?</span>
+                </div>  
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                  <button id="comfirm" type="button" class="btn btn-danger">Tiếp tục</button>
+                </div>
+              </div>
+            </div>
+          </div>          
+          <!--end modal notification-->
+
+          <!-- Nav tabs -->
+          <div class="border text-center bg-light" style="height:auto">
+              <br>
+              <h2>Quản Lý Thươnng Hiệu Sản Phẩm</h2>
+          </div>
+
+          <div class="card">
+              <div class="card-body">
+                  <a href="admin/category/add_group" class="btn btn-success" style="margin: 10px"><i class="fa fa-plus"></i> Thêm Mới</a>
+                  <div class="table-responsive">
+                      <table id="zero_config" class="table table-striped table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>STT</th>
+                                  <th>Tên nhóm danh mục</th>
+                                  <th>Số lượng danh mục</th>
+                                  <th>Trạng Thái</th>
+                                  <th>Ngày tạo</th>    
+                                  <th>Tùy Chọn</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                    <% if (typeof groups != "undefined") {%>
+                        <% if (groups.length != 0) { %>
+                            <% let count = 1 %>
+                            <% groups.forEach(group =>{%>
+                              <tr>
+                                  <td class="text-center"><%= count %></td>
+                                  <td class="grname"><%= group.gc_name %></td>
+                                  <td class="text-center"><%= group.gc_child.length %></td>
+                                  <td class= "text-center">
+                                      <a id="gc_status" href="admin/category/active_group/<%= group._id %>" class="_Active_ badge <%= group.gc_status ? 'badge-primary' :  'badge-secondary'%>">Active</a>
+                                  </td>
+                                  <td><%= new Date(group.gc_createdAt).toLocaleString() %></td>
+                                  <td class="text-center">
+                                      <a href="admin/category/edit_group/<%= group._id %>" class="btn btn-warning m-2 edit_group"><i class="fa fa-edit"></i> Sửa</a>
+                                      <a href="admin/category/delete_group/<%= group._id %>" class="btn btn-danger m-2 delete_group" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash-alt"></i> Xóa</a>
+                                  </td>
+                              </tr>
+                              <% count += 1%>
+                            <% }) %>
+                        <% } %>
+                    <% } %>
+                          </tbody>
+                      </table>
+                  </div>
+
+              </div>                                  
+              
+          </div>
+
+    <!-- ============================================================== -->
+      <!-- End PAge Content -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Right sidebar -->
+      <!-- ============================================================== -->
+      <!-- .right-sidebar -->
+      <!-- ============================================================== -->
+      <!-- End Right sidebar -->
+      <!-- ============================================================== -->
+    </div>
+    <div class='notifications bottom-right'></div>
+  <!-- ============================================================== -->
+  <!-- End Container fluid  -->
+<script type="text/javascript" src="admin_template/js/customPages/category/jqueryIndexCategory.js"></script>
+<%- include("../adminFooter") %>

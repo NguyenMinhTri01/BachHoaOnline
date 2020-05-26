@@ -35,11 +35,11 @@ group_categorySchema.statics = {
   },
 
   addCategoryIntoGroup(id, category){
-   return this.findById(id) // cần tìm hiểu lại xem nó trả gì về
+   return this.findById(id) 
     .then(group => {
       group.gc_child.push(category);
       return group.save();
-    })
+    });
   },
 
   deleteCategoryInGroup (id, childrenId){

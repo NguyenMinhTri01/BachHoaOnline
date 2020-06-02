@@ -1,4 +1,4 @@
-import {category_S} from '../../services/admin/index'
+import {category_S} from '../../services/index'
 
 let getViewAddGroupCategory = (req, res) => {
   res.render("admin/category/addGroup", {
@@ -9,11 +9,11 @@ let getViewAddGroupCategory = (req, res) => {
 };
 
 let getViewAdd = async (req, res) => {
-  let groups = await category_S.getListGroups();
+  let maxLevelCategory = await category_S.getMaxLevel();
   res.render("admin/category/add", {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
-    groups: groups,
+    maxLevelCategory : maxLevelCategory,
     title : "Bach Hóa Online | Thêm Danh Mục Sản Phẩm"
   });
 }

@@ -128,13 +128,6 @@ $(document).ready(function()
       getNotifications($(this));
     });
 
-    $('.table tbody').on('click', '.delete_group', function (action){
-      action.preventDefault();
-      //$("#notifi").text("");
-      $("#notifi").text("Bạn có chắc muốn xóa nhóm danh mục: ");
-      getModal ($(this));
-    })
-
     // $('.table tbody').on('click', '._delete', function (action){
     //   action.preventDefault();
     //   $("#notifi").text("");

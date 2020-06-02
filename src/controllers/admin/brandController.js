@@ -1,8 +1,11 @@
-import {category_S, brand_S} from '../../services/admin/index';
+import {category_S, brand_S} from '../../services/index';
 import config_storage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 
 //var cloudinary_v2 = require('cloudinary').v2;
+
+
+
 
 
 const storage = config_storage;
@@ -10,13 +13,25 @@ let uploadImageLocal = multer({
   storage : storage
 }).single('br_image');
 
+
+const getViewIndex = async (req, res) => {
+  let brands = await brand_S.getListBrands();
+  res.render('admin/brand/index', {
+    base_Url : process.env.BASE_URL,
+    adminInfo: req.user,
+    title : "Bach Hóa Online | Thương Hiệu Sản Phẩm",
+    secure_Delivery_URL : process.env.SECURE_DELIVERY_URL,
+    brands : brands
+  });
+}
+
 const getViewAdd = async (req, res) => {
   let groups = await category_S.getListGroups();
   res.render("admin/brand/add", {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
     groups : groups,
-    title : "Bach Hóa Online | Thêm Thương Hiệu Sản Phẩm"
+    title : "Bach Hóa Online | Thêm Thương Hiệu Sản Phẩm",
   });
   
 };
@@ -38,13 +53,68 @@ const addBrand = (req, res) => {
       let path = req.file.path;
       let notification = await brand_S.createNewBrand(req.body.br_name, req.body.c_id, path);
       res.send(notification);
-      // xử lý không load submit của giao diện
     }
   });
+};
+
+
+const getViewEdit = async (req, res) => {
+  let groups = await category_S.getListGroups();
+  let brandModel = await brand_S.getBrandById(req.params.id);
+  let category = await category_S.getOneCategory(brandModel.c_id);
+  let categories = await category_S.getListCategoriesOfGroup(category.c_parent.id);
+  let brand = new Object({
+    gc_id : category.c_parent.id,
+    gc_name : category.c_parent.gc_name,
+    c_id : brandModel.c_id,
+    c_name : category.c_name,
+    br_imageName : brandModel.br_image.split('/')[2],
+    br_image : brandModel.br_image,
+    br_name : brandModel.br_name,
+    _id : brandModel._id,
+  })
+  res.render("admin/brand/edit", {
+    base_Url : process.env.BASE_URL,
+    adminInfo: req.user,
+    brand : brand,
+    groups : groups,
+    categories : categories,
+    title : "Bach Hóa Online | Cập Nhật Thương Hiệu Sản Phẩm",
+  })
+};
+
+const editBrand = (req, res) => {
+  // upload image location
+  uploadImageLocal  (req, res, async (err) => {
+    if (err) {
+      console.log(err);
+      res.send({
+        type : false,
+        message : 'không thành công' 
+      });
+    }
+    else {
+      let path = null;
+      if(typeof req.file != 'undefined'){
+        path = req.file.path;
+      }
+      let notification = await brand_S.editBrand(req.body._id, req.body.br_name, req.body.c_id, path);
+      res.send(notification);
+    }
+  });
+};
+
+const activeBrand = async(req, res) => {
+  let notification = await brand_S.activeBrand(req.params.id);
+  res.send(notification);
 }
 
 module.exports = {
   addBrand : addBrand,
+  editBrand : editBrand,
   getViewAdd : getViewAdd,
+  getViewEdit: getViewEdit,
+  activeBrand : activeBrand,
+  getViewIndex: getViewIndex,
   getCategoryOfGroup : getCategoryOfGroup,
 }

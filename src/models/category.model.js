@@ -6,10 +6,8 @@ let categorySchema = new Schema ({
   _id: {type: String, default : shortId.generate},
   c_name : {type: String},
   c_slug : {type: String},
-  c_parent : {
-    id : {type: String},
-    gc_name: {type: String}
-  },
+  c_parentId : {type: String, default : '0'},
+  c_level: {type: Number},
   c_status : {type: Boolean, default: true},
   c_createdAt: {type: Number, default: Date.now},
   c_updatedAt: {type: Number, default: null},
@@ -30,6 +28,10 @@ categorySchema.statics = {
 
   findAll(){
     return this.find().exec();
+  },
+
+  findMaxLevel(){
+    return this.find({},{c_level: 1}).sort({"c_level" : -1}).limit(1).exec();
   },
 
   deleteCategory(id){

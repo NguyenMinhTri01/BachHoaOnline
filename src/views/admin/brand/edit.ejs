@@ -1,0 +1,85 @@
+<%- include("../adminHeader")  %>
+      <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
+                            <li class="breadcrumb-item"><a href="admin/brand">Thương Hiệu Sản Phẩm</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cập Nhật Thương Hiệu Sản Phẩm</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+            <h4 class="card-title m-b-0">Cập nhật thương hiệu sản phẩm</h4>
+            <form class="form-group m-t-20" id="form_input" enctype="multipart/form-data" method="POST" action="#">
+              <div class="row">
+                <div class="col-lg-7">
+                  <label>Tên Thương hiệu <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                  <input name="br_name" type="text" class="form-control" id="input-name" placeholder="" value="<%= brand.br_name %>" required>
+                  <input name="_id" value="<%= brand._id %>" type="hidden">
+                  <br>
+                  <label>Nhóm danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                    <select class="form-control" id="list_group" name="group">
+                      <option value="<%= brand.gc_id %>" class="selected" style="color:#dad4d4"><%= brand.gc_name %></option>
+              <% if (typeof groups != "undefined"){ %>
+                <% if (groups.length != 0){ %>
+                  <% groups.forEach(group =>{ %>
+                      <% if (group._id !== brand.gc_id) {%>
+                      <option value="<%= group._id %>"><%= group.gc_name %></option>
+                      <% } %>
+                  <% }) %>
+                <% } %>
+              <% } %>
+                    </select>
+                    <br>
+                    <label>Danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                    <select class="form-control" id="list_category" name="c_id">
+                      <option value="<%= brand.c_id %>" class="selected" style="color:#dad4d4"><%= brand.c_name %></option>
+
+                      <% if (typeof categories != "undefined"){ %>
+                        <% if (categories.length != 0){ %>
+                          <% categories.forEach(category =>{ %>
+                              <% if (category._id !== brand.c_id) {%>
+                              <option value="<%= category._id %>"><%= category.c_name %></option>
+                              <% } %>
+                          <% }) %>
+                        <% } %>
+                      <% } %>
+
+                    </select>  
+                    <br>                    
+                </div>
+                <div class="col-lg-5">
+                  <div class="text-center" style="margin-top: 26px">
+                    <img src="<%= brand.br_image %>" alt="brand image" class="image-preview border border-dark" width="260px" height="160px" style="border-radius: 18px!important;">
+                  </div>
+                  <div style="width:260px; margin-left: 78px; margin-top: 10px">  
+                    <div class="custom-file">
+                      <input type="file" name="br_image" class="custom-file-input form-control" id="fileImageBrand" accept=".png, .jpg, jpeg, .PNG, JPG, JPEG">
+                      <label class="custom-file-label text-left" for="validatedCustomFile"><%= brand.br_imageName  %></label>
+                      <div class="feedback" style="color:red"></div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <a href="admin/brand" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+              <button type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i> Lưu</button>
+            </form>
+            <div id="mgs"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src="admin_template/js/customPages/brand/jqueryEditBrand.js"></script>
+<%- include("../adminFooter") %>
+
+<!-- kiêm tra lại phần hình ảnh ko update -->

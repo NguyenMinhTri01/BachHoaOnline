@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv' ;
 import initRouteAdmin from './routers/admin/web';
+import initRouteUser from './routers/users/index'
 import configViewEngine from './config/viewEngine';
 import connectDB from './config/connectDB';
 import connectFlash from 'connect-flash';
@@ -36,8 +37,10 @@ app.use(connectFlash());
 //config passport
 app.use(passport.initialize());
 app.use(passport.session());
-// init all router
+// init all router admin
 initRouteAdmin(app);
+// init all router user
+initRouteUser(app);
 // error handler
 app.use((err, req, res, next) => {
   console.log(err.stack);

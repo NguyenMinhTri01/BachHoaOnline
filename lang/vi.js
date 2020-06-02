@@ -14,3 +14,7 @@ export const transSuccess = {
   remove_data_successful : "Xóa dữ liệu thành công",
   update_data_successful : "Cập nhật dữ liệu thành công",
 }
+
+export const notification = {
+  category_disabled : "Danh mục sản phẩm không còn tồn tại trên hệ thống"
+}

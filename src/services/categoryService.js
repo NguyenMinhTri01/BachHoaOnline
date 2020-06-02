@@ -1,7 +1,7 @@
-import groupCategory_M from "../../models/group_category.model";
-import category_M from "../../models/category.model";
+import groupCategory_M from "../models/group_category.model";
+import category_M from "../models/category.model";
 import slug from "url-slug"
-import {transSuccess, transErrors} from "../../../lang/vi"
+import {transSuccess, transErrors} from "../../lang/vi"
 
 
 
@@ -244,6 +244,16 @@ let activeCategory = (id) => {
         message : null        
     });
   });
+};
+
+const getMaxLevel = (level) => {
+  return new Promise(async(resolve, reject) => {
+    let result = await category_M.findMaxLevel();
+    if (result){
+      return resolve(result[0].c_level); 
+    }
+    return resolve(0);
+  })
 }
 
 
@@ -261,5 +271,6 @@ module.exports = {
   getOneCategory: getOneCategory,
   updateCategory: updateCategory,
   updateGroupCategory : updateGroupCategory,
-  getListCategoriesOfGroup: getListCategoriesOfGroup
+  getListCategoriesOfGroup: getListCategoriesOfGroup,
+  getMaxLevel: getMaxLevel
 }

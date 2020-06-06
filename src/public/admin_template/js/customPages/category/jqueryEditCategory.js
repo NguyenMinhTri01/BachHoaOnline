@@ -1,78 +1,146 @@
-$(document).ready(function()
-{ 
-  $("#input-name").click(function(){
-    $("#mgs").html("");
-  });
+function checkInputData (c_name, c_level, c_parentId, mgs) {
+  if(c_name == ''|| c_level == '0' || (c_level != '1' && c_parentId == '0')){
+    mgs.html("<div class='alert alert-danger alert-dismissible'>" +
+      "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+      "Dữ liệu Không được để trống"+
+      "</div>"
+      );
+    document.getElementById('form_input').reset();
+    return false;
+   }
+   if (c_name.length < 3) {
+    mgs.html("<div class='alert alert-danger alert-dismissible'>" +
+      "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+      "Dữ liệu nhập phải trên lớn hơn 2 ký tự"+
+      "</div>"
+      );
+    return false;
+   }
+    var valid = /\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/g;
+    if (valid.test(c_name)) {
+      mgs.html("<div class='alert alert-danger alert-dismissible'>" +
+      "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+      "Dữ liệu nhập không được chứa ký tự đặt biệt"+
+      "</div>"
+      );
+      document.getElementById('form_input').reset();
+      return false;
+    }
+    return true;
+ };
 
-  $("#Select1").click(function(){
-    $("#mgs").html("");
+ function resetForm(formInput, blockSelectC_parentId){
+  formInput.trigger("reset");
+  blockSelectC_parentId.css({
+    "visibility" : "hidden",
+    "display" : "none"
   })
-   //khai báo biến submit form lấy đối tượng nút submit
-   var submit = $("button[type='submit']");
+ };
 
-   //khi nút submit được click
-   submit.click(function()
-   {
-     var c_name = $("input[name='c_name']").val().trim(); //lấy giá trị trong input user
-     var c_parent = $("select[name='c_parent']").val();
+ function getDataC_parentId(c_level_select, c_parentId_select, blockSelectC_parentId, inputId) {
 
-     if(c_name == ''|| c_parent == '0'){
-      $('#mgs').html("<div class='alert alert-danger alert-dismissible'>" +
-        "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
-        "Dữ liệu Không được để trống"+
-        "</div>"
-        );
-      return false;
-     }
-     if (c_name.length < 3) {
-      $('#mgs').html("<div class='alert alert-danger alert-dismissible'>" +
-        "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
-        "Dữ liệu nhập phải trên lớn hơn 2 ký tự"+
-        "</div>"
-        );
-      return false;
-     }
-      var valid = /\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/g;
-      if (valid.test(c_name)) {
-        $('#mgs').html("<div class='alert alert-danger alert-dismissible'>" +
-        "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
-        "Dữ liệu nhập không được chứa ký tự đặt biệt"+
-        "</div>"
-        );
-        document.getElementById('form_input').reset();
-        return false;
+  c_parentId_select.empty();
+  var c_level = c_level_select.val();
+  var _id = inputId.val();
+  if (c_level > 1){
+    $.ajax({
+      type: 'GET',
+      url: `admin/category/getC_parent/${c_level}`,
+      data: null,
+      success: function(res){
+        if(res){
+          blockSelectC_parentId.css({
+            "visibility" : "visible",
+            "display" : "block"
+          });
+          if(res.length > 0){
+            res.forEach(function(c_parent){
+              if (c_parent._id != _id){
+                c_parentId_select.append(new Option(c_parent.c_name, c_parent._id));
+              }
+            });
+          }
+        }
       }
+    })
+  }
+  else {
+    c_parentId_select.append(new Option("default", "0"));
+    blockSelectC_parentId.css({
+      "visibility" : "hidden",
+      "display" : "none"
+    })
+  }
+ }
 
-
-     //Lấy toàn bộ dữ liệu trong Form
-     var datas = $('form#form_input').serialize();
-   
-     //Sử dụng phương thức Ajax.
-     $.ajax({
-           type : 'POST', //Sử dụng kiểu gửi dữ liệu POST
-           url : 'admin/category/edit', //gửi dữ liệu sang trang data.php
-           data : datas, //dữ liệu sẽ được gửi
-           success : function(res)  // Hàm thực thi khi nhận dữ liệu được từ server
-                     { 
-                        if(res == 'false') 
-                        {
-                          alert('server không phản hồi');
-                        }else{
-                          if (res.type){
-                            $('#mgs').html("<div class='alert alert-success alert-dismissible'>" +
-                                          "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
-                                          res.message +
-                                          "</div>");
-                          }
-                          else {
-                            $('#mgs').html("<div class='alert alert-danger alert-dismissible'>" +
-                                          "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
-                                          res.message +
-                                          "</div>");
-                          }
-                        }
+ function sendDataInputToServer(formInput, mgs){
+       //Lấy toàn bộ dữ liệu trong Form
+       var data_input = formInput.serialize();
+       $.ajax({
+        type : 'POST', //Sử dụng kiểu gửi dữ liệu POST
+        url : 'admin/category/edit', //gửi dữ liệu sang trang data.php
+        data : data_input, //dữ liệu sẽ được gửi
+        success : function(res)  // Hàm thực thi khi nhận dữ liệu được từ server
+                  { 
+                     if(res == 'false') 
+                     {
+                       alert('server không phản hồi');
+                     }else{
+                       if (res.type){
+                         mgs.html("<div class='alert alert-success alert-dismissible'>" +
+                                       "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+                                       res.message +
+                                       "</div>");
+                         
+                       }
+                       else {
+                         mgs.html("<div class='alert alert-danger alert-dismissible'>" +
+                                       "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+                                       res.message +
+                                       "</div>");
+                        
+                      }
                      }
-           });
-           return false;
-     });
+                  }
+        });
+ }
+
+$(document).ready(function()
+{
+  var formInput = $('#form_input');
+  var input = $('#input-name');
+  var c_level_select = $('#c_level');
+  var c_parentId_select = $('#c_parentId');
+  var mgs = $('#mgs');
+  var submit = $("button[type='submit']");
+  var blockSelectC_parentId = $('#blockSelectC_parentId');
+  var inputId = $('#input-id');
+  
+  
+  input.click(function(){
+    mgs.html("");
+  });
+  c_level_select.click(function(){
+    mgs.html("");
+  })
+  c_parentId_select.click(function(){
+    mgs.html("");
+  })
+
+  c_level_select.change(function(){
+    getDataC_parentId(c_level_select, c_parentId_select, blockSelectC_parentId, inputId);
+  })
+   //khi nút submit được click
+   submit.click(function(event)
+   {
+     event.preventDefault();
+     var c_name = input.val().trim(); 
+     var c_level = c_level_select.val();
+     var c_parentId = c_level_select.val();
+     if (checkInputData(c_name, c_level, c_parentId, mgs)){
+      sendDataInputToServer(formInput, mgs);
+     }
+  });
  });
+
+

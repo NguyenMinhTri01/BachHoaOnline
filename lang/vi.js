@@ -5,13 +5,19 @@ export const transValidation = {
 export const transErrors = {
   login_failed : "Tên đăng nhập hoặc mật khẩu không đúng!",
   add_data_failed : "Dữa liệu đã tồn tại",
-  remove_data_failed : "Xóa dữ liệu không thành công",
+  remove_data_failed : {
+    status : 'Thất Bại',
+    action : 'Xóa Dữ liệu'
+  },
 }
 
 export const transSuccess = {
   login_successful : "Đăng nhập thành công",
   add_data_successful : "Thêm dữ liệu Thành công",
-  remove_data_successful : "Xóa dữ liệu thành công",
+  remove_data_successful : {
+    status : 'Thành Công',
+    action : 'Xóa Dữ liệu'
+  },
   update_data_successful : "Cập nhật dữ liệu thành công",
 }
 

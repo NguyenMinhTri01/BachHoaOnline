@@ -15,22 +15,22 @@ let uploadImageLocal = multer({
 
 
 const getViewIndex = async (req, res) => {
+  let notification = req.flash('notification');
   let brands = await brand_S.getListBrands();
   res.render('admin/brand/index', {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
     title : "Bach Hóa Online | Thương Hiệu Sản Phẩm",
     secure_Delivery_URL : process.env.SECURE_DELIVERY_URL,
-    brands : brands
+    brands : brands,
+    notification : notification,
   });
 }
 
 const getViewAdd = async (req, res) => {
-  let groups = await category_S.getListGroups();
   res.render("admin/brand/add", {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
-    groups : groups,
     title : "Bach Hóa Online | Thêm Thương Hiệu Sản Phẩm",
   });
   
@@ -51,7 +51,7 @@ const addBrand = (req, res) => {
     }
     else {
       let path = req.file.path;
-      let notification = await brand_S.createNewBrand(req.body.br_name, req.body.c_id, path);
+      let notification = await brand_S.createNewBrand(req.body.br_name, path);
       res.send(notification);
     }
   });
@@ -59,15 +59,10 @@ const addBrand = (req, res) => {
 
 
 const getViewEdit = async (req, res) => {
-  let groups = await category_S.getListGroups();
   let brandModel = await brand_S.getBrandById(req.params.id);
-  let category = await category_S.getOneCategory(brandModel.c_id);
-  let categories = await category_S.getListCategoriesOfGroup(category.c_parent.id);
+  // let category = await category_S.getOneCategory(brandModel.c_id);
+  // let categories = await category_S.getListCategoriesOfGroup(category.c_parent.id);
   let brand = new Object({
-    gc_id : category.c_parent.id,
-    gc_name : category.c_parent.gc_name,
-    c_id : brandModel.c_id,
-    c_name : category.c_name,
     br_imageName : brandModel.br_image.split('/')[2],
     br_image : brandModel.br_image,
     br_name : brandModel.br_name,
@@ -77,8 +72,6 @@ const getViewEdit = async (req, res) => {
     base_Url : process.env.BASE_URL,
     adminInfo: req.user,
     brand : brand,
-    groups : groups,
-    categories : categories,
     title : "Bach Hóa Online | Cập Nhật Thương Hiệu Sản Phẩm",
   })
 };
@@ -107,6 +100,12 @@ const editBrand = (req, res) => {
 const activeBrand = async(req, res) => {
   let notification = await brand_S.activeBrand(req.params.id);
   res.send(notification);
+};
+
+const deleteBrand = async(req, res) => {
+  let notification = await brand_S.deleteBrand(req.params.id);
+  req.flash('notification', notification);
+  res.redirect('/admin/brand');
 }
 
 module.exports = {
@@ -114,6 +113,7 @@ module.exports = {
   editBrand : editBrand,
   getViewAdd : getViewAdd,
   getViewEdit: getViewEdit,
+  deleteBrand : deleteBrand,
   activeBrand : activeBrand,
   getViewIndex: getViewIndex,
   getCategoryOfGroup : getCategoryOfGroup,

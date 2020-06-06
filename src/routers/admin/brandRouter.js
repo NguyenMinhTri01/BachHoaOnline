@@ -14,6 +14,7 @@ const initAllRoute_Brand = (router) => {
   router.get("/brand/edit/:id", auth_C.checkLogin, brand_C.getViewEdit);
   router.post("/brand/edit", auth_C.checkLogin, brand_C.editBrand);
   router.get("/brand/active/:id", auth_C.checkLogin, brand_C.activeBrand);
+  router.get("/brand/delete/:id", auth_C.checkLogin, brand_C.deleteBrand);
 }
 
 module.exports = initAllRoute_Brand

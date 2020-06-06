@@ -14,7 +14,6 @@
             </div>
         </div>
       </div>
-      <br>
       <div class="container-fluid">
       <div class="card">
         <div class="card-body">
@@ -24,26 +23,44 @@
                 <div class="col-lg-6">
                   <label>Tên danh mục <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
                   <input name="c_name" type="text" class="form-control" id="input-name" value="<%= category.c_name %>" required>
-                  <input name="_id" value="<%= category._id %>" type="hidden">
-                  <br>
-                </div> 
+                  <input name="_id" value="<%= category._id %>" id="input-id" type="hidden">
+                </div>
                 <div class="col-lg-6">
-                  <label>Nhóm danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
-                  <select class="form-control" id="Select1" name="c_parent">
-              <% if (typeof groups != "undefined"){ %>
-                <% if (groups.length != 0){ %>
-                  <% groups.forEach(group =>{ %>
-                    <% if (group._id == category.c_parent.id){%>
-                      <option selected style="color:#dad4d4" value="<%= group._id %>__<%= group.gc_name %>"><%= group.gc_name %></option>
-                    <% } else{%>
-                      <option value="<%= group._id %>__<%= group.gc_name %>"><%= group.gc_name %></option>
+                  <label>Cấp danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                  <select class="form-control" id="c_level" name="c_level">
+              <% if (typeof maxLevelCategory != "undefined"){ %>
+                  <% maxLevelCategory = maxLevelCategory + 1 %>
+                  <% for (let i = 0; i < maxLevelCategory; i++) {%>
+                    <% if (category.c_level == (i+1)) {%>
+                      <option value="<%= i+1 %>" selected> Level <%= i+1 %></option>
+                    <% } else {%>
+                      <option value="<%= i+1 %>"> Level <%= i+1 %></option>
                     <% } %>
-                    <% }) %>
-                <% } %>
+                  <% } %>
               <% } %>
                   </select>                
                 </div>
+                <% if (category.c_parentId == '0'){ %>
+                <div class="col-lg-6" id="blockSelectC_parentId" style="visibility: hidden; display:none">
+                <% } else {%>
+                <div class="col-lg-6" id="blockSelectC_parentId">
+                <% } %>
+                  <br>
+                  <label>Danh mục cha<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                  <select class="form-control" id="c_parentId" name="c_parentId" >
+                    <% if (typeof c_parents != "undefined") {%>
+                      <% c_parents.forEach(c_parent => { %>
+                        <% if (c_parent._id == category.c_parentId) {%>
+                        <option value="<%= c_parent._id %>" selected><%= c_parent.c_name %></option>
+                        <% } else {%>
+                        <option value="<%= c_parent._id %>"><%= c_parent.c_name %></option>
+                        <% } %>
+                      <% }) %>
+                    <% } %>
+                  </select>             
+                </div>
               </div>
+              <br>
               <a href="admin/category" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
               <button type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i> Lưu</button>
             </form>
@@ -54,5 +71,4 @@
 
 
     <script type="text/javascript" src="admin_template/js/customPages/category/jqueryEditCategory.js"></script>
-
 <%- include("../adminFooter") %>

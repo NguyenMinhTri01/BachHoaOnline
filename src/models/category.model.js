@@ -34,20 +34,20 @@ categorySchema.statics = {
     return this.find({},{c_level: 1}).sort({"c_level" : -1}).limit(1).exec();
   },
 
+  finCategoriesByC_level(c_level){
+    return this.find({'c_level': c_level}).exec();
+  },
+
+  findChildCategoryById(id) {
+    return this.find({'c_parentId' : id}).exec();
+  },
+
   deleteCategory(id){
     return this.deleteOne({_id:id}).exec();
   },
 
-  deleteCategoryOfGroup(groupId){
-    return this.deleteMany({"c_parent.id" : groupId});
-  },
-
   updateCategoryById(id, item){
     return this.findByIdAndUpdate(id, item).exec();
-  },
-
-  findCategoriesOfGroup(groupId){
-    return this.find({"c_parent.id" : groupId}).exec();
   },
 
   updateActive(id){
@@ -56,10 +56,6 @@ categorySchema.statics = {
       category.c_status = category.c_status ? false : true;
       return category.save();
     })    
-  },
-
-  updateCategoriesOfGroup(groupId, gc_name){
-    return this.updateMany({"c_parent.id": groupId}, {"c_parent.gc_name": gc_name}).exec();
   },
 
 }

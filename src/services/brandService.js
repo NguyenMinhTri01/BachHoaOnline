@@ -1,50 +1,31 @@
 import brand_M from '../models/brand.model';
-import category_M from '../models/category.model';
 import slug from "url-slug";
 import {transSuccess, transErrors} from "../../lang/vi";
-import adminHelper from "../helper/adminHelper";
-import {notification} from '../../lang/vi'
+import fs from 'fs-extra';
 
-
+//src\public\uploads\1591430857794_28571609573977852587-8403-49e2-b07a-5827b14930cd.jpg
 const getListBrands = () => {
   return new Promise ( async (resolve, reject) => {
     let result = await brand_M.findAll();
     if (result) {
-      let brands = result.map( async (brand) => {
-        let category = await category_M.findCategoryById(brand.c_id);
-        return new Object ({
-          c_name : category ? category.c_name : notification.category_disabled,
-          br_name : brand.br_name,
-          br_status : brand.br_status,
-          _id : brand._id,
-          br_image: brand.br_image,
-          br_slug: brand.br_slug,
-          c_id : brand.c_id,
-          br_createdAt : brand.br_createdAt,
-        });
-      })
-      Promise.all(brands).then( values => resolve(values));
-      //console.log(brands);
-      //console.log(result.toString())
-     
+      return resolve(result);
     }
   })
 }
 
 
-const createNewBrand = (br_name, c_id, path) => {
+const createNewBrand = (br_name, path) => {
   return new Promise( async (resolve, reject) => {
     try {
       let br_slug = slug(br_name);
       // check brand is exists in db
       let checkExists = await brand_M.findBrandBySlug(br_slug);
-      if (!checkExists || (checkExists && checkExists.c_id !== c_id)) {
+      if (!checkExists){
         let arrayPath = path.split('\\');
         let newBrand = {
           br_name : br_name,
           br_slug : br_slug,
           br_image : `/${arrayPath[2]}/${arrayPath[3]}`,
-          c_id : c_id
         };
         let result = await brand_M.createNew(newBrand);
         if(result){
@@ -105,13 +86,13 @@ const editBrand = (id, br_name, c_id, path) => {
       let br_slug = slug(br_name);
       // check brand is exists in db
       let checkExists = await brand_M.findBrandBySlug(br_slug);
-      if (!checkExists || (checkExists && (checkExists.c_id !== c_id || checkExists._id === id))) {
+      let oldBrand = await brand_M.findBrandById(id);
+      if (!checkExists || oldBrand.br_slug == br_slug) {
         let item = null;
         if (path == null) {
           item = {
             br_name : br_name,
             br_slug : br_slug,
-            c_id : c_id
           };
         }
         else {
@@ -120,12 +101,16 @@ const editBrand = (id, br_name, c_id, path) => {
             br_name : br_name,
             br_slug : br_slug,
             br_image : `/${arrayPath[2]}/${arrayPath[3]}`,
-            c_id : c_id
           };
         }
 
         let result = await brand_M.updateBrandById(id , item);
         if(result){
+          if (path != null){
+            try {
+              await fs.remove(`src/public/${result.br_image}`);
+            } catch (error) {}
+          }
           return resolve({
             type : true,
             message : transSuccess.update_data_successful    
@@ -182,9 +167,30 @@ const activeBrand = (id) => {
       type: false
     })
   })
+};
+
+const deleteBrand = (id) => {
+  return new Promise( async (resolve, reject) => {
+    let brand = await brand_M.findBrandById(id);
+    let result = await brand_M.deleteBrand(id);
+    if (result.deleteCount != 0){
+      try {
+        await fs.remove(`src/public/${brand.br_image}`);
+      } catch (error) {}
+      return resolve({
+        type : true,
+        message : transSuccess.remove_data_successful 
+      })
+    }
+    return resolve({
+      type : false,
+      message : transErrors.remove_data_failed
+    })
+  })
 }
 module.exports = {
   editBrand : editBrand,
+  deleteBrand : deleteBrand,
   activeBrand : activeBrand,
   getBrandById : getBrandById,
   getListBrands : getListBrands,

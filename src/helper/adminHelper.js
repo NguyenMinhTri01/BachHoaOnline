@@ -18,7 +18,8 @@ const uploadImageToCloudinary = (folder, path, callback) => {
     // save info brand
     if (result) {
       // remove file from folder location
-      await fs.remove(path);
+      let k = fs.remove(path);
+      console.log(k);
       callback(result);
     }else{
       callback(false);

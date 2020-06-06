@@ -21,38 +21,23 @@
             <form class="form-group m-t-20" id="form_input" enctype="multipart/form-data" method="POST" action="#">
               <div class="row">
                 <div class="col-lg-7">
-                  <label>Tên Thương hiệu <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                  <label>Tên thương hiệu <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
                   <input name="br_name" type="text" class="form-control" id="input-name" placeholder="Nhập tên danh mục..." required>
                   <br>
-                  <label>Nhóm danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
-                    <select class="form-control" id="list_group" name="group">
-                      <option value="0" class="selected" style="color:#dad4d4">Chọn nhóm danh mục phù hợp...</option>
-              <% if (typeof groups != "undefined"){ %>
-                <% if (groups.length != 0){ %>
-                  <% groups.forEach(group =>{ %>
-                      <option value="<%= group._id %>"><%= group.gc_name %></option>
-                  <% }) %>
-                <% } %>
-              <% } %>
-                    </select>
-                    <br>
-                    <label>Danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
-                    <select class="form-control" id="list_category" name="c_id">
-                      <option value="0" class="selected" style="color:#dad4d4">Chọn danh mục phù hợp...</option>
-                    </select>  
-                    <br>                    
-                </div>
-                <div class="col-lg-5">
-                  <div class="text-center" style="margin-top: 26px">
-                    <img src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png" alt="brand image" class="image-preview border border-dark" width="260px" height="160px" style="border-radius: 18px!important;">
-                  </div>
-                  <div style="width:260px; margin-left: 78px; margin-top: 10px">  
+                  <label>Ảnh thương hiệu <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
+                  <div>  
                     <div class="custom-file">
                       <input type="file" name="br_image" class="custom-file-input form-control" id="fileImageBrand" accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
                       <label class="custom-file-label text-left" for="validatedCustomFile">Chọn File Ảnh...</label>
                       <div class="feedback" style="color:red"></div>
                     </div>
                   </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="text-center">
+                    <img src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png" alt="brand image" class="image-preview border border-dark" width="260px" height="160px" style="border-radius: 18px!important;">
+                  </div>
+                  <div class="text-center">Ảnh</div>
                 </div>
                 
               </div>

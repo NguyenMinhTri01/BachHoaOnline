@@ -10,7 +10,6 @@ function loadImage (input, showImage, label_nameImage, label_feedback) {
     reader.onload = function(e) {
       showImage.attr("src", e.target.result);
     }
-    console.log(input.files[0]);
     reader.readAsDataURL(input.files[0]);
     label_nameImage.text(input.files[0].name);
   }
@@ -32,44 +31,17 @@ function reSetData(formInput , image_Preview, label_nameImage, label_feedback) {
 
 
 $(document).ready(function(){
-  var groupCategory = $("select[id='list_group']");
-  var category = $("select[id='list_category']");
   var inputFieldImage = $("#fileImageBrand");
   var formInput = $(".form-group");
   var inputBrandName = $("input[name='br_name']");
   var notifications = $("#mgs");
-  var selectGroup = $("select[name='group']");
   var formControl = $(".form-control");
   var image_Preview = $(".image-preview");
   var label_nameImage = $(".custom-file-label");
   var label_feedback = $(".feedback");
-
+  
   reSetNotification(formControl, notifications, label_feedback);
 
-  groupCategory.change(function(){
-    var groupId = $(this).val();
-    $.ajax({
-      type : 'GET', //Sử dụng kiểu gửi dữ liệu POST
-      url : `admin/brand/getCategoryOfGroup/${groupId}`, //gửi dữ liệu sang trang data.php
-      data : null, //dữ liệu sẽ được gửi
-      success : function(res)  // Hàm thực thi khi nhận dữ liệu được từ server
-                { 
-                   if(res == 'false') 
-                   {
-                     alert('server không phản hồi');
-                   }else{
-                    category.empty();
-                    category.append(new Option("Chọn danh mục phù hợp...", 0, true));
-                    if(res.length > 0 ){
-                      var list_categories = res;
-                      list_categories.forEach(function(item) {
-                        category.append(new Option(item.c_name, item._id));
-                      })
-                    }
-                   }
-                }
-    })
-  });
   inputFieldImage.change(function(){
     loadImage(this, image_Preview, label_nameImage, label_feedback);
   });
@@ -77,10 +49,7 @@ $(document).ready(function(){
     e.preventDefault();
     // validation data
     var br_name = inputBrandName.val().trim(); //lấy giá trị trong input user
-    var group = selectGroup.val();
-    var categoryID = category.val();
-
-    if(br_name == ''|| group == 0 || categoryID == 0){
+    if(br_name == ''){
      notifications.html("<div class='alert alert-danger alert-dismissible'>" +
        "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
        "Dữ liệu Không được để trống"+

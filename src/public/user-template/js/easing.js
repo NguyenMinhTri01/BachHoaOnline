@@ -137,25 +137,25 @@ jQuery.extend( jQuery.easing,
 		if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
 		return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
 	}
-	var $star_rating = $('.star-rating .fa');
+	// var $star_rating = $('.star-rating .fa');
 
-var SetRatingStar = function() {
-  return $star_rating.each(function() {
-    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-      return $(this).removeClass('fa-star-o').addClass('fa-star');
-    } else {
-      return $(this).removeClass('fa-star').addClass('fa-star-o');
-    }
-  });
-};
+// var SetRatingStar = function() {
+//   return $star_rating.each(function() {
+//     if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+//       return $(this).removeClass('fa-star-o').addClass('fa-star');
+//     } else {
+//       return $(this).removeClass('fa-star').addClass('fa-star-o');
+//     }
+//   });
+// };
 
-$star_rating.on('click', function() {
-  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-  return SetRatingStar();
+// $star_rating.on('click', function() {
+//   $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+//   return SetRatingStar();
+// });
+
+// SetRatingStar();
+// $(document).ready(function() {
+
 });
-
-SetRatingStar();
-$(document).ready(function() {
-
-});
-});
+// });

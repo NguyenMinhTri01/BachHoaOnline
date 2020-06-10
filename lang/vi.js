@@ -9,6 +9,7 @@ export const transErrors = {
     status : 'Thất Bại',
     action : 'Xóa Dữ liệu'
   },
+  register_failed : 'Địa chỉ email đã được sử dụng'
 }
 
 export const transSuccess = {
@@ -17,6 +18,10 @@ export const transSuccess = {
   remove_data_successful : {
     status : 'Thành Công',
     action : 'Xóa Dữ liệu'
+  },
+  register_successful : {
+    status : 'Thành Công',
+    action : 'Đăng Ký'
   },
   update_data_successful : "Cập nhật dữ liệu thành công",
 }

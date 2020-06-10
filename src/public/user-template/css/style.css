@@ -9,6 +9,11 @@ html, body{
 	font-family: 'Open Sans', sans-serif;
 	background:#ffffff;
 }
+
+label .error {
+    
+  }
+
 ul li,ol li{
 	font-size:14px;
 }
@@ -21,8 +26,10 @@ h1,h2,h3,h4,h5,h6,a{
 	font-weight:10;
 }
 ul,label{
-	margin:0;
-	padding:0;
+    margin: 5px;
+    padding: 0;
+    color: red !important;
+    font-size: 14px;
 }
 body a:hover{
 	text-decoration:none;
@@ -3474,6 +3481,7 @@ td.invert-image a img {
     height: 156px
 
 }
+
 a.btn.btn-lg.btn-primary.text-uppercase{
     background: red !important;
 }

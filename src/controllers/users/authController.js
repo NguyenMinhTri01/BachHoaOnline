@@ -1,39 +1,47 @@
 import {validationResult} from 'express-validator';
+import {transErrors} from '../../../lang/vi'
+import {auth_S} from '../../services/index'
 
-let getLoginUser = (req, res) => {
+const getLoginUser = (req, res) => {
   try {
     return res.render('users/login');
   } catch (error) {
     console.log(error);
     return res.render('admin/error_500');
   }
-}
+};
 
-let getRegisterUser = (req, res) => {
+const getRegisterUser = (req, res) => {
   res.render("users/register");
+};
+
+const registerUser = async (req, res) => {
+  let data = JSON.parse(JSON.stringify(req.body));
+  let notification = await auth_S.registerUser(data);
+  res.send(notification);
 }
 
-let getLogout = (req, res) => {
+const getLogout = (req, res) => {
   //remove session passport admin
   req.logout();
   res.redirect("./login");
-}
-let checkLogin = (req, res, next) => {
+};
+const checkLogin = (req, res, next) => {
   if (!req.isAuthenticated()) {
     return res.redirect("/admin/login");
   }
  next();
-}
+};
 
-let checkLoggedOut = (req, res, next) => {
+const checkLoggedOut = (req, res, next) => {
   if (req.isAuthenticated()) {
 
     return res.redirect("./");
   }
   next(); 
-}
+};
 
-let functionExamples = (req, res) => {
+const functionExamples = (req, res) => {
   let errorArr = [];
   let validationErrors = validationResult(req);
   if (!validationErrors.isEmpty()){ // nếu có lôi {
@@ -45,12 +53,12 @@ let functionExamples = (req, res) => {
 }
 
 module.exports = {
-  getLoginUser : getLoginUser,
-  getRegisterUser : getRegisterUser,
-  functionExamples: functionExamples,
-  getLogout : getLogout,
-  checkLogin : checkLogin,
-  checkLoggedOut: checkLoggedOut
-
+  getLoginUser ,
+  getRegisterUser ,
+  functionExamples ,
+  getLogout ,
+  checkLogin ,
+  checkLoggedOut,
+  registerUser
 }
 

@@ -33,7 +33,6 @@ const getViewAdd = async (req, res) => {
     adminInfo: req.user,
     title : "Bach Hóa Online | Thêm Thương Hiệu Sản Phẩm",
   });
-  
 };
 
 const getCategoryOfGroup = async (req, res) => {

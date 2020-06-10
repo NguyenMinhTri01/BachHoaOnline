@@ -6,6 +6,7 @@ import initAllRoute_Brand from './brandRouter';
 import initAllRoute_UserAdmin from './userAdminRouter';
 import initAllRoute_Authentication from './authenticationRouter';
 import initAllRoute_Home from './homeRouter';
+import initAllRoute_Product from './productRouter';
 
 let router = express.Router();
 
@@ -21,6 +22,8 @@ let initRouteAdmin = (app) => {
   initAllRoute_Category(router);
   // init all router of brand
   initAllRoute_Brand(router);
+  // init all router of product
+  initAllRoute_Product(router);
   
   router.post("/example_validation", example_validation.login, auth_C.functionExamples);
 

@@ -10,9 +10,6 @@ html, body{
 	background:#ffffff;
 }
 
-label .error {
-    
-  }
 
 ul li,ol li{
 	font-size:14px;
@@ -96,7 +93,7 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
 .agileits_header img {
     
    
-    max-height: 45px;
+    
     position: relative;
     left: 100px;
     bottom: 4px;

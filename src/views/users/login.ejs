@@ -57,9 +57,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 			<div class="agile-login">
 				<ul>
-					<li><a href="registered.html"> Đăng Ký	 </a></li>
-					<li><a href="login.html">Đăng Nhập </a></li>
-					<li><a href="contact.html">Trợ Giúp</a></li>
+					<li><a href="register"> Đăng Ký	 </a></li>
+					<li><a href="login">Đăng Nhập </a></li>
+					<li><a href="contact">Trợ Giúp</a></li>
 					
 				</ul>
 				
@@ -214,11 +214,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="login">
 		<div class="container">
 			<h2>Đăng Nhập</h2>
-		
 			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-				<form>
-					<input type="email" placeholder="Email/Tên đăng nhập" required=" " >
-					<input type="password" placeholder="Mật Khẩu" required=" " >
+				<% if (errors.length > 0) {%>
+				<div class="error" style="color:red"><%= errors[0] %></div>
+				<% } %>
+				<form action="auth/local" method="post">
+					<input type="email" placeholder="Email đăng ký" name="u_email" required>
+					<input id='password' type="password" placeholder="Mật khẩu" name="u_localPassword" required>
+					<label style="color:#999 !important;font-size: 14px;font-weight: 500;" class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Hiển thị mật khẩu</label>
 					<div class="forgot">
 						<a href="#">Quên mật khẩu ?</a>
 					</div>
@@ -227,31 +230,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					
 				</form>
-				<div class="row">
+		<div class="row">
 			<div class="col-sm-12">
 				<div class="col-sm-6">
-					<a href="#" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-           </a>
+					<a href="auth/facebook" class="fb btn">
+          	<i class="fa fa-facebook fa-fw"></i>Login with Facebook
+          </a>
 				</div>
-        	
         <div class="col-sm-6">
-        	<a href="#" class="twitter btn">
-          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-        </a>
+        	<a href="auth/google" class="google btn">
+						<i class="fa fa-google fa-fw"></i>Login with Google+
+        	</a>
         </div>
-        <div class="col-sm-6">
-        	<a href="#" class="google btn"><i class="fa fa-google fa-fw">
-          </i> Login with Google+
-        </a>
-        </div>
-        
       </div>
 		</div>
 				
 			</div>
 		
-			<p><a href="registered.html">Đăng ký</a> (Hoặc) Trở về<a href="index.html">Trang chủ<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+			<p><a href="register">Đăng ký</a> (Hoặc) Trở về<a href="index.html">Trang chủ<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
 		</div>
 	</div>
 <!-- //login -->
@@ -327,6 +323,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$('input[type=checkBox').change(function() {
+				var pass = document.getElementById("password");
+				if($(this).is(":checked")) return pass.type = "text";
+				return pass.type = "password";
+			})
 			/*
 				var defaults = {
 				containerID: 'toTop', // fading element id

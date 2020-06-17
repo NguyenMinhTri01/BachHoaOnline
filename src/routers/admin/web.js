@@ -1,9 +1,9 @@
 import express from 'express';
-import {auth_C} from '../../controllers/admin/index';
+import {auth_C, home_C} from '../../controllers/admin/index';
 import {example_validation} from '../../validation/adminValidation/index';
 import initAllRoute_Category from './categoryRouter';
 import initAllRoute_Brand from './brandRouter';
-import initAllRoute_UserAdmin from './userAdminRouter';
+import initAllRoute_UserAdmin from './adminRouter';
 import initAllRoute_Authentication from './authenticationRouter';
 import initAllRoute_Home from './homeRouter';
 import initAllRoute_Product from './productRouter';
@@ -27,8 +27,11 @@ let initRouteAdmin = (app) => {
   
   router.post("/example_validation", example_validation.login, auth_C.functionExamples);
 
-  router.get("/test", (req, res) => {
-    res.render("admin/form_InfoAndEditAdmin", {base_Url : process.env.BASE_URL});
+  router.get("/test", (req, res, next) => {
+    res.render("admin/form_InfoAndEditAdmin", {
+      title : 'info',
+      base_Url : process.env.BASE_URL
+    });
   })
 
   return app.use("/admin", router);

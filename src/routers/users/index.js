@@ -8,14 +8,14 @@ let router = express.Router();
 
 let initRouteUser = (app) => {
 
-  router.get('/', home_C.getHome);
+  router.get('/', home_C.getHome);  
 
   initAllRoute_AuthenticationUser(router);
 
   router.post("/example_validation", example_validation.login, auth_C.functionExamples);
 
   router.get("/test", (req, res) => {
-    res.render("admin/form_InfoAndEditAdmin", {base_Url : process.env.BASE_URL});
+    res.send('test');
   })
 
   return app.use("/", router);

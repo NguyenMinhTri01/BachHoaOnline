@@ -1,4 +1,5 @@
 import {mongoose, shortId} from '../config/configDB'
+import bcrypt from 'bcrypt'
 
 let Schema = mongoose.Schema;
 
@@ -36,12 +37,35 @@ userSchema.statics = {
   findUserByFacebookID(id){
     return this.findOne({u_facebookID : id}).exec();
   },
-
   findUserByGoogleID(id){
     return this.findOne({u_googleID : id}).exec();
   },
+  findAndUpdateNewInfoFacebook (newInfo){
+    return this.findOneAndUpdate(
+      {'u_email' : newInfo.email}, 
+      {'u_name' : newInfo.name,'u_facebookID' : newInfo.id},
+      {new : true}
+      ).exec();
+  },
+  findAndUpdateNewInfoGoogle (newInfo) {
+    return this.findOneAndUpdate(
+      {'u_email' : newInfo.email}, 
+      {'u_name' : `${newInfo.family_name} ${newInfo.given_name}`,'u_googleID' : newInfo.sub},
+      {new : true}
+      ).exec();
+  },
+
   findUserByEmail(email){
     return this.findOne({u_email : email}).exec();
+  },
+};
+
+userSchema.methods = {
+  comparePassword(u_localPassword){
+    return new Promise((resolve, reject)=>{
+      let result = bcrypt.compareSync(u_localPassword, this.u_localPassword);
+      resolve(result);
+    })
   },
 }
 

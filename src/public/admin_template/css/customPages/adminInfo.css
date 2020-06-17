@@ -1,0 +1,17 @@
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
+.error {
+  color : red;
+  font-size: 12px;
+}
+
+.mainWhite {
+  background-color: white !important;
+}
+
+.marginTop{
+  margin-top: 10px;
+}

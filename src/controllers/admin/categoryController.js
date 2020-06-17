@@ -1,4 +1,4 @@
-import {category_S} from '../../services/index'
+import {category_S, dashboard_S} from '../../services/index'
 
 let getViewAdd = async (req, res) => {
   let maxLevelCategory = await category_S.getMaxLevel();
@@ -21,9 +21,10 @@ let getC_parent = async (req, res) => {
 let getViewIndex = async(req, res) => {
   let notification = req.flash('notification');
   let listData = await category_S.getListDataCategories();
+  let adminInfo = await dashboard_S.getInfoAdmin(req.adminId);
   res.render("admin/category/index", {
     base_Url : process.env.BASE_URL,
-    adminInfo: req.user,
+    adminInfo: adminInfo,
     listData : listData,
     notification : notification,
     title : "Bach Hóa Online | Danh Mục Sản Phẩm"

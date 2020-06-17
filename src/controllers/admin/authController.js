@@ -1,4 +1,6 @@
 import {validationResult} from 'express-validator';
+import {auth_S} from '../../services/index';
+import {transErrors, transSuccess} from './../../../lang/vi'
 
 let getLogin = (req, res) => {
   try {
@@ -12,27 +14,25 @@ let getLogin = (req, res) => {
     console.log(error);
     return res.render('admin/error_500');
   }
-}
+};
 
 let getLogout = (req, res) => {
-  //remove session passport admin
-  req.logout();
+  delete req.session['adminToken'];
   res.redirect("./login");
-}
-let checkLogin = (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    return res.redirect("/admin/login");
-  }
- next();
-}
+};
 
-let checkLoggedOut = (req, res, next) => {
-  if (req.isAuthenticated()) {
+let checkLogin = async(req, res, next) => {
+  let adminId = await auth_S.checkLoginAdmin(req.session.adminToken);
+  if (!adminId) return res.redirect("/admin/login");
+  req.adminId = adminId;
+  next();
+};
 
-    return res.redirect("./");
-  }
+let checkLoggedOut = async (req, res, next) => {
+  let adminId = await auth_S.checkLoginAdmin(req.session.adminToken);
+  if (adminId) return res.redirect("./");
   next(); 
-}
+};
 
 let functionExamples = (req, res) => {
   let errorArr = [];
@@ -43,14 +43,33 @@ let functionExamples = (req, res) => {
       errorArr.push(err.msg);
     });
   }
+};
+
+let authenticateAdminLocal = async (req, res) => {
+  
+  /**
+   * @function authenticateAdmin
+   * @return {false} if login failed
+   * @return {token} if login succeeded
+   */
+  
+  let result = await auth_S.authenticateAdmin(req.body.ad_userName, req.body.ad_password);
+  if (!result){
+    req.flash("errors", transErrors.login_failed);
+    return res.redirect('/admin/login');
+  }
+  let sessData = req.session;
+  sessData.adminToken = result;
+  return res.redirect('/admin');
 }
 
 module.exports = {
-  getLogin : getLogin,
-  functionExamples: functionExamples,
-  getLogout : getLogout,
-  checkLogin : checkLogin,
-  checkLoggedOut: checkLoggedOut
+  getLogin,
+  functionExamples,
+  getLogout,
+  checkLogin,
+  checkLoggedOut,
+  authenticateAdminLocal
 
 }
 

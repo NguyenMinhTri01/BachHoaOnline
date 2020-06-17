@@ -1,53 +1,47 @@
 <%- include("adminHeader") %>
-    <div class="container">
-      <h1>Edit Profile</h1>
+<link rel="stylesheet" type="text/css" href="admin_template/css/customPages/adminInfo.css">
+
+<div class="container-fluid mainWhite">
+      <h2 class="text-center">Thông tin của tôi</h2>
       <hr>
+  <form id="formInput" class="form-horizontal" role="form" enctype="multipart/form-data" method="POST">
     <div class="row">
         <!-- left column -->
         <div class="col-md-3">
           <div class="text-center">
-            <img src="//placehold.it/150" class="avatar rounded-circle" alt="avatar">
-            <h6>Upload a different photo...</h6>
-            
-            <input type="file" class="form-control">
+            <img id='image-preview' src="<%= adminInfo.ad_avatar %>" class="avatar rounded-circle" alt="avatar" width="150" height="160">
+            <h6 class="hidden">Tải ảnh đại diện khác</h6>
+            <input disabled type="file" class="form-control marginTop" name="ad_avatar">
           </div>
         </div>
         
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
-          <div class="alert alert-info alert-dismissable">
+          <!-- <div class="alert alert-info alert-dismissable">
             <a class="panel-close close" data-dismiss="alert">×</a> 
             <i class="fa fa-coffee"></i>
             This is an <strong>.alert</strong>. Use this to show important messages to the user.
-          </div>
-          <h3>Personal info</h3>
-          
-          <form class="form-horizontal" role="form">
+          </div> -->
+          <h3>Thông tin cá nhân</h3>
             <div class="form-group">
-              <label class="col-lg-3 control-label">First name:</label>
+              <label class="col-lg-3 control-label">Tên:</label>
               <div class="col-lg-9">
-                <input class="form-control" type="text" value="Jane">
+                <input name='ad_name' disabled class="form-control" type="text" value="<%= adminInfo.ad_name %>">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-3 control-label">Last name:</label>
+              <label class="col-lg-3 control-label">Số điện thoại:</label>
               <div class="col-lg-9">
-                <input class="form-control" type="text" value="Bishop">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Company:</label>
-              <div class="col-lg-9">
-                <input class="form-control" type="text" value="">
+                <input name='ad_phoneNumber' disabled class="form-control" type="text" value="<%= adminInfo.ad_phoneNumber %>">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Email:</label>
               <div class="col-lg-9">
-                <input class="form-control" type="text" value="janesemail@gmail.com">
+                <input name='ad_email' disabled class="form-control" type="text" value="<%= adminInfo.ad_email %>">
               </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label class="col-lg-3 control-label">Time Zone:</label>
               <div class="col-lg-9">
                 <div class="ui-select">
@@ -63,38 +57,45 @@
                   </select>
                 </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label">Username:</label>
+            </div> -->
+            <h3>Thông tin đăng nhập</h3>
+            <div class="form-group" action="#" method="post">
+              <label class="col-md-3 control-label">Tên đăng nhập:</label>
               <div class="col-md-9">
-                <input class="form-control" type="text" value="janeuser">
+                <input name='ad_userName' disabled class="form-control" type="text" value="<%= adminInfo.ad_userName %>" >
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-3 control-label">Password:</label>
+              <label id="currentPWLabel" class="col-md-3 control-label">mật khẩu:</label>
               <div class="col-md-9">
-                <input class="form-control" type="password" value="11111122333">
+                <input name="ad_currentPW" disabled class="form-control PW" type="password" value="00000000">
+              </div>
+            </div>
+            <div class="form-group hidden">
+              <label id="" class="col-md-3 control-label">mật khẩu mới:</label>
+              <div class="col-md-9">
+                <input id="ad_password" name="ad_password" disabled class="form-control" type="password" value="">
+              </div>
+            </div>
+            <div class="form-group hidden">
+              <label class="col-md-3 control-label">Nhập lại mật khẩu:</label>
+              <div class="col-md-9">
+                <input name="confirmPassword" class="form-control" type="password" value="">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-3 control-label">Confirm password:</label>
-              <div class="col-md-9">
-                <input class="form-control" type="password" value="11111122333">
+              <div class="col-md-9 marginTop"  id="notifications"></div>
+              <div class="col-md-9 marginTop">
+                  <button onclick="window.location.href='http://localhost:3000/admin';" id='btnReturn' type="button" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Trang Chủ</button>
+                  <button id='btnEdit' type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Chỉnh Sửa</button>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label"></label>
-              <div class="col-md-9">
-                <input type="button" class="btn btn-primary" value="Save Changes">
-                <span></span>
-                <input type="reset" class="btn btn-default" value="Cancel">
-              </div>
-            </div>
-          </form>
         </div>
     </div>
-    </div>
+  </form>
+</div>
 <!-- end form content -->
-
-
+<script type="text/javascript" src="admin_template/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="admin_template/libs/jquery-validation/dist/additional-methods.js"></script>
+<script type="text/javascript" src="admin_template/js/customPages/admin/jqueryAdminInfo.js"></script>
 <%- include("adminFooter") %>

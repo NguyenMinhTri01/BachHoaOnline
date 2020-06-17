@@ -154,6 +154,7 @@ select.browser-default.custom-select {
     top: -23px;
     right: -139px;
 }
+
  /* {
   box-sizing: border-box;
 } */
@@ -238,14 +239,13 @@ a.fb.btn {
     background: #3B5998;
     margin-top: 10px;
     color:white;
-    width: 100%;
     border-radius: 10px;
+    padding-right: 15px;
 }
 a.google.btn{
   background-color: #dd4b39;
   color: white;
   margin-top: 10px;
-  width: 100%;
   border-radius: 10px;
 }
 

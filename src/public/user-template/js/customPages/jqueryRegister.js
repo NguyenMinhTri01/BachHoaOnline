@@ -1,13 +1,15 @@
 function validationFormRegister (formRegister) {
   var validator = formRegister.validate({
     rules: {
-      'lastName' : {
+      'u_name' : {
         required: true,
         maxlength : 50
       },
-      'firstName' : {
+      'u_phoneNumber' : {
         required: true,
-        maxlength : 50
+        maxlength : 10,
+        number : true,
+        minlength : 10
       },
       'u_email' : {
         required: true,
@@ -24,13 +26,15 @@ function validationFormRegister (formRegister) {
       }
     },
     messages : {
-      'lastName' : {
+      'u_name' : {
         required: 'Dữ liệu không được để trống',
         maxlength : 'Dữ liệu nhập không được quá 50 ký tự'
       },
-      'firstName' : {
+      'u_phoneNumber' : {
         required: 'Dữ liệu không được để trống',        
-        maxlength : 'Dữ liệu nhập không được quá 50 ký tự'
+        maxlength : 'Số điện thoại không hợp lệ',
+        number : 'Số điện thoại không hợp lệ',
+        minlength : 'Số điện thoại không hợp lệ'
       },
       'u_email' : {
         required: 'Dữ liệu không được để trống',

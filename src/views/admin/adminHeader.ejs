@@ -237,7 +237,7 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= adminInfo.ad_avatar %>" alt="user" class="rounded-circle" width="30" height="33"></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="adminAvatar" src="<%= adminInfo.ad_avatar %>" alt="user" class="rounded-circle" width="30" height="33"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <div class="dropdown-divider"></div>
                                 <h3 class = "text-center">
@@ -245,15 +245,19 @@
                                     <%= adminInfo.ad_name %>
                                 </h3>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/admin/info"><i class="ti-user m-r-5 m-l-5"></i> Thông tin của tôi</a>
+                                <!-- <a class="dropdown-item" href="/admin/info"><i class="ti-user m-r-5 m-l-5"></i> Thông tin của tôi</a> -->
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
-                                <div class="dropdown-divider"></div>
+                                <!-- <div class="dropdown-divider"></div> -->
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                                <!-- <div class="dropdown-divider"></div> -->
+                                <!-- <a class="dropdown-item" href="">Logout</a> -->
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="admin/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                                <div class="dropdown-divider"></div>
-                                <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
+                                <div class="p-l-30 p-10">
+                                    <a href="admin/info" class="btn btn-sm btn-success btn-rounded"><i class="ti-user m-r-5 m-l-5"></i>Thông Tin Của tôi</a>
+                                    <a href="admin/logout" class="btn btn-sm btn-danger btn-rounded"> <i class="fa fa-power-off m-r-5 m-l-5"></i> Đăng Xuất</a>
+                                </div>
+
                             </div>
                         </li>
                         <!-- ============================================================== -->
@@ -277,7 +281,7 @@
                     <ul id="sidebarnav" class="p-t-30">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin" aria-expanded="false"><i class="fas fa-home"></i><span class="hide-menu">Trang Chủ</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/category" aria-expanded="false"><i class="fas fa-table"></i><span class="hide-menu">Danh Mục Sản Phẩm</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/brand" aria-expanded="false"><i class="fas fa-table"></i><span class="hide-menu">Thương Hiệu Sản Phẩm</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/brand" aria-expanded="false"><i class="fab fa-creative-commons"></i><span class="hide-menu">Thương Hiệu Sản Phẩm</span></a></li>
                        <!-- khi nào them các chức năng thì them vào đây-->
                      <!--   key : minhtri0701 -->
                 

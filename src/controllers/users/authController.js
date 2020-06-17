@@ -4,7 +4,8 @@ import {auth_S} from '../../services/index'
 
 const getLoginUser = (req, res) => {
   try {
-    return res.render('users/login');
+    let errors = req.flash('errors');
+    return res.render('users/login',{errors});
   } catch (error) {
     console.log(error);
     return res.render('admin/error_500');

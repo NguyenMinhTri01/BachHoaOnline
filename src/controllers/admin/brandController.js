@@ -1,4 +1,4 @@
-import {category_S, brand_S} from '../../services/index';
+import {category_S, brand_S, dashboard_S} from '../../services/index';
 import config_storage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 
@@ -17,9 +17,10 @@ let uploadImageLocal = multer({
 const getViewIndex = async (req, res) => {
   let notification = req.flash('notification');
   let brands = await brand_S.getListBrands();
+  let adminInfo = await dashboard_S.getInfoAdmin(req.adminId);
   res.render('admin/brand/index', {
     base_Url : process.env.BASE_URL,
-    adminInfo: req.user,
+    adminInfo: adminInfo,
     title : "Bach Hóa Online | Thương Hiệu Sản Phẩm",
     secure_Delivery_URL : process.env.SECURE_DELIVERY_URL,
     brands : brands,

@@ -4,12 +4,14 @@ export const transValidation = {
 
 export const transErrors = {
   login_failed : "Tên đăng nhập hoặc mật khẩu không đúng!",
+  checkPasswordFailed : "Mật khẩu hiện tại không đúng!",
   add_data_failed : "Dữa liệu đã tồn tại",
   remove_data_failed : {
     status : 'Thất Bại',
     action : 'Xóa Dữ liệu'
   },
-  register_failed : 'Địa chỉ email đã được sử dụng'
+  register_failed : 'Địa chỉ email đã được sử dụng',
+  adminUserNameIsExists : 'Tên đăng nhập đã tồn tại'
 }
 
 export const transSuccess = {
@@ -23,9 +25,12 @@ export const transSuccess = {
     status : 'Thành Công',
     action : 'Đăng Ký'
   },
+  update_infoAdmin_successful: {
+    status : 'Thành Công',
+    action : 'Cập Nhật'
+  },
   update_data_successful : "Cập nhật dữ liệu thành công",
 }
-
 export const notification = {
   category_disabled : "Danh mục sản phẩm không còn tồn tại trên hệ thống"
 }

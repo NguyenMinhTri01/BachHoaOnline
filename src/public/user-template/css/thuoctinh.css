@@ -154,13 +154,14 @@ select.browser-default.custom-select {
     top: -23px;
     right: -139px;
 }
-{
+
+ /* {
   box-sizing: border-box;
-}
+} */
 
 .danhgianguoidung{
   font-family: Arial;
-  margin: 0 auto;  Center website 
+  margin: 0 auto; 
   max-width: 800px; /* Max width */
   padding: 20px;
 }
@@ -254,25 +255,39 @@ a.google.btn{
 .gw-container.gw-main-container .gw-sidebar.gw-sidebar-fixed:before { left: auto }
 
 .gw-sidebar {
-  width: 290px;
-  height: 424px;
- 
-  border: 1px solid #e5e5e5;
-  border-width: 0 1px 0 0;
-  background-color: white;
-  bottom: 0;
-  top: 0;
-  left: 0;
+  /* width: 290px; */
   
-  margin-top: 0px;
+ 
+  /* border: 1px solid #e5e5e5; */
+  /* border-width: 1px 1px 1px 1px; */
+  box-shadow: 1px 1px 2px 1px  #888888;
+  background-color: white;
+  
+ 
+   margin-top: 0px;
+  margin-left: 0px;
+  /* position: fixed; */
+  position: fixed;
+  z-index: 50000;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 200px;
+  height: 319px;
+ 
   
 
- 
 
 
 
 }
-
+.col-md-9.products-right {
+  margin-left: 245px;
+}
+i.fa.fa-bars {
+    position: relative;
+    top: 4px;
+    left: -5px;
+}
 .gw-sidebar .nano-pane {
   background: rgba(255, 255, 255, 0);
   font-size: 15px;
@@ -462,7 +477,8 @@ z-index:3
 }
 
 .gw-nav-list>li.active .gw-submenu {
- display: block -webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.13);
+ /* display: block   */
+ -webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.13);
   -moz-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.13);
   box-shadow: inset 0px 0px 5px rgba(0,0,0,0.13);
 }
@@ -551,6 +567,18 @@ z-index:3
   display: inline-block;
   text-align: center
 }
-/*tintuc*/
-
+/* ul.gw-submenu{
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+ul.gw-submenu li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+} */
 /*=================left navibar end=========================================*/

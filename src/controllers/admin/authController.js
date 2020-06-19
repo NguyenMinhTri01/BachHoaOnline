@@ -1,14 +1,14 @@
-import {validationResult} from 'express-validator';
-import {auth_S} from '../../services/index';
-import {transErrors, transSuccess} from './../../../lang/vi'
+import { validationResult } from 'express-validator';
+import { auth_S, admin_S } from '../../services/index';
+import { transErrors, transSuccess } from './../../../lang/vi'
 
 let getLogin = (req, res) => {
   try {
-    
+
     let errors = req.flash("errors");
-    return res.render('admin/login',{
-      base_Url : process.env.BASE_URL, 
-      errors : errors
+    return res.render('admin/login', {
+      base_Url: process.env.BASE_URL,
+      errors: errors
     });
   } catch (error) {
     console.log(error);
@@ -21,23 +21,24 @@ let getLogout = (req, res) => {
   res.redirect("./login");
 };
 
-let checkLogin = async(req, res, next) => {
+let checkLogin = async (req, res, next) => {
   let adminId = await auth_S.checkLoginAdmin(req.session.adminToken);
   if (!adminId) return res.redirect("/admin/login");
-  req.adminId = adminId;
+  let adminInfo = await admin_S.getInfoAdmin(adminId);
+  req.adminInfo = adminInfo;
   next();
 };
 
 let checkLoggedOut = async (req, res, next) => {
   let adminId = await auth_S.checkLoginAdmin(req.session.adminToken);
   if (adminId) return res.redirect("./");
-  next(); 
+  next();
 };
 
 let functionExamples = (req, res) => {
   let errorArr = [];
   let validationErrors = validationResult(req);
-  if (!validationErrors.isEmpty()){ // nếu có lôi {
+  if (!validationErrors.isEmpty()) { // nếu có lôi {
     let errors = Object.values(validationErrors.mapped()); //lay cái mảng lôi ra 
     errors.forEach(err => { // tách từng cái mgs lôi bỏ vào màng mới
       errorArr.push(err.msg);
@@ -46,15 +47,15 @@ let functionExamples = (req, res) => {
 };
 
 let authenticateAdminLocal = async (req, res) => {
-  
+
   /**
    * @function authenticateAdmin
    * @return {false} if login failed
    * @return {token} if login succeeded
    */
-  
+
   let result = await auth_S.authenticateAdmin(req.body.ad_userName, req.body.ad_password);
-  if (!result){
+  if (!result) {
     req.flash("errors", transErrors.login_failed);
     return res.redirect('/admin/login');
   }

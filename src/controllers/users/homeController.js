@@ -8,5 +8,5 @@ let getHome = (req, res) => {
 }
 
 module.exports = {
-  getHome : getHome
+  getHome
 }

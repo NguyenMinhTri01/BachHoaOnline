@@ -1,11 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
+<!-- //new -->
+<!-- //footer -->
+  <div class="footer">
+
+    <div class="w3_footer_grids">
+      <div class="col-md-3 w3_footer_grid">
+
+        <h3>Liên Hệ</h3>
+
+        <ul class="address">
+          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>UIT <span>TP.Hồ Chí Minh</span>
+          </li>
+          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
+              href="mailto:info@example.com">uit@gm.uit.edu.vn</a></li>
+          <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>0123456789</li>
+        </ul>
+      </div>
+      <div class="col-md-3 w3_footer_grid">
+        <h3>Thông Tin</h3>
+        <ul class="info">
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">Về chúng tôi </a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Liên hệ với chúng tôi</a>
+          </li>
+
+        </ul>
+      </div>
+      <div class="col-md-3 w3_footer_grid">
+        <h3>Phân Loại</h3>
+        <ul class="info">
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Đồ dùng cá nhân</a>
+          </li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Đồ dùng gia đình </a>
+          </li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Cho bé</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Bánh kẹo</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">ĐỒ uống</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 w3_footer_grid">
+        <h3>Cá Nhân</h3>
+        <ul class="info">
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Cửa hàng </a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">Giỏ hàng của bạn </a>
+          </li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Đăng nhập </a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Đăng ký </a></li>
+        </ul>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <div class="text-center copyright">
+      <strong>Copyright &copy; 2020 <a href="http://localhost:3000/">BachHoaOnline </a>.</strong> All rights reserved.
+      <p>Email: <a href="bachhoaonline.uit@gmail.com">bachhoaonline.uit@gmail.com</a></p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="user-template/js/bootstrap.min.js"></script>
+
+<!-- top-header and slider -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+  $(document).ready(function () {
+		/*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear' 
+			};
+		*/
+
+    $().UItoTop({ easingType: 'easeOutQuart' });
+
+  });
+</script>
+<!-- //here ends scrolling icon -->
+<script src="user-template/js/minicart.min.js"></script>
+<script>
+  // Mini Cart
+  paypal.minicart.render({
+    action: '#'
+  });
+
+  if (~window.location.search.indexOf('reset=true')) {
+    paypal.minicart.reset();
+  }
+</script>
+<!-- main slider-banner -->
+<script src="user-template/js/skdslider.min.js"></script>
+<link href="user-template/css/skdslider.css" rel="stylesheet">
+<script type="text/javascript">
+  jQuery(document).ready(function () {
+    jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
+
+    jQuery('#responsive').change(function () {
+      $('#responsive_wrapper').width(jQuery(this).val());
+    });
+
+  });
+</script>
+<!-- //main slider-banner -->
 </body>
+
 </html>

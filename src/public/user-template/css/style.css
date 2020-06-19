@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
     font-size: 100%;
 	font-family: 'Open Sans', sans-serif;
-	background:#ffffff;
+	background:#e9edf0;
 }
 
 
@@ -86,7 +86,7 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     left:0;
     z-index: 100;
     width: 100%;
-    height: 70px;
+    height: 60px;
     
 
 }
@@ -625,9 +625,12 @@ p.w3l-ad {
 }
 .agile_top_brands_grids {
     margin-top: 40px;
+    background-color: #fff;
+    padding-top: 15px;
 }
 .hover14.column {
     border: 1px solid #c0bebe;
+    margin-bottom: 30px;
 }
 .stars {
     text-align: center;
@@ -644,8 +647,8 @@ i.gray-star {
 	display: none;
 	text-decoration: none;
 	position: fixed;
-	bottom: 20px;
-	right: 2%;
+	bottom: 8%;
+	right: 0.4%;
 	overflow: hidden;
 	z-index: 999; 
 	width: 32px;
@@ -819,20 +822,18 @@ i.gray-star {
 /*-- footer --*/
 .footer {
     padding: -1em 0 2em;
-   
-    
-    
 
 }
 .w3_footer_grids {
     background-color: black;
-    margin-left: 16px;
+    margin-left: 0px;
 }
 .w3_footer_grid h3 {
     color: #ffffff;
     font-size: 1.5em;
-    margin-bottom: 1.8em;
+    margin-bottom: 20px;
     text-transform: uppercase;
+    margin-top: 10px;
 }
 .w3_footer_grid p{
 	color:#afafaf;
@@ -963,19 +964,12 @@ a.w3_agile_vimeo:hover{
 }
 .breadcrumbs {
     padding: 1.5em 0;
-    background: #f5f5f5;
-    
-   
-  
+    background-color: #e9edf0 !important;
 }
-.breadcrumb {
-    margin-bottom: 0 !important;
-	padding: 0 !important;
-}
+
 .breadcrumb1 li {
     font-size: 1em;
-    color: #999;
-    margin-top: 100px;
+    margin-top: 5%;
     margin-bottom: 0px;
 }
 .breadcrumb1 li a {
@@ -2649,6 +2643,8 @@ ul.phone_email li {
 .top_brand_left {
     float: left;
     width: 33.33%;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
 }
 .agile_top_brand_left_grid1 img {
    max-width: 100% ! important ;
@@ -3312,9 +3308,6 @@ p.w3l-ad {
     font-size: 13px;
     line-height: 24px;
 }
-.top_brand_left {
-    padding: 0;
-}
 .ban-text1 h4 {
     font-size: 14px;
 }
@@ -3493,6 +3486,8 @@ a.btn.btn-lg.btn-primary.text-uppercase{
 a.fb.btn {
   background: red !important;
 }
+
+
 @media (min-width: 992px){
 
 

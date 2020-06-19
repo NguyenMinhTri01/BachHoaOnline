@@ -8,6 +8,29 @@ a.btn.btn-lg.btn-primary.text-uppercase:hover{
 }
 
 
+.view-more{
+  color: #0064c2;
+  padding-bottom: 10px;
+  line-height: 30px;
+  font-size: 13px !important;
+}
+
+.btnSearchT {
+  position: absolute;
+  top: 12px;
+  right: 5px;
+  border: 0;
+  width: 31px;
+  height: 31px;
+  border-radius: 4px;
+  color: #a7a7a7;
+  background-color: #fff;
+
+}
+
+.backgroundT {
+  background-color: #fff
+}
 
 .boxprice label {
     display: inline-block;
@@ -248,6 +271,18 @@ a.google.btn{
   margin-top: 10px;
   border-radius: 10px;
 }
+.btnSocial {
+  padding-left : 0 !important;
+  margin-top: 10px;
+}
+
+.facebook {
+  border-radius: 10px !important;
+}
+.google {
+  border-radius: 10px !important;
+}
+
 
 /*=================left navibar begin=========================================*/
 
@@ -264,24 +299,46 @@ a.google.btn{
   background-color: white;
   
  
-   margin-top: 0px;
+  margin-top: 20px;
   margin-left: 0px;
   /* position: fixed; */
   position: fixed;
   z-index: 50000;
-  overflow-y: auto;
+  overflow-y: hidden auto;
   overflow-x: hidden;
-  width: 200px;
+  width: 210px;
   height: 319px;
- 
-  
-
-
-
-
 }
-.col-md-9.products-right {
-  margin-left: 245px;
+
+.gw-sidebar::-webkit-scrollbar-track {
+  border: 1px solid #fff;
+  padding: 2px 0;
+  background-color: #fff;
+}
+
+.gw-sidebar::-webkit-scrollbar {
+  width: 1px;
+}
+
+.gw-sidebar::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  box-shadow: inset 0 0 6px #fe9126;
+  background-color: #fe9126;
+  border: 1px solid #fe9126;
+}
+.copyright{
+  color: #999;
+  font-size: 10px;
+  margin: 10px 0;
+}
+.new2019 {
+  background: #fff;
+  border-radius: 4px 4px 0 0;
+  height: calc(100vh - 10px);
+}
+.col-md-9.content-right {
+  margin-left: 220px;
+  width: 85%;
 }
 i.fa.fa-bars {
     position: relative;

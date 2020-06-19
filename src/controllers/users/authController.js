@@ -1,11 +1,11 @@
-import {validationResult} from 'express-validator';
-import {transErrors} from '../../../lang/vi'
-import {auth_S} from '../../services/index'
+import { validationResult } from 'express-validator';
+import { transErrors } from '../../../lang/vi'
+import { auth_S } from '../../services/index'
 
 const getLoginUser = (req, res) => {
   try {
     let errors = req.flash('errors');
-    return res.render('users/login',{errors});
+    return res.render('users/login', { errors });
   } catch (error) {
     console.log(error);
     return res.render('admin/error_500');
@@ -31,7 +31,7 @@ const checkLogin = (req, res, next) => {
   if (!req.isAuthenticated()) {
     return res.redirect("/admin/login");
   }
- next();
+  next();
 };
 
 const checkLoggedOut = (req, res, next) => {
@@ -39,13 +39,13 @@ const checkLoggedOut = (req, res, next) => {
 
     return res.redirect("./");
   }
-  next(); 
+  next();
 };
 
 const functionExamples = (req, res) => {
   let errorArr = [];
   let validationErrors = validationResult(req);
-  if (!validationErrors.isEmpty()){ // nếu có lôi {
+  if (!validationErrors.isEmpty()) { // nếu có lôi {
     let errors = Object.values(validationErrors.mapped()); //lay cái mảng lôi ra 
     errors.forEach(err => { // tách từng cái mgs lôi bỏ vào màng mới
       errorArr.push(err.msg);
@@ -54,11 +54,11 @@ const functionExamples = (req, res) => {
 }
 
 module.exports = {
-  getLoginUser ,
-  getRegisterUser ,
-  functionExamples ,
-  getLogout ,
-  checkLogin ,
+  getLoginUser,
+  getRegisterUser,
+  functionExamples,
+  getLogout,
+  checkLogin,
   checkLoggedOut,
   registerUser
 }

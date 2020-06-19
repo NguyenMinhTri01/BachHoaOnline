@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import dotenv from 'dotenv' ;
+import dotenv from 'dotenv';
 import initRouteAdmin from './routers/admin/web';
 import initRouteUser from './routers/users/index'
 import configViewEngine from './config/viewEngine';

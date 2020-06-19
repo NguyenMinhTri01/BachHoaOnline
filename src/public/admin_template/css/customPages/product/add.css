@@ -1,0 +1,18 @@
+
+.box.box-warning {
+    border-top-color: #f39c12;
+}
+
+label.error {
+    display: inline-block;
+    color: red;
+    width: 200px;
+
+  }
+
+  .fileActionSettings {
+      showRemove: true,
+      showUpload: false, //This remove the upload button
+      showZoom: true,
+      showDrag: false
+  }

@@ -15,14 +15,4 @@ import admin_M from '../models/admin.model';
 // }
 
 
-const getInfoAdmin = (adminId) => {
-  return new Promise(async(resolve, reject) => {
-      let info = await admin_M.findAdminById(adminId);
-      if (info) return resolve(info);
-      return resolve(false);
-    });
-}
-
-module.exports = {
-  getInfoAdmin,
-}
+module.exports = { x : null}

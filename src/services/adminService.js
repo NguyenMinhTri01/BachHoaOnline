@@ -4,7 +4,16 @@ import bcrypt from 'bcrypt'
 
 const saltRounds = 10;
 
-// check mật khẩu
+const getInfoAdmin = (adminId) => {
+  return new Promise(async(resolve, reject) => {
+      let info = await admin_M.findAdminById(adminId);
+      if (info) return resolve(info);
+      return resolve(false);
+    });
+};
+
+
+
 const updateInfoAdmin = (infoAdmin, adminId, path) => {
   return new Promise( async (resolve, reject) => {
     try {
@@ -42,5 +51,6 @@ const updateInfoAdmin = (infoAdmin, adminId, path) => {
 }
 
 module.exports = {
+  getInfoAdmin,
   updateInfoAdmin,
 }

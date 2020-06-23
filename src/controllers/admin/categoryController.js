@@ -4,7 +4,7 @@ let getViewAdd = async (req, res) => {
   let maxLevelCategory = await category_S.getMaxLevel();
   res.render("admin/category/add", {
     base_Url: process.env.BASE_URL,
-    adminInfo: req.user,
+    adminInfo: req.adminInfo,
     maxLevelCategory: maxLevelCategory,
     title: "Bach Hóa Online | Thêm Danh Mục Sản Phẩm"
   });

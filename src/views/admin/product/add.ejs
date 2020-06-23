@@ -36,101 +36,106 @@
 </style>
 <div class="container-fluid">
   <div class="card">
-
     <div class="card-body">
       <h4 class="card-title m-b-0">Thông tin sản phẩm</h4>
       <!-- thêm form ơ đây -->
-      <hr>
-      <form action="" id="formDemo">
+      <form class="form-group m-t-20" action="" id="formInput" enctype="multipart/form-data" method="POST" action="#">
         <fieldset>
           <div class="row">
-            <div class="col-sm-8 duongbo">
+            <div class="col-sm-8">
               <div class="form-group">
                 <label for="tensanpham">Tên Sản Phẩm </label>
-                <input type="text" class="form-control" name="pr_name" placeholder="">
+                <input type="text" class="form-control" name="pr_name" placeholder="" required>
               </div>
               <div class="row">
-                <div class="col-sm-4 gia ">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Giá </label>
-                    <input type="number" class="form-control" name="pr_price" placeholder="">
+                    <input type="number" class="form-control" name="pr_price" placeholder="" required>
                   </div>
                 </div>
-                <div class="col-sm-4 giamgia ">
-
+                <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="tensanpham">Giảm Giá </label>
-                    <input type="number" class="form-control" id="pr_discount" placeholder="">
+                    <label for="tensanpham">Giảm Giá (%) </label>
+                    <input name="pr_discount" type="number" class="form-control" id="pr_discount" placeholder=""
+                      value="0">
                   </div>
                 </div>
-
               </div>
               <div class="row">
-                <div class="col-sm-4  ">
-
+                <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="tensanpham">Khối lượng(Thể Tích) </label>
-                    <input type="text" class="form-control" name="pr_value" placeholder="">
+                    <label for="tensanpham">Giá trị</label>
+                    <input type="number" class="form-control" name="pr_value"
+                      placeholder="Khối Lượng/Thể Tích/Số Lượng...">
                   </div>
                 </div>
-                <div class="col-sm-4  ">
-
+                <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="tensanpham">Đơn Vị </label>
-                    <input type="text" class="form-control" name="pr_unit" placeholder="">
+                    <label for="tensanpham"> Đơn Vị </label>
+                    <select class="custom-select mr-sm-2" id="pr_unit" name="pr_unit">
+                      <option value="0" selected>Chọn đơn vị phù hợp...</option>
+                      <option value="gam">gam</option>
+                      <option value="kg">kg</option>
+                      <option value="ml">ml</option>
+                      <option value="lít">lít</option>
+                      <option value="Hộp">Hộp</option>
+                      <option value="Thùng">Thùng</option>
+                      <option value="Chai">Chai</option>
+                      <option value="Cây">Cây</option>
+                      <option value="Gói">Gói</option>
+                      <option value="Lon">Lon</option>
+                    </select>
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="tensanpham"> Cấp Danh Mục </label>
-                <select class="custom-select mr-sm-2" id="c_level">
-                  <option selected>Choose...</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select class="custom-select mr-sm-2" id="c_level" name="c_level">
+                  <option value="0" selected>Chọn cấp danh mục phù hợp...</option>
+                  <% if (typeof maxLevelCategory != "undefined"){ %>
+                  <% for (let i = 0; i < maxLevelCategory; i++) {%>
+                  <option value="<%= i+1 %>"> Level <%= i+1 %></option>
+                  <% } %>
+                  <% } %>
                 </select>
               </div>
               <div class="form-group">
                 <label for="tensanpham">Danh Mục </label>
-                <select class="custom-select mr-sm-2" id="c_name">
-                  <option selected>Choose...</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select class="custom-select mr-sm-2" id="c_id" name="c_id">
+                  <option value="0" selected>Chọn danh mục phù hợp...</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="tensanpham">Thương Hiệu </label>
-                <select class="custom-select mr-sm-2" id="br_name">
-                  <option selected>Choose...</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select class="custom-select mr-sm-2" id="br_id" name="br_id">
+                  <option value="0" selected>Chọn thương hiệu phù hợp</option>
+                  <% if (typeof brandList != "undefined"){ %>
+                  <% for (let i = 0; i < brandList.length; i++) {%>
+                  <option value="<%= brandList[i]._id %>"> <%= brandList[i].br_name %></option>
+                  <% } %>
+                  <% } %>
                 </select>
               </div>
               <div class="form-group">
                 <label for="key">Từ Khóa </label>
-                <input type="key" class="form-control" id="key" name="pr_key" required>
+                <input type="text" class="form-control" id="pr_key" name="pr_key" required>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Mô tả</label>
                 <textarea class="form-control" name="pr_description" rows="3"></textarea>
               </div>
-              <hr>
               <div class="box-header with-border">
                 <h3 class="box-title">Album ảnh</h3>
               </div>
               <div class="box-body">
                 <div class="form-group">
-                  <div class="file-loading">
-
+                  <div class="">
                     <input id="images" type="file" name="pr_listImage" multiple class="file"
                       data-overwrite-initial="false" data-min-file-count="0">
-
                   </div>
                 </div>
               </div>
-              <hr>
             </div>
             <div class="col-sm-4 ">
               <div class="box box-warning">
@@ -138,15 +143,15 @@
                 <div class="text-center">
                   <img
                     src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png"
-                    alt="brand image" class="image-preview border border-dark" width="260px" height="160px"
-                    style="border-radius: 0px!important;">
+                    alt="brand image" class="image-preview border border-dark" width="260px" height="200px">
                 </div>
                 <div class="text-center">Ảnh</div>
                 <div>
                   <div class="custom-file">
-                    <input type="file" name="pr_avatar" class="custom-file-input form-control" id="fileImageBrand"
+                    <input type="file" name="pr_avatar" class="custom-file-input form-control" id="fileImageProduct"
                       accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
-                    <label class="custom-file-label text-left" for="validatedCustomFile">Chọn File Ảnh...</label>
+                    <label class="custom-file-label text-left" for="validatedCustomFile"
+                      style="word-wrap: break-word">Chọn File Ảnh...</label>
                     <div class="feedback" style="color:red"></div>
                   </div>
                 </div>
@@ -154,27 +159,20 @@
               </div>
 
             </div>
+            <div class="col-sm-3">
+              <a href="admin/product" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+              <button id="submit" type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i>
+                Thêm</button>
+            </div>
+            <div class="col-sm-12 mt-2">
+              <div id='mgs'></div>
+            </div>
           </div>
-
+        </fieldset>
+      </form>
     </div>
-    <div class="row">
-      <div class="col-sm-8">
-
-      </div>
-      <div class="col-sm-4">
-        <button type="submit" class="btn btn-primary" style="height: 40px;width: 150px;">Thêm sản phẩm</button>
-      </div>
-    </div>
-
   </div>
-  </fieldset>
-  </form>
-
 </div>
-</div>
-</div>
-
-<script type="text/javascript" src="admin_template/js/customPages/brand/jqueryAddBrand.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all"
   rel="stylesheet" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js"
@@ -183,5 +181,5 @@
   type="text/javascript"></script>
 <script type="text/javascript"
   src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-<script type="text/javascript" src="admin_template/js/customPages/product/add.js"></script>
+<script type="text/javascript" src="admin_template/js/customPages/product/jqueryAddProduct.js.js"></script>
 <%- include("../adminFooter") %>

@@ -18,22 +18,22 @@ brandSchema.statics = {
   },
 
   findBrandById(id){
-    return this.findById(id).exec();
+    return this.findById(id);
   },
 
   findBrandBySlug(br_slug){
-    return this.findOne({ "br_slug": br_slug}).exec();
+    return this.findOne({ "br_slug": br_slug});
   },
 
   findAll(){
-    return this.find().exec();
+    return this.find();
   },
 
   deleteBrand(id){
-    return this.deleteOne({_id:id}).exec();
+    return this.deleteOne({_id:id});
   },
   updateBrandById(id, item){
-    return this.findByIdAndUpdate(id, item).exec();
+    return this.findByIdAndUpdate(id, item);
   },
 
   updateActive(id){

@@ -19,35 +19,35 @@ categorySchema.statics = {
   },
 
   findCategoryById(id){
-    return this.findById(id).exec();
+    return this.findById(id);
   },
 
   findBySlug(c_slug){
-    return this.findOne({ "c_slug": c_slug}).exec();
+    return this.findOne({ "c_slug": c_slug});
   },
 
   findAll(){
-    return this.find().exec();
+    return this.find();
   },
 
   findMaxLevel(){
-    return this.find({},{c_level: 1}).sort({"c_level" : -1}).limit(1).exec();
+    return this.find({},{c_level: 1}).sort({"c_level" : -1}).limit(1);
   },
 
   finCategoriesByC_level(c_level){
-    return this.find({'c_level': c_level}).exec();
+    return this.find({'c_level': c_level});
   },
 
   findChildCategoryById(id) {
-    return this.find({'c_parentId' : id}).exec();
+    return this.find({'c_parentId' : id});
   },
 
   deleteCategory(id){
-    return this.deleteOne({_id:id}).exec();
+    return this.deleteOne({_id:id});
   },
 
   updateCategoryById(id, item){
-    return this.findByIdAndUpdate(id, item).exec();
+    return this.findByIdAndUpdate(id, item);
   },
 
   updateActive(id){

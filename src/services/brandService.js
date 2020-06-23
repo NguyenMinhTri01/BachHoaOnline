@@ -1,11 +1,11 @@
 import brand_M from '../models/brand.model';
 import slug from "url-slug";
-import {transSuccess, transErrors} from "../../lang/vi";
+import { transSuccess, transErrors } from "../../lang/vi";
 import fs from 'fs-extra';
 
 //src\public\uploads\1591430857794_28571609573977852587-8403-49e2-b07a-5827b14930cd.jpg
 const getListBrands = () => {
-  return new Promise ( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let result = await brand_M.findAll();
     if (result) {
       return resolve(result);
@@ -15,23 +15,23 @@ const getListBrands = () => {
 
 
 const createNewBrand = (br_name, path) => {
-  return new Promise( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       let br_slug = slug(br_name);
       // check brand is exists in db
       let checkExists = await brand_M.findBrandBySlug(br_slug);
-      if (!checkExists){
-        let arrayPath = path.split('\\');
+      if (!checkExists) {
+        let arrayPath = path.split('\\').splice(2);
         let newBrand = {
-          br_name : br_name,
-          br_slug : br_slug,
-          br_image : `/${arrayPath[2]}/${arrayPath[3]}`,
+          br_name: br_name,
+          br_slug: br_slug,
+          br_image: `/${arrayPath.join('/')}`,
         };
         let result = await brand_M.createNew(newBrand);
-        if(result){
+        if (result) {
           return resolve({
-            type : true,
-            message : transSuccess.add_data_successful    
+            type: true,
+            message: transSuccess.add_data_successful
           });
         }
 
@@ -59,12 +59,10 @@ const createNewBrand = (br_name, path) => {
         //   });
         // });
       }
-      else {
-        return resolve({
-          type : false,
-          message : transErrors.add_data_failed
-        });
-      }
+      return resolve({
+        type: false,
+        message: transErrors.add_data_failed
+      });
     }
     catch (error) {
       console.log(error);
@@ -74,14 +72,14 @@ const createNewBrand = (br_name, path) => {
 
 
 const getBrandById = (id) => {
-  return new Promise ( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let brand = await brand_M.findBrandById(id);
     resolve(brand);
   })
 };
 
 const editBrand = (id, br_name, c_id, path) => {
-  return new Promise( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       let br_slug = slug(br_name);
       // check brand is exists in db
@@ -91,29 +89,29 @@ const editBrand = (id, br_name, c_id, path) => {
         let item = null;
         if (path == null) {
           item = {
-            br_name : br_name,
-            br_slug : br_slug,
+            br_name: br_name,
+            br_slug: br_slug,
           };
         }
         else {
-          let arrayPath = path.split('\\');
+          let arrayPath = path.split('\\').splice(2);
           item = {
-            br_name : br_name,
-            br_slug : br_slug,
-            br_image : `/${arrayPath[2]}/${arrayPath[3]}`,
+            br_name: br_name,
+            br_slug: br_slug,
+            br_image: `/${arrayPath.join('/')}`,
           };
         }
 
-        let result = await brand_M.updateBrandById(id , item);
-        if(result){
-          if (path != null){
+        let result = await brand_M.updateBrandById(id, item);
+        if (result) {
+          if (path != null) {
             try {
               await fs.remove(`src/public/${result.br_image}`);
-            } catch (error) {}
+            } catch (error) { }
           }
           return resolve({
-            type : true,
-            message : transSuccess.update_data_successful    
+            type: true,
+            message: transSuccess.update_data_successful
           });
         }
 
@@ -143,8 +141,8 @@ const editBrand = (id, br_name, c_id, path) => {
       }
       else {
         return resolve({
-          type : false,
-          message : transErrors.add_data_failed
+          type: false,
+          message: transErrors.add_data_failed
         });
       }
     }
@@ -156,9 +154,9 @@ const editBrand = (id, br_name, c_id, path) => {
 
 
 const activeBrand = (id) => {
-  return new Promise ( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let result = await brand_M.updateActive(id);
-    if (result){
+    if (result) {
       return resolve({
         type: true
       });
@@ -170,29 +168,29 @@ const activeBrand = (id) => {
 };
 
 const deleteBrand = (id) => {
-  return new Promise( async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let brand = await brand_M.findBrandById(id);
     let result = await brand_M.deleteBrand(id);
-    if (result.deleteCount != 0){
+    if (result.deleteCount != 0) {
       try {
         await fs.remove(`src/public/${brand.br_image}`);
-      } catch (error) {}
+      } catch (error) { }
       return resolve({
-        type : true,
-        message : transSuccess.remove_data_successful 
+        type: true,
+        message: transSuccess.remove_data_successful
       })
     }
     return resolve({
-      type : false,
-      message : transErrors.remove_data_failed
+      type: false,
+      message: transErrors.remove_data_failed
     })
   })
 }
 module.exports = {
-  editBrand : editBrand,
-  deleteBrand : deleteBrand,
-  activeBrand : activeBrand,
-  getBrandById : getBrandById,
-  getListBrands : getListBrands,
-  createNewBrand : createNewBrand,
+  editBrand: editBrand,
+  deleteBrand: deleteBrand,
+  activeBrand: activeBrand,
+  getBrandById: getBrandById,
+  getListBrands: getListBrands,
+  createNewBrand: createNewBrand,
 }

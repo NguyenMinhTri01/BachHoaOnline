@@ -27,8 +27,8 @@ let productSchema = new Schema({
   pr_hot : {type: Boolean, default : false},
   pr_price: Number,
   pr_discount: Number,
-  pr_viewCounts : Number,
-  pr_boughtCounts: Number,
+  pr_viewCounts : {type: Number, default : 0},
+  pr_boughtCounts: {type: Number, default : 0},
   pr_createdAt : {type: Number, default:Date.now},
   pr_updatedAt : {type: Number, default:null},
 });
@@ -40,8 +40,8 @@ productSchema.statics = {
   findProductById(id){
     return this.findById(id);
   },
-  findProductBySlug(br_slug){
-    return this.findOne({ "br_slug": br_slug});
+  findProductBySlug(pr_slug){
+    return this.findOne({ "pr_slug": pr_slug});
   },
   findAll(){
     return this.find();
@@ -54,13 +54,16 @@ productSchema.statics = {
     .then(product => {
       product.pr_status = product.pr_status ? false : true;
       return product.save();
-    });   
+    })
+    .then(product => {return product});  
   },
   updateHot(id){
     return this.findById(id)
     .then(product => {
       product.pr_hot = product.pr_hot ? false : true;
-      return product.save();
-    });
+      return product.save()
+    })
+    .then (product => {return product});
   },
 }
+module.exports = mongoose.model("product", productSchema);

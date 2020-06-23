@@ -1,5 +1,5 @@
 import { category_S, brand_S, admin_S } from '../../services/index';
-import config_storage from '../../config/uploadFIleLocal';
+import configStorage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 
 //var cloudinary_v2 = require('cloudinary').v2;
@@ -8,7 +8,7 @@ import multer from 'multer';
 
 
 
-const storage = config_storage;
+const storage = configStorage("/brandAvatar");
 let uploadImageLocal = multer({
   storage: storage
 }).single('br_image');
@@ -30,7 +30,7 @@ const getViewIndex = async (req, res) => {
 const getViewAdd = async (req, res) => {
   res.render("admin/brand/add", {
     base_Url: process.env.BASE_URL,
-    adminInfo: req.user,
+    adminInfo: req.adminInfo,
     title: "Bach Hóa Online | Thêm Thương Hiệu Sản Phẩm",
   });
 };
@@ -69,7 +69,7 @@ const getViewEdit = async (req, res) => {
   })
   res.render("admin/brand/edit", {
     base_Url: process.env.BASE_URL,
-    adminInfo: req.user,
+    adminInfo: req.adminInfo,
     brand: brand,
     title: "Bach Hóa Online | Cập Nhật Thương Hiệu Sản Phẩm",
   })

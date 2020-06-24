@@ -7,6 +7,57 @@ let getHome = (req, res) => {
   }
 }
 
+const getCheckOut = (req, res) =>{
+  try {
+    return res.render('users/checkout');
+  } catch (error) {
+    
+  }
+}
+const getContact=(req, res) =>{
+  try {
+    return res.render('users/contact');
+  } catch(error){
+
+  }
+  
+}
+const getAbout=(req,res)=>{
+  try{
+    return res.render('users/about');
+  } catch(error){
+
+  }
+  
+}
+const getProducts=(req, res)=>{
+  try{
+    return res.render('users/products')
+  }catch(error){
+
+  }
+}
+const getBeverages=(req,res)=>{
+  try{
+    return res.render('users/beverages')
+  }catch(error){
+
+  }
+}
+const getSingle=(req,res)=>{
+  try{
+    return res.render('users/single')
+  } catch(error){
+
+  }
+}
 module.exports = {
-  getHome
+  getHome,
+  getCheckOut,
+  getContact,
+  getAbout,
+  getProducts,
+  getBeverages,
+  getSingle
+ 
 }

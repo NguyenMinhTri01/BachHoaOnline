@@ -97,7 +97,7 @@
               <td class="text-center"><%= count %></td>
               <td class="pr_name text-center"><%= product.pr_name %></td>
               <td class="br_price text-center"><%= product.pr_price %>/<%= product.pr_discount %></td>
-              <td style="width:auto"><img style="padding-right:0px" src="<%= product.pr_avatar %>" width="130"
+              <td style="width:auto"><img style="padding-right:0px" src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" width="130"
                   height="80"></td>
               <td class="text-center">
                 <a id="pr_status" href="admin/product/active/<%= product._id %>"

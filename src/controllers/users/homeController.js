@@ -1,6 +1,14 @@
-let getHome = (req, res) => {
+import {product_S, category_S} from '../../services/index';
+
+
+
+let getHome = async (req, res) => {
   try {
-    return res.render('users/home');
+    let categories  = await category_S.getListCategoriesByLevel(1);
+    let products = await product_S.getProductsFollowCategories(categories);
+    return res.render('users/home',{
+      infoUser : req.user
+    });
   } catch (error) {
     console.log(error);
     return res.render('admin/error_500');

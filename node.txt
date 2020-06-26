@@ -27,3 +27,7 @@
 <th>Lược Mua</th>
 <th>Ngày tạo</th>    
 <th style="width: auto">Tùy Chọn</th>
+
+danh mục chỉ cho phep 2 level
+
+// viec ngày 25/06 xử lý tải multiple image

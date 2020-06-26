@@ -27,13 +27,6 @@ let initRouteAdmin = (app) => {
   
   router.post("/example_validation", example_validation.login, auth_C.functionExamples);
 
-  router.get("/test", (req, res, next) => {
-    res.render("admin/form_InfoAndEditAdmin", {
-      title : 'info',
-      base_Url : process.env.BASE_URL
-    });
-  })
-
   return app.use("/admin", router);
 }
 

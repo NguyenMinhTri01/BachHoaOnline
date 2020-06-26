@@ -50,6 +50,10 @@ categorySchema.statics = {
     return this.findByIdAndUpdate(id, item);
   },
 
+  findAllByLevel(level){
+    return this.find({c_level : level});
+  },
+
   updateActive(id){
     return this.findById(id)
     .then(category => {

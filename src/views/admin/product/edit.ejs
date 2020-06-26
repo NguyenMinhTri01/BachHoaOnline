@@ -37,22 +37,21 @@
 <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h3 class="card-title m-b-0">Thông tin sản phẩm</h3>
+      <h4 class="card-title m-b-0">Thông tin sản phẩm</h4>
       <!-- thêm form ơ đây -->
-      <form class="form-group m-t-20" action="" id="formInput" enctype="multipart/form-data" method="POST" action="">
+      <form class="form-group m-t-20" action="" id="formInput" enctype="multipart/form-data" method="POST" action="#">
         <fieldset>
-          <input type="hidden" id="_id" name="_id" value="<%= adminInfo._id %>">
           <div class="row">
             <div class="col-sm-8">
               <div class="form-group">
                 <label for="tensanpham">Tên Sản Phẩm </label>
-                <input type="text" class="form-control" name="pr_name" placeholder="" >
+                <input type="text" class="form-control" name="pr_name" placeholder="" required>
               </div>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Giá </label>
-                    <input id="pr_price" type="number" class="form-control" name="pr_price" placeholder="">
+                    <input type="number" class="form-control" name="pr_price" placeholder="" required>
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -75,8 +74,14 @@
                   <div class="form-group">
                     <label for="tensanpham"> Đơn Vị </label>
                     <select class="custom-select mr-sm-2" id="pr_unit" name="pr_unit">
-                      <option value="0" selected>Chọn đơn vị phù hợp...</option>
-                      <option value="gam">gam</option>
+                      <% let arr = ['kg','gam', 'ml', 'lít', 'Hộp', 'Thùng', 'Chai', 'Cây', 'Gói', 'Lon'] %>
+                      <% arr.forEach(function(item => { %>
+                      <% if (item.indexOf(products.pr_capacity.unit)){ %>
+                      <option value="<%= item  %>" selected><%= item  %></option>
+                      <% }else {%>
+                      <option value="<%= item  %>"><%= item %></option>
+                      <% } %>
+                      <% })) %>
                       <option value="kg">kg</option>
                       <option value="ml">ml</option>
                       <option value="lít">lít</option>
@@ -119,25 +124,15 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="key">Từ Khóa </label>
+                <input type="text" class="form-control" id="pr_key" name="pr_key" required>
+              </div>
+              <div class="form-group">
                 <label for="exampleFormControlTextarea1">Mô tả</label>
                 <textarea class="form-control" name="pr_description" rows="3"></textarea>
               </div>
-              <h3 class="card-title m-b-1">SEO</h3>
-              <div class="form-group">
-                <label for="key">Tiêu đề </label>
-                <input type="text" class="form-control" id="pr_title" name="pr_title" >
-              </div>
-              <div class="form-group">
-                <label for="key">Từ Khóa </label>
-                <input type="text" class="form-control" id="pr_key" name="pr_key" >
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Mô tả</label>
-                <textarea class="form-control" name="pr_descriptionSeo" rows="3"></textarea>
-              </div>
               <div class="box-header with-border">
-                <!-- <h3 class="box-title">Album ảnh</h3> -->
-                <h3 class="card-title m-b-1">Album ảnh</h3>
+                <h3 class="box-title">Album ảnh</h3>
               </div>
               <div class="box-body">
                 <div class="form-group">
@@ -160,7 +155,7 @@
                 <div>
                   <div class="custom-file">
                     <input type="file" name="pr_avatar" class="custom-file-input form-control" id="fileImageProduct"
-                      accept=".png, .jpg, jpeg, .PNG, JPG, JPEG">
+                      accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
                     <label class="custom-file-label text-left" for="validatedCustomFile"
                       style="word-wrap: break-word">Chọn File Ảnh...</label>
                     <div class="feedback" style="color:red"></div>
@@ -184,11 +179,13 @@
     </div>
   </div>
 </div>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all"
+  rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js"
+  type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js"
+  type="text/javascript"></script>
 <script type="text/javascript"
   src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-
 <script type="text/javascript" src="admin_template/js/customPages/product/jqueryAddProduct.js.js"></script>
 <%- include("../adminFooter") %>

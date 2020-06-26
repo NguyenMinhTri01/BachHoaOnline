@@ -65,10 +65,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="agile-login">
 						<ul>
-							<li><a href="registered.html"> Đăng Ký </a></li>
-							<li><a href="login.html">Đăng Nhập </a></li>
-							<li><a href="contact.html">Trợ Giúp</a></li>
-
+							<% if (typeof infoUser != "undefined") {%>
+							<li> <a href="javascript:void(0)">Xin Chào <%= infoUser.u_name %> </a> </li>
+							<% } else {%>
+							<li><a href="registered"> Đăng Ký </a></li>
+							<li><a href="login">Đăng Nhập </a></li>
+							<% } %>
+							<li><a href="contact">Trợ Giúp</a></li>
 						</ul>
 
 					</div>
@@ -100,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="gw-nav gw-nav-list">
 							<li class="init-un-active"> <a href="javascript:void(0)"> <span class="gw-menu-text"><i class="fa fa-bars"
 											aria-hidden="true"> </i>DANH MỤC SẢN PHẨM</span> </a> </li>
-											
+
 							<li class="init-arrow-down"> <a href="#"> <span class="gw-menu-text ">ĐỒ DÙNG CÁ NHÂN</span> <b
 										class="gw-arrow"></b> </a>
 								<ul class="gw-submenu">
@@ -185,8 +188,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a href="contact.html">BÁN CHẠY NHẤT</a></li>
 							<li class="">
 								<div class="">
-									<form action="#" method="post"style="width: 100%; margin-top: 10px">
-										<input class="form-control" type="search" name="Search" placeholder="Tìm Danh Mục Của Bạn..." required="">
+									<form action="#" method="post" style="width: 100%; margin-top: 10px">
+										<input class="form-control" type="search" name="Search" placeholder="Tìm Danh Mục Của Bạn..."
+											required="">
 										<button type="submit" class="btnSearchT" aria-label="Left Align">
 											<i class="fa fa-search" aria-hidden="true"> </i>
 										</button>
@@ -198,5 +202,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</div>
 				</div>
-      </div>
-  <div class="col-md-9 content-right">
+			</div>
+			<div class="col-md-9 content-right">

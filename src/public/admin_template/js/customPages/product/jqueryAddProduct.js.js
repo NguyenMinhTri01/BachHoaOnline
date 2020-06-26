@@ -10,7 +10,6 @@ function validationForm(formInput) {
   $.validator.addMethod("nonNegativeValue", function (value, element, arg) {
     return (value >= 0 && value != '') === arg;
   }, "Giá trị không được là số âm");
-
   var validated = formInput.validate({
     rules: {
       pr_name: {
@@ -45,8 +44,16 @@ function validationForm(formInput) {
       pr_key: {
         required: true,
       },
+      pr_title: {
+        required: true,
+        maxlength: 100,
+      },
       pr_description: {
         required: true,
+      },
+      pr_descriptionSeo: {
+        required: true,
+        maxlength: 300,
       },
       pr_avatar: {
         required: true
@@ -86,8 +93,16 @@ function validationForm(formInput) {
       pr_key: {
         required: "Dữ liệu không được để trống"
       },
+      pr_title: {
+        required: "Dữ liệu không được để trống",
+        maxlength: "tiêu đề không được quá 100 ký tự"
+      },
       pr_description: {
         required: "Dữ liệu không được để trống",
+      },
+      pr_descriptionSeo: {
+        required: "Dữ liệu không được để trống",
+        maxlength: "Mô tả không được quá 300 ký tự",
       },
       pr_avatar: {
         required: "Dữ liệu không được để trống"
@@ -95,7 +110,19 @@ function validationForm(formInput) {
     },
   });
   return validated;
-}
+};
+
+function addCommas(nStr) {
+  nStr += '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+  return x1 + x2;
+};
 
 
 function reSetData(formInput, image_Preview, label_nameImage, label_feedback) {
@@ -147,7 +174,7 @@ function loadImage(input, showImage, label_nameImage, label_feedback) {
 };
 
 
-function sendDataInputToServer(formInput, mgs, callback) {
+function sendDataInputToServer(submit, formInput, mgs, callback) {
   var formData = new FormData(formInput[0]);
   $.ajax({
     url: "admin/product/add",
@@ -164,6 +191,7 @@ function sendDataInputToServer(formInput, mgs, callback) {
             "<button type='button' class='close' data-dismiss='alert'>&times;</button>" +
             res.message +
             "</div>");
+          submit.html('<i class="fa fa-check"></i>Thêm');
           callback(true);
         }
         else {
@@ -194,7 +222,9 @@ $(document).ready(function () {
   var image_Preview = $(".image-preview");
   var label_nameImage = $(".custom-file-label");
   var label_feedback = $(".feedback");
+  var pr_price = $("#pr_price");
   var checkElementImage = false;
+  var _id = $("#_id").val();
   var validated = validationForm(formInput);
 
   c_level_select.change(function () {
@@ -205,21 +235,73 @@ $(document).ready(function () {
     checkElementImage = loadImage(this, image_Preview, label_nameImage, label_feedback);
   });
 
+  // pr_price.change(function () {
+  //   var value = addCommas($(this).val());
+  //   $(this).val(value);
+  // })
 
   submit.click(function (event) {
     event.preventDefault();
+    var uploadToken = localStorage.uploadToken;
     if (validated.form() && checkElementImage) {
-      sendDataInputToServer(formInput, mgs, (result)=>{
-        if (result) return reSetData(formInput, image_Preview, label_nameImage, label_feedback);
-        return 
-      });
-      return pr_name.focus();
-    }
-    alert('dữ liệu nhập không hợp lệ hoặc bị để trống !');
+      if (uploadToken === _id) {
+        $(this).html('<i class="fa fa-spinner fa-spin"></i>Đang tải');
+        sendDataInputToServer(this,formInput, mgs, (result) => {
+          if (result) {
+            localStorage.uploadToken = undefined;
+            return reSetData(formInput, image_Preview, label_nameImage, label_feedback);
+          }
+          return
+        });
+        return pr_name.focus();
+      }
+      return alert(' Album ảnh chưa được upload!');
+    };
+    alert('dữ liệu nhập không hợp lệ hoặc bị để trống');
   });
+
 });
+
 $("#images").fileinput({
-  'allowedFileExtensions': ["jpg", "png", "jpeg",]
+  allowedFileTypes: ['image'],
+  msgInvalidFileType: 'File không hợp lệ chỉ chấp nhận file ảnh',
+  maxTotalFileCount: 5,
+  msgTotalFilesTooMany: "Số file tải lên không quá 5 file",
+  maxFileSize: 2048,
+  msgSizeTooLarge: "Kích thước file ảnh không được quá 2MB",
+  browseOnZoneClick: true,
+  theme: 'fas',
+  uploadUrl: "admin/product/uploadImage",
+  uploadAsync: false,
+  msgUploadEnd: "Tải ảnh lên thành công",
+  layoutTemplates: {
+    actionUpload: '',
+    actionDelete: '<button type="button" class="kv-file-remove {removeClass}" title="Xóa ảnh này"{dataUrl}{dataKey}>{removeIcon}</button>\n',
+    actionZoom: '<button type="button" class="kv-file-zoom {zoomClass}" title="Xem chi tiết">{zoomIcon}</button>',
+  },
+  previewZoomButtonTitles: {
+    prev: 'Xem ảnh trước',
+    next: 'Xem ảnh tiếp theo',
+    toggleheader: 'ẩn tiêu đề',
+    fullscreen: 'Xem toàn màng hình',
+    borderless: 'Xem không viền',
+    close: 'Đóng'
+  },
+  fileActionSettings: {
+    indicatorNewTitle: 'Ảnh chưa được tải lên',
+    indicatorSuccessTitle: 'Ảnh đã được tải lên'
+  },
+  msgZoomModalHeading: "Chi tiết",
+  dropZoneTitle: "Kéo và thả file ảnh vào đây",
+  dropZoneClickTitle: " (hoặc nhấp để chọn file ảnh)",
+  removeLabel: "Hủy",
+  uploadLabel: "Tải lên",
+  browseLabel: "chọn file",
+  msgPlaceholder: "Chọn các file ảnh..."
+}).on('filebatchuploadsuccess', function (e, data) {
+  localStorage.uploadToken = data.response.uploadToken;
+}).on('change', function (event) {
+  localStorage.uploadToken = undefined;
 });
 jQuery(document).ready(function ($) {
   $(".scroll").click(function (event) {

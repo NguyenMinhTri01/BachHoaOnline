@@ -7,10 +7,6 @@ let productSchema = new Schema({
   pr_name: String,
   pr_slug: String, 
   pr_avatar: String,
-  pr_listImage : [{
-      key: String,
-      value: String,
-    }],
   pr_status: {type: Boolean, default: true},
   c_id: String, 
   br_id: String,
@@ -65,5 +61,9 @@ productSchema.statics = {
     })
     .then (product => {return product});
   },
+
+  getProductsByC_Id(c_id){
+    return this.find({c_id});
+  }
 }
 module.exports = mongoose.model("product", productSchema);

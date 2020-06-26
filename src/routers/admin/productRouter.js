@@ -7,5 +7,6 @@ const initAllRoute_Product = (router) => {
   router.get("/product/active/:id", auth_C.checkLogin, product_C.activeProduct);
   router.get("/product/hot/:id", product_C.hotProduct);
   router.get("/product/edit/:id", auth_C.checkLogin, product_C.getViewEdit);
+  router.post("/product/uploadImage", auth_C.checkLogin, product_C.uploadImage);
 }
 module.exports = initAllRoute_Product

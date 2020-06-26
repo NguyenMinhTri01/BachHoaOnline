@@ -43,6 +43,15 @@ let getListCategories = () => {
   })
 };
 
+let getListCategoriesByLevel = (level) => {
+  return new Promise(async(resolve, reject) => {
+    let result = await category_M.findAllByLevel(level);
+    if(result){
+      return resolve(result);
+    }
+  })
+}
+
 let getListDataCategories = () => {
   return new Promise(async(resolve, reject) => {
     let result = await category_M.findAll();
@@ -174,5 +183,6 @@ module.exports = {
   createNewCategory : createNewCategory,
   getListDataCategories : getListDataCategories,
   getCategoriesByC_level : getCategoriesByC_level,
+  getListCategoriesByLevel : getListCategoriesByLevel
 
 }

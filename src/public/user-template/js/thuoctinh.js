@@ -41,5 +41,10 @@
     nav();
 });
 
+//--về dầu
+$(document).ready(function() {
+    $().UItoTop({ easingType: 'easeOutQuart' });
+                        
+    });
 
   

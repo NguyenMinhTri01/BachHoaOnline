@@ -7,6 +7,7 @@ import path_ from 'path';
 import fs from 'fs-extra';
 import slug from "url-slug";
 import _ from 'lodash';
+import formatNumber from 'format-number';
 import { transSuccess, transErrors } from "../../lang/vi";
 
 
@@ -15,12 +16,17 @@ const getListProducts = () => {
     let result = await product_M.findAll();
     if (result.length > 0) {
       let products = await Promise.all(result.map(async (product) => {
-        let newObj = new Object(product._doc);
-        let category = await category_M.findCategoryById(product.c_id)
-        newObj = _.assign({ c_name: category.c_name }, newObj);
-        let brand = await brand_M.findBrandById(product.br_id)
-        newObj = _.assign({ br_name: brand.br_name }, newObj);
-        return newObj;
+        try {
+          
+          let newObj = new Object(product._doc);
+          let category = await category_M.findCategoryById(product.c_id)
+          let brand = await brand_M.findBrandById(product.br_id)
+          newObj = _.assign({ br_name: brand.br_name, c_name: category.c_name }, newObj);
+          newObj.pr_price = formatNumber({prefix: '', suffix: ' VNĐ'})(newObj.pr_price)
+          return newObj;
+        } catch (error) {
+          console.log(error);
+        }
       }));
       return resolve(products);
     }
@@ -38,7 +44,6 @@ const createNewProduct = (inputProduct, path, idAdmin) => {
       // upload product avatar to cloudinary
       const response = await adminHelper.uploadImageToCloudinary(`product/${timeNow}`, path);
       if (response) {
-        //let arrayPath = path.split('\\').splice(2);
         inputProduct['pr_avatar'] = response.public_id;
         let pr_capacity = {
           value: inputProduct.pr_value,
@@ -51,7 +56,7 @@ const createNewProduct = (inputProduct, path, idAdmin) => {
         }
         inputProduct['pr_capacity'] = pr_capacity;
         inputProduct['pr_SEO'] = pr_SEO;
-        ['pr_value', 'c_level', 'pr_key', 'pr_title', 'pr_descriptionSeo', '_id'].forEach(key => {
+        ['pr_value', 'pr_key', 'pr_title', 'pr_descriptionSeo', '_id'].forEach(key => {
           delete inputProduct[key];
         });
         let result = await product_M.createNew(inputProduct);

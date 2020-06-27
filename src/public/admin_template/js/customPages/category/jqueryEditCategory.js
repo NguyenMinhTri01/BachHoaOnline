@@ -16,16 +16,16 @@ function checkInputData (c_name, c_level, c_parentId, mgs) {
       );
     return false;
    }
-    var valid = /\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/g;
-    if (valid.test(c_name)) {
-      mgs.html("<div class='alert alert-danger alert-dismissible'>" +
-      "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
-      "Dữ liệu nhập không được chứa ký tự đặt biệt"+
-      "</div>"
-      );
-      document.getElementById('form_input').reset();
-      return false;
-    }
+    // var valid = /\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/g;
+    // if (valid.test(c_name)) {
+    //   mgs.html("<div class='alert alert-danger alert-dismissible'>" +
+    //   "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+    //   "Dữ liệu nhập không được chứa ký tự đặt biệt"+
+    //   "</div>"
+    //   );
+    //   document.getElementById('form_input').reset();
+    //   return false;
+    // }
     return true;
  };
 

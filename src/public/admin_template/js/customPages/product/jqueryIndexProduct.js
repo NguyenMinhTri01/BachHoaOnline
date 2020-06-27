@@ -1,3 +1,15 @@
+function addCommas(nStr) {
+  nStr += '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+  return x1 + x2;
+};
+
 function getNotificationActive (thisActive){
     var urlActive = thisActive.attr("href");
     $.ajax({
@@ -15,13 +27,15 @@ function getNotificationActive (thisActive){
                       var strClass = thisActive.attr("class");
                       if (strClass.indexOf("success") != -1){ 
                       thisActive.attr("class", "_Active_ btn btn-secondary");
+                      thisActive.text("Ẩn");
                       } else {
                       thisActive.attr("class", "_Active_ btn btn-success");
+                      thisActive.html('<i class="far fa-check-circle"></i> Hiện');
                       };
                       toastr.options = {
                         "timeOut": "1000",
                         "positionClass": "toast-bottom-right",
-                      }
+                      };
                       toastr.success('Thành công', 'Cập nhật');                    
                      }
                    }
@@ -61,7 +75,6 @@ function getNotificationActive (thisActive){
   
   $(document).ready(function()
   {
-      //config table
       var table = $('.table').DataTable({
         "language" : {
           "emptyTable": "Không có dữ liệu",

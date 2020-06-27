@@ -8,6 +8,7 @@ let productSchema = new Schema({
   pr_slug: String, 
   pr_avatar: String,
   pr_status: {type: Boolean, default: true},
+  pr_origin: String,
   c_id: String, 
   br_id: String,
   pr_capacity : {

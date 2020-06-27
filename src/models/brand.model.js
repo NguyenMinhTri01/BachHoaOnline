@@ -7,6 +7,7 @@ let brandSchema = new Schema ({
   br_name : {type: String},
   br_slug : {type: String},
   br_status : {type: Boolean, default: true},
+  c_id: {type: String},
   br_image : {type: String, default: process.env.DEFAULT_BRAND_IMAGE},
   br_createdAt: {type: Number, default: Date.now},
   br_updatedAt: {type: Number, default: null},
@@ -26,7 +27,7 @@ brandSchema.statics = {
   },
 
   findAll(){
-    return this.find();
+    return this.find().sort({br_slug: 1});
   },
 
   deleteBrand(id){

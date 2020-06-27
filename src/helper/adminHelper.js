@@ -29,6 +29,7 @@ const uploadImageToCloudinary = (folder, path) => {
 };
 
 
+
 module.exports = {
   uploadImageToCloudinary: uploadImageToCloudinary
 }

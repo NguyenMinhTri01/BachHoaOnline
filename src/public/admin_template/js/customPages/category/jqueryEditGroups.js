@@ -87,16 +87,16 @@ $(document).ready(function()
       document.getElementById('form_input').reset();
       return false;
      }
-      var valid = /\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/g;
-      if (valid.test(gc_name)) {
-        $('#mgs').html("<div class='alert alert-danger alert-dismissible'>" +
-        "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
-        "Dữ liệu nhập không được chứa ký tự đặt biệt"+
-        "</div>"
-        );
-        document.getElementById('form_input').reset();
-        return false;
-      }
+      // var valid = /\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\.|\>|\?|\/|\""|\;|\:/g;
+      // if (valid.test(gc_name)) {
+      //   $('#mgs').html("<div class='alert alert-danger alert-dismissible'>" +
+      //   "<button type='button' class='close' data-dismiss='alert'>&times;</button>"+
+      //   "Dữ liệu nhập không được chứa ký tự đặt biệt"+
+      //   "</div>"
+      //   );
+      //   document.getElementById('form_input').reset();
+      //   return false;
+      // }
 
 
      //Lấy toàn bộ dữ liệu trong Form

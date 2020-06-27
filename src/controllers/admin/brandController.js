@@ -2,6 +2,7 @@ import { category_S, brand_S, admin_S } from '../../services/index';
 import configStorage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 
+
 //var cloudinary_v2 = require('cloudinary').v2;
 
 
@@ -21,16 +22,18 @@ const getViewIndex = async (req, res) => {
     base_Url: process.env.BASE_URL,
     adminInfo: req.adminInfo,
     title: "Bach Hóa Online | Thương Hiệu Sản Phẩm",
-    secure_Delivery_URL: process.env.SECURE_DELIVERY_URL,
+    SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
     brands: brands,
-    notification: notification,
+    notification: notification
   });
 }
 
 const getViewAdd = async (req, res) => {
+  let categories = await category_S.getListCategoriesByLevel(1);
   res.render("admin/brand/add", {
     base_Url: process.env.BASE_URL,
     adminInfo: req.adminInfo,
+    categories : categories,
     title: "Bach Hóa Online | Thêm Thương Hiệu Sản Phẩm",
   });
 };
@@ -50,7 +53,7 @@ const addBrand = (req, res) => {
     }
     else {
       let path = req.file.path;
-      let notification = await brand_S.createNewBrand(req.body.br_name, path);
+      let notification = await brand_S.createNewBrand(req.body.br_name, req.body.c_id, path);
       res.send(notification);
     }
   });

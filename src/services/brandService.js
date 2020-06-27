@@ -1,72 +1,61 @@
 import brand_M from '../models/brand.model';
+import category_M from '../models/category.model';
 import slug from "url-slug";
 import { transSuccess, transErrors } from "../../lang/vi";
 import fs from 'fs-extra';
+import adminHelper from './../helper/adminHelper';
+import _ from 'lodash';
 
 //src\public\uploads\1591430857794_28571609573977852587-8403-49e2-b07a-5827b14930cd.jpg
 const getListBrands = () => {
   return new Promise(async (resolve, reject) => {
     let result = await brand_M.findAll();
-    if (result) {
-      return resolve(result);
+    let brands = await Promise.all(result.map(async brand =>{
+      try {
+        let category = await category_M.findCategoryById(brand.c_id);
+        let object = _.assign({c_name: category.c_name}, brand._doc);
+        return object;
+      } catch (error) {
+        let object = _.assign({c_name: null}, brand._doc);
+        return object;
+      }
+    }));
+    if (brands) {
+      return resolve(brands);
     }
   })
 }
 
 
-const createNewBrand = (br_name, path) => {
+const createNewBrand = (br_name, c_id, path) => {
   return new Promise(async (resolve, reject) => {
-    try {
-      let br_slug = slug(br_name);
-      // check brand is exists in db
-      let checkExists = await brand_M.findBrandBySlug(br_slug);
-      if (!checkExists) {
-        let arrayPath = path.split('\\').splice(2);
+    let br_slug = slug(br_name);
+    // check brand is exists in db
+    let checkExists = await brand_M.findBrandBySlug(br_slug);
+    if (!checkExists && path) {
+      //upload image to cloudinary
+      let response = await adminHelper.uploadImageToCloudinary('brand', path);
+      if (response) {
         let newBrand = {
           br_name: br_name,
           br_slug: br_slug,
-          br_image: `/${arrayPath.join('/')}`,
+          br_image: response.public_id,
+          c_id: c_id
         };
+        //save new brand
         let result = await brand_M.createNew(newBrand);
         if (result) {
           return resolve({
             type: true,
             message: transSuccess.add_data_successful
           });
-        }
-
-        // upload image to cloudinary
-        // adminHelper.uploadImageToCloudinary('brand', path, async (response) => {
-        //   if (response) {
-        //     let newBrand = {
-        //       br_name : br_name,
-        //       br_slug : br_slug,
-        //       br_image : response.public_id,
-        //       c_id : c_id
-        //     };
-        //     //save new brand
-        //     let result = await brand_M.createNew(newBrand);
-        //     if (result){
-        //       return resolve({
-        //         type : true,
-        //         message : transSuccess.add_data_successful    
-        //       });
-        //     };
-        //   };
-        //   return resolve({
-        //     type : false,
-        //     message : transErrors.add_data_failed
-        //   });
-        // });
-      }
-      return resolve({
-        type: false,
-        message: transErrors.add_data_failed
-      });
+        };
+      };
     }
-    catch (error) {
-      console.log(error);
-    }
+    return resolve({
+      type: false,
+      message: transErrors.add_data_failed
+    });
   })
 };
 

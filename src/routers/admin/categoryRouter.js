@@ -23,6 +23,8 @@ const initAllRoute_Category = (router) => {
   router.post("/category/edit", auth_C.checkLogin, category_C.editCategory);
   // get active category
   router.get("/category/active/:id", auth_C.checkLogin, category_C.getActiveCategory);
+  // get
+  router.get("/category/getCategoryChild/:id", auth_C.checkLogin, category_C.getCategoryChild);
 }
 
 module.exports = initAllRoute_Category

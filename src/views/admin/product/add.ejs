@@ -46,7 +46,7 @@
             <div class="col-sm-8">
               <div class="form-group">
                 <label for="tensanpham">Tên Sản Phẩm </label>
-                <input type="text" class="form-control" name="pr_name" placeholder="" >
+                <input type="text" class="form-control" name="pr_name" placeholder="">
               </div>
               <div class="row">
                 <div class="col-sm-6">
@@ -90,7 +90,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="tensanpham"> Cấp Danh Mục </label>
                 <select class="custom-select mr-sm-2" id="c_level" name="c_level">
                   <option value="0" selected>Chọn cấp danh mục phù hợp...</option>
@@ -100,91 +100,109 @@
                   <% } %>
                   <% } %>
                 </select>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label for="tensanpham">Danh Mục </label>
                 <select class="custom-select mr-sm-2" id="c_id" name="c_id">
                   <option value="0" selected>Chọn danh mục phù hợp...</option>
+                  <% if (typeof categories != "undefined"){ %>
+                    <% for (let i = 0; i < categories.length; i++) {%>
+                    <option value="<%= categories[i]._id %>"> <%= categories[i].c_name %></option>
+                    <% } %>
+                    <% } %>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="tensanpham">Thương Hiệu </label>
-                <select class="custom-select mr-sm-2" id="br_id" name="br_id">
-                  <option value="0" selected>Chọn thương hiệu phù hợp</option>
-                  <% if (typeof brandList != "undefined"){ %>
-                  <% for (let i = 0; i < brandList.length; i++) {%>
-                  <option value="<%= brandList[i]._id %>"> <%= brandList[i].br_name %></option>
-                  <% } %>
-                  <% } %>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Mô tả</label>
-                <textarea class="form-control" name="pr_description" rows="3"></textarea>
-              </div>
-              <h3 class="card-title m-b-1">SEO</h3>
-              <div class="form-group">
-                <label for="key">Tiêu đề </label>
-                <input type="text" class="form-control" id="pr_title" name="pr_title" >
-              </div>
-              <div class="form-group">
-                <label for="key">Từ Khóa </label>
-                <input type="text" class="form-control" id="pr_key" name="pr_key" >
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Mô tả</label>
-                <textarea class="form-control" name="pr_descriptionSeo" rows="3"></textarea>
-              </div>
-              <div class="box-header with-border">
-                <!-- <h3 class="box-title">Album ảnh</h3> -->
-                <h3 class="card-title m-b-1">Album ảnh</h3>
-              </div>
-              <div class="box-body">
-                <div class="form-group">
-                  <div class="">
-                    <input id="images" type="file" name="pr_listImage" multiple class="file"
-                      data-overwrite-initial="false" data-min-file-count="0">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="tensanpham">Thương Hiệu </label>
+                    <select class="custom-select mr-sm-2" id="br_id" name="br_id">
+                      <option value="0" selected>Chọn thương hiệu phù hợp</option>
+                      <% if (typeof brandList != "undefined"){ %>
+                      <% for (let i = 0; i < brandList.length; i++) {%>
+                      <option value="<%= brandList[i]._id %>"> <%= brandList[i].br_name %></option>
+                      <% } %>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="">Xuất xứ </label>
+                    <input type="text" class="form-control" name="pr_origin" placeholder="" >
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-4 ">
-              <div class="box box-warning">
-                <h6>Ảnh đại diện</h6>
-                <div class="text-center">
-                  <img
-                    src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png"
-                    alt="brand image" class="image-preview border border-dark" width="260px" height="200px">
-                </div>
-                <div class="text-center">Ảnh</div>
-                <div>
-                  <div class="custom-file">
-                    <input type="file" name="pr_avatar" class="custom-file-input form-control" id="fileImageProduct"
-                      accept=".png, .jpg, jpeg, .PNG, JPG, JPEG">
-                    <label class="custom-file-label text-left" for="validatedCustomFile"
-                      style="word-wrap: break-word">Chọn File Ảnh...</label>
-                    <div class="feedback" style="color:red"></div>
-                  </div>
-                </div>
 
+
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Mô tả</label>
+              <textarea class="form-control" name="pr_description" rows="3"></textarea>
+            </div>
+            <h3 class="card-title m-b-1">SEO</h3>
+            <div class="form-group">
+              <label for="key">Tiêu đề </label>
+              <input type="text" class="form-control" id="pr_title" name="pr_title">
+            </div>
+            <div class="form-group">
+              <label for="key">Từ Khóa </label>
+              <input type="text" class="form-control" id="pr_key" name="pr_key">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Mô tả</label>
+              <textarea class="form-control" name="pr_descriptionSeo" rows="3"></textarea>
+            </div>
+            <div class="box-header with-border">
+              <!-- <h3 class="box-title">Album ảnh</h3> -->
+              <h3 class="card-title m-b-1">Album ảnh</h3>
+            </div>
+            <div class="box-body">
+              <div class="form-group">
+                <div class="">
+                  <input id="images" type="file" name="pr_listImage" multiple class="file"
+                    data-overwrite-initial="false" data-min-file-count="0">
+                </div>
               </div>
-
-            </div>
-            <div class="col-sm-3">
-              <a href="admin/product" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
-              <button id="submit" type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i>
-                Thêm</button>
-            </div>
-            <div class="col-sm-12 mt-2">
-              <div id='mgs'></div>
             </div>
           </div>
-        </fieldset>
-      </form>
+          <div class="col-sm-4 ">
+            <div class="box box-warning">
+              <h6>Ảnh đại diện</h6>
+              <div class="text-center">
+                <img
+                  src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png"
+                  alt="brand image" class="image-preview border border-dark" width="260px" height="200px">
+              </div>
+              <div class="text-center">Ảnh</div>
+              <div>
+                <div class="custom-file">
+                  <input type="file" name="pr_avatar" class="custom-file-input form-control" id="fileImageProduct"
+                    accept=".png, .jpg, jpeg, .PNG, JPG, JPEG">
+                  <label class="custom-file-label text-left" for="validatedCustomFile"
+                    style="word-wrap: break-word">Chọn File Ảnh...</label>
+                  <div class="feedback" style="color:red"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-sm-3">
+            <a href="admin/product" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+            <button id="submit" type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i>
+              Thêm</button>
+          </div>
+          <div class="col-sm-12 mt-2">
+            <div id='mgs'></div>
+          </div>
     </div>
+    </fieldset>
+    </form>
   </div>
 </div>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+</div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all"
+  rel="stylesheet" type="text/css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
 <script type="text/javascript"

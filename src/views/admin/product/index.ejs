@@ -66,7 +66,7 @@
   <!-- Nav tabs -->
   <div class="border text-center bg-light" style="height:auto">
     <br>
-    <h2>Thương Hiệu Sản Phẩm</h2>
+    <h2>Sản Phẩm</h2>
   </div>
 
   <div class="card">
@@ -78,32 +78,36 @@
             <tr>
               <th>STT</th>
               <th>Tên Sản Phẩm</th>
-              <th>Giá/Giảm Giá</th>
+              <th>Giá (Giảm Giá)</th>
               <th class="text-center">Ảnh</th>
-              <th>Trạng Thái</th>
+              <th>Xuất Xứ</th>
               <th>Danh Mục</th>
               <th>Thương Hiệu</th>
-              <th>Lược Mua</th>
+              <th>Lượt Mua</th>
               <th>Ngày tạo</th>
               <th style="width: auto">Tùy Chọn</th>
             </tr>
           </thead>
           <tbody>
             <% if (typeof products != "undefined") {%>
-            <% if (products.length != 0) { %>
+            <% if (products.length > 0) { %>
             <% let count = 1 %>
             <% products.forEach(product =>{%>
             <tr>
               <td class="text-center"><%= count %></td>
               <td class="pr_name text-center"><%= product.pr_name %></td>
-              <td class="br_price text-center"><%= product.pr_price %>/<%= product.pr_discount %></td>
-              <td style="width:auto"><img style="padding-right:0px" src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" width="130"
-                  height="80"></td>
               <td class="text-center">
-                <a id="pr_status" href="admin/product/active/<%= product._id %>"
-                  class="_Active_ btn <%= product.pr_status ? 'btn-success' :  'btn-secondary'%> ">Active</a>
-                <a id="pr_hot" href="admin/product/hot/<%= product._id %>"
-                  class="mt-2 _hot_ btn <%= product.pr_hot ? 'btn-danger' :  'btn-secondary'%> ">Hot</a>
+                <div class="pr_price" style='float :left'>
+                  <%= product.pr_price %>
+                </div>
+                <div class="pr_discount" style='float :left; color:red;'>
+                  (-<%= product.pr_discount %>%)
+                </div>
+              </td>
+              <td style="width:auto"><img style="padding-right:0px"
+                  src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" width="130" height="80"></td>
+              <td class="text-center">
+                Việt Nam
               </td>
               <td class="text-center"><%= product.c_name %></td>
               <td class="text-center"><%= product.br_name %></td>
@@ -114,6 +118,10 @@
               <td class="text-center">
                 <a href="admin/product/edit/<%= product._id %>" class="btn btn-warning m-2 edit_product"><i
                     class="fa fa-edit"></i> Sửa</a>
+                <a id="pr_status" href="admin/product/active/<%= product._id %>"
+                  class="_Active_ btn <%= product.pr_status ? 'btn-success' :  'btn-secondary'%> "><i class="far fa-check-circle"></i> Hiện</a>
+                <a id="pr_hot" href="admin/product/hot/<%= product._id %>"
+                  class="mt-2 _hot_ btn <%= product.pr_hot ? 'btn-danger' :  'btn-secondary'%> "><i class="fab fa-hotjar"></i> Hot</a>
               </td>
             </tr>
             <% count += 1%>
@@ -142,5 +150,5 @@
 <div class='notifications bottom-right'></div>
 <!-- ============================================================== -->
 <!-- End Container fluid  -->
- <script type="text/javascript" src="admin_template/js/customPages/product/jqueryIndexProduct.js"></script> 
+<script type="text/javascript" src="admin_template/js/customPages/product/jqueryIndexProduct.js"></script>
 <%- include("../adminFooter") %>

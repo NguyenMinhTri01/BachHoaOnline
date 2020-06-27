@@ -31,3 +31,33 @@
 danh mục chỉ cho phep 2 level
 
 // viec ngày 25/06 xử lý tải multiple image
+
+// lỗi ơ file productService ko hiện dc sản phẩm
+
+
+const getListProducts = () => {
+  return new Promise(async (resolve, reject) => {
+    let result = await product_M.findAll();
+    if (result.length > 0) {
+      let products = await Promise.all(result.map(async (product) => {
+        try {
+          let category = await category_M.findCategoryById(product.c_id);
+          let brand = await brand_M.findBrandById(product.br_id);
+          const newObj = _.chain(product)
+          .get('_doc')
+          .assign({
+            c_name: category.c_name || null, 
+            br_name: brand.br_name || null,
+          });
+          return newObj;
+        } catch (error) {
+          const newObj = _.chain(product).get('_doc');
+          return newObj;
+        }
+      }));
+      console.log(products);
+      return resolve(products);
+    }
+    resolve(false);
+  });
+}

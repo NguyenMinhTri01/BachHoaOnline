@@ -23,13 +23,13 @@ const getViewIndex = async (req, res) => {
   })
 };
 const getViewAdd = async (req, res) => {
-  let maxLevelCategory = await category_S.getMaxLevel();
-  let brandList = await brand_S.getListBrands();
+  const categories = await category_S.getListCategoriesByLevel(2);
+  const brandList = await brand_S.getListBrands();
   res.render("admin/product/add", {
     base_Url: process.env.BASE_URL,
     adminInfo: req.adminInfo,
-    brandList: brandList,
-    maxLevelCategory: maxLevelCategory,
+    brandList,
+    categories,
     title: "Bach Hóa Online | Thêm Sản Phẩm",
   });
 };

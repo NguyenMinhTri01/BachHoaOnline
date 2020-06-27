@@ -34,9 +34,9 @@ categorySchema.statics = {
     return this.find({},{c_level: 1}).sort({"c_level" : -1}).limit(1);
   },
 
-  finCategoriesByC_level(c_level){
-    return this.find({'c_level': c_level});
-  },
+  // finCategoriesByC_level(c_level){
+  //   return this.find({c_level}, null, {sort: {c_slug: 1}});
+  // },
 
   findChildCategoryById(id) {
     return this.find({'c_parentId' : id});
@@ -50,8 +50,8 @@ categorySchema.statics = {
     return this.findByIdAndUpdate(id, item);
   },
 
-  findAllByLevel(level){
-    return this.find({c_level : level});
+  findAllByLevel(c_level){
+    return this.find({c_level}, null, {sort: {c_slug: 1}});
   },
 
   updateActive(id){

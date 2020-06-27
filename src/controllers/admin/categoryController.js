@@ -51,7 +51,7 @@ let getViewEditCategory = async (req, res) => {
   let c_parents = await category_S.getCategoriesByC_level(category.c_level - 1);
   res.render('admin/category/edit', {
     base_Url: process.env.BASE_URL,
-    adminInfo: req.user,
+    adminInfo: req.adminInfo,
     category: category,
     maxLevelCategory: maxLevelCategory,
     c_parents: c_parents,
@@ -71,6 +71,12 @@ let getActiveCategory = async (req, res) => {
   let id = req.params.id;
   let notification = await category_S.activeCategory(id);
   res.send(notification);
+};
+
+let getCategoryChild = async (req, res) => {
+  const { id } = req.params;
+  const categories = await category_S.getCategoryChildById(id);
+  res.send(categories);
 }
 
 module.exports = {
@@ -79,6 +85,7 @@ module.exports = {
   addCategory: addCategory,
   editCategory: editCategory,
   getViewIndex: getViewIndex,
+  getCategoryChild: getCategoryChild,
   getActiveCategory: getActiveCategory,
   getDeleteCategory: getDeleteCategory,
   getViewEditCategory: getViewEditCategory,

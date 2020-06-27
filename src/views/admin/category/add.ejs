@@ -28,12 +28,8 @@
                   <label>Cấp danh mục<small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
                   <select class="form-control" id="c_level" name="c_level">
                     <option value="0" class="selected" style="color:#dad4d4">Chọn cấp danh mục phù hợp...</option>
-              <% if (typeof maxLevelCategory != "undefined"){ %>
-                  <% maxLevelCategory = maxLevelCategory + 1 %>
-                  <% for (let i = 0; i < maxLevelCategory; i++) {%>
-                    <option value="<%= i+1 %>"> Level <%= i+1 %></option>
-                  <% } %>
-              <% } %>
+                    <option value="1"> Cấp 1</option>
+                    <option value="2"> Cấp 2</option>
                   </select>                
                 </div>
                 <div class="col-lg-6" id="blockSelectC_parentId" style="visibility: hidden; display:none">

@@ -160,15 +160,25 @@ let getMaxLevel = () => {
     }
     return resolve(0);
   })
-}
+};
 
 let getCategoriesByC_level = (c_level) => {
   return new Promise(async(resolve, reject) => {
-    let result = await category_M.finCategoriesByC_level(c_level);
+    let result = await category_M.findAllByLevel(c_level);
     if (result){
       return resolve(result);
     }
     return false
+  })
+};
+
+let getCategoryChildById = (id) => {
+  return new Promise(async(resolve, reject) => {
+    let result = await category_M.findChildCategoryById(id);
+    if (result.length > 0){
+      return resolve(result);
+    }
+    return [];
   })
 }
 
@@ -181,6 +191,7 @@ module.exports = {
   activeCategory : activeCategory,
   getListCategories: getListCategories,
   createNewCategory : createNewCategory,
+  getCategoryChildById: getCategoryChildById,
   getListDataCategories : getListDataCategories,
   getCategoriesByC_level : getCategoriesByC_level,
   getListCategoriesByLevel : getListCategoriesByLevel

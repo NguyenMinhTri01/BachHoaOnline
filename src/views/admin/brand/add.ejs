@@ -1,57 +1,87 @@
 <%- include("../adminHeader")  %>
-      <div class="page-breadcrumb">
-        <div class="row">
-            <div class="col-12 d-flex no-block align-items-center">
-                <div class="ml-auto text-right">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
-                            <li class="breadcrumb-item"><a href="admin/brand">Thương Hiệu Sản Phẩm</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Thêm Thương Hiệu Sản Phẩm</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-      </div>
-      <div class="container-fluid">
-      <div class="card">
-        <div class="card-body">
-            <h4 class="card-title m-b-0">Thêm thương hiệu sản phẩm</h4>
-            <form class="form-group m-t-20" id="form_input" enctype="multipart/form-data" method="POST" action="#">
-              <div class="row">
-                <div class="col-lg-7">
-                  <label>Tên thương hiệu <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
-                  <input name="br_name" type="text" class="form-control" id="input-name" placeholder="Nhập tên danh mục..." required>
-                  <br>
-                  <label>Ảnh thương hiệu <small class="text-muted text-red"><strong style="color:red">(*)</strong></small></label>
-                  <div>  
-                    <div class="custom-file">
-                      <input type="file" name="br_image" class="custom-file-input form-control" id="fileImageBrand" accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
-                      <label class="custom-file-label text-left" for="validatedCustomFile">Chọn File Ảnh...</label>
-                      <div class="feedback" style="color:red"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-5">
-                  <div class="text-center">
-                    <img src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png" alt="brand image" class="image-preview border border-dark" width="260px" height="160px" style="border-radius: 18px!important;">
-                  </div>
-                  <div class="text-center">Ảnh</div>
-                </div>
-                <div class="col-lg-3">
-                  <a href="admin/brand" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
-                  <button type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i> Thêm</button>
-                </div>
-              </div>
-
-
-            </form>
-            <div id="mgs"></div>
-        </div>
+<div class="page-breadcrumb">
+  <div class="row">
+    <div class="col-12 d-flex no-block align-items-center">
+      <div class="ml-auto text-right">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="admin/brand">Thương Hiệu Sản Phẩm</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Thêm Thương Hiệu Sản Phẩm</li>
+          </ol>
+        </nav>
       </div>
     </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title m-b-0">Thêm thương hiệu sản phẩm</h4>
+      <form class="form-group m-t-20" id="form_input" enctype="multipart/form-data" method="POST" action="#">
+        <div class="row">
+          <div class="col-lg-7">
+            <label>Tên thương hiệu <small class="text-muted text-red"><strong
+                  style="color:red">(*)</strong></small></label>
+            <input name="br_name" type="text" class="form-control" id="input-name" placeholder="Nhập tên danh mục..."
+              required>
+            <br>
+
+            <label>Danh mục cấp 1<small class="text-muted text-red"><strong
+                  style="color:red">(*)</strong></small></label>
+            <select class="form-control" id="C_idParent" name="C_idParent">
+              <option value="0" class="selected" style="color:#dad4d4">Chọn danh mục phù hợp...</option>
+              <% if (typeof categories != "undefined"){ %>
+              <% if (categories.length > 0) { %>
+              <% categories.forEach(function (category) { %>
+              <option value="<%= category._id %>"><%= category.c_name %></option>
+              <% }) %>
+              <% } %>
+              <% } %>
+            </select>
+            <br>
+            <label>Danh mục cấp 2<small class="text-muted text-red"><strong
+                  style="color:red">(*)</strong></small></label>
+            <select class="form-control" id="c_id" name="c_id">
+              <option value="0" class="selected" style="color:#dad4d4">Chọn danh mục phù hợp...</option>
+              <!-- <option value=""></option> -->
+            </select>
+            <br>
+
+            <label>Ảnh thương hiệu <small class="text-muted text-red"><strong
+                  style="color:red">(*)</strong></small></label>
+            <div>
+              <div class="custom-file">
+                <input type="file" name="br_image" class="custom-file-input form-control" id="fileImageBrand"
+                  accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
+                <label class="custom-file-label text-left" for="validatedCustomFile">Chọn File Ảnh...</label>
+                <div class="feedback" style="color:red"></div>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col-lg-5">
+            <div class="text-center">
+              <img
+                src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png"
+                alt="brand image" class="image-preview border border-dark" width="260px" height="160px"
+                style="border-radius: 18px!important;">
+            </div>
+            <div class="text-center">Ảnh</div>
+          </div>
+          <div class="col-lg-3">
+            <a href="admin/brand" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+            <button type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i> Thêm</button>
+          </div>
+        </div>
 
 
-    <script type="text/javascript" src="admin_template/js/customPages/brand/jqueryAddBrand.js"></script>
+      </form>
+      <div id="mgs"></div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="admin_template/js/customPages/brand/jqueryAddBrand.js"></script>
 <%- include("../adminFooter") %>

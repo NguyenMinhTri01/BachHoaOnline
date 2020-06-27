@@ -37,6 +37,9 @@ function validationForm(formInput) {
       br_id: {
         valueNotEquals: "0"
       },
+      pr_origin: {
+        required : true
+      },
       pr_value: {
         required: true,
         greaterThanZero: true,
@@ -85,6 +88,9 @@ function validationForm(formInput) {
       },
       br_id: {
         valueNotEquals: "Hãy chọn một thương hiệu"
+      },
+      pr_origin: {
+        required : "Dữ liệu không được để trống"
       },
       pr_value: {
         required: "Dữ liệu không được để trống",
@@ -174,7 +180,7 @@ function loadImage(input, showImage, label_nameImage, label_feedback) {
 };
 
 
-function sendDataInputToServer(submit, formInput, mgs, callback) {
+function sendDataInputToServer(formInput, mgs, callback) {
   var formData = new FormData(formInput[0]);
   $.ajax({
     url: "admin/product/add",
@@ -191,7 +197,6 @@ function sendDataInputToServer(submit, formInput, mgs, callback) {
             "<button type='button' class='close' data-dismiss='alert'>&times;</button>" +
             res.message +
             "</div>");
-          submit.html('<i class="fa fa-check"></i>Thêm');
           callback(true);
         }
         else {
@@ -246,8 +251,9 @@ $(document).ready(function () {
     if (validated.form() && checkElementImage) {
       if (uploadToken === _id) {
         $(this).html('<i class="fa fa-spinner fa-spin"></i>Đang tải');
-        sendDataInputToServer(this,formInput, mgs, (result) => {
+        sendDataInputToServer(formInput, mgs, (result) => {
           if (result) {
+            $(this).html('<i class="fa fa-check"></i>Thêm');
             localStorage.uploadToken = undefined;
             return reSetData(formInput, image_Preview, label_nameImage, label_feedback);
           }
@@ -303,11 +309,11 @@ $("#images").fileinput({
 }).on('change', function (event) {
   localStorage.uploadToken = undefined;
 });
-jQuery(document).ready(function ($) {
-  $(".scroll").click(function (event) {
-    event.preventDefault();
-    $('.init-arrow-down').animate({ scrollTop: $(this.hash).offset().top }, 1000);
-  });
-});
+// jQuery(document).ready(function ($) {
+//   $(".scroll").click(function (event) {
+//     event.preventDefault();
+//     $('.init-arrow-down').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+//   });
+// });
 
 

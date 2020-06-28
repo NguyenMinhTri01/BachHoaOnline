@@ -79,7 +79,7 @@ const createNewProduct = (inputProduct, path, idAdmin) => {
                   filesName: file,
                   public_id: _response.public_id
                 };
-                albumProduct_M.createNew(itemAlbumImage);
+                await albumProduct_M.createNew(itemAlbumImage);
               };
             });
           })

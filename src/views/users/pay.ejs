@@ -1,0 +1,155 @@
+<%- include("header2.ejs")  %>
+<div class="breadcrumbs">
+
+    <ol class="breadcrumb breadcrumb1">
+        <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+        <li class="active">Giỏ Hàng</li>
+    </ol>
+
+</div>
+<div class="container">
+
+
+    <div class="row donhang">
+
+        <div class="col-md-8">
+
+            <form method="GET" id="formiput">
+                <fieldset>
+                    <div class="col-md-12 tenkhachhang">
+                        <h3 style="font-size: 14px; font-weight: bold; line-height: 18px;">
+                            1.Thông Tin Người Mua Hàng</h3>
+                        <div class="wrapcheckbox box-data w100"><span class="gender">
+                                <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender1" value="1">
+                                <label for="ProfileItems_0_Gender1"> Anh &nbsp; </label>
+                            </span> <span class="gender">
+                                <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender0" value="0">
+                                <label for="ProfileItems_0_Gender0"> Chị</label>
+                            </span>
+                            <!---->
+                        </div>
+
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" name="t_name" aria-describedby=""
+                                placeholder="Tên của bạn" style="height: 50px;">
+                        </div>
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" name="phone" aria-describedby="emailHelp"
+                                placeholder="Số điện thoại của bạn" style="height: 50px;">
+
+                        </div>
+                        <div>
+                            <input id="IsCallOthers" name="IsCallOthers" type="checkbox">
+                            <label for="IsCallOthers" class="IsCallOthers">Gọi người khác nhận hàng (nếu có)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 diachi">
+                        <div class="row">
+                            <h3 style="font-size: 14px;font-weight: bold;line-height: 18px;margin-left: 12px;">
+                                2.Địa chỉ nhận hàng </h3>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="thanhpho"
+                                        placeholder="Nhập vào thành phố (tỉnh) của bạn" style="height: 50px;">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="quanhuuyen"
+                                        placeholder="Nhập vào quận/huyện" style="height: 50px;">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="phuongxa"
+                                        placeholder="Nhập vào phường/xã" style="height: 50px;">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="sonha"
+                                        placeholder="Nhập vào số nhà tên đường *" style="height: 50px;">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12 thoigian">
+
+                        <div class="row">
+                            <h3 style="font-size: 14px;font-weight: bold;line-height: 18px;margin-left: 12px;">3.Thời Gian Giao Hàng </h3>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <select name="date" class="form-control" style="height: 50px;">
+                                        <option>Ngày Giao</option>
+                                        <option> Giao</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <select name="time" class="form-control" style="height: 50px;">
+                                        <option>Giời Giao</option>
+                                        <option> Giao</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                        placeholder="Ghi chú thêm (nếu có) "></textarea>
+                                </div>
+                            </div>
+                            <div class="summary summary-final">
+                                <div class="row1">
+                                    <div class="col55">
+                                        <div class="cost">
+                                            <span>Tiền hàng: </span>
+                                            <label id="carttotal"><b>1.068.000₫</b></label>
+                                        </div>
+                                        <!---->
+                                        <!---->
+                                        <!---->
+                                        <div class="shipfee">
+                                            <span><b>Phí giao hàng</b>:</span>
+                                            <label class="rightshiping">
+                                                <span class="shipfeebase">20.000₫</span>
+                                                <span>8.000₫</span>
+                                            </label>
+                                        </div>
+                                        <div class="totalbox"><span>Tổng tiền: </span>
+                                            <label>1.076.000₫</label>
+                                        </div>
+                                        <div>
+                                            <!----> <a href="javascript:;" class="couponlink">Dùng mã giảm giá</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <button type="sumbmit" class="btn btn-success">Hoàn Tất Đơn Hàng</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
+<script type="text/javascript"
+    src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="user-template/js/customPages/jquerypay.js"></script>
+<%- include("footer.ejs")  %>

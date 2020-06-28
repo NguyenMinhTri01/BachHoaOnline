@@ -4,8 +4,8 @@ import {product_S, category_S} from '../../services/index';
 
 let getHome = async (req, res) => {
   try {
-    let categories  = await category_S.getListCategoriesByLevel(1);
-    let products = await product_S.getProductsFollowCategories(categories);
+    // let categories  = await category_S.getListCategoriesByLevel(1);
+    // let products = await product_S.getProductsFollowCategories(categories);
     return res.render('users/home',{
       infoUser : req.user
     });
@@ -59,6 +59,13 @@ const getSingle=(req,res)=>{
 
   }
 }
+const getPay=(req,res)=>{
+  try{
+    return res.render('users/pay')
+  }catch(error){
+
+  }
+}
 module.exports = {
   getHome,
   getCheckOut,
@@ -66,6 +73,8 @@ module.exports = {
   getAbout,
   getProducts,
   getBeverages,
-  getSingle
+  getSingle,
+  getPay
+  
  
 }

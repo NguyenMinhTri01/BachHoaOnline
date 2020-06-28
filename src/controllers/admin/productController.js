@@ -1,6 +1,7 @@
 import { category_S, brand_S, product_S } from '../../services/index';
 import configStorage from '../../config/uploadFIleLocal';
 import multer from 'multer';
+import fs from 'fs-extra';
 
 
 const storageProductAvatar = configStorage('/product/productAvatar');
@@ -25,6 +26,7 @@ const getViewIndex = async (req, res) => {
 const getViewAdd = async (req, res) => {
   const categories = await category_S.getListCategoriesByLevel(2);
   const brandList = await brand_S.getListBrands();
+  fs.removeSync(`${process.env.PATH_ALBUM_IMAGE}${req.adminInfo._id}`);
   res.render("admin/product/add", {
     base_Url: process.env.BASE_URL,
     adminInfo: req.adminInfo,

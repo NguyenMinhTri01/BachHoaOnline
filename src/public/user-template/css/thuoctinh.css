@@ -646,3 +646,56 @@ ul.gw-submenu li a {
   text-decoration: none;
 } */
 /*=================left navibar end=========================================*/
+/*trang đặt hàng*/
+.col-md-12.tenkhachhang {
+  background-color: #fff;
+}
+.col-md-12.diachi{
+  background-color: #fff;
+  margin-top: 10px;
+  height: auto;
+}
+.col-md-12.thoigian{
+  background-color: #fff;
+  margin-top: 10px;
+  height: auto;
+}
+label.error {
+  display: inline-block;
+  color:red !important;
+  width: 500px;
+}
+.summary-final {
+  padding: 15px 0;
+  font-size: 14px;
+}
+.summary .row1 {
+  width: 100%;
+  display: flex;
+  overflow: unset;
+  font-size: 14px;
+}
+.summary-final .row1 .col55 {
+  width: 100%;
+  padding-bottom: 0;
+}
+.summary .row1 .col55>div, .summary .row1 .col55>a {
+  text-align: right;
+  position: relative;
+}
+.summary div>span {
+  display: inline-block;
+  color: #999;
+  width: auto;
+  text-align: right;
+  position: relative;
+}
+.donhang{
+  margin-left: 280px;
+  margin-bottom: 10px;
+}
+button.btn.btn-success {
+  padding: 16px;
+  margin: auto;
+  margin-bottom: 10px;
+}

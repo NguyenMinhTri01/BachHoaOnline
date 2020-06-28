@@ -15,6 +15,7 @@ let initRouteUser = (app) => {
   router.get('/products', home_C.getProducts)
   router.get('/beverages', home_C.getBeverages)
   router.get('/single', home_C.getSingle)
+  router.get('/pay',home_C.getPay)
 
   initAllRoute_AuthenticationUser(router);
 

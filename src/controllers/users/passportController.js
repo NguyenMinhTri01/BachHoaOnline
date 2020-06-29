@@ -54,6 +54,7 @@ const initPassportFacebook = () => {
     profileFields : ['email']
   },
   async (accessToken, refreshToken, profile, done) => {
+    console.log(profile);
     let user = await users_M.findUserByFacebookID(profile._json.id);
     if (!user){
       let checkExists = await users_M.findUserByEmail(profile._json.email);
@@ -66,12 +67,20 @@ const initPassportFacebook = () => {
         u_facebookID : profile._json.id,
         u_email : profile._json.email
       };
+      //console.log(profile._json);
       let newUser = await users_M.createNew(newItem);
       return done(null, newUser);
     }
     return done(null, user);
-  }
-));
+  }));
+    // save admin to session
+    passport.serializeUser((user, done)=>{
+      done(null, user);
+    });
+  
+    passport.deserializeUser((user, done)=>{
+      return done(null, user);
+    });
 };
 
 const initPassportGoogle = () => {
@@ -98,8 +107,15 @@ const initPassportGoogle = () => {
       return done(null, newUser);
     }
     return done(null, user);
-  }
-))
+  }));
+    // save admin to session
+    passport.serializeUser((user, done)=>{
+      done(null, user);
+    });
+  
+    passport.deserializeUser((user, done)=>{
+      return done(null, user);
+    });
 }
 
 module.exports = {

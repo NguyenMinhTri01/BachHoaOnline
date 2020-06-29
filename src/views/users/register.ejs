@@ -7,36 +7,30 @@
 </div>
 <!-- register -->
 <div class="register">
-	
-		<h2>Tạo Tài Khoản</h2>
-		<div class="login-form-grids">
-			<h5>Thông Tin Cá Nhân</h5>
-			<form action="#" method="post">
-				<input type="text" placeholder="Họ..." required=" " >
-				<input type="text" placeholder="Tên..." required=" " >
-			</form>
-			<div class="register-check-box">
-				<div class="check">
-					<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Đăng Ký Thông Tin</label>
-				</div>
-			</div>
+
+	<h2>Tạo Tài Khoản</h2>
+	<div class="login-form-grids">
+		<h5>Thông Tin Cá Nhân</h5>
+		<form id="register-form" action="#" method="post">
+			<input type="text" placeholder="Họ Và Tên..." name="u_name" required>
+			<input type="text" placeholder="Số Điện Thoại..." name="u_phoneNumber" required>
 			<h6>Thông Tin Đăng Nhập</h6>
-				<form action="#" method="post">
-				<input type="email" placeholder="Địa Chỉ Email" required=" " >
-				<input type="password" placeholder="Mật Khẩu" required=" " >
-				<input type="password" placeholder="Nhập Lại Mật Khẩu" required=" " >
-				<div class="register-check-box">
-					<div class="check">
-						<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Tôi Chấp Nhập Các Điều Khoản Và Điều Kiện</label>
-					</div>
-				</div>
-				<input type="submit" value="Đăng Ký Ngay">
-			</form>
-		</div>
-		<div class="register-home">
-			<a href="index.html">Trang Chủ</a>
-		</div>
+			<input type="text" placeholder="Địa Chỉ email" name="u_email" required>
+			<input id="u_password" type="password" placeholder="Mật Khẩu" name="u_password" required>
+			<input type="password" placeholder="Nhập Lại Mật Khẩu" name="confirmPassword" required>
+			<input id="submit" type="submit" name="submit" value="Đăng Ký Ngay">
+			<div id="notifications" style="width: 100%; margin-top:10px"></div>
+		</form>
 	</div>
+	<div class="register-home">
+		<a class="" href="login">Đăng Nhập</a>
+		<a class="" href="/">Trang Chủ</a>
+	</div>
+</div>
+<!-- custom pages -->
+<script type="text/javascript" src="admin_template/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="	user-template/js/customPages/jqueryRegister.js"></script>
+<!-- end custom pages -->
 
 <!-- //register -->
 

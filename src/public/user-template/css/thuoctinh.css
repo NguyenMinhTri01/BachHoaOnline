@@ -1,3 +1,70 @@
+/*Tri minh sửa*/
+.modal-content{
+  margin-left: 20% !important;
+}
+.table-image thead td,
+.table-image thead th {
+  border: 0;
+  color: #666;
+  font-size: 15px;
+}
+.table-image td,
+.table-image th {
+  vertical-align: middle;
+  text-align: center;
+}
+.table-image td.qty,
+.table-image th.qty {
+  max-width: 10%;
+}
+
+.qty input{
+  width: 60px;
+  text-align: center;
+}
+
+.w-25 img {
+  width: 70px;
+  height: auto;
+}
+
+.price {
+  margin-left: 1rem;
+}
+
+.modal-footer {
+  padding-top: 1rem;
+}
+
+.btnSS{
+  padding : 6px 12px !important;
+}
+.modal-header .close {
+  margin-top: -20px;
+}
+.priceSp {
+  text-decoration: line-through;
+}
+.discount {
+  display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 3px;
+    background: #de2000;
+    width: 32px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center
+}
+.fontSiteContent {
+  font-size : 13px
+}
+
+/*Tri minh sửa*/
+
+
 a.btn.btn-lg.btn-primary.text-uppercase {
     background: #3399cc;
     border-color:white;

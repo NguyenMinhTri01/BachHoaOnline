@@ -37,12 +37,12 @@ const getListProducts = () => {
 
 const createNewProduct = (inputProduct, path, idAdmin) => {
   return new Promise(async (resolve, reject) => {
-    let timeNow = Date.now();
     inputProduct['pr_slug'] = slug(inputProduct.pr_name);
+    let nameFolderProducts = slug(inputProduct.pr_name);
     let checkExists = await product_M.findProductBySlug(inputProduct.pr_slug);
     if (!checkExists && path) {
       // upload product avatar to cloudinary
-      const response = await adminHelper.uploadImageToCloudinary(`product/${timeNow}`, path);
+      const response = await adminHelper.uploadImageToCloudinary(`product/${nameFolderProducts}`, path);
       if (response) {
         inputProduct['pr_avatar'] = response.public_id;
         let pr_capacity = {
@@ -71,7 +71,7 @@ const createNewProduct = (inputProduct, path, idAdmin) => {
             files.forEach(async (file) => {
               const pathImage = path_.join(directoryPath, file);
               //upload image to cloudinary
-              const _response = await adminHelper.uploadImageToCloudinary(`product/${timeNow}`, pathImage)
+              const _response = await adminHelper.uploadImageToCloudinary(`product/${nameFolderProducts}`, pathImage)
               if (_response) {
                 let itemAlbumImage = {
                   _id: file.split('.')[0],

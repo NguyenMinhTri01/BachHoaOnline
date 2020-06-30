@@ -4,10 +4,14 @@ import {product_S, category_S} from '../../services/index';
 
 let getHome = async (req, res) => {
   try {
-    // let categories  = await category_S.getListCategoriesByLevel(1);
-    // let products = await product_S.getProductsFollowCategories(categories);
+    const menu = await category_S.getMenuCategory();
+    const data = await  product_S.getProductsFollowMenuCategory(menu);
     return res.render('users/home',{
-      infoUser : req.user
+      menu,
+      // data,
+      infoUser : req.user,
+      title: "Bách Hóa Online | Mua Tất Cả Trên Dị Động",
+      SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
     });
   } catch (error) {
     console.log(error);

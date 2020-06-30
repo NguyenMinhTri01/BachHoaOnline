@@ -9,6 +9,8 @@ let router = express.Router();
 let initRouteUser = (app) => {
 
   router.get('/', home_C.getHome);
+
+  
   router.get('/checkout',/*auth_C.checkLoggedOut,*/home_C.getCheckOut);
   router.get('/contact', home_C.getContact)
   router.get('/about', home_C.getAbout)

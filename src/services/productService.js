@@ -56,6 +56,7 @@ const createNewProduct = (inputProduct, path, idAdmin) => {
         }
         inputProduct['pr_capacity'] = pr_capacity;
         inputProduct['pr_SEO'] = pr_SEO;
+        inputProduct['pr_priceNew'] = inputProduct.pr_price - inputProduct.pr_price*inputProduct.pr_discount/100;
         ['pr_value', 'pr_key', 'pr_title', 'pr_descriptionSeo', '_id'].forEach(key => {
           delete inputProduct[key];
         });
@@ -114,22 +115,30 @@ const hotProductById = (id) => {
   })
 };
 
-const getProductsFollowCategories = (categoryParents) => {
+const getProductsFollowMenuCategory = (menu) => {
   return new Promise(async (resolve, reject) => {
-    let dataProduct = await Promise.all(categoryParents.map(async (categoryParent) => {
-      let arrProductOfCategory = [];
-      arrProductOfCategory = await product_M.getProductsByC_Id(categoryParent._id);
-      let categories = await category_M.findChildCategoryById(categoryParent._id);
-      let arrayProductOfCategories = await Promise.all(categories.map(category => {
-
-      }))
+    const data = await Promise.all (menu.map(async parent => {
+      let arrayIdCategoryChild = await category_M.findChildIdCategoryByIdParent(parent._id);
+      let arrId = arrayIdCategoryChild.map(category =>{
+        return category._id;
+      })
+      let products;
+      if(arrId.length > 0){
+        products = await product_M.getProductsFollowArrayIdCategory(arrId);
+      }
+      else {
+        products = null;
+      }
     }))
+    resolve(true);
   })
 };
+
+
 module.exports = {
   hotProductById,
   createNewProduct,
   getListProducts,
   activeProductById,
-  getProductsFollowCategories
+  getProductsFollowMenuCategory
 }

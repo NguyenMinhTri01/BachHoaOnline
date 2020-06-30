@@ -24,6 +24,7 @@ let productSchema = new Schema({
   pr_hot : {type: Boolean, default : false},
   pr_price: Number,
   pr_discount: Number,
+  pr_priceNew : {type: Number},
   pr_viewCounts : {type: Number, default : 0},
   pr_boughtCounts: {type: Number, default : 0},
   pr_createdAt : {type: Number, default:Date.now},
@@ -61,6 +62,10 @@ productSchema.statics = {
       return product.save()
     })
     .then (product => {return product});
+  },
+
+  getProductsFollowArrayIdCategory(arrId) {
+    return this.find({c_id : {$in: arrId}},'_id pr_name pr_slug pr_avatar');
   },
 
   getProductsByC_Id(c_id){

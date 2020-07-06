@@ -19,6 +19,8 @@ let initRouteUser = (app) => {
   router.get('/beverages', home_C.getBeverages)
   router.get('/single', home_C.getSingle)
   router.get('/pay',home_C.getPay)
+  router.get('/history',home_C.getHistory)
+  router.get('/username',home_C.getUsername)
 
   router.post('/sentDataPayToServer', home_C.addNewOrder)
 

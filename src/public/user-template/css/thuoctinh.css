@@ -857,3 +857,179 @@ button.btn.btn-success {
   margin: auto;
   margin-bottom: 10px;
 }
+/* Thương hiệu sản phẩm */
+.manufacture.top {
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid #e9edf0;
+  margin-top: 5px;
+  background: #fff;
+  position: relative;
+  list-style: none;
+  height: 50px;
+}
+.manufacture {
+  display: block;
+  background: #fff;
+  position: relative;
+  padding: 0 0 10px;
+}
+.manufacture .catesearch {
+  float: left;
+  position: relative;
+  width: 181px;
+  margin: 9px 4px 5px 10px;
+}
+.manufacture .catesearch .searchcate {
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  padding-right: 32px;
+  font-size: 13px;
+  width: calc(100% - 47px);
+}
+.manufacture .catesearch .reset {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 7px;
+  right: 7px;
+  background: #fff;
+}
+.manufacture .catesearch .butcatesearch {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background: none;
+  border: 0;
+  width: 20px;
+  height: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.bhx-search {
+  background-position: -282px -33px;
+  width: 18px;
+  height: 18px;
+}
+.manufacture .catesearch .resultsearch {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  z-index: 2;
+  top: 39px;
+  overflow: inherit;
+  position: absolute;
+  width: 98%;
+}
+.resultsearch ul li {
+  width: 100%;
+  color: #515151;
+  height: auto;
+  margin: 5px 0;
+  padding-left: 10px;
+}
+.manufacture li {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  padding: 5px 3px;
+  width: 92px;
+  height: 40px;
+}
+.manufacture a img {
+  display: block;
+  width: 51px;
+  height: auto;
+  max-height: 40px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.manufacture a i {
+  display: none;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+span.moremanu.top {
+  font-size: 15px;
+  position: relative;
+  right: -211px;
+  bottom: -7px;
+  color: red;
+}
+/* lịch sử mua hàng */
+.orderhistory{
+  background-color: white;
+  margin-bottom: 10px;
+  margin-top: 64px;
+  padding: 40px;
+}
+.col-md-3.quanlyusers {
+  list-style: none;
+
+}
+.tab-menu {
+  border: 1px solid #e1e1e1;
+  border-bottom: none;
+  margin-top: -74px;
+}
+.tab-menu a {
+  display: block;
+  padding: 15px 15px;
+  border-bottom: 1px solid #e1e1e1;
+  text-transform: uppercase;
+  font-size: 14px;
+  color:rgb(74, 74, 74);;
+}
+.tab-menu a:hover{
+  background-color:#d45a00;
+}
+.wp-name-and-avatar-user {
+  margin-bottom: 25px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.avatar-user {
+  width: 100px;
+  height: auto;
+  margin-right: 18px;
+}
+.avatar-user img {
+  width: 100%;
+}
+.name-user {
+  width: 200px;
+  padding-top: 10px;
+  position: relative;
+  left: 104px;
+  top: -93px;
+}
+.s-text7 {
+  font-family: Montserrat-Regular;
+  font-size: 13px;
+  color: #14191e;
+  line-height: 1.8;
+}
+.name-user .name {
+  font-size: 20px;
+  font-weight: bold;
+  color:rgb(74, 74, 74);;
+}
+.col-md-9 h3 {
+  position: relative;
+    top: 54px;
+}
+.inforname{
+  background-color: white;
+}
+.dmy{
+  width: 70px;
+  height: 40px;
+  border-radius: 5px;
+}

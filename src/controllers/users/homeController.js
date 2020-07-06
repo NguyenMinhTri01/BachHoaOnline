@@ -86,6 +86,20 @@ const getPay = (req, res) => {
   } catch (error) {
   }
 }
+const getHistory=(req,res)=>{
+  try{
+    return res.render('users/history')
+  } catch (error){
+
+  }
+}
+const getUsername=(req,res)=>{
+  try{
+    return res.render('users/username')
+  } catch (error){
+
+  }
+}
 module.exports = {
   getHome,
   getCheckOut,
@@ -95,6 +109,8 @@ module.exports = {
   getBeverages,
   getSingle,
   getPay,
+  getHistory,
+  getUsername,
   addNewOrder,
   getProductsAddCart
 }

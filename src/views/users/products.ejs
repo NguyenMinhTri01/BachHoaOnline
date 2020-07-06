@@ -1,637 +1,766 @@
 <%- include("header.ejs")  %>
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
-    <div class="container">
-        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
-            <li class="active">products</li>
-        </ol>
-    </div>
+	<div class="container">
+		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+			<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+			<li class="active">products</li>
+		</ol>
+	</div>
 </div>
+<!-- Thương hiệu sản phẩm -->
+<div class="manufacture top " style="" data-ismaincate="False" data-iscatesearch="True">
+	<!-- <form class="catesearch">
+		<input class="searchcate" onkeyup="category.searchManu(this);" id="catesearch" placeholder="Tìm thương hiệu" autocomplete="off">
+		<div class="reset" style="display: none;"><i class="bhx-closemenu"></i></div>
+		<div class="butcatesearch">
+			<i class="bhx-search"></i>
+		</div>
+		<div class="resultsearch" style="display:none;">
+			<ul>
+					<li data-id="19789" data-hash="shower-mate" data-search="shower-mate,Shower Mate,Shower Mate">Shower Mate</li>
+					<li data-id="2890" data-hash="dove" data-search="dove,Dove,Dove">Dove</li>
+					<li data-id="10256" data-hash="on-the-body" data-search="on-the-body,ON THE BODY,ON THE BODY">ON THE BODY</li>
+					<li data-id="2584" data-hash="lifebuoy" data-search="lifebuoy,Lifebuoy,Lifebuoy">Lifebuoy</li>
+					<li data-id="18782" data-hash="feira" data-search="feira,Feira,Feira">Feira</li>
+					<li data-id="2582" data-hash="enchanteur" data-search="enchanteur,Enchanteur,Enchanteur">Enchanteur</li>
+					<li data-id="2845" data-hash="lux" data-search="lux,Lux,Lux">Lux</li>
+					<li data-id="2940" data-hash="x-men" data-search="x-men,X-Men,X-Men">X-Men</li>
+					<li data-id="2927" data-hash="romano" data-search="romano,Romano,Romano">Romano</li>
+					<li data-id="2972" data-hash="purite" data-search="purite,Purité,Purite">Purité</li>
+					<li data-id="2865" data-hash="stives" data-search="stives,ST.IVES,ST.IVES">ST.IVES</li>
+					<li data-id="2971" data-hash="palmolive" data-search="palmolive,Palmolive,Palmolive">Palmolive</li>
+					<li data-id="3031" data-hash="hazeline" data-search="hazeline,Hazeline,Hazeline">Hazeline</li>
+					<li data-id="5215" data-hash="johnsons-baby" data-search="johnsons,Johnson's,Johnson's">Johnson's</li>
+					<li data-id="2885" data-hash="double-rich" data-search="double-rich,Double Rich,Double Rich">Double Rich</li>
+					<li data-id="4063" data-hash="e100" data-search="e100,E100,E100">E100</li>
+					<li data-id="4030" data-hash="familiar" data-search="familiar,Familiar,Familiar">Familiar</li>
+					<li data-id="5292" data-hash="pigeon" data-search="pigeon,Pigeon,Pigeon">Pigeon</li>
+					<li data-id="16582" data-hash="senka" data-search="senka,Senka,Senka">Senka</li>
+					<li data-id="4064" data-hash="olay" data-search="olay,Olay,Olay">Olay</li>
+					<li data-id="2821" data-hash="biore" data-search="biore,Bioré,Biore">Bioré</li>
+					<li data-id="9419" data-hash="oliv" data-search="oliv,Ôliv,Oliv">Ôliv</li>
+					<li data-id="3497" data-hash="unicorn" data-search="unicorn,Unicorn,Unicorn">Unicorn</li>
+					<li data-id="19246" data-hash="dpwhite" data-search="dpwhite,dpWhite,dpWhite">dpWhite</li>
+					<li data-id="19658" data-hash="antabax" data-search="antabax,Antabax,Antabax">Antabax</li>
+					<li data-id="14629" data-hash="abonne" data-search="a-bonne,A Bonné,A Bonne">A Bonné</li>
+					<li data-id="5520" data-hash="fresh" data-search="fresh,Fresh,Fresh">Fresh</li>
+					<li data-id="16652" data-hash="follow-me" data-search="follow-me,Follow Me,Follow Me">Follow Me</li>
+					<li data-id="6444" data-hash="gervenne" data-search="gervenne,Gervenne,Gervenne">Gervenne</li>
+					<li data-id="7054" data-hash="old-spice" data-search="old-spice,Old Spice,Old Spice">Old Spice</li>
+					<li data-id="11360" data-hash="white-rain" data-search="white-rain,White Rain,White Rain">White Rain</li>
+					<li data-id="19027" data-hash="fantasy" data-search="fantasy,Fantasy,Fantasy">Fantasy</li>
+					<li data-id="2840" data-hash="nysha" data-search="nysha,Nysha,Nysha">Nysha</li>
+					<li data-id="4102" data-hash="the-bol" data-search="the-bol,The Bol,The Bol">The Bol</li>
+					<li data-id="16656" data-hash="the-silk" data-search="thesilk,TheSilk,TheSilk">TheSilk</li>
+					<li data-id="19073" data-hash="agafia" data-search="agafia,Agafia,Agafia">Agafia</li>
+					<li data-id="20256" data-hash="answ" data-search="answ,ANSw,ANSw">ANSw</li>
+					<li data-id="2825" data-hash="elizzer" data-search="elizzer,Elizzer,Elizzer">Elizzer</li>
+					<li data-id="2960" data-hash="safeguard" data-search="safeguard,Safeguard,Safeguard">Safeguard</li>
+					<li data-id="4002" data-hash="kodomo" data-search="kodomo,Kodomo,Kodomo">Kodomo</li>
+					<li data-id="5118" data-hash="nuwhite" data-search="nuwhite,NuWhite,NuWhite">NuWhite</li>
+					<li data-id="6516" data-hash="coast" data-search="coast,Coast,Coast">Coast</li>
+					<li data-id="8854" data-hash="cindy" data-search="cindy,Cindy,Cindy">Cindy</li>
+					<li data-id="18549" data-hash="spa" data-search="spa,Spa,Spa">Spa</li>
+					<li data-id="19145" data-hash="t-p" data-search="t-p,T&amp;P,T&amp;P">T&amp;P</li>
+					<li data-id="19148" data-hash="love" data-search="love,Love,Love">Love</li>
+					<li data-id="19156" data-hash="casavi" data-search="casavi,Casavi,Casavi">Casavi</li>
+			</ul>
+		</div>
+	</form> -->
+	<ul>
+		<li>
+			<a data-id="19789" data-hash="shower-mate" title="Shower Mate" href="/sua-tam-shower-mate">
+				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/shower-mate-2206202011286.jpg"
+					alt="Shower Mate">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+		<li>
+			<a data-id="2890" data-hash="dove" title="Dove" href="/sua-tam-dove">
+				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Dove2483-s_1.png" alt="Dove">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+		<li>
+			<a data-id="10256" data-hash="on-the-body" title="ON THE BODY" href="/sua-tam-on-the-body">
+				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/ON-THE-BODY2444-s_59.png" alt="ON THE BODY">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+		<li>
+			<a data-id="2584" data-hash="lifebuoy" title="Lifebuoy" href="/sua-tam-lifebuoy">
+				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Lifebuoy2444-s_43.jpg" alt="Lifebuoy">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+		<li>
+			<a data-id="18782" data-hash="feira" title="Feira" href="/sua-tam-feira">
+				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/feira-1909201915134.png" alt="Feira">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+		<li>
+			<a data-id="2582" data-hash="enchanteur" title="Enchanteur" href="/sua-tam-enchanteur">
+				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Enchanteur2444-s_19.png" alt="Enchanteur">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+		<li>
+			<a data-id="2845" data-hash="lux" title="Lux" href="/sua-tam-lux">
+				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Lux2483-s_13.png" alt="Lux">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+	</ul>
+	<span class="moremanu top">Xem thêm</span>
+	<ul class="morebrand top">
+
+	</ul>
+</div>
+
+
+
+<!-- Hết thương hiệu sản phẩm -->
 <!-- //breadcrumbs -->
 
-		<div class="agile_top_brands_grids">
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+<div class="agile_top_brands_grids">
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
+										style="width: 100%"></a>
+								<p>6 chai trà xanh C2 hương chanh 360ml</p>
+								<h4>30.000₫ <span>39.000₫ </span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
+										<input type="hidden" name="amount" value="35.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
 						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
-												style="width: 100%"></a>
-										<p>6 chai trà xanh C2 hương chanh 360ml</p>
-										<h4>30.000₫ <span>39.000₫ </span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-												<input type="hidden" name="amount" value="35.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
+					</figure>
 				</div>
 			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
-												style="width: 100%"></a>
-										<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
-										<h4>49.000₫ <span>55.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="basmati rise">
-												<input type="hidden" name="amount" value="30.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
-												style="width: 100%"></a>
-										<p>6 chai trà xanh C2 hương chanh 360ml</p>
-										<h4>30.000₫ <span>39.000₫ </span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-												<input type="hidden" name="amount" value="35.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
-												style="width: 100%"></a>
-										<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
-										<h4>49.000₫ <span>55.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="basmati rise">
-												<input type="hidden" name="amount" value="30.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 top_brand_left text-center">
-				<div class="view-more">xem thêm 8 sản phẩm nữa <i class="fa fa-chevron-down view-more"></i></div>
-			</div>
-			<div class="clearfix"> </div>
 		</div>
-		<hr>
-	
-		
-		<div class="agile_top_brands_grids">
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
+										style="width: 100%"></a>
+								<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
+								<h4>49.000₫ <span>55.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="basmati rise">
+										<input type="hidden" name="amount" value="30.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
 						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
-												style="width: 100%"></a>
-										<p>6 chai trà xanh C2 hương chanh 360ml</p>
-										<h4>30.000₫ <span>39.000₫ </span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-												<input type="hidden" name="amount" value="35.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
+					</figure>
 				</div>
 			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
-												style="width: 100%"></a>
-										<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
-										<h4>49.000₫ <span>55.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="basmati rise">
-												<input type="hidden" name="amount" value="30.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
-												style="width: 100%"></a>
-										<p>6 chai trà xanh C2 hương chanh 360ml</p>
-										<h4>30.000₫ <span>39.000₫ </span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-												<input type="hidden" name="amount" value="35.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
-												style="width: 100%"></a>
-										<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
-										<h4>49.000₫ <span>55.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="basmati rise">
-												<input type="hidden" name="amount" value="30.99">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 top_brand_left">
-				<div class="hover14 column">
-					<div class="agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid_pos">
-							<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-						</div>
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" " class="img-responsive"></a>
-										<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-										<h4>30.000₫ <span>38.000₫</span></h4>
-									</div>
-									<div class="snipcart-details top_brand_home_details">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart">
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="business" value=" ">
-												<input type="hidden" name="item_name" value="Pepsi soft drink">
-												<input type="hidden" name="amount" value="80.00">
-												<input type="hidden" name="discount_amount" value="1.00">
-												<input type="hidden" name="currency_code" value="USD">
-												<input type="hidden" name="return" value=" ">
-												<input type="hidden" name="cancel_return" value=" ">
-												<input type="submit" name="submit" value="Chọn Mua" class="button">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 top_brand_left text-center">
-				<div class="view-more">xem thêm 8 sản phẩm nữa <i class="fa fa-chevron-down view-more"></i></div>
-			</div>
-			<div class="clearfix"> </div>
 		</div>
-		<hr>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
+										style="width: 100%"></a>
+								<p>6 chai trà xanh C2 hương chanh 360ml</p>
+								<h4>30.000₫ <span>39.000₫ </span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
+										<input type="hidden" name="amount" value="35.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
+										style="width: 100%"></a>
+								<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
+								<h4>49.000₫ <span>55.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="basmati rise">
+										<input type="hidden" name="amount" value="30.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 top_brand_left text-center">
+		<div class="view-more">xem thêm 8 sản phẩm nữa <i class="fa fa-chevron-down view-more"></i></div>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<hr>
+
+
+<div class="agile_top_brands_grids">
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
+										style="width: 100%"></a>
+								<p>6 chai trà xanh C2 hương chanh 360ml</p>
+								<h4>30.000₫ <span>39.000₫ </span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
+										<input type="hidden" name="amount" value="35.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
+										style="width: 100%"></a>
+								<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
+								<h4>49.000₫ <span>55.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="basmati rise">
+										<input type="hidden" name="amount" value="30.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
+										style="width: 100%"></a>
+								<p>6 chai trà xanh C2 hương chanh 360ml</p>
+								<h4>30.000₫ <span>39.000₫ </span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
+										<input type="hidden" name="amount" value="35.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
+										style="width: 100%"></a>
+								<p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
+								<h4>49.000₫ <span>55.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="basmati rise">
+										<input type="hidden" name="amount" value="30.99">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 top_brand_left">
+		<div class="hover14 column">
+			<div class="agile_top_brand_left_grid">
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid_pos">
+					<img src="user-template/images/offer.png" alt=" " class="img-responsive">
+				</div>
+				<div class="agile_top_brand_left_grid1">
+					<figure>
+						<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+								<a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
+										class="img-responsive"></a>
+								<p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
+								<h4>30.000₫ <span>38.000₫</span></h4>
+							</div>
+							<div class="snipcart-details top_brand_home_details">
+								<form action="#" method="post">
+									<fieldset>
+										<input type="hidden" name="cmd" value="_cart">
+										<input type="hidden" name="add" value="1">
+										<input type="hidden" name="business" value=" ">
+										<input type="hidden" name="item_name" value="Pepsi soft drink">
+										<input type="hidden" name="amount" value="80.00">
+										<input type="hidden" name="discount_amount" value="1.00">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="return" value=" ">
+										<input type="hidden" name="cancel_return" value=" ">
+										<input type="submit" name="submit" value="Chọn Mua" class="button">
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</figure>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 top_brand_left text-center">
+		<div class="view-more">xem thêm 8 sản phẩm nữa <i class="fa fa-chevron-down view-more"></i></div>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<hr>
 <%- include("footer.ejs")  %>

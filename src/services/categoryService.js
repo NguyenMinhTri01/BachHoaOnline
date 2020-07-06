@@ -194,7 +194,7 @@ const getMenuCategory = () => {
         return object
       }
       else {
-        object = _.assign(object, {child: null});
+        object = _.assign(object, {child: []});
         return object
       }
     }));

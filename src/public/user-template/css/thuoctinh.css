@@ -1,4 +1,95 @@
 /*Tri minh sửa*/
+.btnAddCart {
+  font-size: 14px;
+  color: #fff;
+  background: #3399cc;
+  text-decoration: none;
+  position: relative;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  text-transform: uppercase;
+  padding: .5em 0;
+  outline: none;
+}
+.btnAddCart:hover {
+  background: #fe9126;
+}
+.clearall {
+  width: 100%;
+  padding: 0 10px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.clearall button{
+  color: #0081bd;
+  background-color: transparent;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+  line-height: 20px;
+  position: relative;
+}
+
+.h4FormPay {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 10px;
+}
+
+.btn-step {
+  margin: 5px 10px 10px;
+  display: block;
+  padding: 15px 20px;
+  font-size: 16px;
+  width: calc(100% - 20px);
+}
+
+hr{
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.btn-og {
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff !important;
+  border: 0;
+  text-align: center;
+  background: #ff9142;
+  border-radius: 4px;
+  background: #008848;
+  cursor: pointer;
+  outline: none;
+}
+
+.formPay {
+  background-color: #fff;
+  height: auto;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.imageCard {
+  width: 80px;
+  height: auto;
+}
+
+
+.numberCart {
+  position: absolute;
+  background: red;
+  text-align: center;
+  border-radius: 50%;
+  color: #FFFFFF;
+  padding: 1px 5px;
+  font-size: 12px;
+  right: 12px;
+  top: -1px;
+}
+
 .modal-content{
   margin-left: 20% !important;
 }
@@ -19,12 +110,12 @@
 }
 
 .qty input{
-  width: 60px;
+  width: 40px;
   text-align: center;
 }
 
 .w-25 img {
-  width: 70px;
+  width: 80px;
   height: auto;
 }
 
@@ -204,9 +295,9 @@ button.btn.btn-info.pull-right:hover{
     text-indent: 10px;
 }
 input {
-    border: 1px solid #ccc;
-    padding: 7px;
-    border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px 2px;
+  border-radius: 5px;
 }
 .card-inner{
     margin-left: 4rem;

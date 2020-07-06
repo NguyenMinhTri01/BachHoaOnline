@@ -1,0 +1,260 @@
+<%- include("../adminHeader")  %>
+<% if (notification.length > 0) {%>
+<%   if (notification[0].type)  {%>
+<script>
+  toastr.options = {
+    "timeOut": "2500",
+    "positionClass": "toast-bottom-right",
+  }
+  toastr.success('<%= notification[0].message.status %>', '<%= notification[0].message.action %>');                                  
+</script>
+<% } else {%>
+<script>
+  toastr.options = {
+    "timeOut": "2500",
+    "positionClass": "toast-bottom-right",
+  }
+  toastr.error('<%= notification[0].message.status %>', '<%= notification[0].message.action %>');                                  
+</script>
+<% } %>
+<% } %>
+<div class="page-breadcrumb">
+  <div class="row">
+    <div class="col-12 d-flex no-block align-items-center">
+      <div class="ml-auto text-right">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="admin/order">Đơn Hàng</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Chi Tiết Đơn Hàng</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="text-center">
+        <h3>Chi Tiết Đơn Hàng</h3>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <form method="" id="formInputPay">
+            <fieldset>
+              <!-- <div class="col-md-12"> -->
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="h4FormPay">1.Thông Tin Người Mua Hàng</h4>
+                  <label class="control-label">Giới tính: </label>
+                  <strong><%= order.or_infoDailies.u_gender %></strong>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Họ và tên: </label>
+                    <input type="text" disabled class="form-control" name="u_name"
+                      value="<%= order.or_infoDailies.u_name %>">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Số điện thoại: </label>
+                    <input type="text" disabled class="form-control" name="u_phoneNumber"
+                      value="<%= order.or_infoDailies.u_phoneNumber %>">
+                  </div>
+                </div>
+              </div>
+              <!-- </div> -->
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="h4FormPay">2.Địa chỉ nhận hàng </h4>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Thành phố (tỉnh): </label>
+                    <input type="text" disabled class="form-control" name="provincesOrCities"
+                      value="<%= order.or_infoDailies.u_address.provincesOrCities %>">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Quận/Huyện: </label>
+                    <input type="text" disabled class="form-control" name="district"
+                      value="<%= order.or_infoDailies.u_address.district %>">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Phường/Xã: </label>
+                    <input type="text" disabled class="form-control" name="wards"
+                      value="<%= order.or_infoDailies.u_address.wards %>">
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Số nhà tên đường: </label>
+                    <input type="text" disabled class="form-control" name="detail"
+                      value="<%= order.or_infoDailies.u_address.detail %>">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="h4FormPay">3.Thời Gian Giao Hàng</h4>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <% let date = new Date(order.or_deliveryDate).toLocaleString() %>
+                    <% date = date.split(',') %>
+                    <label class="control-label">Ngày giao hàng: </label>
+                    <input type="text" disabled class="form-control" name="detail" value="<%= date[0] %>">
+                  </div>
+                  <div class="form-group">
+                    <% let time = '' %>
+                    <% if (order.or_deliveryTime == 1) time = '8h -> 12h' %>
+                    <% if (order.or_deliveryTime == 2) time = '13h -> 17h' %>
+                    <% if (order.or_deliveryTime == 3) time = '17h -> 22h' %>
+                    <label class="control-label">Khung giờ giao hàng: </label>
+                    <input type="text" disabled class="form-control" name="detail" value="<%= time %>">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="" style="height:100%">
+                    <label class="control-label">Ghi chú: </label>
+                    <textarea name="or_note" disabled class="form-control" id="exampleFormControlTextarea1" rows="3"
+                      style="height:72%"><%= order.or_note %></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-12">
+                  <h4 class="h4FormPay">4.Thông tin đơn hàng</h4>
+                </div>
+                <div class="col-md-12">
+                  <label>Mã đơn hàng: </label>
+                  <strong><%= order._id %></strong>
+                </div>
+                <div class="col-md-12">
+                  <label>Trạng thái đơn hàng: </label>
+                  <div class="btn-group open">
+                    <button type="button" class="btn <%= statusButton[order.or_status] %> btn-xs dropdown-toggle"
+                      data-toggle="dropdown" aria-expanded="true">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <button type="button"
+                      class="btn <%= statusButton[order.or_status] %> btn-xs"><%= statusOrder[order.or_status] %>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <% statusOrder.forEach((item, index) => { %>
+                      <li>
+                        <a id="status-<%= index %>" href="admin/order/status/<%= index + '/id/' + order._id %>"><i
+                            class="fa fa-edit"></i> <%= item %></a>
+                      </li>
+                      <% }) %>
+                    </ul>
+
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label class="control-label">Thời gian tạo: </label>
+                  <% let dateCrete = new Date(order.or_createdAt).toLocaleString() %>
+                  <strong><%= dateCrete %></strong>
+                </div>
+                <div class="col-md-12 text-center">
+                  <strong>Thông tin sản phẩm</strong>
+                </div>
+
+                <div class="col-md-12">
+                  <table class="table table-image" style="margin-bottom: 0px !important">
+                    <tbody id="bodyCartPay">
+                      <% if(order.or_products.length > 0) {%>
+                      <% order.or_products.forEach(function(product) { %>
+                      <tr class="fontSiteContent">
+                        <td class="w-25">
+                          <img src="<%= SECURE_DELIVERY_URL + product.pr_avatar %>" class="img-fluid img-thumbnail"
+                            alt="Sheep" style="max-width: 50%;">
+                        </td>
+                        <td><%= product.pr_name %></td>
+                        <td><span
+                            style="text-decoration: line-through; margin-right: 10px;"><%= product.pr_priceString %>
+                          </span> <%= product.pr_priceNewString %>
+                        </td>
+                        <td><i>x <%= product.pr_quantity %></i></td>
+                        <td class="text-right"><%= product.pr_totalString %></td>
+                      </tr>
+                      <% }) %>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="col-md-12">
+                  <hr>
+                  <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-9 text-right">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <span>Tiền hàng:</span>
+                        </div>
+                        <div class="col-md-12">
+                          <span>Phí vận chuyển:</span>
+                        </div>
+                        <div class="col-md-12">
+                          <span>Giảm giá:</span>
+                        </div>
+                        <div class="col-md-12">
+                        </div>
+                        <div class="col-md-12" style="margin-top: 4%;">
+                          <span>Tổng:</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 text-right">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <span class='sumPriceProduct' data='<%= order.or_sumPriceProduct %>'>
+                            <b><%= order.or_sumPriceProductString %></b></span>
+                        </div>
+                        <div class="col-md-12">
+                          <span class="transportCost"
+                            data="<%= TRANSPORT_COST %>"><b><%= TRANSPORT_COST_STRING %></b></span>
+                        </div>
+                        <div class="col-md-12">
+                          <span class="discountPay" data="0"><b> -0đ</b></span>
+                        </div>
+                        <div class="col-md-12">
+                          <hr>
+                        </div>
+                        <div class="col-md-12">
+                          <span class="totalPay"
+                            data="<%= order.or_totalPay %>"><b><%= order.or_totalPayString %></b></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br>
+                </div>
+
+              </div>
+
+            </fieldset>
+
+          </form>
+        </div>
+      </div>
+      <a href="admin/order" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+<%- include("../adminFooter") %>

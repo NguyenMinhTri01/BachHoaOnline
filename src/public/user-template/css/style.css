@@ -23,7 +23,6 @@ h1,h2,h3,h4,h5,h6,a{
 	font-weight:10;
 }
 ul,label{
-    margin: 5px;
     padding: 0;
     color: black !important;
     font-size: 14px;
@@ -91,14 +90,11 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
 
 }
 .agileits_header img {
-    
-   
-    
     position: relative;
-    left: 100px;
-    bottom: 4px;
-    margin-left: 116px;
-
+    /* left: 100px; */
+    left: -60%;
+    /* top: 7%; */
+    bottom: 7px;
 }
 .w3l_offers {
     float: left;
@@ -114,13 +110,14 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     text-decoration: none;
 }
 .w3l_search {
-    float: left;
-    width: 55%;
-    padding-left: 200px;
-    
+    position: relative;
+    right: 59px;
+    width: 174%;
+}
 
-
-
+.w3l_search2 {
+    right: 0px !important;
+    width: 164% !important;
 }
 .w3l_search input[type="search"] {
     width: 56%;
@@ -135,7 +132,7 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     border-radius: 20px;
-    margin-left: 73px;
+    /* margin-left: 73px; */
 }
 i.fa.fa-angle-right {
     font-size: 15px;
@@ -153,20 +150,29 @@ button.btn.btn-default.search {
     
    
 }
+
+.header2Logo {
+    left: 2% !important;
+}
+
 button.btn.btn-default.search:hover {
     background:#3399cc;
 	
 }
 .agile-login {
+    position: relative;
+    right: 10px;
+    bottom: -10px;
     float: left;
-    width: 40%;
-    text-align: center;
-    padding: 9px 0;
+    /* width: 40%; */
+    /* text-align: center; */
+    /* padding: 9px 0;*/
 
 }
 .agile-login ul li {
+    float: left;
     display: inline-block;
-    padding: 0em 1em;
+    padding: 0em 1.5em;
 }
 .agile-login ul li a {
     font-size: 1em;
@@ -469,7 +475,7 @@ ul.multi-column-dropdown h6 {
     padding: .5em 2.5em .5em 1em;
     border: 1px solid #fe9126;
     margin: .35em 0 0;
-    background: url(../images/cart.png) no-repeat 116px 9px;
+    /* background: url(../images/cart.png) no-repeat 116px 9px; */
 }
 #PPMiniCart form {
     width: 590px !important;
@@ -655,7 +661,7 @@ i.gray-star {
 	height: 32px;
 	border: none;
 	text-indent: 100%;
-	background: url(../images/arrow.png) no-repeat 0px 0px;
+	background: url(https://res.cloudinary.com/nguyenminhtri/image/upload/v1593962436/BachHoaOnline/icon/arrow_gi8ilv.png) no-repeat 0px 0px;
 }
 #toTopHover {
 	width: 32px;
@@ -1053,7 +1059,7 @@ a.w3_agile_vimeo:hover{
     left: 0.3em;
 }
 .login {
-    padding: 5em 0;
+    margin-bottom: 30px;
 }
 /*-- //login --*/
 /*-- register --*/
@@ -1067,10 +1073,9 @@ a.w3_agile_vimeo:hover{
 	margin:0 0 2em;
 }
 .login-form-grids input[type="text"]{
-	background:url(../images/img-sp.png) no-repeat 5px -259px #fff;
+	/* background:url(../images/img-sp.png) no-repeat 5px -259px #fff; */
 }
 .login-form-grids input[type="text"]:nth-child(2){
-	background:url(../images/img-sp.png) no-repeat 0px -298px #fff;
 	margin:1em 0;
 }
 .register-check-box label{
@@ -1183,7 +1188,7 @@ td.invert-image a img {
 	position:relative;
 }
 .close1,.close2,.close3 {
-    background: url('../images/close_1.png') no-repeat 0px 0px;
+    background: url('https://res.cloudinary.com/nguyenminhtri/image/upload/v1593962562/BachHoaOnline/icon/close_1_pn6omf.png') no-repeat 0px 0px;
     cursor: pointer;
     width: 28px;
     height: 28px;
@@ -1378,7 +1383,7 @@ ul.faq {
 
 .starRating:not(old) > label {
     float: right;
-    background: url(../images/star.png);
+    background: url("https://res.cloudinary.com/nguyenminhtri/image/upload/v1593962636/BachHoaOnline/icon/star_dx8h5n.png");
     background-size: contain;
     margin-right: 2px;
 }
@@ -1775,14 +1780,14 @@ h3.w3_agile_header:after,h2.w3_agile_header:after{
     text-decoration: none;
     height: 30px;
     width: 25px;
-    background: url("../images/icon1.png")no-repeat center center;
+    background: url("https://res.cloudinary.com/nguyenminhtri/image/upload/v1593962809/BachHoaOnline/icon/icon1_vth1nr.png")no-repeat center center;
 }
 .callbacks_nav:active {
   opacity: 1.0;
 }
 .callbacks_nav.next {
     right: 7%;
-    background: url("../images/icon2.png")no-repeat center center;
+    background: url("https://res.cloudinary.com/nguyenminhtri/image/upload/v1593962828/BachHoaOnline/icon/icon2_ijfneo.png")no-repeat center center;
 }
 #slider3-pager a ,#slider4-pager a {
   display: inline-block;
@@ -1890,7 +1895,6 @@ a.callbacks1_s3.active,a.callbacks1_s3:focus{
 /*--//slider end here--*/
 /*-- about-slid --*/
 .about-slid{
-	background: url(../images/22.jpg)no-repeat 0px center fixed;
 	background-size: cover;
 	text-align: center;
 	padding: 6em 0;
@@ -3492,8 +3496,6 @@ a.fb.btn {
 
 
 @media (min-width: 992px){
-
-
 .col-md-9 {
     width: 30%;
 }

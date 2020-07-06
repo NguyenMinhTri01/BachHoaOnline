@@ -1,155 +1,223 @@
 <%- include("header2.ejs")  %>
 <div class="breadcrumbs">
-
     <ol class="breadcrumb breadcrumb1">
-        <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
-        <li class="active">Giỏ Hàng</li>
+        <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+        <li class="active">Đặt Hàng</li>
     </ol>
-
 </div>
-<div class="container">
-
-
-    <div class="row donhang">
-
-        <div class="col-md-8">
-
-            <form method="GET" id="formiput">
-                <fieldset>
-                    <div class="col-md-12 tenkhachhang">
-                        <h3 style="font-size: 14px; font-weight: bold; line-height: 18px;">
-                            1.Thông Tin Người Mua Hàng</h3>
-                        <div class="wrapcheckbox box-data w100"><span class="gender">
-                                <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender1" value="1">
-                                <label for="ProfileItems_0_Gender1"> Anh &nbsp; </label>
-                            </span> <span class="gender">
-                                <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender0" value="0">
-                                <label for="ProfileItems_0_Gender0"> Chị</label>
-                            </span>
-                            <!---->
-                        </div>
-
-                        <div class="form-group">
-
-                            <input type="text" class="form-control" name="t_name" aria-describedby=""
-                                placeholder="Tên của bạn" style="height: 50px;">
-                        </div>
-                        <div class="form-group">
-
-                            <input type="text" class="form-control" name="phone" aria-describedby="emailHelp"
-                                placeholder="Số điện thoại của bạn" style="height: 50px;">
-
-                        </div>
-                        <div>
-                            <input id="IsCallOthers" name="IsCallOthers" type="checkbox">
-                            <label for="IsCallOthers" class="IsCallOthers">Gọi người khác nhận hàng (nếu có)</label>
-                        </div>
+<div class="text-center">
+    <h3>Thông Tin Đơn Hàng</h3>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form method="" id="formInputPay">
+            <fieldset>
+                <input id="_carts" type="hidden" name="carts" value="">
+                <div class="col-md-12 formPay">
+                    <h4 class="h4FormPay">1.Thông Tin Người Mua Hàng</h4>
+                    <div class="wrapcheckbox box-data w100"><span class="gender">
+                            <input type="hidden" name="_id" value="0">
+                            <input type="radio" name="gender" id="ProfileItems_0_Gender1" value="male">
+                            <label for="ProfileItems_0_Gender1"> Anh &nbsp; </label>
+                        </span> <span class="gender">
+                            <input type="radio" name="gender" id="ProfileItems_0_Gender0" value="female">
+                            <label for="ProfileItems_0_Gender0"> Chị</label>
+                        </span>
+                        <!---->
                     </div>
-                    <div class="col-md-12 diachi">
-                        <div class="row">
-                            <h3 style="font-size: 14px;font-weight: bold;line-height: 18px;margin-left: 12px;">
-                                2.Địa chỉ nhận hàng </h3>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="thanhpho"
-                                        placeholder="Nhập vào thành phố (tỉnh) của bạn" style="height: 50px;">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="quanhuuyen"
-                                        placeholder="Nhập vào quận/huyện" style="height: 50px;">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="phuongxa"
-                                        placeholder="Nhập vào phường/xã" style="height: 50px;">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="sonha"
-                                        placeholder="Nhập vào số nhà tên đường *" style="height: 50px;">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="u_name" aria-describedby=""
+                            placeholder="Tên của bạn" style="height: 50px;">
+                    </div>
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" name="u_phoneNumber" aria-describedby="emailHelp"
+                            placeholder="Số điện thoại của bạn" style="height: 50px;">
 
                     </div>
-
-
-                    <div class="col-md-12 thoigian">
-
-                        <div class="row">
-                            <h3 style="font-size: 14px;font-weight: bold;line-height: 18px;margin-left: 12px;">3.Thời Gian Giao Hàng </h3>
-                            <div class="col-md-6">
-                                <div class="form-group">
-
-                                    <select name="date" class="form-control" style="height: 50px;">
-                                        <option>Ngày Giao</option>
-                                        <option> Giao</option>
-                                    </select>
-                                </div>
+                </div>
+                <div class="col-md-12 formPay">
+                    <h4 class="h4FormPay">2.Địa chỉ nhận hàng </h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="provincesOrCities"
+                                    placeholder="Nhập vào thành phố (tỉnh) của bạn" style="height: 50px;">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-
-                                    <select name="time" class="form-control" style="height: 50px;">
-                                        <option>Giời Giao</option>
-                                        <option> Giao</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="district"
+                                    placeholder="Nhập vào quận/huyện" style="height: 50px;">
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                        placeholder="Ghi chú thêm (nếu có) "></textarea>
-                                </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="wards" placeholder="Nhập vào phường/xã"
+                                    style="height: 50px;">
                             </div>
-                            <div class="summary summary-final">
-                                <div class="row1">
-                                    <div class="col55">
-                                        <div class="cost">
-                                            <span>Tiền hàng: </span>
-                                            <label id="carttotal"><b>1.068.000₫</b></label>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="detail"
+                                    placeholder="Nhập vào số nhà tên đường *" style="height: 50px;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12 formPay">
+                    <h4 class="h4FormPay">3.ThờiGian Giao Hàng</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select name="or_deliveryDate" class="form-control" style="height: 50px;">
+                                    <% let currentDay = new Date()%>
+                                    <% for(let i = 0; i < 6; i++){ %>
+                                    <% let nextDay = new Date(currentDay)%>
+                                    <% nextDay.setDate(currentDay.getDate() + 1) %>
+                                    <option value='<%= nextDay.getTime() %>' class="text-center">
+                                        <%= nextDay.getDate() %> / <%= nextDay.getMonth() + 1 %></option>
+                                    <% currentDay =  new Date(nextDay)%>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select name="or_deliveryTime" class="form-control" style="height: 50px;">
+                                    <option value="0">Giờ Giao</option>
+                                    <option value='1'>8h -> 12h</option>
+                                    <option value='2'>13h -> 17h</option>
+                                    <option value='3'>17h -> 22h</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea name="or_note" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    placeholder="Ghi chú thêm (nếu có) "></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <h4 class="h4FormPay">4.Sản Phẩm trong giỏ hàng của bạn </h4>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table table-image" style="margin-bottom: 0px !important">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyCartPay">
+                                    <tr class="fontSiteContent">
+                                        <td class="w-25">
+                                            <img src="user-template/images/nu3.jpg" class="img-fluid img-thumbnail"
+                                                alt="Sheep">
+                                        </td>
+                                        <td>6 chai trà xanh C2 hương chanh 360ml</td>
+                                        <td><span class="priceSp">89.000₫ </span> 30.000₫</td>
+                                        <td><i>x1</i></td>
+                                        <td>30.000₫</td>
+                                    </tr>
+                                    <tr class="fontSiteContent">
+                                        <td class="w-25">
+                                            <img src="user-template/images/nu3.jpg" class="img-fluid img-thumbnail"
+                                                alt="Sheep">
+                                        </td>
+                                        <td>6 chai trà xanh C2 hương chanh 360ml</td>
+                                        <td><span class="priceSp">89.000₫ </span> 30.000₫</td>
+                                        <td><i>x1</i></td>
+                                        <td>30.000₫</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12 text-right" style="margin-bottom: 10px;">
+                            <a class="badge badge-primary" data-toggle="modal" data-target="#cartModal"> Xem lại giỏ
+                                hàng</a>
+
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-md-9 text-right">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span>Tiền hàng:</span>
                                         </div>
-                                        <!---->
-                                        <!---->
-                                        <!---->
-                                        <div class="shipfee">
-                                            <span><b>Phí giao hàng</b>:</span>
-                                            <label class="rightshiping">
-                                                <span class="shipfeebase">20.000₫</span>
-                                                <span>8.000₫</span>
-                                            </label>
+                                        <div class="col-md-12">
+                                            <span>Phí vận chuyển:</span>
                                         </div>
-                                        <div class="totalbox"><span>Tổng tiền: </span>
-                                            <label>1.076.000₫</label>
+                                        <div class="col-md-12">
+                                            <span>Giảm giá:</span>
                                         </div>
-                                        <div>
-                                            <!----> <a href="javascript:;" class="couponlink">Dùng mã giảm giá</a>
+                                        <div class="col-md-12">
+                                            <br>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span>Tổng:</span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span>Dùng mã giảm giá:</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span class='sumPriceProduct' data='0'> <b>64.000đ</b></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="transportCost"
+                                                data="<%= TRANSPORT_COST %>"><b>20.000đ</b></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="discountPay" data="0"><b> -0đ</b></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <hr>
+                                            <br>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <span class="totalPay" data="0"><b>84.000đ</b></span>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input id="couponPay" class="form-control" type="hidden" name="couponPay"
+                                                value="0">
+                                            <!-- <br>
+                                                    <button class="btn btn-info" type="hidden"> Áp Dụng </button> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-12">
-                                <button type="sumbmit" class="btn btn-success">Hoàn Tất Đơn Hàng</button>
-                            </div>
+                            <br>
                         </div>
+                        <div class="col-md-12">
+                            <button id="finishPay" type="sumbmit" class="btn-og btn-step">HOÀN TẤT ĐƠN HÀNG</button>
+                            <div class="clearall"><button>HỦY ĐƠN HÀNG</button></div>
+                        </div>
+                        </>
 
                     </div>
 
-                </fieldset>
+            </fieldset>
 
-            </form>
-        </div>
-
-
+        </form>
     </div>
 </div>
+
+<br>
 <script type="text/javascript"
     src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="user-template/js/customPages/jquerypay.js"></script>
-<%- include("footer.ejs")  %>
+<%- include("footer2.ejs")  %>

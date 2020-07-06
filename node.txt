@@ -64,3 +64,22 @@ const getListProducts = () => {
 
 cần xem lai login facebook
 
+6/30/2020, 11:16:11 AM
+
+
+
+{ _id: 'UXdu1NWHR',
+  pr_name: 'Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml', 
+  pr_price: 194000,
+  pr_discount: 10,
+  c_id: '7F3rvfvcD',
+  pr_slug: 'sua-tam-duong-the-co-hat-dove-duong-am-sang-min-896ml', 
+  pr_avatar: 'BachHoaOnline/product/1593334326053/1593334326050-864' }
+{ _id: 'YlLEAMKNh',
+  pr_name: 'Sữa tắm dưỡng thể Dove dưỡng ẩm chuyên sâu 896ml',      
+  pr_price: 175000,
+  pr_discount: 10,
+  pr_priceNew: 157500,
+  c_id: '7F3rvfvcD',
+  pr_slug: 'sua-tam-duong-the-dove-duong-am-chuyen-sau-896ml',      
+  pr_avatar: 'BachHoaOnline/product/1593273403309/1593273403307-986' }

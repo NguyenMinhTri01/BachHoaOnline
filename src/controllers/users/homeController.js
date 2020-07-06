@@ -70,6 +70,20 @@ const getPay=(req,res)=>{
 
   }
 }
+const getHistory=(req,res)=>{
+  try{
+    return res.render('users/history')
+  } catch (error){
+
+  }
+}
+const getUsername=(req,res)=>{
+  try{
+    return res.render('users/username')
+  } catch (error){
+
+  }
+}
 module.exports = {
   getHome,
   getCheckOut,
@@ -78,7 +92,9 @@ module.exports = {
   getProducts,
   getBeverages,
   getSingle,
-  getPay
+  getPay,
+  getHistory,
+  getUsername
   
  
 }

@@ -1,0 +1,231 @@
+<%- include("header2.ejs")  %>
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+
+    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+        <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+        <li class="active">Đơn hàng của tôi</li>
+    </ol>
+</div>
+<!-- //breadcrumbs -->
+<div class="row">
+
+<div class="col-md-3 quanlyusers ">
+  <div class="wp-name-and-avatar-user row flex-nowrap">
+    <!-- avatar user  -->
+    <div class="avatar-user ">
+        <img src="user-template/images/nu1.jpg" alt="avatar user" title="avatar-user">
+    </div>
+    <!-- tên user  -->
+    <div class="name-user">
+        <span class="s-text7">Tài khoản của</span>
+        <br>
+        <span class="name">Minh Thao </span>
+    </div>
+</div>
+  <div class="tab-menu nav" role="tablist">
+    
+    <!-- tab thông tin của tài khoản  -->
+    <a href="#" class="active || " role="tab">
+      <i class="fa fa-user " aria-hidden="true"></i>
+      Thông tin tài khoản
+  </a>
+    <!-- tab lịch sử các đơn hàng đã đặt -->
+    <a href="#" class="active || " role="tab">
+        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+        Lịch sử đặt hàng
+    </a>
+    
+    <!-- tab đăng xuất tài khoản  -->
+    <a href="/">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        Đăng xuất
+    </a>
+</div>
+
+</div>
+<h3>Thông tin tài khoản</h3>
+
+<div class="col-md-9">
+
+<div class="orderhistory">
+    <form id="forminfor">
+        <div class="form-group row">
+            <label for="inputname" class="col-sm-2 col-form-label">Họ tên</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="inputname" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="phone" class="col-sm-2 col-form-label">Số điện thoại</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" name="phone" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="Email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-6">
+              <input type="email" class="form-control" name="Email" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="gioitinh" class="col-sm-2 col-form-label">Giới tính</label>
+            <div class="col-sm-6">
+                <div class="wrapcheckbox box-data w100"><span class="gender">
+                    <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender1" value="1">
+                    <label for="ProfileItems_0_Gender1"> Nam  &nbsp; </label>
+                </span> <span class="gender">
+                    <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender0" value="0">
+                    <label for="ProfileItems_0_Gender0"> Nữ</label>
+                </span>
+                <!---->
+            </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputname" class="col-sm-2 col-form-label">Ngày sinh</label>
+            <div class="col-sm-2 ">
+                <select name="day" class="dmy">
+                    <option selected>Ngày</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="3">4</option>
+                    <option value="3">5</option>
+                    <option value="3">6</option>
+                    <option value="3">7</option>
+                    <option value="3">8</option>
+                    <option value="3">9</option>
+                    <option value="3">10</option>
+                    <option value="3">11</option>
+                    <option value="3">12</option>
+                    <option value="3">13</option>
+                    <option value="3">14</option>
+                    <option value="3">15</option>
+                    <option value="3">16</option>
+                    <option value="3">17</option>
+                    <option value="3">18</option>
+                    <option value="3">19</option>
+                    <option value="3">20</option>
+                    <option value="3">21</option>
+                    <option value="3">22</option>
+                    <option value="3">23</option>
+                    <option value="3">24</option>
+                    <option value="3">25</option>
+                    <option value="3">26</option>
+                    <option value="3">27</option>
+                    <option value="3">28</option>
+                    <option value="3">29</option>
+                    <option value="3">30</option>
+                    <option value="3">31</option>
+
+                  </select>
+            </div>
+            <div class="col-sm-2">
+                <select name="month" class="dmy">
+                    <option selected>Tháng</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="3">4</option>
+                    <option value="3">5</option>
+                    <option value="3">6</option>
+                    <option value="3">7</option>
+                    <option value="3">8</option>
+                    <option value="3">9</option>
+                    <option value="3">10</option>
+                    <option value="3">11</option>
+                    <option value="3">12</option>
+                   
+
+                  </select>
+            </div>
+            <div class="col-sm-2">
+                <select name="year" class="dmy">
+                    <option selected>Năm</option>
+                    <option value="1">2020</option>
+                    <option value="2">2019</option>
+                    <option value="3">2018</option>
+                    <option value="3">2017</option>
+                    <option value="3">2016</option>
+                    <option value="3">2015</option>
+                    <option value="3">2014</option>
+                    <option value="3">2013</option>
+                    <option value="3">2012</option>
+                    <option value="3">2011</option>
+                    <option value="3">2010</option>
+                    <option value="3">2009</option>
+                    <option value="3">2008</option>
+                    <option value="3">2007</option>
+                    <option value="3">2006</option>
+                    <option value="3">2005</option>
+                    <option value="3">2004</option>
+                    <option value="3">2003</option>
+                    <option value="3">2002</option>
+                    <option value="3">2001</option>
+                    <option value="3">2000</option>
+                    <option value="3">1999</option>
+                    <option value="3">1998</option>
+                    <option value="3">1997</option>
+                    <option value="3">1996</option>
+                    <option value="3">1995</option>
+                    <option value="3">1994</option>
+                    <option value="3">1993</option>
+                    <option value="3">1992</option>
+                    <option value="3">1991</option>
+                    <option value="3">1990</option>
+                    <option value="3">1989</option>
+                    <option value="3">1988</option>
+                    <option value="3">1987</option>
+                    <option value="3">1986</option>
+                    <option value="3">1985</option>
+                    <option value="3">1984</option>
+                    <option value="3">1983</option>
+                    <option value="3">1982</option>
+                    <option value="3">1981</option>
+                    <option value="3">1980</option>
+                    <option value="3">1979</option>
+                    <option value="3">1978</option>
+                    <option value="3">1977</option>
+                    <option value="3">1976</option>
+                    <option value="3">1975</option>
+                    <option value="3">1974</option>
+                    <option value="3">1973</option>
+                    <option value="3">1972</option>
+                    <option value="3">1971</option>
+                    <option value="3">1970</option>
+
+                  </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </form>
+</div>
+</div>
+</div>
+<script type="text/javascript"
+    src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#forminfor").validate({
+        rules:{
+            inputname:{
+                required:true,
+            },
+            phone:{
+                required:true,
+                
+            },
+        },
+        messages:{
+            inputname:{
+                required: "Vui lòng nhập họ và tên",
+            },
+            phone:{
+                required:"vui lòng nhập số điện thoại"
+            },
+        }
+    })
+    })
+</script>
+<%- include("footer.ejs")  %>

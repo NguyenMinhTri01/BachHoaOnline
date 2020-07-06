@@ -10,6 +10,7 @@ let initRouteUser = (app) => {
 
   router.get('/', home_C.getHome);
 
+  router.post('/getProductsAddCart', home_C.getProductsAddCart)
   
   router.get('/checkout',/*auth_C.checkLoggedOut,*/home_C.getCheckOut);
   router.get('/contact', home_C.getContact)
@@ -20,6 +21,8 @@ let initRouteUser = (app) => {
   router.get('/pay',home_C.getPay)
   router.get('/history',home_C.getHistory)
   router.get('/username',home_C.getUsername)
+
+  router.post('/sentDataPayToServer', home_C.addNewOrder)
 
   initAllRoute_AuthenticationUser(router);
 

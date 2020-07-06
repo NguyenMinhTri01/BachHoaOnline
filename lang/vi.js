@@ -10,6 +10,10 @@ export const transErrors = {
     status : 'Thất Bại',
     action : 'Xóa Dữ liệu'
   },
+  update_status_failed: {
+    status : 'Thất Bại',
+    action : 'Cập Nhật'
+  },
   register_failed : 'Địa chỉ email đã được sử dụng',
   adminUserNameIsExists : 'Tên đăng nhập đã tồn tại'
 }
@@ -26,6 +30,10 @@ export const transSuccess = {
     action : 'Đăng Ký'
   },
   update_infoAdmin_successful: {
+    status : 'Thành Công',
+    action : 'Cập Nhật'
+  },
+  update_status_successful: {
     status : 'Thành Công',
     action : 'Cập Nhật'
   },

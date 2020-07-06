@@ -10,7 +10,8 @@ let userSchema = new Schema({
   u_gender: {type: String, default: null},
   u_address: {
     provincesOrCities: {type: String, default: null},
-    District : {type: String, default: null},
+    district : {type: String, default: null},
+    wards : {type: String, default: null},
     detail : {type: String, default: null}
   },
   u_phoneNumber: {type: String, default: null},

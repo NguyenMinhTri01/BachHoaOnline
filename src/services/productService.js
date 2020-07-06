@@ -22,7 +22,7 @@ const getListProducts = () => {
           let category = await category_M.findCategoryById(product.c_id)
           let brand = await brand_M.findBrandById(product.br_id)
           newObj = _.assign({ br_name: brand.br_name, c_name: category.c_name }, newObj);
-          newObj.pr_price = formatNumber({prefix: '', suffix: ' VNĐ'})(newObj.pr_price)
+          newObj.pr_price = formatNumber({prefix: '', suffix: '₫'})(newObj.pr_price)
           return newObj;
         } catch (error) {
           console.log(error);
@@ -118,21 +118,68 @@ const hotProductById = (id) => {
 const getProductsFollowMenuCategory = (menu) => {
   return new Promise(async (resolve, reject) => {
     const data = await Promise.all (menu.map(async parent => {
-      let arrayIdCategoryChild = await category_M.findChildIdCategoryByIdParent(parent._id);
-      let arrId = arrayIdCategoryChild.map(category =>{
+      let object = new Object({
+        _id : parent._id,
+        c_slug : parent.c_slug,
+        c_name : parent.c_name,
+      })
+      //let arrayIdCategoryChild = await category_M.findChildIdCategoryByIdParent(parent._id);
+      let arrId = parent.child.map(category =>{
         return category._id;
       })
-      let products;
       if(arrId.length > 0){
-        products = await product_M.getProductsFollowArrayIdCategory(arrId);
+        let products = await product_M.getProductsFollowArrayIdCategory(arrId, 0);
+        products = products.map(product =>{
+          let pr_priceString = formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(product['pr_price']);
+          let pr_priceNewString = formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(product['pr_priceNew'] || 0) ;
+          let objectPr = _.assign(product._doc, {pr_priceString, pr_priceNewString})
+          return objectPr
+        })
+        object = _.assign(object, {products : products});
+        return object
       }
       else {
-        products = null;
+        let products = [];
+        object = _.assign(object, {products : products});
+        return object
       }
     }))
-    resolve(true);
+    resolve(data);
   })
 };
+
+const getProductsAddCart = (carts) => {
+  return new Promise( async (resolve, reject) => {
+    if (carts){
+      
+      let arrayCart = carts.split("@");
+      let products = await Promise.all(arrayCart.map(async item => {
+        let objectItem = JSON.parse(item);
+        let product = await product_M.findProductByIdAddToCart(objectItem._id);
+        let objectProduct = new Object(product._doc);
+        objectProduct = _.assign(objectProduct, {
+          pr_quantity : objectItem.quantity,
+          pr_sumPrice : objectProduct['pr_priceNew'] * objectItem.quantity,
+          pr_priceString : formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(objectProduct['pr_price']),
+          pr_priceNewString : formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(objectProduct['pr_priceNew']),
+          pr_sumPriceString : formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(objectProduct['pr_priceNew'] * objectItem.quantity),
+        })
+        return objectProduct
+      }))
+      let sumPrice = _.reduce(products, (sum, product) =>{
+        return sum + (product.pr_priceNew * product.pr_quantity);
+      }, 0);
+      let sumPriceString = formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(sumPrice)
+      resolve({
+        type: true,
+        sumPriceString,
+        sumPrice,
+        data : products,
+        SECURE_DELIVERY_URL : process.env.SECURE_DELIVERY_URL,
+      });
+    }
+  })
+}
 
 
 module.exports = {
@@ -140,5 +187,6 @@ module.exports = {
   createNewProduct,
   getListProducts,
   activeProductById,
+  getProductsAddCart,
   getProductsFollowMenuCategory
 }

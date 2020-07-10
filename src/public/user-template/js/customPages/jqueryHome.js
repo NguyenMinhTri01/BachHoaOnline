@@ -6,6 +6,8 @@ function reloadReady () {
     var currentNumber = getNumberOfItemsInCart();
     var formPay = $("#formPay");
 
+       
+
     $('._delete').on('click', function(){
       var id = $(this).attr('data');
       //
@@ -152,75 +154,11 @@ function appendToCart(bodyCart, sumPriceTotal){
 
 
 
-
-
-$(document).ready(function () {
-  
+function btnAddCartClick () {
   var bodyCart = $("#bodyCart");
-  var numberCart = $('.numberCart');
   var sumPriceTotal = $("#sumPriceTotal");
-  var currentNumber = getNumberOfItemsInCart();
-  var formPay = $("#formPay");
-  numberCart.text(currentNumber);
-  appendToCart(bodyCart, sumPriceTotal);
-  // setTimeout(function(){
-
-  //   $('._delete').on('click', function(){
-  //     var id = $(this).attr('data');
-  //     //
-  //     changeLocalStorage(id, 0);
-  //     var parent = $(this).parents('tr');
-  //     var sumPriceData = parent.find('.sumPrice').attr('data');
-  //     var pr_quantity = parent.find('.pr_quantity').val();
-  //     var sumPriceTotalData = sumPriceTotal.attr('data');
-  //     var subTotal = sumPriceTotalData - sumPriceData
-  //     sumPriceTotal.attr('data', subTotal);
-  //     sumPriceTotal.text(formatNumber(subTotal));
-  //     $(`#${id}`).remove();
-  //     numberCart.text(`${+numberCart.text() - +pr_quantity}`);
-  //   })
-
-
-  //   $('.pr_quantity').on('input', function (){
-
-
-  //     var checkUpDown
-  //     var pr_quantity = $(this).val();
-  //     var parent = $(this).parents('tr');
-      
-  //     // thay doi localStorage
-
-
-  //     var pr_priceNew = parent.find('.priceNew').attr('data');
-  //     var sumPrice = parent.find('.sumPrice');
-
-  //     var sumPriceData = sumPrice.attr('data');
-  //     var total = +pr_priceNew * pr_quantity;
-  //     (+sumPriceData < total) ? checkUpDown = 1 : checkUpDown = -1;
-  //     var sumCart = +sumPriceTotal.attr('data') + pr_priceNew*checkUpDown;
-  //     numberCart.text(`${+numberCart.text() + checkUpDown}`);
-  //     sumPriceData = sumPrice.attr('data', total);
-  //     total = formatNumber(total);
-  //     sumPrice.text(total);
-
-  //     sumPriceTotal.attr('data', sumCart);
-  //     sumCart = formatNumber(sumCart);
-  //     sumPriceTotal.text(sumCart);
-  //     var id = parent.attr('id');
-  //     changeLocalStorage(id, pr_quantity);
-  //   })
-  // }, 2000);
-
-  // slider
-  jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
-
-  jQuery('#responsive').change(function () {
-    $('#responsive_wrapper').width(jQuery(this).val());
-  });
-
-
-
   $(".btnAddCart").on('click', function () {
+    var numberCart = $('.numberCart');
     numberCart.text(`${+numberCart.text() + 1}`);
     toastr.options = {
       "timeOut": "2000",
@@ -266,4 +204,177 @@ $(document).ready(function () {
     }
     appendToCart(bodyCart, sumPriceTotal);
   })
+}
+
+
+
+
+$(document).ready(function () {
+  
+  var bodyCart = $("#bodyCart");
+  var numberCart = $('.numberCart');
+  var sumPriceTotal = $("#sumPriceTotal");
+  var currentNumber = getNumberOfItemsInCart();
+  var myPopoverContent = $("#myPopoverContent");
+  var formPay = $("#formPay");
+  var addMore = $('.addMore');
+  var addMorePrHot = $('.addMorePrHot');
+
+  addMore.click(function(event) {
+    event.preventDefault();
+    var dataCount = $(this).attr("data-count");
+    var newDataCount = +dataCount + 8;
+    $(this).attr("data-count", `${newDataCount}`);
+    var link = $(this).attr("href");
+    var arrLink = link.split("/");
+    var idCategory = arrLink[2];
+    var tagCategory = $(`#${idCategory}`);
+    $.ajax({
+      type: 'GET',
+      url: `${link}${dataCount}`,
+      data: null,
+      success: function(res){
+        if(res && res.products.length > 0){
+          if(res.products.length < 8){
+            $(`.${res.category._id}`).remove();
+          };
+          res.products.forEach(function(product){
+            var strOne = `<div style="min-height: 70px;">`+
+            `<p>${product.pr_name}</p>`+
+            `</div>`
+            var strTwo = `<div style="min-height: 48px;">`+
+              `<br>`+`<h4>${formatNumber(product.pr_price)} </h4>`+`</div>`
+
+            if(product.pr_name.length >= 70){
+              strOne = `<div style="min-height: 70px;">`+
+              `<p>${product.pr_name.slice(0, 70)}...</p>`+
+              `</div>`
+            };
+            if(product.pr_discount > 0) {
+              strTwo = `<div style="min-height: 48px;">`+
+                `<span data='${product.pr_price}' class="priceSp">${formatNumber(product.pr_price)} </span><label `+
+                ` class="discount" style="margin-left: 6px;"> -${product.pr_discount}%</label>`+
+                `<h4>${formatNumber(product.pr_priceNew)} </h4>`+`</div>`
+            }
+            tagCategory.append(
+            `<div class="col-md-3 top_brand_left">`+
+              `<div class="hover14 column">` +
+                `<div class="agile_top_brand_left_grid">`+
+                  `<div class="agile_top_brand_left_grid1">`+
+                    `<figure>`+
+                      `<div class="snipcart-item block text-center">`+
+                        `<div class="snipcart-thumb">`+
+                          `<a href="${res.category.c_slug}${product.pr_slug}"><img title=" " alt=" "`+
+                              `src="${res.SECURE_DELIVERY_URL}${product.pr_avatar}" style="width: 100%"></a>`+
+                              strOne + strTwo + `</div>`+
+
+                        `<div class="snipcart-details top_brand_home_details">`+
+                          `<button data-id="${product._id}" class="btnAddCart"> Chọn mua</button>`+
+                        `</div>`+
+                      `</div>`+
+                    `</figure>`+
+                  `</div>`+
+                `</div>`+
+              `</div>`+
+            `</div>`
+              )
+          })
+          btnAddCartClick();
+        }
+        else {
+          $(`.${res.category._id}`).remove();
+        }
+        
+      }
+    });
+  });
+  addMorePrHot.click(function (event){
+    event.preventDefault();
+    var dataCount = $(this).attr("data-count");
+    var newDataCount = +dataCount + 8;
+    $(this).attr("data-count", `${newDataCount}`);
+    var link = $(this).attr("href");
+    var tagCategory = $('#productsHot');
+    $.ajax({
+      type: 'GET',
+      url: `${link}${dataCount}`,
+      data: null,
+      success: function(res){
+        if(res && res.products.length > 0){
+          if(res.products.length < 8){
+            $('.addMorePrHot').remove();
+          };
+          res.products.forEach(function(product){
+            var strOne = `<div style="min-height: 70px;">`+
+            `<p>${product.pr_name}</p>`+
+            `</div>`
+            var strTwo = `<div style="min-height: 48px;">`+
+              `<br>`+`<h4>${formatNumber(product.pr_price)} </h4>`+`</div>`
+
+            if(product.pr_name.length >= 70){
+              strOne = `<div style="min-height: 70px;">`+
+              `<p>${product.pr_name.slice(0, 70)}...</p>`+
+              `</div>`
+            };
+            if(product.pr_discount > 0) {
+              strTwo = `<div style="min-height: 48px;">`+
+                `<span data='${product.pr_price}' class="priceSp">${product.pr_priceString} </span><label `+
+                ` class="discount" style="margin-left: 6px;"> -${product.pr_discount}%</label>`+
+                `<h4>${product.pr_priceNewString} </h4>`+`</div>`
+            }
+            tagCategory.append(
+            `<div class="col-md-3 top_brand_left">`+
+              `<div class="hover14 column">` +
+                `<div class="agile_top_brand_left_grid">`+
+                `<div class="agile_top_brand_left_grid_pos">`+
+                `<img src="${res.SECURE_DELIVERY_URL}c_scale,w_40/BachHoaOnline/icon/hot_fire"` +
+                `alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">`+
+                `</div>`+
+                  `<div class="agile_top_brand_left_grid1">`+
+                    `<figure>`+
+                      `<div class="snipcart-item block text-center">`+
+                        `<div class="snipcart-thumb">`+
+                          `<a href="hot/${product.pr_slug}"><img title=" " alt=" "`+
+                              `src="${res.SECURE_DELIVERY_URL}${product.pr_avatar}" style="width: 100%"></a>`+
+                              strOne + strTwo + `</div>`+
+                        `<div class="snipcart-details top_brand_home_details">`+
+                          `<button data-id="${product._id}" class="btnAddCart"> Chọn mua</button>`+
+                        `</div>`+
+                      `</div>`+
+                    `</figure>`+
+                  `</div>`+
+                `</div>`+
+              `</div>`+
+            `</div>`
+              )
+          })
+          btnAddCartClick();
+        }
+        else {
+          $('.addMorePrHot').remove();
+        }
+      }
+    });
+  })
+
+  $('[data-toggle="popover"]').popover({
+    placement : 'bottom',
+    trigger :'hover',
+    html:true,
+    delay: { show: 0, hide: 2000 },
+    content : myPopoverContent.html()
+  }); 
+  numberCart.text(currentNumber);
+  appendToCart(bodyCart, sumPriceTotal);
+  // slider
+  jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
+  jQuery('#responsive').change(function () {
+    $('#responsive_wrapper').width(jQuery(this).val());
+  });
+
+  btnAddCartClick();
+  
+
+
+
 })

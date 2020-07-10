@@ -1024,8 +1024,9 @@ span.moremanu.top {
 }
 .col-md-9 h3 {
   position: relative;
-    top: -9px;
+  top: 10px;
 }
+
 .inforname{
   background-color: white;
 }

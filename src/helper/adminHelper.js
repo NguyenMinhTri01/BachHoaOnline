@@ -4,6 +4,7 @@ import { promisify } from 'util';
 
 
 const cloudinaryUploadImage = promisify(cloudinary_v2.uploader.upload);
+const cloudinaryDestroyImage = promisify(cloudinary_v2.uploader.destroy);
 /**
  * 
  * @param {*} folder url folder to save image in cloudinary, example : BachHoaOnline/example
@@ -18,22 +19,34 @@ const uploadImageToCloudinary = (folder, path) => {
       use_filename: true,
       unique_filename: false
     })
-    .then (result => {
-      if (result) {
-        // remove file from folder location
-        fs.remove(path, (err) => {
-          return resolve(result);
-        });
-      } else {
-        resolve(false);
-      }
-    })
-    .catch (err =>  resolve(false))
+      .then(result => {
+        if (result) {
+          // remove file from folder location
+          fs.remove(path, (err) => {
+            return resolve(result);
+          });
+        } else {
+          resolve(false);
+        }
+      })
+      .catch(err => resolve(false))
   })
 };
 
 
+const removeImageFromCDN = (public_id) => {
+  return new Promise((resolve, reject) => {
+    cloudinaryDestroyImage(public_id)
+      .then(res => {
+        if (res.result === 'ok') return resolve(true)
+        resolve(false);
+      })
+  })
+}
+
+
 
 module.exports = {
-  uploadImageToCloudinary: uploadImageToCloudinary
+  uploadImageToCloudinary,
+  removeImageFromCDN
 }

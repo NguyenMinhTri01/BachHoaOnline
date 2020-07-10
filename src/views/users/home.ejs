@@ -1,105 +1,176 @@
 <%- include("header.ejs") %>
 
-	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:65px">
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<a href="beverages.html"> <img class="first-slide" src="user-template/images/sl1.jpg" alt="First slide"
-						style="width: 100% ; height: 255px;"></a>
-			</div>
-			<div class="item">
-				<a href="personalcare.html"> <img class="second-slide " src="user-template/images/sl2.jpg" alt="Second slide"
-						style="width: 100% ; height: 255px;"></a>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:65px">
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>
+	<div class="carousel-inner" role="listbox">
+		<div class="item active">
+			<a href="beverages.html"> <img class="first-slide" src="user-template/images/sl1.jpg" alt="First slide"
+					style="width: 100% ; height: 255px;"></a>
+		</div>
+		<div class="item">
+			<a href="personalcare.html"> <img class="second-slide " src="user-template/images/sl2.jpg" alt="Second slide"
+					style="width: 100% ; height: 255px;"></a>
 
-			</div>
-			<div class="item">
-				<a href="household.html"><img class="third-slide " src="user-template/images/sl3.jpg" alt="Third slide"
-						style="width: 100% ; height: 255px;"></a>
+		</div>
+		<div class="item">
+			<a href="household.html"><img class="third-slide " src="user-template/images/sl3.jpg" alt="Third slide"
+					style="width: 100% ; height: 255px;"></a>
 
+		</div>
+	</div>
+
+</div>
+
+
+<% if(typeof productsHot != "undefined") {%>
+<% if(productsHot.length > 0) {%>
+<h3 style="margin-top: 40px; border-left:6px solid #fe9126">Các Sản Phẩm Nổi Bật</h3>
+<div class="agile_top_brands_grids">
+	<div id="productsHot">
+		<% productsHot.forEach((product) => { %>
+		<div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+					<div class="agile_top_brand_left_grid_pos">
+						<img src="<%= SECURE_DELIVERY_URL %>c_scale,w_40/BachHoaOnline/icon/hot_fire" 
+						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+					</div>
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href="hot/<%= product.pr_slug %>"><img title=" " alt=" "
+											src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" style="width: 100%"></a>
+									<% if(product.pr_name.length >= 70) {%>
+									<div style="min-height: 70px;">
+										<p><%= product.pr_name.slice(0, 70) %>...</p>
+									</div>
+									<% } else {%>
+									<div style="min-height: 70px;">
+										<p><%= product.pr_name%></p>
+									</div>
+									<% } %>
+									<% if(product.pr_discount > 0) {%>
+									<div style="min-height: 48px;">
+										<span data='<%= product.pr_price %>' class="priceSp"><%= product.pr_priceString %> </span>
+										<label class="discount" style="margin-left: 6px;"> -<%= product.pr_discount %>%</label>
+										<h4><%= product.pr_priceNewString %></h4>
+									</div>
+									<% } else {%>
+									<div style="min-height: 48px;">
+										<br>
+										<h4><%= product.pr_priceString %></h4>
+									</div>
+									<% } %>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="<%= product._id %>" class="btnAddCart"> Chọn mua</button>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
 			</div>
 		</div>
-
+		<% }) %>
 	</div>
 
 
-		<!-- 	Đồ uống các loại -->
-		<% if(typeof data != "undefined") {%>
-			<% if (data.length > 0) {%>
-				<% data.forEach((category) => { %>
-					<% if(category.products.length > 0) {%>
-					<h3 style="margin-top: 40px; border-left:6px solid #fe9126"><%= category.c_name %></h3>
-					<div class="agile_top_brands_grids">
+	<% if(productsHot.length == 8) {%>
+	<div class="col-md-12 top_brand_left text-center">
+		<div class="view-more">
+			<a class="addMorePrHot" data-count="8" href="addOnHotItem/count/">xem thêm
+				<i class="fa fa-chevron-down view-more"></i>
+			</a>
+		</div>
+	</div>
+	<% } %>
+	<div class="clearfix"> </div>
+</div>
+<hr>
+<% } %>
+<% } %>
 
-						<% category.products.forEach((product) => { %>
-							<div class="col-md-3 top_brand_left">
-								<div class="hover14 column">
-									<div class="agile_top_brand_left_grid">
-										<!-- <div class="agile_top_brand_left_grid_pos">
-											<img src="user-template/images/offer.png" alt=" " class="img-responsive">
-										</div> -->
-										<div class="agile_top_brand_left_grid1">
-											<figure>
-												<div class="snipcart-item block text-center">
-													<div class="snipcart-thumb">
-														<a href="<%= category.c_slug %>/<%= product.pr_slug %>"><img title=" " alt=" " src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>"
-																style="width: 100%"></a>
-														<% if(product.pr_name.length >= 70) {%>
-															<div style="min-height: 70px;">
-																<p><%= product.pr_name.slice(0, 70) %>...</p>
-															</div>
-														<% } else {%>
-															<div style="min-height: 70px;">
-																<p><%= product.pr_name%></p>
-															</div>
-														<% } %>
-														<% if(product.pr_discount > 0) {%>
-															<div style="min-height: 48px;">
-																<span data='<%= product.pr_price %>' class="priceSp"><%= product.pr_priceString %> </span><label class="discount">-<%= product.pr_discount %>%</label>
-																<h4><%= product.pr_priceNewString %></h4>
-															</div>
-														<% } else {%>
-															<div style="min-height: 48px;">
-																<br>
-																<h4><%= product.pr_priceString %></h4>
-															</div>
-														<% } %>
-													</div>
-													<div class="snipcart-details top_brand_home_details">
-														<button data-id="<%= product._id %>" class="btnAddCart"> Chọn mua</button>
-															<!-- <form action="#" method="get" class="saveCart">
-																<fieldset>
-																	<input type="hidden" value="<%= product._id %>" name="id">
-																	<input type="submit" name="submitSp" value="Chọn Mua" class="button">
-																</fieldset>
-															</form> -->
-													</div>
-												</div>
-											</figure>
-										</div>
+
+<!-- 	Đồ uống các loại -->
+<% if(typeof data != "undefined") {%>
+<% if (data.length > 0) {%>
+<% data.forEach((category) => { %>
+<% if(category.products.length > 0) {%>
+<h3 style="margin-top: 40px; border-left:6px solid #fe9126"><%= category.c_name %></h3>
+<div class="agile_top_brands_grids">
+	<div id="<%= category._id %>">
+		<% category.products.forEach((product) => { %>
+		<div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href="<%= category.c_slug %>/<%= product.pr_slug %>"><img title=" " alt=" "
+											src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" style="width: 100%"></a>
+									<% if(product.pr_name.length >= 70) {%>
+									<div style="min-height: 70px;">
+										<p><%= product.pr_name.slice(0, 70) %>...</p>
 									</div>
+									<% } else {%>
+									<div style="min-height: 70px;">
+										<p><%= product.pr_name%></p>
+									</div>
+									<% } %>
+									<% if(product.pr_discount > 0) {%>
+									<div style="min-height: 48px;">
+										<span data='<%= product.pr_price %>' class="priceSp"><%= product.pr_priceString %> </span>
+										<label class="discount" style="margin-left: 6px;"> -<%= product.pr_discount %>%</label>
+										<h4><%= product.pr_priceNewString %></h4>
+									</div>
+									<% } else {%>
+									<div style="min-height: 48px;">
+										<br>
+										<h4><%= product.pr_priceString %></h4>
+									</div>
+									<% } %>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="<%= product._id %>" class="btnAddCart"> Chọn mua</button>
 								</div>
 							</div>
-						<% }) %>
-						<div class="col-md-12 top_brand_left text-center">
-							<div class="view-more">xem thêm 8 sản phẩm nữa <i class="fa fa-chevron-down view-more"></i></div>
-						</div>
-						<div class="clearfix"> </div>
+						</figure>
 					</div>
-					<hr>
-					<% } %>
-				<% }) %>
-			<% } %>
-		<% } %>
-
-	
-		<h3 style="margin: 20px 0; border-left:6px solid #fe9126">MẸO HAY</h3>
-		<div class="">
-			<iframe width="100%" height="300px" src="https://www.youtube.com/embed/gWkEMHshFgo" frameborder="0"
-				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
 		</div>
+		<% }) %>
+	</div>
+
+
+	<% if(category.products.length == 8) {%>
+	<div class="col-md-12 top_brand_left text-center">
+		<div class="view-more">
+			<a class="addMore <%= category._id %>" data-count="8" href="addOnItem/id/<%= category._id %>/count/">xem thêm
+				<i class="fa fa-chevron-down view-more"></i>
+			</a>
+		</div>
+	</div>
+	<% } %>
+	<div class="clearfix"> </div>
+</div>
+<hr>
+<% } %>
+<% }) %>
+<% } %>
+<% } %>
+
+
+<h3 style="margin-top: 40px; border-left:6px solid #fe9126">MẸO HAY</h3>
+<div style="margin-top: 40px">
+	<iframe width="100%" height="300px" src="https://www.youtube.com/embed/gWkEMHshFgo" frameborder="0"
+		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 <%- include("footer.ejs")  %>

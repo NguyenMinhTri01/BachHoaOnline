@@ -39,14 +39,14 @@ categorySchema.statics = {
   // },
 
   findChildCategoryById(id) {
-    return this.find({ c_parentId: id },
+    return this.find({ c_parentId: id, c_status:true },
       '_id c_name c_slug c_parentId',
       { sort: { c_slug: 1 } }
     );
   },
 
   findChildIdCategoryByIdParent(id) {
-    return this.find({ c_parentId: id },
+    return this.find({ c_parentId: id, c_status:true },
       '_id'
     );
   },
@@ -61,7 +61,7 @@ categorySchema.statics = {
 
   findAllByLevel(c_level) {
     return this.find(
-      { c_level },
+      { c_level: c_level, c_status : true },
       '_id c_name c_slug c_parentId',
       { sort: { c_slug: 1 } }
     );

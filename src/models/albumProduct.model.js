@@ -17,14 +17,29 @@ albumProductSchema.statics = {
     return this.findById(id);
   },
   findImagesByPrId(pr_id){
-    return this.findOne({pr_id});
+    return this.find({pr_id});
   },
   updateListImagesById(_id, item){
     return this.updateOne(_id, item);
   },
   updateListImagesByPr_Id(pr_id, item){
     return this.updateOne(pr_id, item);
-  }
+  },
+
+  deleteImageById(_id){
+      let _image;
+      return this.findById(_id)
+        .then(image =>{
+          _image = image;
+          return this.deleteOne({_id : _id})
+        })
+        .then(res => {
+          if(res.n > 0){
+            return _image
+          }
+        })
+  },
+
 }
 
 

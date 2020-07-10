@@ -51,10 +51,9 @@ const initPassportFacebook = () => {
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK_URL,
-    profileFields : ['email']
+    profileFields : ['email', 'displayName']
   },
   async (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
     let user = await users_M.findUserByFacebookID(profile._json.id);
     if (!user){
       let checkExists = await users_M.findUserByEmail(profile._json.email);
@@ -63,11 +62,10 @@ const initPassportFacebook = () => {
         return done(null,newUser);
       }
       let newItem = {
-        u_name : profile._json.name,
-        u_facebookID : profile._json.id,
-        u_email : profile._json.email
+        u_name : profile.displayName,
+        u_facebookID : profile.id,
+        u_email : profile.emails[0].value
       };
-      //console.log(profile._json);
       let newUser = await users_M.createNew(newItem);
       return done(null, newUser);
     }
@@ -77,7 +75,6 @@ const initPassportFacebook = () => {
     passport.serializeUser((user, done)=>{
       done(null, user);
     });
-  
     passport.deserializeUser((user, done)=>{
       return done(null, user);
     });

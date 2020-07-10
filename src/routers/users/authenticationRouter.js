@@ -17,11 +17,11 @@ initPassportGoogle();
 const initAllRoute_AuthenticationUser = (router) => {
 
     //get view login admin
-    router.get("/login",/*auth_C.checkLoggedOut,*/auth_C.getLoginUser);
-    router.get("/register", auth_C.getRegisterUser);
+    router.get("/login",auth_C.checkLoggedOut, auth_C.getLoginUser);
+    router.get("/register",auth_C.checkLoggedOut, auth_C.getRegisterUser);
     router.post("/register", auth_C.registerUser);
     // authentication with Facebook
-    router.get("/auth/facebook", passport.authenticate("facebook", {scope: ['email', 'displayName']}));
+    router.get("/auth/facebook", passport.authenticate("facebook", {scope: ['email','public_profile']}));
     router.get("/auth/facebook/callback", passport.authenticate("facebook", {
       failureRedirect : '/login',
       successRedirect : '/',

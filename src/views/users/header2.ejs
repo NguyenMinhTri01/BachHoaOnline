@@ -2,8 +2,9 @@
 <html>
 
 <head>
-	<title>Bách Hóa Online | Mua Tất Cả Trên Dị Động </title>
-	<link rel="icon" type="image/png" sizes="25x25" href="https://res.cloudinary.com/nguyenminhtri/image/upload/c_scale,w_25/v1593921091/BachHoaOnline/logo/logofnv_lhkuvw.png">
+	<title> <%= title? title : "Bách Hóa Online | Mua Tất Cả Trên Dị Động" %> </title>
+	<link rel="icon" type="image/png" sizes="25x25"
+		href="https://res.cloudinary.com/nguyenminhtri/image/upload/c_scale,w_25/v1593921091/BachHoaOnline/logo/logofnv_lhkuvw.png">
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -48,6 +49,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 	<!-- header -->
+	<style type="text/css">
+		#myContent ul li a {
+				text-decoration: none;
+				color: #111;
+		}
+		#myContent ul li {
+				list-style: none;
+				padding: 10px;
+				width: auto;
+				height: auto;
+		 }
+		 #myContent ul li a:hover {
+			color: #d45a00;
+		 }
+	</style>
+	<div id="myPopoverContent" style="display:none">
+		<div id="myContent">
+			<ul>
+				 <li><a href="#">Tài khoản của tôi</a></li>
+				 <li><a href="#">Đăng Xuất</a></li>
+			</ul>
+	 </div>
+	</div>
 	<div class="agileits_header">
 		<div class="container">
 			<div class="row">
@@ -55,7 +79,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="row">
 						<div class="col-md-2">
 							<a href="/">
-								<img class='header2Logo' src="https://res.cloudinary.com/nguyenminhtri/image/upload/c_scale,h_50,w_153/v1593957466/BachHoaOnline/logo/logo9h_sdzmse.png">
+								<img class='header2Logo'
+									src="https://res.cloudinary.com/nguyenminhtri/image/upload/c_scale,h_50,w_153/v1593957466/BachHoaOnline/logo/logo9h_sdzmse.png">
 							</a>
 						</div>
 						<div class="col-md-4">
@@ -70,11 +95,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 						<div class="col-md-5">
-							<div class="agile-login" style= "right: -20px;">
+							<div class="agile-login" style="right: -20px;">
 								<ul>
 									<% if (typeof infoUser != "undefined") {%>
-									<li> <a href="javascript:void(0)">Xin Chào <%= infoUser.u_name %> </a> </li>
-									<% } else {%>
+										<li> Xin Chào <a href="#" data-toggle="popover" data-placement="bottom"><strong><%= infoUser.u_name %></strong></a></li>
+										<% } else {%>
 									<li><a href="register"> Đăng Ký </a></li>
 									<li><a href="login">Đăng Nhập </a></li>
 									<% } %>
@@ -85,8 +110,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col-md-1">
 							<div class="product_list_header">
 								<div class="numberCart">0</div>
-								<button class="w3view-cart" data-toggle="modal" data-target="#cartModal"><i class="fa fa-cart-arrow-down"
-										aria-hidden="true"></i>
+								<button class="w3view-cart" data-toggle="modal" data-target="#cartModal"><i
+										class="fa fa-cart-arrow-down" aria-hidden="true"></i>
 								</button>
 							</div>
 						</div>
@@ -153,7 +178,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="modal-footer border-top-0 d-flex justify-content-between">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-								<button onclick="window.location.href='/pay'" type="button" class="btn btn-success btnSS">Thanh Toán</button>
+								<button onclick="window.location.href='/pay'" type="button" class="btn btn-success btnSS">Thanh
+									Toán</button>
 							</div>
 						</div>
 					</div>

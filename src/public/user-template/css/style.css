@@ -173,7 +173,22 @@ button.btn.btn-default.search:hover {
     float: left;
     display: inline-block;
     padding: 0em 1.5em;
+    color:#FFF
 }
+/* .popover-content ul li a{
+    color: #000 !important;
+    padding: 0px !important;
+}
+.popover-content ul li {
+    float: left;
+    display: inline-block;
+    padding: 0em 1.5em;
+} */
+
+.popover-content {
+    padding: 0px !important;
+}
+
 .agile-login ul li a {
     font-size: 1em;
     text-transform: capitalize;

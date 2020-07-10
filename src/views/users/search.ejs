@@ -1,0 +1,79 @@
+<%- include("header.ejs") %>
+<style>
+  .resultText {
+    padding: 10px 5px;
+    margin: 60px 0px 0px 0px !important;
+  }
+</style>
+<h4 class="resultText">Tìm thấy <b><%= products.length %></b> kết quả phù hợp với từ khóa <b><%= keyword %></b></h4>
+<% if(typeof products != "undefined") {%>
+<% if(products.length > 0) {%>
+<h3 style="margin-top: 40px; border-left:6px solid #fe9126">Các Sản Phẩm Phù Bạn cần Tìm</h3>
+<div class="agile_top_brands_grids">
+	<div id="products">
+		<% products.forEach((product) => { %>
+		<div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+          <% if(product.pr_status){ %>
+					<div class="agile_top_brand_left_grid_pos">
+						<img src="<%= SECURE_DELIVERY_URL %>c_scale,w_40/BachHoaOnline/icon/hot_fire" 
+						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+          </div>
+          <% } %>
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href="hot/<%= product.pr_slug %>"><img title=" " alt=" "
+											src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" style="width: 100%"></a>
+									<% if(product.pr_name.length >= 70) {%>
+									<div style="min-height: 70px;">
+										<p><%= product.pr_name.slice(0, 70) %>...</p>
+									</div>
+									<% } else {%>
+									<div style="min-height: 70px;">
+										<p><%= product.pr_name%></p>
+									</div>
+									<% } %>
+									<% if(product.pr_discount > 0) {%>
+									<div style="min-height: 48px;">
+										<span data='<%= product.pr_price %>' class="priceSp"><%= product.pr_priceString %> </span>
+										<label class="discount" style="margin-left: 6px;"> -<%= product.pr_discount %>%</label>
+										<h4><%= product.pr_priceNewString %></h4>
+									</div>
+									<% } else {%>
+									<div style="min-height: 48px;">
+										<br>
+										<h4><%= product.pr_priceString %></h4>
+									</div>
+									<% } %>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="<%= product._id %>" class="btnAddCart"> Chọn mua</button>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% }) %>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<hr>
+<% } %>
+<% } %>
+
+
+
+
+
+<h3 style="margin-top: 40px; border-left:6px solid #fe9126">MẸO HAY</h3>
+<div style="margin-top: 40px">
+	<iframe width="100%" height="300px" src="https://www.youtube.com/embed/gWkEMHshFgo" frameborder="0"
+		allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<%- include("footer.ejs")  %>

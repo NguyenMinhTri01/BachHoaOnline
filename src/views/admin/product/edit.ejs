@@ -7,7 +7,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
             <li class="breadcrumb-item"><a href="admin/product">Sản Phẩm</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Thêm Sản Phẩm</li>
+            <li class="breadcrumb-item active" aria-current="page">Sửa Sản Phẩm</li>
           </ol>
         </nav>
       </div>
@@ -15,50 +15,33 @@
   </div>
 </div>
 <link rel="stylesheet" href="admin_template/css/customPages/product/add.css">
-<style type="text/css">
-  /* label.error {
-    display: inline-block;
-    color: red;
-    width: 200px;
-
-  }
-
-  .box.box-warning {
-    border-top-color: #f39c12;
-  }
-
-  .fileActionSettings {
-    showRemove: true,
-      showUpload: false, //This remove the upload button
-      showZoom: true,
-      showDrag: false
-  } */
-</style>
 <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title m-b-0">Thông tin sản phẩm</h4>
+      <h3 class="card-title m-b-0">Thông tin sản phẩm</h3>
       <!-- thêm form ơ đây -->
-      <form class="form-group m-t-20" action="" id="formInput" enctype="multipart/form-data" method="POST" action="#">
+      <form class="form-group m-t-20" action="" id="formInput" enctype="multipart/form-data" method="POST" action="">
         <fieldset>
+          <input type="hidden" id="a_id" name="a_id" value="<%= adminInfo._id %>">
+          <input type="hidden" id="_id" name="_id" value="<%= product._id %>">
           <div class="row">
             <div class="col-sm-8">
               <div class="form-group">
                 <label for="tensanpham">Tên Sản Phẩm </label>
-                <input type="text" class="form-control" name="pr_name" placeholder="" required>
+                <input type="text" class="form-control" name="pr_name" value="<%= product.pr_name %>">
               </div>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Giá </label>
-                    <input type="number" class="form-control" name="pr_price" placeholder="" required>
+                    <input id="pr_price" type="number" class="form-control" name="pr_price" value="<%= product.pr_price %>">
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Giảm Giá (%) </label>
                     <input name="pr_discount" type="number" class="form-control" id="pr_discount" placeholder=""
-                      value="0">
+                      value="<%= product.pr_discount %>">
                   </div>
                 </div>
               </div>
@@ -67,72 +50,111 @@
                   <div class="form-group">
                     <label for="tensanpham">Giá trị</label>
                     <input type="number" class="form-control" name="pr_value"
-                      placeholder="Khối Lượng/Thể Tích/Số Lượng...">
+                      value="<%= product.pr_capacity.value %>">
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham"> Đơn Vị </label>
                     <select class="custom-select mr-sm-2" id="pr_unit" name="pr_unit">
-                      <% let arr = ['kg','gam', 'ml', 'lít', 'Hộp', 'Thùng', 'Chai', 'Cây', 'Gói', 'Lon'] %>
-                      <% arr.forEach(function(item => { %>
-                      <% if (item.indexOf(products.pr_capacity.unit)){ %>
-                      <option value="<%= item  %>" selected><%= item  %></option>
-                      <% }else {%>
-                      <option value="<%= item  %>"><%= item %></option>
-                      <% } %>
-                      <% })) %>
-                      <option value="kg">kg</option>
-                      <option value="ml">ml</option>
-                      <option value="lít">lít</option>
-                      <option value="Hộp">Hộp</option>
-                      <option value="Thùng">Thùng</option>
-                      <option value="Chai">Chai</option>
-                      <option value="Cây">Cây</option>
-                      <option value="Gói">Gói</option>
-                      <option value="Lon">Lon</option>
+                      <option value="0" selected>Chọn đơn vị phù hợp...</option>
+                      <% units.forEach((unit) => { %>
+                        <% if(unit == product.pr_capacity.unit){ %>
+                          <option value="<%= product.pr_capacity.unit %>" selected><%= product.pr_capacity.unit %></option>
+                          <% } else { %>
+                            <option value="<%= unit %>"><%= unit %></option>
+                          <% } %>
+                      <% }) %>
                     </select>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="tensanpham"> Cấp Danh Mục </label>
-                <select class="custom-select mr-sm-2" id="c_level" name="c_level">
-                  <option value="0" selected>Chọn cấp danh mục phù hợp...</option>
-                  <% if (typeof maxLevelCategory != "undefined"){ %>
-                  <% for (let i = 0; i < maxLevelCategory; i++) {%>
-                  <option value="<%= i+1 %>"> Level <%= i+1 %></option>
-                  <% } %>
-                  <% } %>
-                </select>
-              </div>
-              <div class="form-group">
                 <label for="tensanpham">Danh Mục </label>
                 <select class="custom-select mr-sm-2" id="c_id" name="c_id">
-                  <option value="0" selected>Chọn danh mục phù hợp...</option>
+                  <% if (typeof categories != "undefined"){ %>
+                  <% for (let i = 0; i < categories.length; i++) {%>
+                    <% if (product.c_id === categories[i]._id) {%>
+                    <option value="<%= categories[i]._id %>" selected> <%= categories[i].c_name %></option>
+                    <% } else {%>
+                    <option value="<%= categories[i]._id %>"> <%= categories[i].c_name %></option>
+                    <% } %>
+                  <% } %>
+                  <% } %>
                 </select>
               </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="tensanpham">Thương Hiệu </label>
+                    <select class="custom-select mr-sm-2" id="br_id" name="br_id">
+                      <% if (typeof brandList != "undefined"){ %>
+                      <% for (let i = 0; i < brandList.length; i++) {%>
+                        <% if(product.br_id === brandList[i]._id) {%>
+                          <option value="<%= brandList[i]._id %>" selected> <%= brandList[i].br_name %></option>
+                        <% } else {%>
+                          <option value="<%= brandList[i]._id %>"> <%= brandList[i].br_name %></option>
+                        <% } %>
+                      <% } %>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="">Xuất xứ </label>
+                    <input type="text" class="form-control" name="pr_origin" value="<%= product.pr_origin %>">
+                  </div>
+                </div>
+              </div>
+
+
               <div class="form-group">
-                <label for="tensanpham">Thương Hiệu </label>
-                <select class="custom-select mr-sm-2" id="br_id" name="br_id">
-                  <option value="0" selected>Chọn thương hiệu phù hợp</option>
-                  <% if (typeof brandList != "undefined"){ %>
-                  <% for (let i = 0; i < brandList.length; i++) {%>
-                  <option value="<%= brandList[i]._id %>"> <%= brandList[i].br_name %></option>
-                  <% } %>
-                  <% } %>
-                </select>
+                <label for="exampleFormControlTextarea1">Mô tả</label>
+                <textarea class="form-control" name="pr_description" rows="3"><%= product.pr_description %></textarea>
+              </div>
+              <h3 class="card-title m-b-1">SEO</h3>
+              <div class="form-group">
+                <label for="key">Tiêu đề </label>
+                <input type="text" class="form-control" id="pr_title" name="pr_title" value="<%= product.pr_SEO.title %>">
               </div>
               <div class="form-group">
                 <label for="key">Từ Khóa </label>
-                <input type="text" class="form-control" id="pr_key" name="pr_key" required>
+                <input type="text" class="form-control" id="pr_key" name="pr_key" value="<%= product.pr_SEO.key %>">
               </div>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Mô tả</label>
-                <textarea class="form-control" name="pr_description" rows="3"></textarea>
+                <textarea class="form-control" name="pr_descriptionSeo" rows="3"><%= product.pr_SEO.description %></textarea>
               </div>
               <div class="box-header with-border">
-                <h3 class="box-title">Album ảnh</h3>
+                <!-- <h3 class="box-title">Album ảnh</h3> -->
+                <h3 class="card-title m-b-1">Album ảnh</h3>
+              </div>
+                <% if (listAlbumImage.length > 0) {%>
+                  <div class="row" style="margin-bottom: 30px;">
+                  <% listAlbumImage.forEach(image => { %>
+                    <div class="col-sm-4">
+                      <div class="card-body border border-dark">
+                        <img class=""
+                        src="<%= SECURE_DELIVERY_URL + image.public_id %>"
+                        alt="<%= image.filesName  %>" width="168" height="auto">
+                        <div class="text-center" style="margin-top: 10px;">
+                          <a class="deleteImage" href="admin/product/deleteImage/<%= image._id %>"><i class="far fa-trash-alt" style="margin-right: 15px;"></i></a>
+                          <a href="<%= SECURE_DELIVERY_URL + image.public_id %>"><i class="fas fa-eye"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  <% }) %>
+                  </div>
+                <%} else {%>
+                    <div>
+                      <strong>Không có ảnh...</strong>
+                    </div>
+                <% } %>
+
+              <div class="box-header with-border">
+                <!-- <h3 class="box-title">Album ảnh</h3> -->
+                <h3 class="card-title m-b-1">Thêm ảnh mới</h3>
               </div>
               <div class="box-body">
                 <div class="form-group">
@@ -148,27 +170,25 @@
                 <h6>Ảnh đại diện</h6>
                 <div class="text-center">
                   <img
-                    src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png"
-                    alt="brand image" class="image-preview border border-dark" width="260px" height="200px">
+                    src="<%= SECURE_DELIVERY_URL + product.pr_avatar %>"
+                    alt="product image" class="image-preview border border-dark" width="260px" height="200px">
                 </div>
                 <div class="text-center">Ảnh</div>
                 <div>
                   <div class="custom-file">
                     <input type="file" name="pr_avatar" class="custom-file-input form-control" id="fileImageProduct"
-                      accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
+                      accept=".png, .jpg, jpeg, .PNG, JPG, JPEG">
                     <label class="custom-file-label text-left" for="validatedCustomFile"
                       style="word-wrap: break-word">Chọn File Ảnh...</label>
                     <div class="feedback" style="color:red"></div>
                   </div>
                 </div>
-
               </div>
-
             </div>
             <div class="col-sm-3">
               <a href="admin/product" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
               <button id="submit" type="submit" class="btn btn-success text-white "><i class="fa fa-check"></i>
-                Thêm</button>
+                Lưu</button>
             </div>
             <div class="col-sm-12 mt-2">
               <div id='mgs'></div>
@@ -179,13 +199,12 @@
     </div>
   </div>
 </div>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all"
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all"
   rel="stylesheet" type="text/css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js"
-  type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js"
-  type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
 <script type="text/javascript"
   src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-<script type="text/javascript" src="admin_template/js/customPages/product/jqueryAddProduct.js.js"></script>
+
+<script type="text/javascript" src="admin_template/js/customPages/product/jqueryEditProduct.js"></script>
 <%- include("../adminFooter") %>

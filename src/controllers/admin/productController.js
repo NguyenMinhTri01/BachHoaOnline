@@ -3,7 +3,7 @@ import configStorage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 import fs from 'fs-extra';
 
-
+const units = ["gam", "kg", "ml", "lit", "Hộp", "Thùng", "Chai", "Cây", "Gói", "Lon"];
 const storageProductAvatar = configStorage('/product/productAvatar');
 let uploadProductAvatar = multer({
   storage: storageProductAvatar
@@ -63,7 +63,26 @@ const hotProduct = async (req, res) => {
 };
 
 const getViewEdit = async (req, res) => {
-
+  const product = await product_S.getProductById(req.params.id);
+  if(product) {
+    const categories = await category_S.getListCategoriesByLevel(2);
+    const brandList = await brand_S.getListBrands();
+    const listAlbumImage = await product_S.getAlbumImageByPrId(req.params.id);
+    fs.removeSync(`${process.env.PATH_ALBUM_IMAGE}${req.adminInfo._id}`);
+    res.render("admin/product/edit", {
+      base_Url: process.env.BASE_URL,
+      adminInfo: req.adminInfo,
+      SECURE_DELIVERY_URL : process.env.SECURE_DELIVERY_URL,
+      listAlbumImage,
+      brandList,
+      categories,
+      product,
+      units,
+      title: "Bach Hóa Online | Sửa Sản Phẩm",
+    });
+  } else {
+    return res.render('admin/error_500');
+  }
 };
 
 const uploadImage = async (req, res) => {
@@ -97,8 +116,37 @@ const uploadImage = async (req, res) => {
       // })
     }
   });
-
 };
+
+
+const editProduct = async (req, res) => {
+  uploadProductAvatar(req, res, async (err) => {
+    if (err) {
+      console.log(err);
+      res.send(false);
+    }
+    else {
+      let path = null;
+      if (typeof req.file != 'undefined') {
+        path = req.file.path;
+      }
+      let idAdmin = req.adminInfo._id;
+      let infoProduct = JSON.parse(JSON.stringify(req.body));
+      let notification = await product_S.editProduct(infoProduct, path, idAdmin);
+      res.send(notification);
+    }
+  });
+};
+
+const deleteImageById = async (req, res) => {
+  try {
+    let notification = await product_S.deleteImageById(req.params.id);
+    res.send(notification || null);
+  } catch (error) {
+    console.log(error);
+  }
+
+}
 
 module.exports = {
   getViewAdd,
@@ -107,5 +155,7 @@ module.exports = {
   getViewIndex,
   activeProduct,
   getViewEdit,
-  uploadImage
+  uploadImage,
+  editProduct,
+  deleteImageById
 }

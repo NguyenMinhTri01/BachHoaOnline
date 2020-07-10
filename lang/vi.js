@@ -6,6 +6,7 @@ export const transErrors = {
   login_failed : "Tên đăng nhập hoặc mật khẩu không đúng!",
   checkPasswordFailed : "Mật khẩu hiện tại không đúng!",
   add_data_failed : "Dữa liệu đã tồn tại",
+  data_invalid : "Dữ liệu không tồn tại",
   remove_data_failed : {
     status : 'Thất Bại',
     action : 'Xóa Dữ liệu'

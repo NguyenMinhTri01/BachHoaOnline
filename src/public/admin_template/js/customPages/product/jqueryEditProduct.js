@@ -38,7 +38,7 @@ function validationForm(formInput) {
         valueNotEquals: "0"
       },
       pr_origin: {
-        required : true
+        required: true
       },
       pr_value: {
         required: true,
@@ -57,11 +57,7 @@ function validationForm(formInput) {
       pr_descriptionSeo: {
         required: true,
         maxlength: 300,
-      },
-      pr_avatar: {
-        required: true
-      },
-
+      }
     },
     messages: {
       pr_name: {
@@ -90,7 +86,7 @@ function validationForm(formInput) {
         valueNotEquals: "Hãy chọn một thương hiệu"
       },
       pr_origin: {
-        required : "Dữ liệu không được để trống"
+        required: "Dữ liệu không được để trống"
       },
       pr_value: {
         required: "Dữ liệu không được để trống",
@@ -109,10 +105,7 @@ function validationForm(formInput) {
       pr_descriptionSeo: {
         required: "Dữ liệu không được để trống",
         maxlength: "Mô tả không được quá 300 ký tự",
-      },
-      pr_avatar: {
-        required: "Dữ liệu không được để trống"
-      },
+      }
     },
   });
   return validated;
@@ -130,10 +123,33 @@ function addCommas(nStr) {
   return x1 + x2;
 };
 
+function deleteImage(url) {
+  $.ajax({
+    type: 'GET', //Sử dụng kiểu gửi dữ liệu POST
+    url: url, //gửi dữ liệu sang trang data.php
+    data: null, //dữ liệu sẽ được gửi
+    success: function (res)  // Hàm thực thi khi nhận dữ liệu được từ server
+    {
+      if (res == false) {
+        $(".modal-content").html("<p style='color: red'>server không phản hồi!");
+        location.reload();
+      } else {
+        if (res.type) {
+          toastr.options = {
+            "timeOut": "2000",
+            "positionClass": "toast-bottom-right",
+          }
+          toastr.success('Thành công', 'Xóa ảnh');
+          return true;
+        }
+      }
+    }
+  });
+};
 
 function reSetData(formInput, image_Preview, label_nameImage, label_feedback) {
-  formInput.trigger("reset");
-  image_Preview.attr("src", "https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png");
+  // formInput.trigger("reset");
+  // image_Preview.attr("src", "https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png");
   label_nameImage.text('Chon File Ảnh...');
   label_feedback.text('');
 }
@@ -183,7 +199,7 @@ function loadImage(input, showImage, label_nameImage, label_feedback) {
 function sendDataInputToServer(formInput, mgs, callback) {
   var formData = new FormData(formInput[0]);
   $.ajax({
-    url: "admin/product/add",
+    url: "admin/product/edit",
     type: 'POST',
     data: formData,
     async: false,
@@ -212,11 +228,10 @@ function sendDataInputToServer(formInput, mgs, callback) {
     contentType: false,
     processData: false
   });
-}
-
-
+};
 $(document).ready(function () {
-
+  var _id = $("#a_id").val();
+  localStorage.uploadToken = _id;
   var formInput = $('#formInput');
   var pr_name = $('#pr_name');
   var c_name_select = $("#c_id");
@@ -228,10 +243,10 @@ $(document).ready(function () {
   var label_nameImage = $(".custom-file-label");
   var label_feedback = $(".feedback");
   var pr_price = $("#pr_price");
-  var checkElementImage = false;
-  var _id = $("#_id").val();
-  var validated = validationForm(formInput);
+  var checkElementImage = true;
+  var _deleteImage = $(".deleteImage");
 
+  var validated = validationForm(formInput);
   c_level_select.change(function () {
     getListDataCategories(c_level_select, c_name_select);
   });
@@ -240,22 +255,26 @@ $(document).ready(function () {
     checkElementImage = loadImage(this, image_Preview, label_nameImage, label_feedback);
   });
 
-  // pr_price.change(function () {
-  //   var value = addCommas($(this).val());
-  //   $(this).val(value);
-  // })
+  _deleteImage.click(function (event) {
+    event.preventDefault();
+    var url = $(this).attr('href');
+    deleteImage(url);
+    var parent = $(this).parent().parent().parent();
+    parent.remove();
+  });
 
   submit.click(function (event) {
     event.preventDefault();
     var uploadToken = localStorage.uploadToken;
     if (validated.form() && checkElementImage) {
       if (uploadToken === _id) {
-        $(this).html('<i class="fa fa-spinner fa-spin"></i>Đang tải');
+        $(this).html('<i class="fa fa-spinner fa-spin"></i> Đang tải');
         sendDataInputToServer(formInput, mgs, (result) => {
           if (result) {
-            $(this).html('<i class="fa fa-check"></i>Thêm');
-            localStorage.uploadToken = undefined;
-            return reSetData(formInput, image_Preview, label_nameImage, label_feedback);
+            localStorage.uploadToken = _id;
+            reSetData(formInput, image_Preview, label_nameImage, label_feedback);
+            return $(this).html('<i class="fa fa-check"></i> Sửa');
+
           }
           return
         });

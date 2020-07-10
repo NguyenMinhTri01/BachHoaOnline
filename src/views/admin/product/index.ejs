@@ -79,6 +79,7 @@
               <th>STT</th>
               <th>Tên Sản Phẩm</th>
               <th>Giá (Giảm Giá)</th>
+              <th>Giá bán</th>
               <th class="text-center">Ảnh</th>
               <th>Xuất Xứ</th>
               <th>Danh Mục</th>
@@ -104,6 +105,7 @@
                   (-<%= product.pr_discount %>%)
                 </div>
               </td>
+              <td class="text-center"><%= product.pr_priceNew %></td>
               <td style="width:auto"><img style="padding-right:0px"
                   src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" width="130" height="80"></td>
               <td class="text-center">

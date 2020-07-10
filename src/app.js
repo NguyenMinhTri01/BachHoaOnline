@@ -42,7 +42,8 @@ app.use(passport.session());
 initRouteAdmin(app);
 // init all router user
 initRouteUser(app);
-//initRouteTest(app);
+// init all test
+initRouteTest(app);
 // error handler
 app.use((err, req, res, next) => {
   console.log(err.stack);

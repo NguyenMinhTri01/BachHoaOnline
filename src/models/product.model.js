@@ -45,7 +45,14 @@ productSchema.statics = {
     return this.find();
   },
   updateProductById(id, item) {
-    return this.findByIdAndUpdate(id, item);
+    return this.updateOne({ "_id": id }, item,{multipleCastError : true})
+      .then(res => {
+        if (res.n != 0) {
+          return this.findById(id);
+        }
+        return false
+      })
+      .then(product => { return product });
   },
   updateActive(id) {
     return this.findById(id)
@@ -68,10 +75,27 @@ productSchema.statics = {
     return this
       .find(
         {
-          c_id: { $in: arrId }
+          c_id: { $in: arrId },
+          pr_status: true,
+          pr_hot:false
         },
         '_id pr_name c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
       )
+      .sort({pr_priceNew: 1})
+      .limit(8)
+      .skip(skip)
+  },
+
+  getProductHot(skip) {
+    return this
+      .find(
+        {
+          pr_status: true,
+          pr_hot:true,
+        },
+        '_id pr_name c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
+      )
+      .sort({pr_priceNew: 1})
       .limit(8)
       .skip(skip)
   },
@@ -84,7 +108,17 @@ productSchema.statics = {
       )
   },
   getProductsByC_Id(c_id) {
-    return this.find({ c_id });
+    return this.find({c_id : c_id, pr_status : true});
+  },
+
+  findProductByKeyword(keyword) {
+    return this
+    .find(
+      {pr_slug : {"$regex": new RegExp(keyword,"i")}},
+      '_id pr_name c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
+      )
+    .sort({pr_priceNew: 1})
+    .limit(32)        
   }
 }
 module.exports = mongoose.model("product", productSchema);

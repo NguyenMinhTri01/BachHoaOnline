@@ -12,7 +12,6 @@ import path from "path";
   app.use(express.static(path.join(__dirname, '../public')));
 
   
-  //app.engine('ejs', expressEjsExtend);
   app.set('view engine', 'ejs');
   app.set('views', path.join(__dirname, '../views'));
  }

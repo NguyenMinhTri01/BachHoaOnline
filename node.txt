@@ -83,3 +83,8 @@ cần xem lai login facebook
   c_id: '7F3rvfvcD',
   pr_slug: 'sua-tam-duong-the-dove-duong-am-chuyen-sau-896ml',      
   pr_avatar: 'BachHoaOnline/product/1593273403309/1593273403307-986' }
+
+
+  xem lai phần xoa ảnh đã tải lên
+
+  thêm dữ liệu còn tình trạng dữ liệu đã tồn tại

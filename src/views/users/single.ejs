@@ -1,10 +1,11 @@
 <%- include("header.ejs")  %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
-            <li class="active">Single</li>
+            <li class="">Chi tiết sản phẩm</li>
         </ol>
     </div>
 </div>
@@ -13,22 +14,63 @@
     <div class="container">
         <div class="row" style="background-color:#fff;">
             <aside class="col-sm-5 border-right">
-                <span class='zoom' id='ex1'>
-                    <img class="xzoom" src="user-template/images/duct1.jpg" style="width: 100%;margin-top: 20px;"
-                        xoriginal="path/to/original_image_01.jpg" alt=""> </span>
-                <span class='zoom1' id='ex1'>
-                    <img class="xzoom-gallery" width="80" src="user-template/images/duct2.jpg"
-                        xpreview="path/to/preview_image_01.jpg" alt=""> </span>
-                <span class='zoom2' id='ex1'>
-                    <img class="xzoom-gallery" width="80" src="user-template/images/duct3.jpg" alt="">
-                </span>
-                <span class='zoom3' id='ex1'>
-                    <img class="xzoom-gallery" width="80" src="user-template/images/duct4.jpg" alt=""
-                        style="border : 1px solid balck">
-                </span>
-                <span class='zoom4' id='ex1'>
-                    <img class="xzoom-gallery" width="80" src="/user-template/images/duct5.jpg" alt="">
-                </span>
+                <div class="mySlides">
+                    <div class="numbertext">1 / 6</div>
+                    <img src="user-template/images/nu3.jpg" style="width:100%">
+                  </div>
+                
+                  <div class="mySlides">
+                    <div class="numbertext">2 / 6</div>
+                    <img src="user-template/images/nu1.jpg" style="width:100%">
+                  </div>
+                
+                  <div class="mySlides">
+                    <div class="numbertext">3 / 6</div>
+                    <img src="user-template/images/nu4.jpg" style="width:100%">
+                  </div>
+                    
+                  <div class="mySlides">
+                    <div class="numbertext">4 / 6</div>
+                    <img src="user-template/images/nu6.jpg" style="width:100%">
+                  </div>
+                
+                  <div class="mySlides">
+                    <div class="numbertext">5 / 6</div>
+                    <img src="user-template/images/nu6.jpg" style="width:100%">
+                  </div>
+                    
+                  <div class="mySlides">
+                    <div class="numbertext">6 / 6</div>
+                    <img src="user-template/images/nu6.jpg" style="width:100%">
+                  </div>
+                    
+                  <a class="prev" onclick="plusSlides(-1)">❮</a>
+                  <a class="next" onclick="plusSlides(1)">❯</a>
+                
+                  <div class="caption-container">
+                    <p id="caption"></p>
+                  </div>
+                
+                  <div class="row">
+                    <div class="column1">
+                      <img class="demo cursor" src="user-template/images/nu3.jpg" style="width:100%" onclick="currentSlide(1)" >
+                    </div>
+                    <div class="column1">
+                      <img class="demo cursor" src="user-template/images/nu1.jpg" style="width:100%" onclick="currentSlide(2)" >
+                    </div>
+                    <div class="column1">
+                      <img class="demo cursor" src="user-template/images/nu4.jpg" style="width:100%" onclick="currentSlide(3)" >
+                    </div>
+                    <div class="column1">
+                      <img class="demo cursor" src="user-template/images/nu6.jpg" style="width:100%" onclick="currentSlide(4)" >
+                    </div>
+                    <div class="column1">
+                      <img class="demo cursor" src="user-template/images/nu6.jpg" style="width:100%" onclick="currentSlide(5)" >
+                    </div>    
+                    <div class="column1">
+                      <img class="demo cursor" src="user-template/images/nu6.jpg" style="width:100%" onclick="currentSlide(6)" >
+                    </div>
+                  </div>
             </aside>
             <aside class="col-sm-6">
                 <article class="card-body p-5">
@@ -706,15 +748,7 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="user-template/js/customPages/jquerysingle.js"></script>
     
     <%- include("footer.ejs")  %>
-    <script type="text/javascript">
-        /* calling script */
-        $(document).ready(function () {
-            $('.zoom1').zoom();
-            $('.zoom2').zoom();
-            $('.zoom3').zoom();
-            $('.zoom4').zoom();
-        });
-    </script>
+    

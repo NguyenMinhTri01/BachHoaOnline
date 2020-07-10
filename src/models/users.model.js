@@ -5,23 +5,23 @@ let Schema = mongoose.Schema;
 
 let userSchema = new Schema({
   _id: {type: String, default : shortId.generate},
-  u_name: {type: String, default: null},
-  u_email: {type: String, trim: true, default : null},
-  u_gender: {type: String, default: null},
-  u_address: {
-    provincesOrCities: {type: String, default: null},
-    district : {type: String, default: null},
-    wards : {type: String, default: null},
-    detail : {type: String, default: null}
+  u_name: {type: String, default: null},//tên 
+  u_email: {type: String, trim: true, default : null},//email và là tên đăng nhập
+  u_gender: {type: String, default: null},// giới tính
+  u_address: { // phần này là địa chỉ
+    provincesOrCities: {type: String, default: null},// tỉnh /tp
+    district : {type: String, default: null},//quan /huyện
+    wards : {type: String, default: null},//tên phường /xa
+    detail : {type: String, default: null}//tên đường này kia mấy cái còn lại
   },
-  u_phoneNumber: {type: String, default: null},
-  u_localPassword: {type: String, trim: true, default: null},
-  u_facebookID : {type: String, trim: true, default: null},
-  u_googleID : {type: String, trim: true, default : null},
-  u_createdAt : {type: Number, default: Date.now},
-  u_updatedAt : {type: Number}
+  u_phoneNumber: {type: String, default: null},//sdt
+  u_localPassword: {type: String, trim: true, default: null},//mk thì khi nào đổi thì cho nhập củ và mới
+  u_facebookID : {type: String, trim: true, default: null},//ko show
+  u_googleID : {type: String, trim: true, default : null},//ko show
+  u_createdAt : {type: Number, default: Date.now},//ko show
+  u_updatedAt : {type: Number}//ko show
 });
-
+// đặt tên may cái input form như cái này nha
 userSchema.statics = {
   createNew(item){
     return this.create(item);

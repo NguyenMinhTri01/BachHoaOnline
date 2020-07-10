@@ -2,53 +2,53 @@
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
 
-    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-        <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
-        <li class="active">Đơn hàng của tôi</li>
-    </ol>
+  <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+    <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+    <li class="">Đơn hàng của tôi</li>
+  </ol>
 </div>
 <!-- //breadcrumbs -->
 <div class="row">
 
-<div class="col-md-3 quanlyusers ">
-  <div class="wp-name-and-avatar-user row flex-nowrap">
-    <!-- avatar user  -->
-    <div class="avatar-user ">
-        <img src="user-template/images/nu1.jpg" alt="avatar user" title="avatar-user">
-    </div>
-    <!-- tên user  -->
-    <div class="name-user">
+  <div class="col-md-3 quanlyusers ">
+    <div class="wp-name-and-avatar-user row flex-nowrap">
+      <!-- avatar user  -->
+      <div class="avatar-user ">
+        <img src="user-template/images/av.png" alt="avatar user" title="avatar-user">
+      </div>
+      <!-- tên user  -->
+      <div class="name-user">
         <span class="s-text7">Tài khoản của</span>
         <br>
         <span class="name">Minh Thao </span>
+      </div>
     </div>
-</div>
-  <div class="tab-menu nav" role="tablist">
-    
- 
-    <a href="#" class="active || " role="tab">
-      <i class="fa fa-user " aria-hidden="true"></i>
-      Thông tin tài khoản
-  </a>
-   
-    <a href="#" class="active || " role="tab">
+    <div class="tab-menu nav" role="tablist" id="tablist">
+
+
+      <a href="username" class=" ac  || " role="tab">
+        <i class="fa fa-user " aria-hidden="true"></i>
+        Thông tin tài khoản
+      </a>
+
+      <a href="history" class=" ac active || " role="tab">
         <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-        Lịch sử đặt hàng
-    </a>
-    
-   
-    <a href="/">
+        Đơn hàng của tôi
+      </a>
+
+
+      <a href="/">
         <i class="fa fa-sign-out" aria-hidden="true"></i>
         Đăng xuất
-    </a>
-</div>
+      </a>
+    </div>
 
-</div>
+  </div>
 
-<div class="col-md-9 ">
-  <h3>Đơn hàng của tôi</h3>
-  <div class="orderhistory">
-    <table class="table">
+  <div class="col-md-9 ">
+    <h3>Đơn hàng của tôi</h3>
+    <div class="orderhistory">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Mã đơn hàng</th>
@@ -82,7 +82,8 @@
           </tr>
         </tbody>
       </table>
-      </div>
+    </div>
+  </div>
 </div>
-</div>
-<%- include("footer.ejs")  %>
+<script type="text/javascript" src="user-template/js/customPages/jqueryactive.js"></script>
+<%- include("footer2.ejs")  %>

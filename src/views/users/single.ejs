@@ -1,18 +1,24 @@
 <%- include("header.ejs")  %>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- breadcrumbs -->
-<div class="breadcrumbs">
+<!-- <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
             <li class="">Chi tiết sản phẩm</li>
         </ol>
     </div>
+</div> -->
+<div class="breadcrumbs">
+    <ol class="breadcrumb breadcrumb1">
+        <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+        <li>Chi tiết sản phẩm</li>
+    </ol>
 </div>
 <!-- //breadcrumbs -->
-<div class="card">
-    <div class="container">
-        <div class="row" style="background-color:#fff;">
+<div class="card" style="background-color:#fff;">
+    <!-- <div class="container"> -->
+        <div class="row">
             <aside class="col-sm-5 border-right">
                 <div class="mySlides">
                     <div class="numbertext">1 / 6</div>
@@ -51,7 +57,7 @@
                     <p id="caption"></p>
                   </div>
                 
-                  <div class="row">
+                  <div class="row" style="margin-left: 2px;">
                     <div class="column1">
                       <img class="demo cursor" src="user-template/images/nu3.jpg" style="width:100%" onclick="currentSlide(1)" >
                     </div>
@@ -72,7 +78,7 @@
                     </div>
                   </div>
             </aside>
-            <aside class="col-sm-6">
+            <aside class="col-sm-7">
                 <article class="card-body p-5">
                     <h3 class="title mb-3">Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</h3>
 
@@ -88,24 +94,23 @@
                             <li><span>Thương hiệu</span>
                                 <div>Pesi Mỹ</div>
                             </li>
-                            <li><span>HSD</span>
-                                <div>Còn 12 tháng</div>
-                            </li>
-                            <li><span>Thể tích/Khối lượng</span>
+                            <li><span>Thể tích/Khối lượng...</span>
                                 <div>1,5 lít</div>
                             </li>
                             <li><span>Sản Xuất tại</span>
                                 <div>Việt Nam</div>
                             </li>
                             <li><span>Mô tả</span>
-                                <div>Ngon hơn khi uống lạnh</div>
+                                <p>Ngon hơn khi uống lạnh Lorem ipsum dolor sit amet consectetur 
+                                    adipisicing elit. Sunt praesentium repellendus porro, eius reprehenderit fugiat quod fuga laudantium nisi eaque nesciunt 
+                                    facere architecto quis minima dolor animi quia ut fugit!</p>
                             </li>
 
                         </ul>
                     </dl>
 
 
-                    <hr>
+                    
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="form-group">
@@ -126,20 +131,18 @@
                             </dl> <!-- item-property .// -->
                         </div> <!-- col.// -->
                     </div> <!-- row.// -->
-                    <hr>
-                    <a href="#" class="btn btn-lg btn-primary text-uppercase"> Mua Ngay </a>
-                    <a href="#" class="btn btn-lg btn-primary text-uppercase"> <i class="fa fa-shopping-cart"></i> Thêm
-                        vào giỏ hàng </a>
+                   
+                    <button style="margin-bottom: 10px;width:98%;" data-id="abcxyz" class="btn btn-lg btn-primary text-uppercase btnAddCart"> Chọn mua</button>
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div>
-    </div>
+    <!-- </div> -->
     <!-- row.// -->
 </div> <!-- card.// -->
 
 
 <!-- Đánh giá người dùng -->
-<div class="container">
+<div class="card">
     <div class="danhgianguoidung">
         <span class="heading">Đánh Giá</span>
         <span class="fa fa-star checked"></span>
@@ -213,7 +216,7 @@
     <div class="row bootstrap snippets">
         <div class=" col-sm-10">
             <div class="comment-wrapper">
-                <div class="panel panel-info">
+                <div class="panel panel-info" style="width: 121%;">
                     <div class="panel-heading">
                         Đánh Giá Người Dùng
                     </div>
@@ -225,9 +228,6 @@
                         <hr>
                         <ul class="media-list">
                             <li class="media">
-                                <a href="#" class="pull-left">
-                                    <img src="user-template/images/cm1.jpg" alt="" class="img-circle">
-                                </a>
                                 <div class="media-body">
                                     <span class="text-muted pull-right">
                                         <small class="text-muted">30 min ago</small>
@@ -236,12 +236,15 @@
                                     <p style="color: black;">
                                         mình ghiền pepsi lắm luôn, uống hoài, đang sợ bị tiểu đường.huhu
                                     </p>
+                                    <a style="color:#588bcd; display: inline-block;" href="#">1 Trả lời</a>
+                                    <span class="com-dot"> • </span>
+                                    <a style="color:#588bcd; display: inline-block;" href="#"><i class="fa fa-thumbs-up"></i>0 Thích</a>
                                 </div>
                             </li>
                             <li class="media">
-                                <a href="#" class="pull-left">
+                                <!-- <a href="#" class="pull-left">
                                     <img src="user-template/images/cm2.jpg" alt="" class="img-circle">
-                                </a>
+                                </a> -->
                                 <div class="media-body">
                                     <span class="text-muted pull-right">
                                         <small class="text-muted">30 min ago</small>
@@ -253,9 +256,9 @@
                                 </div>
                             </li>
                             <li class="media">
-                                <a href="#" class="pull-left">
+                                <!-- <a href="#" class="pull-left">
                                     <img src="user-template/images/cm3.jpg" alt="" class="img-circle">
-                                </a>
+                                </a> -->
                                 <div class="media-body">
                                     <span class="text-muted pull-right">
                                         <small class="text-muted">30 min ago</small>
@@ -282,7 +285,7 @@
 
 <!-- new -->
 
-<div class="agile_top_brands_grids">
+<!-- <div class="agile_top_brands_grids">
     <h3 style="    margin-left: 348px;
     margin-bottom: 17px;">CÁC SẢN PHẨM LIÊN QUAN</h3>
     <div class="col-md-3 top_brand_left">
@@ -596,11 +599,181 @@
             <div class="view-more">xem thêm 8 sản phẩm nữa <i class="fa fa-chevron-down view-more"></i></div>
         </div>
     </div>
-</div>
+</div> -->
+<h3 style="margin-top: 40px; border-left:6px solid #fe9126">Các Sản Phẩm Liên Quan</h3>
+<div class="agile_top_brands_grids">
+	<div id="productsHot">
+		<div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+					<!-- <div class="agile_top_brand_left_grid_pos">
+						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
+						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+					</div> -->
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href=""><img title=" " alt=" "
+											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
+									<div style="min-height: 70px;">
+										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
+									</div>
+									<div style="min-height: 48px;">
+										<span data='' class="priceSp">55555 </span>
+										<label class="discount" style="margin-left: 6px;"> -10%</label>
+										<h4>256566</h4>
+									</div>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="" class="btnAddCart"> Chọn mua</button>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
+			</div>
+        </div>
+        <div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+					<!-- <div class="agile_top_brand_left_grid_pos">
+						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
+						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+					</div> -->
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href=""><img title=" " alt=" "
+											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
+									<div style="min-height: 70px;">
+										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
+									</div>
+									<div style="min-height: 48px;">
+										<span data='' class="priceSp">55555 </span>
+										<label class="discount" style="margin-left: 6px;"> -10%</label>
+										<h4>256566</h4>
+									</div>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="" class="btnAddCart"> Chọn mua</button>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+					<!-- <div class="agile_top_brand_left_grid_pos">
+						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
+						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+					</div> -->
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href=""><img title=" " alt=" "
+											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
+									<div style="min-height: 70px;">
+										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
+									</div>
+									<div style="min-height: 48px;">
+										<span data='' class="priceSp">55555 </span>
+										<label class="discount" style="margin-left: 6px;"> -10%</label>
+										<h4>256566</h4>
+									</div>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="" class="btnAddCart"> Chọn mua</button>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+					<!-- <div class="agile_top_brand_left_grid_pos">
+						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
+						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+					</div> -->
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href=""><img title=" " alt=" "
+											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
+									<div style="min-height: 70px;">
+										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
+									</div>
+									<div style="min-height: 48px;">
+										<span data='' class="priceSp">55555 </span>
+										<label class="discount" style="margin-left: 6px;"> -10%</label>
+										<h4>256566</h4>
+									</div>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="" class="btnAddCart"> Chọn mua</button>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="col-md-3 top_brand_left">
+			<div class="hover14 column">
+				<div class="agile_top_brand_left_grid">
+					<!-- <div class="agile_top_brand_left_grid_pos">
+						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
+						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+					</div> -->
+					<div class="agile_top_brand_left_grid1">
+						<figure>
+							<div class="snipcart-item block text-center">
+								<div class="snipcart-thumb">
+									<a href=""><img title=" " alt=" "
+											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
+									<div style="min-height: 70px;">
+										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
+									</div>
+									<div style="min-height: 48px;">
+										<span data='' class="priceSp">55555 </span>
+										<label class="discount" style="margin-left: 6px;"> -10%</label>
+										<h4>256566</h4>
+									</div>
+								</div>
+								<div class="snipcart-details top_brand_home_details">
+									<button data-id="" class="btnAddCart"> Chọn mua</button>
+								</div>
+							</div>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+
+	
+	<div class="col-md-12 top_brand_left text-center">
+		<div class="view-more">
+			<a class="addMorePrHot" data-count="8" href="addOnHotItem/count/">xem thêm
+				<i class="fa fa-chevron-down view-more"></i>
+			</a>
+		</div>
+	</div>
+	<div class="clearfix"> </div>
+</div>
 <!-- Bình luận người dùng -->
 
-<h4 style="color: rgb(255, 0, 21);">BÌNH LUẬN KHÁCH HÀNG</h4>
+<!-- <h4 style="color: rgb(255, 0, 21);">BÌNH LUẬN KHÁCH HÀNG</h4>
 <div class="col-sm-12">
     <form id="frmAddComment" class="form formarating">
         <div class="cmtinfo">
@@ -644,7 +817,7 @@
                 </div>
                 <div class="phone js-float-label-wrapper">
                     <label class="cmt-phone"></label>
-                    <input type="number" class="txtPhone" name="txtPhone" placeholder="Số điện thoại"
+                    <input type="text" class="txtPhone" name="txtPhone" placeholder="Số điện thoại"
                         aria-label="Số điện thoại">
                 </div>
                 <div class="email js-float-label-wrapper">
@@ -661,12 +834,12 @@
         </div>
 
     </form>
-</div>
-
-<div class="col-sm-12">
+</div> -->
 
 
-    <div class="card">
+
+
+    <!-- <div class="card">
         <hr>
         <div class="card-body">
             <div class="row">
@@ -747,7 +920,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <script type="text/javascript" src="user-template/js/customPages/jquerysingle.js"></script>
     
     <%- include("footer.ejs")  %>

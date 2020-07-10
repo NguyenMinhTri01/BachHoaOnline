@@ -5,7 +5,10 @@ import { auth_S } from '../../services/index'
 const getLoginUser = (req, res) => {
   try {
     let errors = req.flash('errors');
-    return res.render('users/login', { errors });
+    return res.render('users/login', { 
+      title: "Bách Hóa Online | Mua Gì Cũng Có",
+      errors 
+    });
   } catch (error) {
     console.log(error);
     return res.render('admin/error_500');
@@ -13,7 +16,10 @@ const getLoginUser = (req, res) => {
 };
 
 const getRegisterUser = (req, res) => {
-  res.render("users/register");
+  res.render("users/register",{
+    infoUser: req.user,
+    title: "Bách Hóa Online | Mua Gì Cũng Có",
+  });
 };
 
 const registerUser = async (req, res) => {

@@ -84,7 +84,7 @@
               <th>Xuất Xứ</th>
               <th>Danh Mục</th>
               <th>Thương Hiệu</th>
-              <th>Lượt Mua</th>
+              <th>Lượt Mua / Số Lượng</th>
               <th>Ngày Tạo</th>
               <th style="width: auto">Tùy Chọn</th>
             </tr>
@@ -114,7 +114,8 @@
               <td class="text-center"><%= product.c_name %></td>
               <td class="text-center"><%= product.br_name %></td>
               <td class="text-center">
-                <div class="badge badge-info"> <%= product.pr_boughtCounts %></div>
+                <div class="badge badge-info"> <%= product.pr_boughtCounts %></div> /
+                <div class="badge badge-info"> <%= product.pr_amount || 10 %></div>
               </td>
               <td><%= new Date(product.pr_createdAt).toLocaleString() %></td>
               <td class="text-center">

@@ -144,8 +144,8 @@ hr{
     font-weight: 600;
     border-radius: 3px;
     background: #de2000;
-    width: 32px;
-    height: 20px;
+    width: auto;
+    height: auto;
     line-height: 20px;
     text-align: center
 }
@@ -201,8 +201,8 @@ h3.title.mb-3 {
     font-weight: 600;
     border-radius: 3px;
     background: #de2000;
-    width: 32px;
-    height: 20px;
+    width: auto;
+    height: auto;
     line-height: 20px;
     text-align: center;
     margin-left: 5px;

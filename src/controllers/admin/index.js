@@ -5,6 +5,7 @@ import categoryController from '../admin/categoryController';
 import brandController from '../admin/brandController';
 import productController from '../admin/productController';
 import orderController from '../admin/orderController';
+import attributeController from './attributeController';
 
 
 export const auth_C = authController;
@@ -14,3 +15,4 @@ export const category_C = categoryController;
 export const brand_C = brandController;
 export const product_C = productController;
 export const order_C = orderController;
+export const attribute_C = attributeController;

@@ -18,10 +18,64 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title m-b-0">Thêm Thuộc Tính Giao Diện</h4>
-      <form class="form-group m-t-20" id="form_input" enctype="multipart/form-data" method="POST" action="#">
+      <form class="form-group m-t-20" id="forminputs" enctype="multipart/form-data" method="POST" action="#">
         <div class="row">
           <!-- thêm nội dung ơ form ơ đây -->
-        </div>
+          <!-- thêm mấy cái input chổ này -->
+          <!-- mẫu form -->
+          <!-- tên thuộc tính name attr_name-->
+          <!-- ảnh thuộc tính name attr_image -->
+          <!-- loại thuộc tính làm cái <select name="" id=""></select> name attr_type -->
+          <!-- mô tả (có thể điền hoặc không điền)  textarea name attr_discription-->
+          <!--validate luôn nha-->
+         
+            <div class="col-lg-7">
+              <div class="form-group">
+                <label for=" attr_names">Tên thuộc tính</label>
+                <input type="text" class="form-control" id=" attr_names" placeholder="" name="attr_name" >
+              </div>
+              <div class="form-group">
+                <label for=" ">Loại thuộc tính</label>
+                <select class="form-control" id="attr_type" name="attr_type" required>
+                  <option value="1">Chọn thuộc tính</option>
+                  <option value="2">Slide quảng cáo</option>
+                  <option value="3">Thay đổi logo</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="">Mô tả</label>
+                <textarea class="form-control" id="attr_discription" rows="3" name="attr_discription"></textarea>
+              </div>
+              <div class="form-group">
+                <label for=" ">Chọn ảnh</label>
+                <div>
+                  <div class="custom-file">
+                    <input type="file" name="br_image" class="custom-file-input form-control" id="fileImageBrand"
+                      accept=".png, .jpg, jpeg, .PNG, JPG, JPEG" required>
+                    <label class="custom-file-label text-left" for="validatedCustomFile">Chọn File Ảnh...</label>
+                    <div class="feedback" style="color:red"></div>
+                  </div>
+                </div>
+                
+            </div>
+  
+            
+          </div>
+          <div class="col-md-5">
+            <div class="text-center">
+              <img
+                src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/image_default/placeholder250x250_lnsqrn.png"
+                alt="brand image" class="image-preview border border-dark" width="260px" height="160px"
+                style="border-radius: 18px!important;">
+            </div>
+            <div class="text-center">Ảnh</div>
+          </div>
+          <div class="col-lg-3">
+            <a href="admin/brand" class="btn btn-info text-white "><i class="fa fa-angle-left"></i> quay lại</a>
+            <button type="submit" class="btn btn-success text-white "  id="submit"><i class="fa fa-check"></i> Thêm</button>
+          </div>
+          </div>
+          
       </form>
       <div id="mgs"></div>
     </div>
@@ -29,5 +83,7 @@
 </div>
 
 
-<script type="text/javascript" src="admin_template/js/customPages/brand/jqueryAddBrand.js"></script>
+<script type="text/javascript"src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="admin_template/js/customPages/attribute/jqueryAddAttribute.js"></script>
+ <script type="text/javascript" src="admin_template/js/customPages/brand/jqueryAddBrand.js"></script> 
 <%- include("../adminFooter") %>

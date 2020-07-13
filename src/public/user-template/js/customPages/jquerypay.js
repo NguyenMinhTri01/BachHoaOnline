@@ -122,25 +122,25 @@ $(document).ready(function () {
     })
 
 
-    $("#formiput").validate({
+    $("#formInputPay").validate({
         rules: {
-            t_name: {
+            u_name: {
                 required: true,
             },
-            phone: {
+            u_phoneNumber: {
                 required: true,
             },
-            thanhpho: {
+            provincesOrCities: {
                 required: true,
             },
 
-            quanhuuyen: {
+            district: {
                 required: true,
             },
-            phuongxa: {
+            wards: {
                 required: true,
             },
-            sonha: {
+            detail: {
                 required: true,
             },
             date: {
@@ -152,25 +152,25 @@ $(document).ready(function () {
 
         },
         messages: {
-            t_name: {
+            u_name: {
                 required: "Vui lòng nhập họ và tên",
             },
-            phone: {
+            u_phoneNumber: {
                 required: "Vui lòng nhập vào số điện thoại"
             },
-            thanhpho: {
+            provincesOrCities: {
                 required: "Vui lòng nhập thành phố(tỉnh)"
             },
-            quanhuuyen: {
+            district: {
                 required: "Vui lòng nhập quận/huyện"
             },
-            phuongxa: {
+            wards: {
                 required: "Vui lòng nhập phường/xã"
             },
-            sonha: {
+            detail: {
                 required: "vui lòng nhập số nhà,tên đường "
             },
-            date: {
+            or_deliveryDate: {
                 required: "Vui lòng chọn ngày giao"
             },
             time: {

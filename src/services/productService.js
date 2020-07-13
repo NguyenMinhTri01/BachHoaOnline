@@ -301,6 +301,23 @@ const getProductsFlowListC_id = (listC_id, count) => {
     return resolve([]);
   });
 };
+const getProductsFlowCategory = (c_id , count) => {
+  return new Promise(async (resolve, reject) => {
+    let products = await product_M.getProductsFollowIdCategory(c_id, count);
+    if (products.length > 0) {
+      products = products.map(product => {
+        const priceString = {
+          pr_priceNewString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_priceNew),
+          pr_priceString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_price)
+        }
+        const object = _.assign(product._doc, priceString);
+        return object;
+      })
+      return resolve(products);
+    }
+    return resolve([]);
+  });
+}
 
 const getProductsHot = async (skip) => {
   return new Promise(async (resolve, reject) => {
@@ -356,6 +373,21 @@ const getProductsFollowKeyword = (keyword) => {
     }
     return resolve(products);
   })
+};
+
+const getProductBySlug = (pr_slug) => {
+  return new Promise( async (resolve, reject) => {
+    let product = await product_M.findProductBySlug(pr_slug);
+    if (product) {
+      const priceString = {
+        pr_priceNewString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_priceNew),
+        pr_priceString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_price)
+      }
+      product = _.assign(product._doc, priceString);
+      return resolve(product);
+    }
+    return resolve(null)
+  })
 }
 
 
@@ -364,6 +396,7 @@ module.exports = {
   getProductsHot,
   hotProductById,
   getProductById,
+  getProductBySlug,
   createNewProduct,
   getListProducts,
   deleteImageById,
@@ -371,6 +404,7 @@ module.exports = {
   getProductsAddCart,
   getAlbumImageByPrId,
   getProductsFlowListC_id,
+  getProductsFlowCategory,
   getProductsFollowKeyword,
   getProductsFollowMenuCategory
 

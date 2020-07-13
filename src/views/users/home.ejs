@@ -43,7 +43,7 @@
 						<figure>
 							<div class="snipcart-item block text-center">
 								<div class="snipcart-thumb">
-									<a href="hot/<%= product.pr_slug %>"><img title=" " alt=" "
+									<a href="product/hot/<%= product.pr_slug %>"><img title=" " alt=" "
 											src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" style="width: 100%"></a>
 									<% if(product.pr_name.length >= 70) {%>
 									<div style="min-height: 70px;">
@@ -112,7 +112,7 @@
 						<figure>
 							<div class="snipcart-item block text-center">
 								<div class="snipcart-thumb">
-									<a href="<%= category.c_slug %>/<%= product.pr_slug %>"><img title=" " alt=" "
+									<a href="product/<%= category.c_slug %>/<%= product.pr_slug %>"><img title=" " alt=" "
 											src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" style="width: 100%"></a>
 									<% if(product.pr_name.length >= 70) {%>
 									<div style="min-height: 70px;">

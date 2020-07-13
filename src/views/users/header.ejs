@@ -2,17 +2,37 @@
 <html>
 
 <head>
-	<title><%= title? title : "Bách Hóa Online | Mua Tất Cả Trên Dị Động" %> </title>
+	<title><%= title? title : "Bách Hóa Online | Mua Gì Cũng Có" %> </title>
 	<link rel="icon" type="image/png" sizes="25x25"
 		href="https://res.cloudinary.com/nguyenminhtri/image/upload/c_scale,w_25/v1593921091/BachHoaOnline/logo/logofnv_lhkuvw.png">
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<base href="<%= BASE_URL %>">
+	<% if(typeof keywords != "undefined") {%>
+	<meta name="keywords" content="<%= keywords %>">
+	<% } else {%>
+	<meta name="keywords" content="Siêu thị, bách hoá, thực phẩm, đồ dùng, bách hoá ">
+	<% } %>
+	<% if (typeof description != "undefined") {%>
+	<meta name="description" content="<%= description %>">
+	<% } else{%>
+	<meta name="description"
+		content="Bách Hóa Online bán lẻ thực phẩm tươi sống, bánh kẹo, đồ hộp, đồ dùng gia đình giá rẻ, sản phẩm tươi mới, nguồn gốc đảm bảo, dịch vụ chu đáo.">
+	<% } %>
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- //for-mobile-apps -->
+	<% if ( typeof infoLikeShareFacebook != "undefined") {%>
+	<!-- like share facebook -->
+	<meta property="og:url" content="<%= infoLikeShareFacebook.url %>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="<%= infoLikeShareFacebook.title %>" />
+	<meta property="og:description" content="<%= infoLikeShareFacebook.description %>" />
+	<meta property="og:image" content="<%= SECURE_DELIVERY_URL+infoLikeShareFacebook.image %>" />
+	<!-- end like share facebook -->
+	<% } %>
+
 	<link href="user-template/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="user-template/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome icons -->
@@ -48,29 +68,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+	<!-- like share facebook -->
+	<!-- Load Facebook SDK for JavaScript -->
+	<div id="fb-root"></div>
+	<script>
+		(function (d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<!-- end like share facebook -->
 	<!-- header -->
 	<style type="text/css">
 		#myContent ul li a {
-				text-decoration: none;
-				color: #111;
+			text-decoration: none;
+			color: #111;
 		}
+
 		#myContent ul li {
-				list-style: none;
-				padding: 10px;
-				width: auto;
-				height: auto;
-		 }
-		 #myContent ul li a:hover {
+			list-style: none;
+			padding: 10px;
+			width: auto;
+			height: auto;
+		}
+
+		#myContent ul li a:hover {
 			color: #d45a00;
-		 }
+		}
 	</style>
 	<div id="myPopoverContent" style="display:none">
 		<div id="myContent">
 			<ul>
-				 <li><a href="#">Tài khoản của tôi</a></li>
-				 <li><a href="#">Đăng Xuất</a></li>
+				<li><a href="#">Tài khoản của tôi</a></li>
+				<li><a href="#">Đăng Xuất</a></li>
 			</ul>
-	 </div>
+		</div>
 	</div>
 
 	<div class="agileits_header">
@@ -142,7 +177,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="agile-login">
 								<ul>
 									<% if (typeof infoUser != "undefined") {%>
-									<li> Xin Chào <a href="#" data-toggle="popover" data-placement="bottom"><strong><%= infoUser.u_name %></strong></a></li>
+									<li> Xin Chào <a href="#" data-toggle="popover"
+											data-placement="bottom"><strong><%= infoUser.u_name %></strong></a></li>
 									<% } else {%>
 									<li><a href="register"> Đăng Ký </a></li>
 									<li><a href="login">Đăng Nhập </a></li>

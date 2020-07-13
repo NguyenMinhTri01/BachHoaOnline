@@ -87,11 +87,12 @@ const getProductDetail = async (req, res) => {
     const product = await product_S.getProductBySlug(pr_slug);
     const menu = await category_S.getMenuCategory();
     if (product) {
+      const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
       const album = await product_S.getAlbumImageByPrId(product._id);
       const brand = await brand_S.getBrandById(product.br_id);
       const productFamily = await product_S.getProductsFlowCategory(product.c_id, 0);
       const infoLikeShareFacebook = {
-        url : `${req.headers.referer}`,
+        url : fullUrl,
         title: product.pr_SEO.title,
         description: product.pr_SEO.description,
         image: product.pr_avatar

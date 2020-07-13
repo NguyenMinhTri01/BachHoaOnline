@@ -1129,3 +1129,6 @@ img {
 .demo:hover {
   opacity: 1;
 }
+p.infor {
+  margin-top: -30px;
+}

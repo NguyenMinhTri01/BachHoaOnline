@@ -7,7 +7,8 @@ const getLoginUser = (req, res) => {
     let errors = req.flash('errors');
     return res.render('users/login', { 
       title: "Bách Hóa Online | Mua Gì Cũng Có",
-      errors 
+      errors ,
+      BASE_URL : process.env.BASE_URL
     });
   } catch (error) {
     console.log(error);
@@ -19,6 +20,7 @@ const getRegisterUser = (req, res) => {
   res.render("users/register",{
     infoUser: req.user,
     title: "Bách Hóa Online | Mua Gì Cũng Có",
+    BASE_URL : process.env.BASE_URL
   });
 };
 

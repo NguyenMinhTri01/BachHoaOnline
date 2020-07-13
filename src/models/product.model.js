@@ -87,6 +87,20 @@ productSchema.statics = {
       .skip(skip)
   },
 
+  getProductsFollowIdCategory (c_id, skip) {
+    return this
+    .find(
+      {
+        c_id,
+        pr_status: true
+      },
+      '_id pr_name pr_hot c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
+    )
+    .sort({pr_hot: -1})
+    .limit(8)
+    .skip(skip)
+  },
+
   getProductHot(skip) {
     return this
       .find(

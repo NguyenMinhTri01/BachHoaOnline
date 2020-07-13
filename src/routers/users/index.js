@@ -22,6 +22,7 @@ let initRouteUser = (app) => {
   router.get('/pay',home_C.getPay);
   router.get('/history',home_C.getHistory);
   router.get('/username',home_C.getUsername);
+  router.get('/product(/:c_slug)?/:pr_slug',home_C.getProductDetail);
 
   router.post('/sentDataPayToServer', home_C.addNewOrder);
   router.get('/addOnItem/id/:id/count/:count', home_C.addOnItem);

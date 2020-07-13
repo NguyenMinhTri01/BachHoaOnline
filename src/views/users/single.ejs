@@ -18,124 +18,107 @@
 <!-- //breadcrumbs -->
 <div class="card" style="background-color:#fff;">
     <!-- <div class="container"> -->
-        <div class="row">
-            <aside class="col-sm-5 border-right">
-                <div class="mySlides">
-                    <div class="numbertext">1 / 6</div>
-                    <img src="user-template/images/nu3.jpg" style="width:100%">
-                  </div>
-                
-                  <div class="mySlides">
-                    <div class="numbertext">2 / 6</div>
-                    <img src="user-template/images/nu1.jpg" style="width:100%">
-                  </div>
-                
-                  <div class="mySlides">
-                    <div class="numbertext">3 / 6</div>
-                    <img src="user-template/images/nu4.jpg" style="width:100%">
-                  </div>
-                    
-                  <div class="mySlides">
-                    <div class="numbertext">4 / 6</div>
-                    <img src="user-template/images/nu6.jpg" style="width:100%">
-                  </div>
-                
-                  <div class="mySlides">
-                    <div class="numbertext">5 / 6</div>
-                    <img src="user-template/images/nu6.jpg" style="width:100%">
-                  </div>
-                    
-                  <div class="mySlides">
-                    <div class="numbertext">6 / 6</div>
-                    <img src="user-template/images/nu6.jpg" style="width:100%">
-                  </div>
-                    
-                  <a class="prev" onclick="plusSlides(-1)">❮</a>
-                  <a class="next" onclick="plusSlides(1)">❯</a>
-                
-                  <div class="caption-container">
-                    <p id="caption"></p>
-                  </div>
-                
-                  <div class="row" style="margin-left: 2px;">
-                    <div class="column1">
-                      <img class="demo cursor" src="user-template/images/nu3.jpg" style="width:100%" onclick="currentSlide(1)" >
-                    </div>
-                    <div class="column1">
-                      <img class="demo cursor" src="user-template/images/nu1.jpg" style="width:100%" onclick="currentSlide(2)" >
-                    </div>
-                    <div class="column1">
-                      <img class="demo cursor" src="user-template/images/nu4.jpg" style="width:100%" onclick="currentSlide(3)" >
-                    </div>
-                    <div class="column1">
-                      <img class="demo cursor" src="user-template/images/nu6.jpg" style="width:100%" onclick="currentSlide(4)" >
-                    </div>
-                    <div class="column1">
-                      <img class="demo cursor" src="user-template/images/nu6.jpg" style="width:100%" onclick="currentSlide(5)" >
-                    </div>    
-                    <div class="column1">
-                      <img class="demo cursor" src="user-template/images/nu6.jpg" style="width:100%" onclick="currentSlide(6)" >
-                    </div>
-                  </div>
-            </aside>
-            <aside class="col-sm-7">
-                <article class="card-body p-5">
-                    <h3 class="title mb-3">Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</h3>
+    <div class="row">
+        <aside class="col-sm-5 border-right">
+            <div class="mySlides">
+                <div class="numbertext"> 1 / <%= album.length + 1 %></div>
+                <img src="<%= SECURE_DELIVERY_URL + product.pr_avatar %>" style="width:100% ;padding: 5px 22px;">
+            </div>
+            <% if(album.length > 0) {%>
+            <% album.forEach(function(item, index){ %>
+            <div class="mySlides">
+                <div class="numbertext"><%= index + 2 %> / <%= album.length + 1 %></div>
+                <img src="<%= SECURE_DELIVERY_URL + item.public_id %>" style="width:100%; padding: 5px 22px;">
+            </div>
+            <% }) %>
+            <% } %>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
+            <div class="row" style="margin-left: 2px;">
+                <div class="column1">
+                    <img class="demo cursor" src="<%= SECURE_DELIVERY_URL + product.pr_avatar %>" style="width:100%;"
+                        onclick="currentSlide(1)">
+                </div>
+                <% if(album.length > 0) {%>
+                <% album.forEach(function(item, index){ %>
+                <div class="column1">
+                    <img class="demo cursor" src="<%= SECURE_DELIVERY_URL + item.public_id %>" style="width:100%"
+                        onclick="currentSlide(<%= index + 2 %>)">
+                </div>
+                <% }) %>
+                <% } %>
+            </div>
+        </aside>
+        <aside class="col-sm-7">
+            <article class="card-body p-5">
+                <h3 class="title mb-3"><%= product.pr_name %></h3>
 
-                    <p class="price-detail-wrap">
-                    <div class="boxprice">
-                        <strong>30.000đ</strong>
-                        <span class="strike">38.000đ</span>
-                        <label>-21%</label>
-                    </div>
-                    </p> <!-- price-detail-wrap .// -->
-                    <dl class="item-property">
-                        <ul class="thongtinsanpham">
-                            <li><span>Thương hiệu</span>
-                                <div>Pesi Mỹ</div>
-                            </li>
-                            <li><span>Thể tích/Khối lượng...</span>
-                                <div>1,5 lít</div>
-                            </li>
-                            <li><span>Sản Xuất tại</span>
-                                <div>Việt Nam</div>
-                            </li>
-                            <li><span>Mô tả</span>
-                                <p>Ngon hơn khi uống lạnh Lorem ipsum dolor sit amet consectetur 
-                                    adipisicing elit. Sunt praesentium repellendus porro, eius reprehenderit fugiat quod fuga laudantium nisi eaque nesciunt 
-                                    facere architecto quis minima dolor animi quia ut fugit!</p>
-                            </li>
+                <p class="price-detail-wrap">
+                <div class="boxprice">
+                    <% if(product.pr_discount > 0) {%>
+                    <strong><%= product.pr_priceNewString %></strong>
+                    <span class="strike"><%= product.pr_priceString %></span>
+                    <label>-<%= product.pr_discount%> %</label>
+                    <% } else {%>
+                    <strong>30.000đ</strong>
+                    <% } %>
 
-                        </ul>
-                    </dl>
+                </div>
+                </p> <!-- price-detail-wrap .// -->
+                <dl class="item-property">
+                    <ul class="thongtinsanpham">
+                        <li><span>Thương hiệu</span>
+                            <div><%= brand.br_name %></div>
+                        </li>
+                        <li><span>Thể tích/Khối lượng...</span>
+                            <div><%= product.pr_capacity.value %> <%= product.pr_capacity.unit %></div>
+                        </li>
+                        <li><span>Sản Xuất tại</span>
+                            <div><%= product.pr_origin %></div>
+                        </li>
+                        <li><span>Mô tả</span>
+                            <p><%= product.pr_description %></p>
+                        </li>
+
+                    </ul>
+                </dl>
 
 
-                    
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label for="">
-                                    <p style="font-size:15px ; font-family: 'Raleway', sans-serif;color:#333;">Số lượng
-                                    </p>
-                                </label>
-                                <input type="number" class="form-control" id="sl" placeholder="" style="width:70px;">
-                            </div>
-                        </div> <!-- col.// -->
-                        <div class="col-sm-7">
-                            <dl class="param param-inline">
-                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                            </dl> <!-- item-property .// -->
-                        </div> <!-- col.// -->
-                    </div> <!-- row.// -->
-                   
-                    <button style="margin-bottom: 10px;width:98%;" data-id="abcxyz" class="btn btn-lg btn-primary text-uppercase btnAddCart"> Chọn mua</button>
-                </article> <!-- card-body.// -->
-            </aside> <!-- col.// -->
-        </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="">
+                                <p style="font-size:15px ; font-family: 'Raleway', sans-serif;color:#333;">Số lượng
+                                </p>
+                            </label>
+                            <input min="1" type="number" class="form-control" id="sl" value="1" style="width:70px;">
+                        </div>
+                    </div> <!-- col.// -->
+                    <div class="col-sm-6">
+                        <dl class="param param-inline">
+                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                            <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                            <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                        </dl> <!-- item-property .// -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="fb-share-button" data-href="<%= infoLikeShareFacebook.url %>"
+                            data-layout="button_count" data-size="small">
+                        </div>
+                    </div>
+                </div> <!-- row.// -->
+
+                <button style="margin-bottom: 10px;width:98%;" data-id="abcxyz"
+                    class="btn btn-lg btn-primary text-uppercase btnAddCart"> Chọn mua</button>
+            </article> <!-- card-body.// -->
+        </aside> <!-- col.// -->
+    </div>
     <!-- </div> -->
     <!-- row.// -->
 </div> <!-- card.// -->
@@ -238,7 +221,8 @@
                                     </p>
                                     <a style="color:#588bcd; display: inline-block;" href="#">1 Trả lời</a>
                                     <span class="com-dot"> • </span>
-                                    <a style="color:#588bcd; display: inline-block;" href="#"><i class="fa fa-thumbs-up"></i>0 Thích</a>
+                                    <a style="color:#588bcd; display: inline-block;" href="#"><i
+                                            class="fa fa-thumbs-up"></i>0 Thích</a>
                                 </div>
                             </li>
                             <li class="media">
@@ -284,493 +268,79 @@
 
 
 <!-- new -->
-
-<!-- <div class="agile_top_brands_grids">
-    <h3 style="    margin-left: 348px;
-    margin-bottom: 17px;">CÁC SẢN PHẨM LIÊN QUAN</h3>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
-                                        style="width: 100%"></a>
-                                <p>6 chai trà xanh C2 hương chanh 360ml</p>
-                                <h4>30.000₫ <span>39.000₫ </span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-                                        <input type="hidden" name="amount" value="35.99">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
-                                        style="width: 100%"></a>
-                                <p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
-                                <h4>49.000₫ <span>55.000₫</span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="basmati rise">
-                                        <input type="hidden" name="amount" value="30.99">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
-                                        class="img-responsive"></a>
-                                <p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-                                <h4>30.000₫ <span>38.000₫</span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="Pepsi soft drink">
-                                        <input type="hidden" name="amount" value="80.00">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
-                                        class="img-responsive"></a>
-                                <p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-                                <h4>30.000₫ <span>38.000₫</span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="Pepsi soft drink">
-                                        <input type="hidden" name="amount" value="80.00">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img title=" " alt=" " src="user-template/images/nu3.jpg"
-                                        style="width: 100%"></a>
-                                <p>6 chai trà xanh C2 hương chanh 360ml</p>
-                                <h4>30.000₫ <span>39.000₫ </span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-                                        <input type="hidden" name="amount" value="35.99">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img title=" " alt=" " src="user-template/images/nu4.jpg"
-                                        style="width: 100%"></a>
-                                <p>Lốc 6 lon nước ngọt Pepsi Cola 330ml</p>
-                                <h4>49.000₫ <span>55.000₫</span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="basmati rise">
-                                        <input type="hidden" name="amount" value="30.99">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
-                                        class="img-responsive"></a>
-                                <p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-                                <h4>30.000₫ <span>38.000₫</span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="Pepsi soft drink">
-                                        <input type="hidden" name="amount" value="80.00">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 top_brand_left">
-        <div class="hover14 column">
-            <div class="agile_top_brand_left_grid">
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid_pos">
-                    <img src="user-template/images/offer.png" alt=" " class="img-responsive">
-                </div>
-                <div class="agile_top_brand_left_grid1">
-                    <figure>
-                        <div class="snipcart-item block">
-                            <div class="snipcart-thumb">
-                                <a href="single.html"><img src="user-template/images/nu1.jpg" alt=" "
-                                        class="img-responsive"></a>
-                                <p>Combo 2 chai nước ngọt Pepsi Cola 1.5 lít</p>
-                                <h4>30.000₫ <span>38.000₫</span></h4>
-                            </div>
-                            <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="Pepsi soft drink">
-                                        <input type="hidden" name="amount" value="80.00">
-                                        <input type="hidden" name="discount_amount" value="1.00">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Chọn Mua" class="button">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 top_brand_left text-center">
-            <div class="view-more">xem thêm 8 sản phẩm nữa <i class="fa fa-chevron-down view-more"></i></div>
-        </div>
-    </div>
-</div> -->
-<h3 style="margin-top: 40px; border-left:6px solid #fe9126">Các Sản Phẩm Liên Quan</h3>
+<% if(typeof productFamily != "undefined") {%>
+<% if(productFamily.length > 0) {%>
+<h3 style="margin-top: 40px; border-left:6px solid #fe9126">Các Sản Phẩm Cùng Loại</h3>
 <div class="agile_top_brands_grids">
-	<div id="productsHot">
-		<div class="col-md-3 top_brand_left">
-			<div class="hover14 column">
-				<div class="agile_top_brand_left_grid">
-					<!-- <div class="agile_top_brand_left_grid_pos">
-						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
-						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
-					</div> -->
-					<div class="agile_top_brand_left_grid1">
-						<figure>
-							<div class="snipcart-item block text-center">
-								<div class="snipcart-thumb">
-									<a href=""><img title=" " alt=" "
-											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
-									<div style="min-height: 70px;">
-										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
-									</div>
-									<div style="min-height: 48px;">
-										<span data='' class="priceSp">55555 </span>
-										<label class="discount" style="margin-left: 6px;"> -10%</label>
-										<h4>256566</h4>
-									</div>
-								</div>
-								<div class="snipcart-details top_brand_home_details">
-									<button data-id="" class="btnAddCart"> Chọn mua</button>
-								</div>
-							</div>
-						</figure>
-					</div>
-				</div>
-			</div>
+    <div id="productFamily">
+        <% productFamily.forEach((_product) => { %>
+        <div class="col-md-3 top_brand_left">
+            <div class="hover14 column">
+                <div class="agile_top_brand_left_grid">
+                    <% if(_product.pr_hot) {%>
+                    <div class="agile_top_brand_left_grid_pos">
+                        <img src="<%= SECURE_DELIVERY_URL %>c_scale,w_40/BachHoaOnline/icon/hot_fire" alt="logoHot"
+                            class="img-responsive" style="position: relative; top: -10px; left: 2px;">
+                    </div>
+                    <% } %>
+                    <div class="agile_top_brand_left_grid1">
+                        <figure>
+                            <div class="snipcart-item block text-center">
+                                <div class="snipcart-thumb">
+                                    <a href="product/<%= _product.pr_slug %>"><img title=" " alt=" "
+                                            src="<%= SECURE_DELIVERY_URL %><%= _product.pr_avatar %>"
+                                            style="width: 100%"></a>
+                                    <% if(_product.pr_name.length >= 70) {%>
+                                    <div style="min-height: 70px;">
+                                        <p><%= _product.pr_name.slice(0, 70) %>...</p>
+                                    </div>
+                                    <% } else {%>
+                                    <div style="min-height: 70px;">
+                                        <p><%= _product.pr_name%></p>
+                                    </div>
+                                    <% } %>
+                                    <% if(_product.pr_discount > 0) {%>
+                                    <div style="min-height: 48px;">
+                                        <span data='<%= _product.pr_price %>'
+                                            class="priceSp"><%= _product.pr_priceString %> </span>
+                                        <label class="discount" style="margin-left: 6px;">
+                                            -<%= _product.pr_discount %>%</label>
+                                        <h4><%= _product.pr_priceNewString %></h4>
+                                    </div>
+                                    <% } else {%>
+                                    <div style="min-height: 48px;">
+                                        <br>
+                                        <h4><%= _product.pr_priceString %></h4>
+                                    </div>
+                                    <% } %>
+                                </div>
+                                <div class="snipcart-details top_brand_home_details">
+                                    <button data-id="<%= _product._id %>" class="btnAddCart"> Chọn mua</button>
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3 top_brand_left">
-			<div class="hover14 column">
-				<div class="agile_top_brand_left_grid">
-					<!-- <div class="agile_top_brand_left_grid_pos">
-						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
-						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
-					</div> -->
-					<div class="agile_top_brand_left_grid1">
-						<figure>
-							<div class="snipcart-item block text-center">
-								<div class="snipcart-thumb">
-									<a href=""><img title=" " alt=" "
-											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
-									<div style="min-height: 70px;">
-										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
-									</div>
-									<div style="min-height: 48px;">
-										<span data='' class="priceSp">55555 </span>
-										<label class="discount" style="margin-left: 6px;"> -10%</label>
-										<h4>256566</h4>
-									</div>
-								</div>
-								<div class="snipcart-details top_brand_home_details">
-									<button data-id="" class="btnAddCart"> Chọn mua</button>
-								</div>
-							</div>
-						</figure>
-					</div>
-				</div>
-			</div>
-		</div>
-        <div class="col-md-3 top_brand_left">
-			<div class="hover14 column">
-				<div class="agile_top_brand_left_grid">
-					<!-- <div class="agile_top_brand_left_grid_pos">
-						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
-						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
-					</div> -->
-					<div class="agile_top_brand_left_grid1">
-						<figure>
-							<div class="snipcart-item block text-center">
-								<div class="snipcart-thumb">
-									<a href=""><img title=" " alt=" "
-											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
-									<div style="min-height: 70px;">
-										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
-									</div>
-									<div style="min-height: 48px;">
-										<span data='' class="priceSp">55555 </span>
-										<label class="discount" style="margin-left: 6px;"> -10%</label>
-										<h4>256566</h4>
-									</div>
-								</div>
-								<div class="snipcart-details top_brand_home_details">
-									<button data-id="" class="btnAddCart"> Chọn mua</button>
-								</div>
-							</div>
-						</figure>
-					</div>
-				</div>
-			</div>
-		</div>
-        <div class="col-md-3 top_brand_left">
-			<div class="hover14 column">
-				<div class="agile_top_brand_left_grid">
-					<!-- <div class="agile_top_brand_left_grid_pos">
-						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
-						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
-					</div> -->
-					<div class="agile_top_brand_left_grid1">
-						<figure>
-							<div class="snipcart-item block text-center">
-								<div class="snipcart-thumb">
-									<a href=""><img title=" " alt=" "
-											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
-									<div style="min-height: 70px;">
-										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
-									</div>
-									<div style="min-height: 48px;">
-										<span data='' class="priceSp">55555 </span>
-										<label class="discount" style="margin-left: 6px;"> -10%</label>
-										<h4>256566</h4>
-									</div>
-								</div>
-								<div class="snipcart-details top_brand_home_details">
-									<button data-id="" class="btnAddCart"> Chọn mua</button>
-								</div>
-							</div>
-						</figure>
-					</div>
-				</div>
-			</div>
-		</div>
-        <div class="col-md-3 top_brand_left">
-			<div class="hover14 column">
-				<div class="agile_top_brand_left_grid">
-					<!-- <div class="agile_top_brand_left_grid_pos">
-						<img src="/c_scale,w_40/BachHoaOnline/icon/hot_fire" 
-						alt="logoHot" class="img-responsive" style="position: relative; top: -10px; left: 2px;">
-					</div> -->
-					<div class="agile_top_brand_left_grid1">
-						<figure>
-							<div class="snipcart-item block text-center">
-								<div class="snipcart-thumb">
-									<a href=""><img title=" " alt=" "
-											src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/product/1593334326053/1593334326050-864" style="width: 100%"></a>
-									<div style="min-height: 70px;">
-										<p>Sữa tắm dưỡng thể có hạt Dove dưỡng ẩm sáng mịn 896ml...</p>
-									</div>
-									<div style="min-height: 48px;">
-										<span data='' class="priceSp">55555 </span>
-										<label class="discount" style="margin-left: 6px;"> -10%</label>
-										<h4>256566</h4>
-									</div>
-								</div>
-								<div class="snipcart-details top_brand_home_details">
-									<button data-id="" class="btnAddCart"> Chọn mua</button>
-								</div>
-							</div>
-						</figure>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <% }) %>
+    </div>
 
 
-	
-	<div class="col-md-12 top_brand_left text-center">
-		<div class="view-more">
-			<a class="addMorePrHot" data-count="8" href="addOnHotItem/count/">xem thêm
-				<i class="fa fa-chevron-down view-more"></i>
-			</a>
-		</div>
-	</div>
-	<div class="clearfix"> </div>
+    <% if(productFamily.length == 8) {%>
+    <div class="col-md-12 top_brand_left text-center">
+        <div class="view-more">
+            <a class="addMorePrHot" data-count="8" href="addOnHotItem/count/">xem thêm
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+    </div>
+    <% } %>
+    <div class="clearfix"> </div>
 </div>
+<hr>
+<% } %>
+<% } %>
 <!-- Bình luận người dùng -->
 
 <!-- <h4 style="color: rgb(255, 0, 21);">BÌNH LUẬN KHÁCH HÀNG</h4>
@@ -839,7 +409,7 @@
 
 
 
-    <!-- <div class="card">
+<!-- <div class="card">
         <hr>
         <div class="card-body">
             <div class="row">
@@ -921,7 +491,6 @@
             </div>
         </div>
     </div> -->
-    <script type="text/javascript" src="user-template/js/customPages/jquerysingle.js"></script>
-    
-    <%- include("footer.ejs")  %>
-    
+<script type="text/javascript" src="user-template/js/customPages/jquerysingle.js"></script>
+
+<%- include("footer.ejs")  %>

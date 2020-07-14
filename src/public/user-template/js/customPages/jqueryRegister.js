@@ -11,6 +11,9 @@ function validationFormRegister (formRegister) {
         number : true,
         minlength : 10
       },
+      'profileGender' : {
+        required : true
+      },
       'u_email' : {
         required: true,
         maxlength: 50,
@@ -35,6 +38,9 @@ function validationFormRegister (formRegister) {
         maxlength : 'Số điện thoại không hợp lệ',
         number : 'Số điện thoại không hợp lệ',
         minlength : 'Số điện thoại không hợp lệ'
+      },
+      'profileGender' : {
+        required : "Dữ liệu không được để trống"
       },
       'u_email' : {
         required: 'Dữ liệu không được để trống',

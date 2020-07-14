@@ -68,8 +68,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div id="myPopoverContent" style="display:none">
 		<div id="myContent">
 			<ul>
-				 <li><a href="#">Tài khoản của tôi</a></li>
-				 <li><a href="#">Đăng Xuất</a></li>
+				 <li><a href="user/profile">Tài khoản của tôi</a></li>
+				 <li><a href="user/logout">Đăng Xuất</a></li>
 			</ul>
 	 </div>
 	</div>
@@ -99,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="agile-login" style="right: -20px;">
 								<ul>
 									<% if (typeof infoUser != "undefined") {%>
-										<li> Xin Chào <a href="#" data-toggle="popover" data-placement="bottom"><strong><%= infoUser.u_name %></strong></a></li>
+										<li> Xin Chào <a href="#" data-toggle="popover" data-placement="bottom"><strong id="userName"><%= infoUser.u_name %></strong></a></li>
 										<% } else {%>
 									<li><a href="register"> Đăng Ký </a></li>
 									<li><a href="login">Đăng Nhập </a></li>

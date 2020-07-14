@@ -16,6 +16,7 @@ const registerUser = (data) => {
         u_phoneNumber : data.u_phoneNumber,
         u_email : data.u_email,
         u_localPassword : hash,
+        u_gender : (data.profileGender === '1') ? true : false
       });
       let result = await users_M.createNew(item);
       if (result) {

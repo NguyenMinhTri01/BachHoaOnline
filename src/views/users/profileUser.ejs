@@ -26,63 +26,99 @@
         <div class="tab-menu nav" role="tablist" id="tablist">
 
             <!-- tab thông tin của tài khoản  -->
-            <a href="username" class="  ac  active || " role="tab">
+            <a href="user/profile" class="  ac  active || " role="tab">
                 <i class="fa fa-user " aria-hidden="true"></i>
                 Thông tin tài khoản
             </a>
             <!-- tab lịch sử các đơn hàng đã đặt -->
-            <a href="history" class=" ac  || " role="tab">
+            <a href="user/purchase" class=" ac  || " role="tab">
                 <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                 Đơn hàng của tôi
             </a>
 
             <!-- tab đăng xuất tài khoản  -->
-            <a href="/">
+            <a href="user/logout">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                 Đăng xuất
             </a>
         </div>
 
     </div>
-    
+
 
     <div class="col-md-9">
-        <h3 >Thông tin tài khoản</h3>
+        <h3>Thông tin tài khoản</h3>
         <div class="orderhistory">
             <form id="forminfor">
                 <div class="form-group row">
-                    <label for="u_name" class="col-sm-2 col-form-label">Họ tên</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="u_name" placeholder="">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="u_phoneNumber" class="col-sm-2 col-form-label">Số điện thoại</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" name="u_phoneNumber" placeholder="">
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="u_email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-6">
-                        <input type="email" class="form-control" name="u_email" placeholder="">
+                    <div class="col-sm-9">
+                        <input disabled type="email" class="form-control" name="u_email"
+                            value="<%= infoUser.u_email %>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="u_gender" class="col-sm-2 col-form-label">Giới tính</label>
-                    <div class="col-sm-6">
-                        <div class="wrapcheckbox box-data w100"><span class="gender">
-                                <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender1" value="1">
-                                <label for="ProfileItems_0_Gender1"> Nam &nbsp; </label>
-                            </span> <span class="gender">
-                                <input type="radio" name="ProfileItems_0_Gender" id="ProfileItems_0_Gender0" value="0">
-                                <label for="ProfileItems_0_Gender0"> Nữ</label>
+                    <div class="col-sm-9">
+                        <div class="wrapcheckbox box-data w100">
+                            <span class="gender">
+                                <% if(infoUser.u_gender) {%>
+                                <input type="radio" name="ProfileGender" id="ProfileItems_0_Gender1" value="1"
+                                    checked>
+                                <% } else {%>
+                                <input type="radio" name="ProfileGender" id="ProfileItems_0_Gender1" value="1">
+                                <% } %>
+                                <label for="ProfileItems_0_Gender1"> Anh &nbsp; </label>
+                            </span>
+                            <span class="gender">
+                                <% if(infoUser.u_gender) {%>
+                                <input type="radio" name="ProfileGender" id="ProfileItems_0_Gender0" value="0">
+                                <% } else {%>
+                                <input type="radio" name="ProfileGender" id="ProfileItems_0_Gender0" value="0"
+                                    checked>
+                                <% } %>
+                                <label for="ProfileItems_0_Gender0"> Chị </label>
                             </span>
                             <!---->
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="u_name" class="col-sm-2 col-form-label">Họ tên</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="u_name" value="<%= infoUser.u_name  %>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="u_phoneNumber" class="col-sm-2 col-form-label">Số điện thoại</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" name="u_phoneNumber" value="<%= infoUser.u_phoneNumber  %>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="provincesOrCities" class="col-sm-2 control-label">Thành phố (tỉnh)</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="provincesOrCities" value="<%= infoUser.u_address.provincesOrCities %>">
+                    </div>
+                    <label for="district" class="col-sm-2 control-label">Quận/Huyện</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" name="district" value="<%= infoUser.u_address.district %>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="control-label" class="col-sm-2 col-form-label">Phường/Xã</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="wards" value="<%= infoUser.u_address.wards %>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="control-label" class="col-sm-2 col-form-label">Số nhà tên đường</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="detail" value="<%= infoUser.u_address.detail %>">
+                    </div>
+                </div>
+
+                <!-- <div class="form-group row">
                     <label for="inputname" class="col-sm-2 col-form-label">Ngày sinh</label>
                     <div class="col-sm-2 ">
                         <select name="day" class="dmy" required="true">
@@ -197,55 +233,55 @@
 
                         </select>
                     </div>
-                    
-                    
-                </div>
+
+
+                </div> -->
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="showMe('div1')" name='pk'>
-                    
-                    
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="showMe('div1')"
+                        name='pk'>
                     <label class="form-check-label" for="defaultCheck1">
-                      Thay đổi mật khẩu
+                        Thay đổi mật khẩu 
+                        <a href="user/forgotPassword"> Quên mật khẩu ?</a>
                     </label>
-                  </div>
-                  <!-- <div id="div1"> -->
-                  <div class="form-group row  " style="display: none;" id="div1">
-                    <div class="col-sm-12">
+                </div>
+                <!-- <div id="div1"> -->
+                <div style="display: none;" id="div1">
+                    <div class="form-group row">
                         <label for="o_password" class="col-sm-2 col-form-label">Mật khẩu cũ </label>
-                        <div class="col-sm-6 ">
-                             <input type="password" class="form-control" name="o_password" placeholder="">
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" name="o_password" placeholder="">
                         </div>
                     </div>
-                    <div class="col-sm-12 mkm">
+                    <div class="form-group row">
                         <label for="n_password" class="col-sm-2 col-form-label">Mật khẩu mới </label>
-                        <div class="col-sm-6 ">
-                            <input type="password" class="form-control" name="n_password" placeholder="">
+                        <div class="col-sm-9 ">
+                            <input type="password" id="n_password" class="form-control" name="n_password"
+                                placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="r_password" class="col-sm-2 col-form-label">Nhập lại</label>
+                        <div class="col-sm-9 ">
+                            <input type="password" class="form-control" name="r_password" placeholder="">
                         </div>
                     </div>
 
-                   <div class="col-sm-12">
-                    <label for="r_password" class="col-sm-2 col-form-label">Nhập lại</label>
-                    <div class="col-sm-6 ">
-                        <input type="password" class="form-control" name="r_password" placeholder="">
-                    </div>
-                   </div>
-                    
                 </div>
-                
-                <button type="submit" class="btn btn-primary">Cập nhật</button>
-                </div>
-               
-                
-                </div>
-                <!-- </div> -->
-                
-            </form>
+                <button id="submit" type="submit" class="btn btn-primary">Cập nhật</button>
+
         </div>
+        <div id="mgs">
+        </div
     </div>
+    <!-- </div> -->
+    </form>
+
+</div>
+</div>
 </div>
 <script type="text/javascript"
-    src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 
 <script type="text/javascript" src="user-template/js/customPages/jqueryactive.js"></script>
-<script type="text/javascript" src="user-template/js/customPages/jqueryusername.js"></script>
+<script type="text/javascript" src="user-template/js/customPages/jqueryprofileUser.js"></script>
 <%- include("footer2.ejs")  %>

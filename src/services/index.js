@@ -5,6 +5,7 @@ import adminService from './adminService';
 import dashboardService from './dashboardService';
 import productService from './productService';
 import orderService from './orderService';
+import userService from './userService';
 
 export const category_S = categoryService;
 export const brand_S = brandService;
@@ -13,3 +14,4 @@ export const admin_S = adminService;
 export const dashboard_S = dashboardService;
 export const product_S = productService;
 export const order_S = orderService;
+export const user_S = userService;

@@ -99,3 +99,4 @@ cần xem lai login facebook
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script> -->
+  sưa header 2 http://

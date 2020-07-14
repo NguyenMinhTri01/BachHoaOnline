@@ -38,10 +38,10 @@ const initPassportLocal = () => {
   }));
   // save admin to session
   passport.serializeUser((user, done)=>{
-    done(null, user);
+    done(null, user._id);
   });
-
-  passport.deserializeUser((user, done)=>{
+  passport.deserializeUser( async (_id, done)=>{
+    const user = await users_M.findUserById(_id);
     return done(null, user);
   });
 };
@@ -73,9 +73,10 @@ const initPassportFacebook = () => {
   }));
     // save admin to session
     passport.serializeUser((user, done)=>{
-      done(null, user);
+      done(null, user._id);
     });
-    passport.deserializeUser((user, done)=>{
+    passport.deserializeUser(async (_id, done)=>{
+      const user = await users_M.findUserById(_id);
       return done(null, user);
     });
 };
@@ -107,10 +108,10 @@ const initPassportGoogle = () => {
   }));
     // save admin to session
     passport.serializeUser((user, done)=>{
-      done(null, user);
+      done(null, user._id);
     });
-  
-    passport.deserializeUser((user, done)=>{
+    passport.deserializeUser(async (_id, done)=>{
+      const user = await users_M.findUserById(_id);
       return done(null, user);
     });
 }

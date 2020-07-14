@@ -16,7 +16,8 @@ export const transErrors = {
     action : 'Cập Nhật'
   },
   register_failed : 'Địa chỉ email đã được sử dụng',
-  adminUserNameIsExists : 'Tên đăng nhập đã tồn tại'
+  adminUserNameIsExists : 'Tên đăng nhập đã tồn tại',
+  updateProfileUserFailed : 'Mật khẩu cũ không đúng',
 }
 
 export const transSuccess = {
@@ -39,6 +40,7 @@ export const transSuccess = {
     action : 'Cập Nhật'
   },
   update_data_successful : "Cập nhật dữ liệu thành công",
+  updateProfileUserSuccess : "Cập nhật thông tin thành công"
 }
 export const notification = {
   category_disabled : "Danh mục sản phẩm không còn tồn tại trên hệ thống"

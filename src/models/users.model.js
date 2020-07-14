@@ -5,21 +5,22 @@ let Schema = mongoose.Schema;
 
 let userSchema = new Schema({
   _id: {type: String, default : shortId.generate},
-  u_name: {type: String, default: null},//tên 
+  u_name: {type: String, default: ''},//tên 
   u_email: {type: String, trim: true, default : null},//email và là tên đăng nhập
-  u_gender: {type: String, default: null},// giới tính
+  u_gender: {type: Boolean, default: false},// giới tính
   u_address: { // phần này là địa chỉ
-    provincesOrCities: {type: String, default: null},// tỉnh /tp
-    district : {type: String, default: null},//quan /huyện
-    wards : {type: String, default: null},//tên phường /xa
-    detail : {type: String, default: null}//tên đường này kia mấy cái còn lại
+    provincesOrCities: {type: String, default: ''},// tỉnh /tp
+    district : {type: String, default: ''},
+    wards : {type: String, default: ''},
+    detail : {type: String, default: ''}
   },
-  u_phoneNumber: {type: String, default: null},//sdt
-  u_localPassword: {type: String, trim: true, default: null},//mk thì khi nào đổi thì cho nhập củ và mới
-  u_facebookID : {type: String, trim: true, default: null},//ko show
-  u_googleID : {type: String, trim: true, default : null},//ko show
-  u_createdAt : {type: Number, default: Date.now},//ko show
-  u_updatedAt : {type: Number}//ko show
+  u_token : {type: String , default: null},
+  u_phoneNumber: {type: String, default: ''},//sdt
+  u_localPassword: {type: String, trim: true, default: null},
+  u_facebookID : {type: String, trim: true, default: null},
+  u_googleID : {type: String, trim: true, default : null},
+  u_createdAt : {type: Number, default: Date.now},
+  u_updatedAt : {type: Number}
 });
 // đặt tên may cái input form như cái này nha
 userSchema.statics = {
@@ -41,6 +42,18 @@ userSchema.statics = {
   findUserByGoogleID(id){
     return this.findOne({u_googleID : id}).exec();
   },
+
+
+  updateProfile(_id, profile){
+    return this.updateOne({_id}, profile)
+      .then((res)=> {
+        if(res.n > 0)
+        return this.findById(_id)
+      })
+      .then((user => user));
+  },
+
+
   findAndUpdateNewInfoFacebook (newInfo){
     return this.findOneAndUpdate(
       {'u_email' : newInfo.email}, 

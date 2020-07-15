@@ -1,5 +1,7 @@
 $(document).ready(function () {
-        
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+        return arg !== value;
+       }, "Value must not equal arg.");
     $("#forminputs").validate({
         rules: {
             attr_name: {
@@ -12,7 +14,7 @@ $(document).ready(function () {
                 required:true,
             },
             attr_type:{
-                required:true,
+                valueNotEquals:"1"
             }
             
         },
@@ -27,7 +29,7 @@ $(document).ready(function () {
                 required:"Vui lòng thêm mô tả"
             },
             attr_type:{
-                required:"Vui lòng chọn loại thuộc tính"
+                valueNotEquals:"Vui lòng chọn một thuộc tính"
             }
             
            

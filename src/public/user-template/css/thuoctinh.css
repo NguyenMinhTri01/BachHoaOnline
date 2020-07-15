@@ -1132,3 +1132,30 @@ img {
 p.infor {
   margin-top: -30px;
 }
+.content{
+    
+  background-color: rgb(255, 255, 255);
+  height: 156px;
+  padding: 10px;
+  border-radius: 4px;
+  width: 288px;
+  margin-left: -13px;
+
+}
+.tablesp{
+  background-color: rgb(255, 255, 255);
+  margin-top: 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 10px;
+}
+.heading{
+  margin-bottom: 12px;
+}
+.created-date{
+  margin-bottom: 12px;
+  display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+}

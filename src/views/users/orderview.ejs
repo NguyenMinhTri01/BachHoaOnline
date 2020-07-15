@@ -1,0 +1,139 @@
+<%- include("header2.ejs")  %>
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+
+    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+        <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+        <li class="">Chi tiết đơn hàng</li>
+    </ol>
+</div>
+<!-- //breadcrumbs -->
+<div class="row">
+
+    <div class="col-md-3 quanlyusers ">
+        <div class="wp-name-and-avatar-user row flex-nowrap">
+            <!-- avatar user  -->
+            <div class="avatar-user ">
+                <img src="user-template/images/av.png" alt="avatar user" title="avatar-user">
+            </div>
+            <!-- tên user  -->
+            <div class="name-user">
+                <span class="s-text7">Tài khoản của</span>
+                <br>
+                <span class="name">Minh Thao </span>
+            </div>
+        </div>
+        <div class="tab-menu nav" role="tablist" id="tablist">
+
+            <!-- tab thông tin của tài khoản  -->
+            <a href="username" class="  ac   || " role="tab">
+                <i class="fa fa-user " aria-hidden="true"></i>
+                Thông tin tài khoản
+            </a>
+            <!-- tab lịch sử các đơn hàng đã đặt -->
+            <a href="history" class=" ac  || " role="tab">
+                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                Đơn hàng của tôi
+            </a>
+
+            <!-- tab đăng xuất tài khoản  -->
+            <a href="/">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Đăng xuất
+            </a>
+        </div>
+
+    </div>
+
+    <div class="heading"><span>Chi tiết đơn hàng #209641708</span><span class="split"></span></div>
+    <div class="created-date">Ngày đặt hàng: 22:49 10/07/2020</div>
+    <div class="col-md-3">
+        <!-- <span>Chi tiết đơn hàng #209641708</span> -->
+        <div class="bill">
+            <div class="title">ĐỊA CHỈ GIAO HÀNG</div>
+            <div class="content">
+                <p class="name"><b>Nguyễn Minh Thao</b></p>
+                <p class="address">
+                    <span>Địa chỉ: </span>Trường Đại Học Khoa Học Tự Nhiên Cơ Sở 2, Phường Linh Trung, Quận Thủ Đức, Hồ
+                    Chí Minh, Việt Nam</p>
+                <p class="phone"><span>Điện thoại: </span>0962263642</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="bill">
+            <div class="title">HÌNH THỨC GIAO HÀNG</div>
+            <div class="content">
+                <p class="delivery">
+                    <span>Giao vào Thứ ba, 14/07</p>
+                <p class="ship"><span>Phí vận chuyển: 14.000đ</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="bill">
+            <div class="title">HÌNH THỨC THANH TOÁN</div>
+            <div class="content">
+                <p class="pay"><span>Thanh toán tiền mặt khi nhận hàng</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 tablesp">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col">Sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Giảm giá</th>
+                    <th scope="col">Tạm tính</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="user-template/images/bcn4.jpg" width="100%">
+                            </div>
+                            <div class="col-md-9">
+                                <a href="#" style="color: red">
+                                    <P>Nước ép cam và cà rốt Yooh 240ml</P>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </th>
+                    <td>8.000</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>8.000</td>
+
+
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <span>Tạm tính</span>
+                    </td>
+                    <td>8.000 ₫</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><span>Phí vận chuyển</span>
+                    </td>
+                    <td>14.000 ₫</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><span>Tổng cộng</span></td>
+                    <td><span class="sum">22.000 ₫</span></td>
+                </tr>
+            </tfoot>
+        </table>
+        <a class="view-list-order" href="/history">&lt;&lt; Quay lại đơn hàng của tôi</a>
+    </div>
+</div>
+
+
+<%- include("footer2.ejs")  %>

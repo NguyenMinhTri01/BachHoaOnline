@@ -176,6 +176,16 @@ const getUsername=(req,res)=>{
 
   }
 }
+const getOrderview=(req,res)=>{
+  try{
+    return res.render('users/orderview',{
+      infoUser: req.user,
+      title: "Bách Hóa Online | Mua Gì Cũng Có",
+    })
+  } catch(error){
+
+  }
+}
 module.exports = {
   getHome,
   addOnItem,
@@ -191,5 +201,6 @@ module.exports = {
   addNewOrder,
   addOnHotItem,
   getProductsAddCart,
-  getProductsToSearch
+  getProductsToSearch,
+  getOrderview
 }

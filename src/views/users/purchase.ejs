@@ -14,13 +14,13 @@
     <div class="wp-name-and-avatar-user row flex-nowrap">
       <!-- avatar user  -->
       <div class="avatar-user ">
-        <img src="user-template/images/av.png" alt="avatar user" title="avatar-user">
+        <img src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/logo/logofnv_lhkuvw" alt="avatar user" title="avatar-user">
       </div>
       <!-- tên user  -->
       <div class="name-user">
         <span class="s-text7">Tài khoản của</span>
         <br>
-        <span class="name">Minh Thao </span>
+        <span class="name"><%= infoUser.u_name %> </span>
       </div>
     </div>
     <div class="tab-menu nav" role="tablist" id="tablist">
@@ -59,31 +59,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-          </tr>
+          <% if(order.length > 0) {%>
+            <% order.forEach(function(orderItem) {%>
+              <tr>
+                <th cope="row"><a href="user/purchase/view/<%= orderItem._id %>"><%= orderItem._id  %></a></th>
+                <td><%= new Date(orderItem.or_createdAt).toLocaleString() %></td>
+                <% if(orderItem.or_products.length == 1) {%>
+                  <td><%= orderItem.or_products[0].pr_name %></td>
+                <% } else {%>
+                  <% if(orderItem.or_products[0].pr_name.length > 30) {%>
+                    <td><%= orderItem.or_products[0].pr_name.slice(0, 30) %>... và <%= orderItem.or_products.length - 1 %> sản phẩm khác </td>
+                  <% } else {%>
+                    <td><%= orderItem.or_products[0].pr_name %> và <%= orderItem.or_products.length - 1 %> sản phẩm khác </td>
+                  <% } %>
+                <% } %>
+                <td><%= orderItem.or_totalPayString %></td>
+                <td><%= statusOrder[orderItem.or_status] %></td>
+              </tr>
+              <% })  %>
+            <% } %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 <script type="text/javascript" src="user-template/js/customPages/jqueryactive.js"></script>
+<script type="text/javascript" src="user-template/js/customPages/jqueryPurchase.js"></script>
+
+
 <%- include("footer2.ejs")  %>

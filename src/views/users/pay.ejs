@@ -1,4 +1,26 @@
 <%- include("header2.ejs")  %>
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Thông Báo !</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-danger">
+                <span>Bạn có chắc muốn</span>
+                <strong> XÓA</strong>
+                <span> giỏ hàng này không ?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <a id="confirm" type="button" class="btn btn-danger btn-ok">Đồng ý</a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="breadcrumbs">
     <ol class="breadcrumb breadcrumb1">
         <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
@@ -17,19 +39,21 @@
                 <input id="_carts" type="hidden" name="carts" value="">
                 <div class="col-md-12 formPay">
                     <h4 class="h4FormPay">1.Thông Tin Người Mua Hàng</h4>
-                    <div class="wrapcheckbox box-data w100"><span class="gender">
-                            <input type="hidden" name="_id" value="0">
+                    <input type="hidden" name="_id" value="0">
+                    <div class="wrapcheckbox box-data w100">
+                        <span class="gender">
                             <input type="radio" name="gender" id="ProfileItems_0_Gender1" value="male">
                             <label for="ProfileItems_0_Gender1"> Anh &nbsp; </label>
-                        </span> <span class="gender">
-                            <input type="radio" name="gender" id="ProfileItems_0_Gender0" value="female">
+                        </span>
+                        <span class="gender">
+                            <input type="radio" name="gender" id="ProfileItems_0_Gender0" value="female" checked>
                             <label for="ProfileItems_0_Gender0"> Chị</label>
                         </span>
                         <!---->
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="u_name" aria-describedby=""
-                            placeholder="Tên của bạn" style="height: 50px;" required>
+                            placeholder="Tên của bạn" style="height: 50px;">
                     </div>
                     <div class="form-group">
 
@@ -76,6 +100,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <select name="or_deliveryDate" class="form-control" style="height: 50px;">
+                                    <option value="0">Ngày Giao</option>
                                     <% let currentDay = new Date()%>
                                     <% for(let i = 0; i < 6; i++){ %>
                                     <% let nextDay = new Date(currentDay)%>
@@ -90,7 +115,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <select name="or_deliveryTime" class="form-control" style="height: 50px;">
-                                    <option value="0">Giờ Giao</option>
+                                    <option value="0">Khung Giờ Giao</option>
                                     <option value='1'>8h -> 12h</option>
                                     <option value='2'>13h -> 17h</option>
                                     <option value='3'>17h -> 22h</option>
@@ -177,8 +202,7 @@
                                             <span class='sumPriceProduct' data='0'> <b>0đ</b></span>
                                         </div>
                                         <div class="col-md-12">
-                                            <span class="transportCost"
-                                                data="<%= TRANSPORT_COST %>"><b>0đ</b></span>
+                                            <span class="transportCost" data="<%= TRANSPORT_COST %>"><b>0đ</b></span>
                                         </div>
                                         <div class="col-md-12">
                                             <span class="discountPay" data="0"><b> -0đ</b></span>
@@ -204,10 +228,8 @@
                         </div>
                         <div class="col-md-12">
                             <button id="finishPay" type="submit" class="btn-og btn-step">HOÀN TẤT ĐƠN HÀNG</button>
-                            <div class="clearall"><button>HỦY ĐƠN HÀNG</button></div>
+                            <div class="clearall"><a href="#" id="_clearall" data-toggle="modal" data-target="#confirm-delete">HỦY ĐƠN HÀNG</a></div>
                         </div>
-                        
-
                     </div>
 
             </fieldset>
@@ -217,6 +239,7 @@
 </div>
 
 <br>
-<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript"
+    src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="user-template/js/customPages/jquerypay.js"></script>
 <%- include("footer2.ejs")  %>

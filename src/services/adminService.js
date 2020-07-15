@@ -1,6 +1,9 @@
 import admin_M from '../models/admin.model';
 import {transSuccess, transErrors} from "../../lang/vi";
 import bcrypt from 'bcrypt'
+import fs from 'fs-extra';
+import adminHelper from './../helper/adminHelper';
+import _ from 'lodash';
 
 const saltRounds = 10;
 

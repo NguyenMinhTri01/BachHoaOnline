@@ -3,8 +3,8 @@ import {transSuccess, transErrors} from "../../../lang/vi";
 import formatNumber from 'format-number';
 
 
-const statusOrder = ['Đang chờ xử lý', 'Đã tiếp nhận', 'Đang giao hàng', 'Giao hành thành công']
-const statusButton = ['btn-danger', 'btn-warning', 'btn-primary', ' btn-success']
+const statusOrder = ['Đang chờ xử lý', 'Đã tiếp nhận', 'Đang giao hàng', 'Giao hành thành công', 'Đã Hủy']
+const statusButton = ['btn-warning', 'btn-info','btn-primary', ' btn-success', 'btn-danger']
 const TRANSPORT_COST = process.env.TRANSPORT_COST;
 const TRANSPORT_COST_STRING  = formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(TRANSPORT_COST);
 const SECURE_DELIVERY_URL = process.env.SECURE_DELIVERY_URL;

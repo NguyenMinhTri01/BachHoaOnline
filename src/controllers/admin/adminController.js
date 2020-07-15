@@ -1,8 +1,8 @@
 import { admin_S } from '../../services/index';
-import config_storage from '../../config/uploadFIleLocal';
+import configStorage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 
-const storage = config_storage;
+const storage = configStorage("/avatar_admin");
 let uploadImageLocal = multer({
   storage: storage
 }).single('ad_avatar');

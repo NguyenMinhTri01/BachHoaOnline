@@ -95,7 +95,7 @@
                                 <p style="font-size:15px ; font-family: 'Raleway', sans-serif;color:#333;">Số lượng
                                 </p>
                             </label>
-                            <input min="1" type="number" class="form-control" id="sl" value="1" style="width:70px;">
+                            <input min="1" type="number" class="form-control" id="numberOfProduct" value="1" style="width:70px;">
                         </div>
                     </div> <!-- col.// -->
                     <div class="col-sm-5">
@@ -117,8 +117,8 @@
                     </div>
                 </div> <!-- row.// -->
 
-                <button style="margin-bottom: 10px;width:98%;" data-id="abcxyz"
-                    class="btn btn-lg btn-primary text-uppercase btnAddCart"> Chọn mua</button>
+                <button style="margin-bottom: 10px;width:98%;" data-id="<%= product._id %>"
+                    class="btn btn-lg btn-primary text-uppercase btnAddCartDetail"> Chọn mua</button>
             </article> <!-- card-body.// -->
         </aside> <!-- col.// -->
     </div>
@@ -328,172 +328,12 @@
         </div>
         <% }) %>
     </div>
-
-
-    <% if(productFamily.length == 8) {%>
-    <div class="col-md-12 top_brand_left text-center">
-        <div class="view-more">
-            <a class="addMorePrHot" data-count="8" href="addOnHotItem/count/">xem thêm
-                <i class="fa fa-chevron-down"></i>
-            </a>
-        </div>
-    </div>
-    <% } %>
     <div class="clearfix"> </div>
 </div>
 <hr>
 <% } %>
 <% } %>
-<!-- Bình luận người dùng -->
 
-<!-- <h4 style="color: rgb(255, 0, 21);">BÌNH LUẬN KHÁCH HÀNG</h4>
-<div class="col-sm-12">
-    <form id="frmAddComment" class="form formarating">
-        <div class="cmtinfo">
-            <div class="js-float-label-wrapper">
-                <label class="text-content"> </label>
-                <textarea name="txtContent" rows="4" maxlength="1000" placeholder="Mời Bạn bình luận hoặc đặt câu hỏi"
-                    aria-label="Mời bạn bình luận hoặc đặt câu hỏi...."></textarea>
-            </div>
-            <div class="info">
-                <span class="errornoti"></span>
-                <div class="verify hide">
-                    <div>
-                        <span class="cmt-verify"></span>
-                        <div id="mainCaptcha">
-                            <canvas id="captcha" width="90" height="43"></canvas>
-                        </div>
-                        <div class="js-float-label-wrapper">
-                            <label class="cmt-captcha"></label>
-                            <input data-rder="captcha" class="inline txtCaptcha" type="tel" name="txtCaptcha"
-                                maxlength="5" placeholder="Mã xác nhận (bắt buộc)">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="gender">
-
-                        <select class="browser-default custom-select">
-                            <option selected>Gới Tính</option>
-                            <option value="1">Nam</option>
-                            <option value="2">Nữ</option>
-                            <option value="3">Giới tính khác</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="name js-float-label-wrapper">
-                    <label class="cmt-name"></label>
-                    <input data-rder="name" name="txtFullName" type="text" class="txtFullName" maxlength="50"
-                        placeholder="Họ tên (bắt buộc)" aria-label="Họ tên (bắt buộc)">
-                </div>
-                <div class="phone js-float-label-wrapper">
-                    <label class="cmt-phone"></label>
-                    <input type="text" class="txtPhone" name="txtPhone" placeholder="Số điện thoại"
-                        aria-label="Số điện thoại">
-                </div>
-                <div class="email js-float-label-wrapper">
-                    <label class="cmt-email"></label>
-                    <input data-rder="email" name="txtEmail" type="email" class="txtEmail" maxlength="50"
-                        placeholder="Email" aria-label="Email"></div>
-                <button type="submit" class="submit">GỬI</button>
-                <input type="hidden" name="hdObjectId" value="204232"> <input type="hidden" name="hdObjectType"
-                    value="2">
-                <input type="hidden" name="hdObjectTypeRef" value="0"> <input type="hidden" name="hdUrl"
-                    value="/nuoc-ngot/6-chai-tra-chanh-voi-sa-fuze-tea-450ml">
-                <input type="hidden" name="hdParentId" value="0"> <input type="hidden" name="hdTypeOf" value="0">
-            </div>
-        </div>
-
-    </form>
-</div> -->
-
-
-
-
-<!-- <div class="card">
-        <hr>
-        <div class="card-body">
-            <div class="row">
-
-                <div class="col-md-2">
-                    <img src="user-template/images/cm2.jpg" class="img img-rounded img-fluid" /
-                        style="width: 100%;border-radius: 80px;">
-                    <p class="text-secondary text-center">15 phút trước </p>
-                </div>
-                <div class="col-md-10">
-                    <p>
-                        <a class="float-left" href="#"><strong>Vũ Thị Kim Thanh</strong></a>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-
-                    </p>
-                    <div class="clearfix"></div>
-                    <p>Hôm qua tôi mới mua hàng ở Bách Hóa Online. Tôi xin góp ý như sau: sườn non và cá (trừ cá điêu
-                        hồng) thì không có chặt nhỏ sườn và cá thì không làm sạch. Tôi phải mất thời gian để làm điều
-                        này. Rau và củ nên để cho KH mua từng bó hoặc tối đa 0,5 kg. Chứ mua 1kg theo chuẩn đề ra thì KH
-                        phải dự trữ nhiều (tủ lạnh không đủ chỗ để dự trữ) ăn không kịp để lâu hư và ngán. Vài lời góp ý
-                        cùng BHO.</p>
-                    <p>
-                        <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Trả Lời</a>
-                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Thích</a>
-                    </p>
-                </div>
-            </div>
-            <div class="card card-inner">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img src="user-template/images/cm1.jpg" class="img img-rounded img-fluid" /
-                                style="width: 100%;border-radius: 80px; ">
-                            <p class="text-secondary text-center">15 phút trước</p>
-                        </div>
-                        <div class="col-md-10">
-                            <p><a href="#"><strong>Hồ Thị Thúy Hạnh</strong></a></p>
-                            <div class="quantrivien">
-                                Quản Trị Viên
-                            </div>
-                            <p>Chào bạn Thanh,
-                                Dạ Bách Hóa Online rất xin lỗi bạn về trường hợp này đã làm bạn phiền lòng ạ. Thông tin
-                                này Bách Hóa Online đã chuyển cho bộ phận liên quan kiểm tra, chậm nhất là 60 phút nữa
-                                sẽ có nhân viên liên hệ xử lý cho bạn ạ.</p>
-                            <p>
-                                <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i>Trả
-                                    Lời</a>
-                                <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i>Thích</a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <nav>
-                        <ul class="pagination text-sm-center">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li><a href=" ">1</a></li>
-                            <li><a href=" ">2</a></li>
-                            <li><a href=" ">3</a></li>
-                            <li><a href=" ">4</a></li>
-                            <li><a href=" ">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-
-                </div>
-            </div>
-        </div>
-    </div> -->
 <script type="text/javascript" src="user-template/js/customPages/jquerysingle.js"></script>
 
 <%- include("footer.ejs")  %>

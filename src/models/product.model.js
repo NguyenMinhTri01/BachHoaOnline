@@ -87,17 +87,18 @@ productSchema.statics = {
       .skip(skip)
   },
 
-  getProductsFollowIdCategory (c_id, skip) {
+  getProductsFollowIdCategory (c_id, skip, _id) {
     return this
     .find(
       {
+        _id : { $nin : _id },
         c_id,
         pr_status: true
       },
       '_id pr_name pr_hot c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
     )
     .sort({pr_hot: -1})
-    .limit(8)
+    .limit(16)
     .skip(skip)
   },
 
@@ -122,18 +123,43 @@ productSchema.statics = {
         '_id pr_name c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
       )
   },
-  getProductsByC_Id(c_id) {
-    return this.find({c_id : c_id, pr_status : true});
+  getProductsByC_Id(c_id, skip) {
+    return this.find(
+      {c_id : c_id, pr_status : true},
+      '_id pr_name c_id pr_hot pr_slug pr_avatar pr_price pr_priceNew pr_discount'
+      )
+      .limit(8)
+      .skip(skip)
+  },
+
+  getProductsByC_IdAndSort(c_id, skip, sort) {
+    return this.find(
+      {c_id : c_id, pr_status : true},
+      '_id pr_name c_id pr_hot pr_slug pr_avatar pr_price pr_priceNew pr_discount'
+      )
+      .sort({pr_priceNew: sort})
+      .limit(8)
+      .skip(skip)
   },
 
   findProductByKeyword(keyword) {
     return this
     .find(
       {pr_slug : {"$regex": new RegExp(keyword,"i")}},
-      '_id pr_name c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
+      '_id pr_name pr_hot c_id pr_slug pr_avatar pr_price pr_priceNew pr_discount'
       )
     .sort({pr_priceNew: 1})
     .limit(32)        
+  },
+
+  updateAmountAndViewCount(id, quantity){
+    return this.findById(id)
+      .then(product => {
+        product.pr_boughtCounts = quantity;
+        product.pr_amount = product.pr_amount - quantity;
+        return product.save()
+      })
+      .then (product => product);
   }
 }
 module.exports = mongoose.model("product", productSchema);

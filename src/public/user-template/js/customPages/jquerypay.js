@@ -12,6 +12,71 @@ function formatNumber(nStr) {
 //{ carts: carts, couponPay: couponPay, dataOr : data_input},
 
 
+function validation (formInputPay) {
+    $.validator.addMethod("valueNotDefault", function (value, element, arg) {
+        return arg !== value;
+      }, "Value must not default");
+
+    var validated = formInputPay.validate({
+        rules: {
+            u_name: {
+                required: true,
+            },
+            u_phoneNumber: {
+                required: true,
+            },
+            provincesOrCities: {
+                required: true,
+            },
+
+            district: {
+                required: true,
+            },
+            wards: {
+                required: true,
+            },
+            detail: {
+                required: true,
+            },
+            or_deliveryDate: {
+                valueNotDefault: '0',
+            },
+            or_deliveryTime: {
+                valueNotDefault: '0',
+            }
+
+        },
+        messages: {
+            u_name: {
+                required: "Vui lòng nhập họ và tên",
+            },
+            u_phoneNumber: {
+                required: "Vui lòng nhập vào số điện thoại"
+            },
+            provincesOrCities: {
+                required: "Vui lòng nhập thành phố(tỉnh)"
+            },
+            district: {
+                required: "Vui lòng nhập quận/huyện"
+            },
+            wards: {
+                required: "Vui lòng nhập phường/xã"
+            },
+            detail: {
+                required: "vui lòng nhập số nhà,tên đường "
+            },
+            or_deliveryDate: {
+                valueNotDefault: 'vui lòng chọn ngày giao hàng',
+            },
+            or_deliveryTime: {
+                valueNotDefault: 'vui lòng chọn khung giờ giao hàng',
+            }
+        }
+    });
+    return validated
+}
+
+
 
 function sentDataPayToServer(formInputPay, numberCart, bodyCartPay, sumPriceProduct, totalPay, transportCost) {
     var carts = localStorage.getItem('carts');
@@ -106,77 +171,28 @@ $(document).ready(function () {
     var sumPriceProduct = $(".sumPriceProduct");
     var discountPay = $(".discountPay");
     var couponPay = $("#couponPay");
+    var btnConfirm = $('#confirm');
     var transportCost = $(".transportCost");
     var totalPay = $(".totalPay");
     var finishPay = $('#finishPay');
     var formInputPay = $('#formInputPay');
     var _carts = $("#_carts");
     var numberCart = $(".numberCart");
+    transportCost.text(formatNumber(transportCost.attr("data")));
     appendToCartPay(bodyCartPay, sumPriceProduct, totalPay, transportCost);
+    var validator = validation(formInputPay);
 
     finishPay.click(function (event) {
         event.preventDefault();
-        var carts = localStorage.getItem('carts');
-        _carts.val(carts);
-        sentDataPayToServer(formInputPay, numberCart, bodyCartPay, sumPriceProduct, totalPay, transportCost);
-    })
+        if(validator.form()){
+            var carts = localStorage.getItem('carts');
+            _carts.val(carts);
+            sentDataPayToServer(formInputPay, numberCart, bodyCartPay, sumPriceProduct, totalPay, transportCost);    
+        }
+    });
 
-
-    $("#formInputPay").validate({
-        rules: {
-            u_name: {
-                required: true,
-            },
-            u_phoneNumber: {
-                required: true,
-            },
-            provincesOrCities: {
-                required: true,
-            },
-
-            district: {
-                required: true,
-            },
-            wards: {
-                required: true,
-            },
-            detail: {
-                required: true,
-            },
-            date: {
-                required: true,
-            },
-            time: {
-                required: true,
-            }
-
-        },
-        messages: {
-            u_name: {
-                required: "Vui lòng nhập họ và tên",
-            },
-            u_phoneNumber: {
-                required: "Vui lòng nhập vào số điện thoại"
-            },
-            provincesOrCities: {
-                required: "Vui lòng nhập thành phố(tỉnh)"
-            },
-            district: {
-                required: "Vui lòng nhập quận/huyện"
-            },
-            wards: {
-                required: "Vui lòng nhập phường/xã"
-            },
-            detail: {
-                required: "vui lòng nhập số nhà,tên đường "
-            },
-            or_deliveryDate: {
-                required: "Vui lòng chọn ngày giao"
-            },
-            time: {
-                required: "Vui lòng chọn giờ giao"
-            }
-        },
-
+    btnConfirm.click(function(){
+        localStorage.setItem('carts', '');
+        window.location.replace("/")
     });
 });

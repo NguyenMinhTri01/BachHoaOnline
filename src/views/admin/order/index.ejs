@@ -95,7 +95,7 @@
               </td>
               <td class="text-center"><%= (order.or_infoDailies._id === '0') ? 'Chưa đăng ký' : 'Đã đăng ký' %></td>
               <td class="text-center"><%= order.or_sumProduct %>(SP)</td>
-              <td class="text-center"><%= order.or_sumPriceProductString %></td>
+              <td class="text-center"><%= order.or_totalPayString %></td>
               <% let date = new Date(order.or_deliveryDate).toLocaleString() %>
               <% date = date.split(',') %>
               <td><%= date[0] %></td>
@@ -136,5 +136,5 @@
 <div class='notifications bottom-right'></div>
 <!-- ============================================================== -->
 <!-- End Container fluid  -->
-<!-- <script type="text/javascript" src="admin_template/js/customPages/order/jqueryIndexorder.js"></script> -->
+<script type="text/javascript" src="admin_template/js/customPages/order/jqueryIndexOrder.js"></script>
 <%- include("../adminFooter") %>

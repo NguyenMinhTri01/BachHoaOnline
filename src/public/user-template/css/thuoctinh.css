@@ -15,6 +15,27 @@
 .btnAddCart:hover {
   background: #fe9126;
 }
+
+.fontSiteOrder {
+  font-size: .8em;
+}
+
+.btnAddCartDetail {
+  font-size: 14px;
+  color: #fff;
+  background: #3399cc;
+  text-decoration: none;
+  position: relative;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  text-transform: uppercase;
+  padding: .5em 0;
+  outline: none;
+}
+.btnAddCartDetail:hover {
+  background: #fe9126;
+}
 .clearall {
   width: 100%;
   padding: 0 10px;
@@ -354,6 +375,34 @@ select.browser-default.custom-select {
 .heading {
   font-size: 25px;
   margin-right: 25px;
+}
+
+
+.content{
+    
+  background-color: rgb(255, 255, 255);
+  height: 156px;
+  padding: 10px;
+  border-radius: 4px;
+  width: 288px;
+  margin-left: -13px;
+
+}
+.tablesp{
+  background-color: rgb(255, 255, 255);
+  margin-top: 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 10px;
+}
+.headingfix{
+  margin-bottom: 12px;
+}
+.created-date{
+ margin-bottom: 16px;
+ display: flex;
+ align-items: flex-end;
+ flex-direction: column;
 }
 
 .fa {
@@ -861,13 +910,14 @@ button.btn.btn-success {
 .manufacture.top {
   border-radius: 4px 4px 0 0;
   border-bottom: 1px solid #e9edf0;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   background: #fff;
   position: relative;
   list-style: none;
-  height: 50px;
+  height: 64px;
+  padding: 10px 0px;
 }
-.manufacture {
+.manufacture .top {
   display: block;
   background: #fff;
   position: relative;
@@ -934,13 +984,13 @@ button.btn.btn-success {
   overflow: hidden;
   position: relative;
   vertical-align: top;
-  padding: 5px 3px;
-  width: 92px;
+  /* padding: 5px 3px; */
+  width: 86px;
   height: 40px;
 }
 .manufacture a img {
   display: block;
-  width: 51px;
+  width: 60px;
   height: auto;
   max-height: 40px;
   margin: auto;
@@ -958,11 +1008,50 @@ button.btn.btn-success {
 }
 span.moremanu.top {
   font-size: 15px;
-  position: relative;
-  right: -211px;
-  bottom: -7px;
-  color: red;
+  position: absolute;
+  right: 10px;
+  color: #d45a00;
+  cursor: pointer;
+  top: 15px;
 }
+
+.manufacture .morebrand{
+     /* display: none; */
+     margin-top: 10px;
+     position: relative;
+     top: 40px;
+     left: 0px;
+     /* right: 394px;*/
+}
+
+.fatm {
+  content: '';
+  border-top: 5px solid #d45a00;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  display: block;
+  position: relative;
+  top: 0px;
+  width: 0;
+  left: 35px;
+}
+
+.selectSort {
+  position: relative;
+  /* top: 4.5%; */
+  bottom: -25px;
+  left: 87.5%;
+  border-radius: 5px;
+}
+
+.fatmShow {
+  border-top: 0;
+  border-bottom: 5px solid #d45a00;
+  top: 2px;
+  width: 0;
+  display: block;
+}
+
 /* lịch sử mua hàng */
 .orderhistory{
   background-color: white;

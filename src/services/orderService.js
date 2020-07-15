@@ -23,12 +23,14 @@ const addNewOrder = (object) => {
     let or_products = await Promise.all(arrayCart.map(async item => {
       let objectItem = JSON.parse(item);
       let product = await product_M.findProductByIdAddToCart(objectItem._id);
+      await product_M.updateAmountAndViewCount(objectItem._id, objectItem.quantity);
       return new Object({
         _id : product._id,
         pr_avatar : product.pr_avatar,
         pr_name: product.pr_name,
         pr_price: product.pr_price,
         pr_priceNew : product.pr_priceNew,
+        pr_discount : product.pr_discount,
         pr_priceString : formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(product.pr_price),
         pr_priceNewString : formatNumber({ suffix: '₫',integerSeparator :".", decimal:","})(product.pr_priceNew || product.pr_price),
         pr_quantity : objectItem.quantity,
@@ -101,12 +103,20 @@ const getOrderById = (id) => {
     }
     return resolve(false);
   })
-}
+};
+
+const getOrderByUserId = (u_id) => {
+  return new Promise(async (resolve, reject) => {
+    const order = await order_M.findOrderByUserId(u_id);
+    return resolve(order);
+  })
+};
 
 
 module.exports = {
   editStatus,
   addNewOrder,
   getOrderById,
-  getListOrders
+  getListOrders,
+  getOrderByUserId
 }

@@ -100,3 +100,8 @@ cần xem lai login facebook
 		}(document, 'script', 'facebook-jssdk'));
 	</script> -->
   sưa header 2 http://
+
+update avatar admin
+
+
+có bug ơ trang products nhấp nhiều sẽ bị duplicate

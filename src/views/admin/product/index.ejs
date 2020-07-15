@@ -81,7 +81,6 @@
               <th>Giá (Giảm Giá)</th>
               <th>Giá bán</th>
               <th class="text-center">Ảnh</th>
-              <th>Xuất Xứ</th>
               <th>Danh Mục</th>
               <th>Thương Hiệu</th>
               <th>Lượt Mua / Số Lượng</th>
@@ -107,9 +106,7 @@
               </td>
               <td class="text-center"><%= product.pr_priceNew %></td>
               <td style="width:auto"><img style="padding-right:0px"
-                  src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" width="130" height="80"></td>
-              <td class="text-center">
-                <%= product.pr_origin %>
+                  src="<%= SECURE_DELIVERY_URL %><%= product.pr_avatar %>" width="130" height="80">
               </td>
               <td class="text-center"><%= product.c_name %></td>
               <td class="text-center"><%= product.br_name %></td>
@@ -122,9 +119,11 @@
                 <a href="admin/product/edit/<%= product._id %>" class="btn btn-warning m-2 edit_product"><i
                     class="fa fa-edit"></i> Sửa</a>
                 <a id="pr_status" href="admin/product/active/<%= product._id %>"
-                  class="_Active_ btn <%= product.pr_status ? 'btn-success' :  'btn-secondary'%> "><i class="far fa-check-circle"></i> Hiện</a>
+                  class="_Active_ btn <%= product.pr_status ? 'btn-success' :  'btn-secondary'%> "><i
+                    class="far fa-check-circle"></i> Hiện</a>
                 <a id="pr_hot" href="admin/product/hot/<%= product._id %>"
-                  class="mt-2 _hot_ btn <%= product.pr_hot ? 'btn-danger' :  'btn-secondary'%> "><i class="fab fa-hotjar"></i> Hot</a>
+                  class="mt-2 _hot_ btn <%= product.pr_hot ? 'btn-danger' :  'btn-secondary'%> "><i
+                    class="fab fa-hotjar"></i> Hot</a>
               </td>
             </tr>
             <% count += 1%>

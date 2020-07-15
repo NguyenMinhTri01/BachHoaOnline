@@ -29,6 +29,7 @@ let orderSchema = new Schema({
     pr_avatar: String,
     pr_quantity: Number,
     pr_total: Number,
+    pr_discount: Number,
     pr_totalString : String,
   }],
   or_note : String,

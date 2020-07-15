@@ -61,6 +61,10 @@ function validationForm(formInput) {
       pr_avatar: {
         required: true
       },
+      pr_amount:{
+        required: true,
+        valueNotEquals: "0"
+      }
 
     },
     messages: {
@@ -113,6 +117,10 @@ function validationForm(formInput) {
       pr_avatar: {
         required: "Dữ liệu không được để trống"
       },
+      pr_amount:{
+        required: "Dữ liệu không được để trống",
+        valueNotEquals: "Số lượng không được bằng 0"
+      }
     },
   });
   return validated;

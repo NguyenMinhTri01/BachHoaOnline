@@ -90,29 +90,20 @@
                   </div>
                 </div>
               </div>
-              <!-- <div class="form-group">
-                <label for="tensanpham"> Cấp Danh Mục </label>
-                <select class="custom-select mr-sm-2" id="c_level" name="c_level">
-                  <option value="0" selected>Chọn cấp danh mục phù hợp...</option>
-                  <% if (typeof maxLevelCategory != "undefined"){ %>
-                  <% for (let i = 0; i < maxLevelCategory; i++) {%>
-                  <option value="<%= i+1 %>"> Level <%= i+1 %></option>
-                  <% } %>
-                  <% } %>
-                </select>
-              </div> -->
-              <div class="form-group">
-                <label for="tensanpham">Danh Mục </label>
-                <select class="custom-select mr-sm-2" id="c_id" name="c_id">
-                  <option value="0" selected>Chọn danh mục phù hợp...</option>
-                  <% if (typeof categories != "undefined"){ %>
-                    <% for (let i = 0; i < categories.length; i++) {%>
-                    <option value="<%= categories[i]._id %>"> <%= categories[i].c_name %></option>
-                    <% } %>
-                    <% } %>
-                </select>
-              </div>
               <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="tensanpham">Danh Mục </label>
+                    <select class="custom-select mr-sm-2" id="c_id" name="c_id">
+                      <option value="0" selected>Chọn danh mục phù hợp...</option>
+                      <% if (typeof categories != "undefined"){ %>
+                        <% for (let i = 0; i < categories.length; i++) {%>
+                        <option value="<%= categories[i]._id %>"> <%= categories[i].c_name %></option>
+                        <% } %>
+                        <% } %>
+                    </select>
+                  </div>
+                </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Thương Hiệu </label>
@@ -126,10 +117,19 @@
                     </select>
                   </div>
                 </div>
+              </div>
+
+              <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="">Xuất xứ </label>
                     <input type="text" class="form-control" name="pr_origin" placeholder="" >
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="">Số lượng </label>
+                    <input type="number" class="form-control" name="pr_amount" placeholder="" >
                   </div>
                 </div>
               </div>

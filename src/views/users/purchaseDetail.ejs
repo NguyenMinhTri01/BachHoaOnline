@@ -1,0 +1,162 @@
+<%- include("header2.ejs")  %>
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+
+    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+        <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+        <li class="">Chi tiết đơn hàng</li>
+    </ol>
+</div>
+<!-- //breadcrumbs -->
+<div class="row">
+
+    <div class="col-md-3 quanlyusers ">
+        <div class="wp-name-and-avatar-user row flex-nowrap">
+            <!-- avatar user  -->
+            <div class="avatar-user ">
+                <img src="https://res.cloudinary.com/nguyenminhtri/BachHoaOnline/logo/logofnv_lhkuvw" alt="avatar user" title="avatar-user">
+            </div>
+            <!-- tên user  -->
+            <div class="name-user">
+                <span class="s-text7">Tài khoản của</span>
+                <br>
+                <span class="name"><%= infoUser.u_name %> </span>
+            </div>
+        </div>
+        <div class="tab-menu nav" role="tablist" id="tablist">
+
+            <!-- tab thông tin của tài khoản  -->
+            <a href="user/profile" class="  ac   || " role="tab">
+                <i class="fa fa-user " aria-hidden="true"></i>
+                Thông tin tài khoản
+            </a>
+            <!-- tab lịch sử các đơn hàng đã đặt -->
+            <a href="user/purchase" class=" ac  || " role="tab">
+                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                Đơn hàng của tôi
+            </a>
+
+            <!-- tab đăng xuất tài khoản  -->
+            <a href="user/logout">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Đăng xuất
+            </a>
+        </div>
+
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="headingfix">
+                    <span>Chi tiết đơn hàng:
+                        <%= order._id %>
+                    </span>
+                    <span class="split"> - <strong><%= statusOrder[order.or_status] %></strong></span>
+                </div>
+            </div>
+            <div class="col-md-12 text-right">
+                <div class="created-date text-right fontSiteOrder">Ngày đặt hàng:
+                    <%= new Date(order.or_createdAt).toLocaleString() %></div>
+            </div>
+            <div class="col-md-4 text-left">
+                <div class="bill">
+                    <div class="title">ĐỊA CHỈ GIAO HÀNG</div>
+                    <div class="content">
+                        <p class="name"><b><%= order.or_infoDailies.u_name.toUpperCase() %></b></p>
+                        <p class="addressOrder fontSiteOrder">
+                            <span>Địa chỉ: </span><%= order.or_infoDailies.u_address.detail %>,
+                            <%= order.or_infoDailies.u_address.wards %>, <%= order.or_infoDailies.u_address.district %>,
+                            <%= order.or_infoDailies.u_address.provincesOrCities %></p>
+                        <p class="phone fontSiteOrder"><span>Điện thoại:
+                            </span><%= order.or_infoDailies.u_phoneNumber %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bill">
+                    <div class="title">HÌNH THỨC GIAO HÀNG</div>
+                    <div class="content">
+                        <p class="delivery fontSiteOrder">
+                            <% let date = new Date(order.or_deliveryDate).toLocaleString() %>
+                            <% date = date.split(',') %>
+
+                            <span>Ngày giao : <strong><%= date[0] %></strong>
+                        </p>
+                        <% let time = '' %>
+                        <% if (order.or_deliveryTime == 1) time = '8h -> 12h' %>
+                        <% if (order.or_deliveryTime == 2) time = '13h -> 17h' %>
+                        <% if (order.or_deliveryTime == 3) time = '17h -> 22h' %>
+                        <p class="ship fontSiteOrder"><span>Khung giờ giao hàng: <strong><%= time %></strong></p>
+                        <p class="note fontSiteOrder">Ghi Chú: <%= order.or_note %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bill">
+                    <div class="title">HÌNH THỨC THANH TOÁN</div>
+                    <div class="content">
+                        <p class="pay fontSiteOrder"><span>Thanh toán tiền mặt khi nhận hàng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 tablesp fontSiteOrder">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản phẩm</th>
+                            <th class="text-center" scope="col">Giá</th>
+                            <th class="text-center" scope="col">Số lượng</th>
+                            <th class="text-center" scope="col">Giảm giá</th>
+                            <th class="text-right" scope="col">Tạm tính</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% order.or_products.forEach((product)=> { %>
+                        <tr>
+                            <th scope="row">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img src="<%= SECURE_DELIVERY_URL + product.pr_avatar  %>" width="100%"
+                                            style="width:60px">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <a href="#" style="color: black">
+                                            <P><%= product.pr_name %></P>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </th>
+                            <td class="text-center"><%= product.pr_priceString %> </td>
+                            <td class="text-center"><%= product.pr_quantity %></td>
+                            <td class="text-center">-<%= product.pr_discount %>%</td>
+                            <td class="text-right"><%= product.pr_priceNewString %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <span>Tạm tính</span>
+                            </td>
+                            <td class="text-right"><%= order.or_sumPriceProductString %></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><span>Phí vận chuyển</span></td>
+                            <td class="text-right"><%= TRANSPORT_COST_STRING %></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><span>Tổng cộng</span></td>
+                            <td class="text-right"><%= order.or_totalPayString %></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <a class="view-list-order" href="user/purchase">&lt;&lt; Quay lại đơn hàng của tôi</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<%- include("footer2.ejs")  %>

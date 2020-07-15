@@ -30,11 +30,6 @@ const getProductsAddCart = async (req, res) => {
   res.send(products);
 };
 
-const addNewOrder = async (req, res) => {
-  let object = JSON.parse(JSON.stringify(req.body));
-  let notification = await order_S.addNewOrder(object);
-  res.send(notification);
-}
 
 const addOnItem = async (req, res) => {
   const { id, count } = req.params;
@@ -85,7 +80,6 @@ const getProductsToSearch = async (req, res) => {
 
 const getProductDetail = async (req, res) => {
   try {
-    
     const user = req.user ? await user_S.getProfileUser(req.user._id) : undefined
     const { pr_slug } = req.params;
     const product = await product_S.getProductBySlug(pr_slug);
@@ -94,7 +88,7 @@ const getProductDetail = async (req, res) => {
       const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
       const album = await product_S.getAlbumImageByPrId(product._id);
       const brand = await brand_S.getBrandById(product.br_id);
-      const productFamily = await product_S.getProductsFlowCategory(product.c_id, 0);
+      const productFamily = await product_S.getProductsFlowCategory(product.c_id, 0, product._id);
       const infoLikeShareFacebook = {
         url : fullUrl,
         title: product.pr_SEO.title,
@@ -172,7 +166,6 @@ const getProducts = async (req, res) => {
       infoUser: user,
       title: "Bách Hóa Online | Mua Gì Cũng Có",
       BASE_URL: process.env.BASE_URL
-
     })
   } catch (error) {
 
@@ -189,7 +182,9 @@ const getBeverages = (req, res) => {
   } catch (error) {
 
   }
-}
+};
+
+
 const getSingle = (req, res) => {
   try {
     return res.render('users/single', {
@@ -201,8 +196,63 @@ const getSingle = (req, res) => {
   } catch (error) {
 
   }
-}
+};
 
+const getProductToCategory = async (req, res) => {
+  const {c_slug} = req.params;
+  try {
+    const user = req.user ? await user_S.getProfileUser(req.user._id) : undefined
+    const menu = await category_S.getMenuCategory();
+    const result = await product_S.getProductsByCategorySl(c_slug, 0);
+    return res.render('users/products', {
+      menu,
+      products : result.products,
+      c_name : result.category.c_name,
+      c_slug : result.category.c_slug,
+      infoUser: user,
+      title: result.category.c_name,
+      SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
+      BASE_URL: process.env.BASE_URL
+    });
+  } catch (error) {
+    console.log(error);
+    return res.render('admin/error_500');
+  }
+};
+
+const getProductsBySort = async (req, res) => {
+  const { sort } = req.params;
+  const currentUrl = req.headers.referer;
+  const c_slug = currentUrl.split('/')[3];
+  try {
+    const result = await product_S.getProductsByCategorySl(c_slug, 0 , sort);
+    return res.send({
+      products : result.products,
+      category : result.category,
+      SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
+      BASE_URL: process.env.BASE_URL
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getProductsViewMore = async (req, res) => {
+  const { sort, skip } = req.params;
+  const currentUrl = req.headers.referer;
+  const c_slug = currentUrl.split('/')[3];
+  try {
+    const result = await product_S.getProductsByCategorySl(c_slug, skip , sort);
+    return res.send({
+      products : result.products,
+      category : result.category,
+      SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
+      BASE_URL: process.env.BASE_URL
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 module.exports = {
@@ -214,9 +264,11 @@ module.exports = {
   getProducts,
   getBeverages,
   getSingle,
-  addNewOrder,
   addOnHotItem,
   getProductDetail,
   getProductsAddCart,
-  getProductsToSearch
+  getProductsToSearch,
+  getProductToCategory,
+  getProductsBySort,
+  getProductsViewMore
 }

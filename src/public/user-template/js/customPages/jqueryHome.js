@@ -264,7 +264,7 @@ $(document).ready(function () {
                     `<figure>`+
                       `<div class="snipcart-item block text-center">`+
                         `<div class="snipcart-thumb">`+
-                          `<a href="${res.category.c_slug}${product.pr_slug}"><img title=" " alt=" "`+
+                          `<a href="product/${res.category.c_slug}/${product.pr_slug}"><img title=" " alt=" "`+
                               `src="${res.SECURE_DELIVERY_URL}${product.pr_avatar}" style="width: 100%"></a>`+
                               strOne + strTwo + `</div>`+
 
@@ -334,7 +334,7 @@ $(document).ready(function () {
                     `<figure>`+
                       `<div class="snipcart-item block text-center">`+
                         `<div class="snipcart-thumb">`+
-                          `<a href="hot/${product.pr_slug}"><img title=" " alt=" "`+
+                          `<a href="product/hot/${product.pr_slug}"><img title=" " alt=" "`+
                               `src="${res.SECURE_DELIVERY_URL}${product.pr_avatar}" style="width: 100%"></a>`+
                               strOne + strTwo + `</div>`+
                         `<div class="snipcart-details top_brand_home_details">`+

@@ -21,7 +21,8 @@ const getListProducts = () => {
           let category = await category_M.findCategoryById(product.c_id)
           let brand = await brand_M.findBrandById(product.br_id)
           newObj = _.assign({ br_name: brand.br_name, c_name: category.c_name }, newObj);
-          newObj.pr_price = formatNumber({ prefix: '', suffix: '₫' })(newObj.pr_price)
+          newObj.pr_price = formatNumber({ prefix: '', suffix: '₫' })(newObj.pr_price);
+          newObj.pr_priceNew = formatNumber({ prefix: '', suffix: '₫' })(newObj.pr_priceNew);
           return newObj;
         } catch (error) {
           console.log(error);
@@ -53,6 +54,7 @@ const createNewProduct = (inputProduct, path, idAdmin) => {
           key: inputProduct.pr_key,
           description: inputProduct.pr_descriptionSeo
         }
+        inputProduct['pr_amount'] = +inputProduct.pr_amount
         inputProduct['pr_capacity'] = pr_capacity;
         inputProduct['pr_SEO'] = pr_SEO;
         inputProduct['pr_priceNew'] = inputProduct.pr_price - inputProduct.pr_price * inputProduct.pr_discount / 100;
@@ -301,9 +303,9 @@ const getProductsFlowListC_id = (listC_id, count) => {
     return resolve([]);
   });
 };
-const getProductsFlowCategory = (c_id , count) => {
+const getProductsFlowCategory = (c_id , count, id) => {
   return new Promise(async (resolve, reject) => {
-    let products = await product_M.getProductsFollowIdCategory(c_id, count);
+    let products = await product_M.getProductsFollowIdCategory(c_id, count, id);
     if (products.length > 0) {
       products = products.map(product => {
         const priceString = {
@@ -388,7 +390,39 @@ const getProductBySlug = (pr_slug) => {
     }
     return resolve(null)
   })
-}
+};
+
+const getProductsByCategorySl = (c_slug, skip, sort) => {
+  return new Promise(async (resolve, reject) => {
+    let category = await category_M.findBySlug(c_slug);
+    if(category){
+      let products
+      if(!sort || sort == 0){
+        products = await product_M.getProductsByC_Id(category._id, +skip);
+      } else {
+        products = await product_M.getProductsByC_IdAndSort(category._id, +skip, sort);
+      }
+      if (products.length > 0) {
+        products = products.map(product => {
+          const priceString = {
+            pr_priceNewString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_priceNew),
+            pr_priceString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_price)
+          }
+          const object = _.assign(product._doc, priceString);
+          return object;
+        })
+        return resolve({
+          products,
+          category 
+        });
+      }
+    }
+    return resolve({
+      products: [],
+      category: '',
+    });
+  });
+};
 
 
 module.exports = {
@@ -403,6 +437,7 @@ module.exports = {
   activeProductById,
   getProductsAddCart,
   getAlbumImageByPrId,
+  getProductsByCategorySl,
   getProductsFlowListC_id,
   getProductsFlowCategory,
   getProductsFollowKeyword,

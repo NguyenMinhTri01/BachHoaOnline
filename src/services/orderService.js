@@ -112,11 +112,29 @@ const getOrderByUserId = (u_id) => {
   })
 };
 
+const getOrderCount = () => {
+  return new Promise( async (resolve, reject) => {
+    const orders = await order_M.findAll();
+    const orderCount = orders.length;
+    resolve(orderCount);
+  })
+};
+
+const getOrderNotResolved = () => {
+  return new Promise( async (resolve, reject) => {
+    const ordersNotResolved = await order_M.findOrderNotResolved();
+    const orderNotResolved = ordersNotResolved.length;
+    resolve(orderNotResolved);
+  })
+}
+
 
 module.exports = {
   editStatus,
   addNewOrder,
   getOrderById,
+  getOrderCount,
   getListOrders,
-  getOrderByUserId
+  getOrderByUserId,
+  getOrderNotResolved
 }

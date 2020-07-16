@@ -200,12 +200,20 @@ const getMenuCategory = () => {
     }));
     resolve(menu);
   })
+};
+
+const getCategoryCount = () => {
+  return new Promise( async (resolve, reject) => {
+    const categories = await category_M.findAll();
+    const categoryCount = categories.length
+    resolve(categoryCount);
+  })
 }
 
 
 module.exports = {
   getMaxLevel, deleteCategory, getMenuCategory,
   getOneCategory, updateCategory, activeCategory,
-  getListCategories, createNewCategory, getCategoryChildById,
+  getListCategories, createNewCategory, getCategoryChildById,getCategoryCount,
   getListDataCategories, getCategoriesByC_level, getListCategoriesByLevel,
 }

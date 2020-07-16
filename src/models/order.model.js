@@ -6,7 +6,7 @@ let Schema = mongoose.Schema;
 
 let orderSchema = new Schema({
   _id: { type: String, default: shortId.generate },
-  or_status: { type: Number, default: 1 },
+  or_status: { type: Number, default: 0 },
   or_infoDailies: {
     _id: { type: String, default: '0' },
     u_name: String,
@@ -66,6 +66,10 @@ orderSchema.statics = {
       order.or_status = or_status
       return order.save()
     })
+  },
+
+  findOrderNotResolved(){
+    return this.find({or_status : 0})
   }
 }
 

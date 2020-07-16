@@ -453,11 +453,20 @@ const getProductsByBrand = (c_slug, br_id) => {
 };
 
 
+const getProductCount = () => {
+  return new Promise(async (resolve, reject) => {
+    const products = await product_M.findAll();
+    const productCount = products.length;
+    resolve(productCount);
+  })
+}
+
 module.exports = {
   editProduct,
   getProductsHot,
   hotProductById,
   getProductById,
+  getProductCount,
   getProductBySlug,
   createNewProduct,
   getListProducts,

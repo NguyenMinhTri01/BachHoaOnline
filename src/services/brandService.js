@@ -184,6 +184,14 @@ const getBrandsByCategory = (c_id) => {
     }
     return resolve([]);
   })
+};
+
+const getBrandCount = () => {
+  return new Promise( async (resolve, reject) => {
+    const brands = await brand_M.findAll();
+    const brandCount = brands.length;
+    resolve(brandCount);
+  })
 }
 module.exports = {
   editBrand,
@@ -191,6 +199,7 @@ module.exports = {
   activeBrand,
   getBrandById,
   getListBrands,
+  getBrandCount,
   createNewBrand,
   getBrandsByCategory,
 }

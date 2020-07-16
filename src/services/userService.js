@@ -101,6 +101,14 @@ const getUserByEmail = (email) =>{
       message : 'email chưa đăng ký hoặc không tồn tại!'
     })
   })
+};
+
+const getUserCount = () => {
+  return new Promise( async (resolve, reject) => {
+    const users = await users_M.findAll();
+    const userCount = users.length;
+    resolve(userCount);
+  })
 }
 
 module.exports = {
@@ -108,5 +116,6 @@ module.exports = {
   getProfileUser,
   getListUsers,
   deleteUser,
-  getUserByEmail
+  getUserByEmail,
+  getUserCount
 }

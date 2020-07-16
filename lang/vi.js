@@ -18,6 +18,17 @@ export const transErrors = {
   register_failed : 'Địa chỉ email đã được sử dụng',
   adminUserNameIsExists : 'Tên đăng nhập đã tồn tại',
   updateProfileUserFailed : 'Mật khẩu cũ không đúng',
+};
+
+export const transMail = {
+  subject: "Đặt lại mật khẩu Bách Hóa Online",
+  contentSetPassword: (newPassword, urlHome) => {
+    return `
+      <h2>Bạn nhận được email này vì đã yêu cầu đặt lại mật tại <a href="${urlHome}"> Bách Hóa Online </a></h2>
+      <h3>Mật khẩu mới của bạn là: <srtong><font color="red"> ${newPassword}</font></strong>.</h3>
+      <h3>Nếu email này là nhầm lẫn, hay bỏ qua nó. Trân trọng.</h3>
+    `;
+  }
 }
 
 export const transSuccess = {

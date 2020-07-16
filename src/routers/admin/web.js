@@ -9,6 +9,7 @@ import initAllRoute_Home from './homeRouter';
 import initAllRoute_Product from './productRouter';
 import initAllRoute_Order from './orderRouter';
 import initAllRoute_attribute from './attributeRouter';
+import initAllRoute_Users from './usersRouter';
 
 let router = express.Router();
 
@@ -30,6 +31,8 @@ let initRouteAdmin = (app) => {
   initAllRoute_Order(router);
   // init all router of attribute display
   initAllRoute_attribute(router);
+  // init all router of users 
+  initAllRoute_Users(router);
   
   router.post("/example_validation", example_validation.login, auth_C.functionExamples);
 

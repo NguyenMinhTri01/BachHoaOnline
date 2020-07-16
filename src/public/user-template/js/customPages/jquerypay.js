@@ -12,10 +12,10 @@ function formatNumber(nStr) {
 //{ carts: carts, couponPay: couponPay, dataOr : data_input},
 
 
-function validation (formInputPay) {
+function validation(formInputPay) {
     $.validator.addMethod("valueNotDefault", function (value, element, arg) {
         return arg !== value;
-      }, "Value must not default");
+    }, "Value must not default");
 
     var validated = formInputPay.validate({
         rules: {
@@ -86,7 +86,7 @@ function sentDataPayToServer(formInputPay, numberCart, bodyCartPay, sumPriceProd
             url: "sentDataPayToServer",
             type: 'POST',
             data: data_input,
-            success: function (res) {  
+            success: function (res) {
                 if (res == false) {
                     alert('server không phản hồi');
                 }
@@ -102,15 +102,15 @@ function sentDataPayToServer(formInputPay, numberCart, bodyCartPay, sumPriceProd
                         toastr.options = {
                             "timeOut": "3000",
                             "positionClass": "toast-bottom-right",
-                          }
-                          toastr.success('Thành Công', 'Đặt hàng');
+                        }
+                        toastr.success('Thành Công', 'Đặt hàng');
                     }
                     else {
                         toastr.options = {
                             "timeOut": "2000",
                             "positionClass": "toast-bottom-right",
-                          }
-                          toastr.error('Không Thành Công', 'Đặt hàng');
+                        }
+                        toastr.error('Không Thành Công', 'Đặt hàng');
                     }
 
                 }
@@ -184,14 +184,14 @@ $(document).ready(function () {
 
     finishPay.click(function (event) {
         event.preventDefault();
-        if(validator.form()){
+        if (validator.form()) {
             var carts = localStorage.getItem('carts');
             _carts.val(carts);
-            sentDataPayToServer(formInputPay, numberCart, bodyCartPay, sumPriceProduct, totalPay, transportCost);    
+            sentDataPayToServer(formInputPay, numberCart, bodyCartPay, sumPriceProduct, totalPay, transportCost);
         }
     });
 
-    btnConfirm.click(function(){
+    btnConfirm.click(function () {
         localStorage.setItem('carts', '');
         window.location.replace("/")
     });

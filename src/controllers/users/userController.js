@@ -86,15 +86,34 @@ const getViewDetailPurchase = async (req, res) => {
     title: "Chi Tiết Đơn Hàng",
     BASE_URL: process.env.BASE_URL
   })
+};
+
+const deleteOrder = async (req, res) => {
+  const {id} = req.params;
+  const result = await order_S.editStatus(4, id);
+  if(result.type){
+    result.message = 'Hủy đơn hàng thành công';
+    res.redirect(`${req.headers.referer}`);
+  }
+};
+
+const forgotPassword = async (req, res) => {
+  const {email} = req.params;
+  const notification = await user_S.getUserByEmail(email);
+  res.send(notification);
 }
+
+ 
 
 module.exports = {
   getPay,
   getPurchase,
   addNewOrder,
   getProfileUser,
+  forgotPassword,
   updateProfileUser,
   getForgotPasswordUser,
-  getViewDetailPurchase
+  getViewDetailPurchase,
+  deleteOrder
 
 }

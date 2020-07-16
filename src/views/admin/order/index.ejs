@@ -47,12 +47,10 @@
 
   <div class="card">
     <div class="card-body" style="padding:0">
-      <a href="admin/order/add" class="btn btn-success" style="margin: 10px"><i class="fa fa-plus"></i> Thêm Mới</a>
       <div class="table-responsive">
         <table id="zero_config" class="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>STT</th>
               <th>Mã Đơn Hàng</th>
               <th>Tên Khách Hàng</th>
               <th>Trạng Thái</th>
@@ -71,8 +69,7 @@
             <% let count = 1 %>
             <% orders.forEach(order =>{%>
             <tr>
-              <td class="text-center"><%= count %></td>
-              <td class="or_name text-center"><%= order._id %></td>
+              <td class="or_name text-center"><%= order.or_createdAt %></td>
               <td class="text-center"><%= order.or_infoDailies.u_name %></td>
               <td>
                 <div class="btn-group open">

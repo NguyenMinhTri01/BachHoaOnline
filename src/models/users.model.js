@@ -72,6 +72,10 @@ userSchema.statics = {
   findUserByEmail(email){
     return this.findOne({u_email : email}).exec();
   },
+
+  deleteUser(id) {
+    return this.deleteOne({ _id: id });
+  }
 };
 
 userSchema.methods = {

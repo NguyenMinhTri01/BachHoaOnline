@@ -1,9 +1,30 @@
 <%- include("header2.ejs")  %>
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Thông Báo !</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-danger">
+                <span>Bạn có chắc muốn</span>
+                <strong> XÓA</strong>
+                <span> giỏ hàng này không ?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <a href="user/purchase/delete/<%= order._id %>" type="button" class="btn btn-danger">Đồng ý</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
-
     <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-        <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
+        <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Trang Chủ</a></li>
         <li class="">Chi tiết đơn hàng</li>
     </ol>
 </div>
@@ -49,7 +70,7 @@
             <div class="col-md-12">
                 <div class="headingfix">
                     <span>Chi tiết đơn hàng:
-                        <%= order._id %>
+                        <%= order.or_createdAt %>
                     </span>
                     <span class="split"> - <strong><%= statusOrder[order.or_status] %></strong></span>
                 </div>
@@ -151,8 +172,18 @@
                         </tr>
                     </tfoot>
                 </table>
-                <a class="view-list-order" href="user/purchase">&lt;&lt; Quay lại đơn hàng của tôi</a>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="view-list-order" href="user/purchase">&lt;&lt; Quay lại đơn hàng của tôi</a>
+                    </div>
+                    <% if(order.or_status < 2) {%>
+                    <div class="col-md-8 text-right">
+                        <button data-toggle="modal" data-target="#confirm-delete">Hủy đơn hàng này</button>
+                    </div>
+                    <% } %>
+                </div>
             </div>
+
         </div>
     </div>
 

@@ -8,7 +8,9 @@ const initAllRoute_User = (router) => {
   router.post('/user/profile',auth_C.checkLogin, user_C.updateProfileUser);
   router.get('/user/forgotPassword', user_C.getForgotPasswordUser);
   router.get('/user/logout',auth_C.checkLogin ,auth_C.getLogout);
+  router.get('/user/forgotPassword/:email', user_C.forgotPassword);
   router.post('/sentDataPayToServer', user_C.addNewOrder);
   router.get('/user/purchase/view/:id', auth_C.checkLogin, user_C.getViewDetailPurchase);
+  router.get('/user/purchase/delete/:id', auth_C.checkLogin, user_C.deleteOrder);
 }
 module.exports = initAllRoute_User

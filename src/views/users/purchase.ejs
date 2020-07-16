@@ -48,7 +48,7 @@
   <div class="col-md-9 ">
     <h3>Đơn hàng của tôi</h3>
     <div class="orderhistory">
-      <table class="table">
+      <table class="table fontSiteOrder">
         <thead>
           <tr>
             <th scope="col">Mã đơn hàng</th>
@@ -62,7 +62,7 @@
           <% if(order.length > 0) {%>
             <% order.forEach(function(orderItem) {%>
               <tr>
-                <th cope="row"><a href="user/purchase/view/<%= orderItem._id %>"><%= orderItem._id  %></a></th>
+                <th cope="row"><a href="user/purchase/view/<%= orderItem._id %>"><%= orderItem.or_createdAt  %></a></th>
                 <td><%= new Date(orderItem.or_createdAt).toLocaleString() %></td>
                 <% if(orderItem.or_products.length == 1) {%>
                   <td><%= orderItem.or_products[0].pr_name %></td>

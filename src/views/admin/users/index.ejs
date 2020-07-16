@@ -1,0 +1,128 @@
+<%- include("../adminHeader")  %>
+
+<% if (notification.length != 0) {%>
+  <%   if (notification[0].type)  {%>
+<script>
+  toastr.options = {
+  "timeOut": "2500",
+  "positionClass": "toast-bottom-right",
+  }
+  toastr.success('<%= notification[0].message.status %>','<%= notification[0].message.action %>');                                  
+</script>
+  <% } else {%>
+  <script>
+    toastr.options = {
+    "timeOut": "2500",
+    "positionClass": "toast-bottom-right",
+    }
+    toastr.error('<%= notification[0].message.status %>','<%= notification[0].message.action %>');                                  
+  </script>
+  <% } %>
+<% } %>
+    <div class="page-breadcrumb">
+      <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+              <div class="ml-auto text-right">
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="admin">Trang Chủ</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Người Dùng</li>
+                      </ol>
+                  </nav>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="container-fluid" style="padding:0">
+      <!-- ============================================================== -->
+      <!-- Start Page Content -->
+      <!-- ============================================================== -->
+          <!--modal notification-->
+          <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLabel">Thông Báo !</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-danger">
+                  <span>Bạn có chắc muốn</span>
+                  <strong> XÓA</strong>
+                  <span> người dùng này không ?</span>
+                </div>  
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                  <a id="confirm" type="button" class="btn btn-danger btn-ok">Đồng ý</a>
+                </div>
+              </div>
+            </div>
+          </div>          
+          <!--end modal notification-->
+
+        <!-- Nav tabs -->
+        <div class="border text-center bg-light" style="height:auto">
+            <br>
+            <h2>Người Dùng</h2>
+        </div>
+        <div class="card">
+            <div class="card-body" style="padding:0">
+                <div class="table-responsive">
+                    <table id="zero_config1" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên người dùng</th>
+                                <th>Giới tính</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th>Ngày tạo</th>    
+                                <th>Tùy Chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% if(users.length > 0) {%>
+                            <% let count = 0%>
+                            <% users.forEach(user =>{%>
+                              <% count++ %>
+                              <tr class="item">
+                                <td class="text-center "><%= count %></td>
+                                <td><%= user.u_name %></td>
+                                <td class="text-center"><%= user.u_gender ? 'Nam' : 'Nữ' %></td>
+                                <td><%= user.u_email %></td>
+                                <td><%= user.u_phoneNumber %></td>
+                                <% let address = 'N/A' %>
+                                <% if (user.u_address.detail){ %>
+                                <% address = user.u_address.detail + ', ' + user.u_address.wards + ', ' + user.u_address.district + ', ' + user.u_address.provincesOrCities %>
+                                <% } %>
+                                <td><p><%= address %></td>
+                                <td><%= new Date(user.u_createdAt).toLocaleString() %></td>
+                                <td class="text-center">
+                                    <a href="admin/users/delete/<%= user._id %>" class="btn btn-danger m-2 _delete" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-alt"></i> Xóa</a>
+                                </td>
+                            </tr>
+                              <% }) %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>                                  
+        </div>
+    <!-- ============================================================== -->
+      <!-- End PAge Content -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Right sidebar -->
+      <!-- ============================================================== -->
+      <!-- .right-sidebar -->
+      <!-- ============================================================== -->
+      <!-- End Right sidebar -->
+      <!-- ============================================================== -->
+    </div>
+    <div class='notifications bottom-right'></div>
+  <!-- ============================================================== -->
+  <!-- End Container fluid  -->
+<script type="text/javascript" src="admin_template/js/customPages/users/jqueryIndexUser.js"></script>
+<%- include("../adminFooter") %></div>

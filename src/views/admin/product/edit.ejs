@@ -34,7 +34,8 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Giá </label>
-                    <input id="pr_price" type="number" class="form-control" name="pr_price" value="<%= product.pr_price %>">
+                    <input id="pr_price" type="number" class="form-control" name="pr_price"
+                      value="<%= product.pr_price %>">
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -49,8 +50,7 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Giá trị</label>
-                    <input type="number" class="form-control" name="pr_value"
-                      value="<%= product.pr_capacity.value %>">
+                    <input type="number" class="form-control" name="pr_value" value="<%= product.pr_capacity.value %>">
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -59,51 +59,61 @@
                     <select class="custom-select mr-sm-2" id="pr_unit" name="pr_unit">
                       <option value="0" selected>Chọn đơn vị phù hợp...</option>
                       <% units.forEach((unit) => { %>
-                        <% if(unit == product.pr_capacity.unit){ %>
-                          <option value="<%= product.pr_capacity.unit %>" selected><%= product.pr_capacity.unit %></option>
-                          <% } else { %>
-                            <option value="<%= unit %>"><%= unit %></option>
-                          <% } %>
+                      <% if(unit == product.pr_capacity.unit){ %>
+                      <option value="<%= product.pr_capacity.unit %>" selected><%= product.pr_capacity.unit %></option>
+                      <% } else { %>
+                      <option value="<%= unit %>"><%= unit %></option>
+                      <% } %>
                       <% }) %>
                     </select>
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="tensanpham">Danh Mục </label>
-                <select class="custom-select mr-sm-2" id="c_id" name="c_id">
-                  <% if (typeof categories != "undefined"){ %>
-                  <% for (let i = 0; i < categories.length; i++) {%>
-                    <% if (product.c_id === categories[i]._id) {%>
-                    <option value="<%= categories[i]._id %>" selected> <%= categories[i].c_name %></option>
-                    <% } else {%>
-                    <option value="<%= categories[i]._id %>"> <%= categories[i].c_name %></option>
-                    <% } %>
-                  <% } %>
-                  <% } %>
-                </select>
-              </div>
               <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="tensanpham">Danh Mục </label>
+                    <select class="custom-select mr-sm-2" id="c_id" name="c_id">
+                      <% if (typeof categories != "undefined"){ %>
+                      <% for (let i = 0; i < categories.length; i++) {%>
+                      <% if (product.c_id === categories[i]._id) {%>
+                      <option value="<%= categories[i]._id %>" selected> <%= categories[i].c_name %></option>
+                      <% } else {%>
+                      <option value="<%= categories[i]._id %>"> <%= categories[i].c_name %></option>
+                      <% } %>
+                      <% } %>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="tensanpham">Thương Hiệu </label>
                     <select class="custom-select mr-sm-2" id="br_id" name="br_id">
                       <% if (typeof brandList != "undefined"){ %>
                       <% for (let i = 0; i < brandList.length; i++) {%>
-                        <% if(product.br_id === brandList[i]._id) {%>
-                          <option value="<%= brandList[i]._id %>" selected> <%= brandList[i].br_name %></option>
-                        <% } else {%>
-                          <option value="<%= brandList[i]._id %>"> <%= brandList[i].br_name %></option>
-                        <% } %>
+                      <% if(product.br_id === brandList[i]._id) {%>
+                      <option value="<%= brandList[i]._id %>" selected> <%= brandList[i].br_name %></option>
+                      <% } else {%>
+                      <option value="<%= brandList[i]._id %>"> <%= brandList[i].br_name %></option>
+                      <% } %>
                       <% } %>
                       <% } %>
                     </select>
                   </div>
                 </div>
+              </div>
+              <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="">Xuất xứ </label>
                     <input type="text" class="form-control" name="pr_origin" value="<%= product.pr_origin %>">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="">Số lượng </label>
+                    <input type="number" class="form-control" name="pr_amount" value="<%= product.pr_amount %>">
                   </div>
                 </div>
               </div>
@@ -116,7 +126,8 @@
               <h3 class="card-title m-b-1">SEO</h3>
               <div class="form-group">
                 <label for="key">Tiêu đề </label>
-                <input type="text" class="form-control" id="pr_title" name="pr_title" value="<%= product.pr_SEO.title %>">
+                <input type="text" class="form-control" id="pr_title" name="pr_title"
+                  value="<%= product.pr_SEO.title %>">
               </div>
               <div class="form-group">
                 <label for="key">Từ Khóa </label>
@@ -124,33 +135,34 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Mô tả</label>
-                <textarea class="form-control" name="pr_descriptionSeo" rows="3"><%= product.pr_SEO.description %></textarea>
+                <textarea class="form-control" name="pr_descriptionSeo"
+                  rows="3"><%= product.pr_SEO.description %></textarea>
               </div>
               <div class="box-header with-border">
                 <!-- <h3 class="box-title">Album ảnh</h3> -->
                 <h3 class="card-title m-b-1">Album ảnh</h3>
               </div>
-                <% if (listAlbumImage.length > 0) {%>
-                  <div class="row" style="margin-bottom: 30px;">
-                  <% listAlbumImage.forEach(image => { %>
-                    <div class="col-sm-4">
-                      <div class="card-body border border-dark">
-                        <img class=""
-                        src="<%= SECURE_DELIVERY_URL + image.public_id %>"
-                        alt="<%= image.filesName  %>" width="168" height="auto">
-                        <div class="text-center" style="margin-top: 10px;">
-                          <a class="deleteImage" href="admin/product/deleteImage/<%= image._id %>"><i class="far fa-trash-alt" style="margin-right: 15px;"></i></a>
-                          <a href="<%= SECURE_DELIVERY_URL + image.public_id %>"><i class="fas fa-eye"></i></a>
-                        </div>
-                      </div>
+              <% if (listAlbumImage.length > 0) {%>
+              <div class="row" style="margin-bottom: 30px;">
+                <% listAlbumImage.forEach(image => { %>
+                <div class="col-sm-4">
+                  <div class="card-body border border-dark">
+                    <img class="" src="<%= SECURE_DELIVERY_URL + image.public_id %>" alt="<%= image.filesName  %>"
+                      width="168" height="auto">
+                    <div class="text-center" style="margin-top: 10px;">
+                      <a class="deleteImage" href="admin/product/deleteImage/<%= image._id %>"><i
+                          class="far fa-trash-alt" style="margin-right: 15px;"></i></a>
+                      <a href="<%= SECURE_DELIVERY_URL + image.public_id %>"><i class="fas fa-eye"></i></a>
                     </div>
-                  <% }) %>
                   </div>
-                <%} else {%>
-                    <div>
-                      <strong>Không có ảnh...</strong>
-                    </div>
-                <% } %>
+                </div>
+                <% }) %>
+              </div>
+              <%} else {%>
+              <div>
+                <strong>Không có ảnh...</strong>
+              </div>
+              <% } %>
 
               <div class="box-header with-border">
                 <!-- <h3 class="box-title">Album ảnh</h3> -->
@@ -169,9 +181,8 @@
               <div class="box box-warning">
                 <h6>Ảnh đại diện</h6>
                 <div class="text-center">
-                  <img
-                    src="<%= SECURE_DELIVERY_URL + product.pr_avatar %>"
-                    alt="product image" class="image-preview border border-dark" width="260px" height="200px">
+                  <img src="<%= SECURE_DELIVERY_URL + product.pr_avatar %>" alt="product image"
+                    class="image-preview border border-dark" width="260px" height="200px">
                 </div>
                 <div class="text-center">Ảnh</div>
                 <div>

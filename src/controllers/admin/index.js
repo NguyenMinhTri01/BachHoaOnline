@@ -6,6 +6,7 @@ import brandController from '../admin/brandController';
 import productController from '../admin/productController';
 import orderController from '../admin/orderController';
 import attributeController from './attributeController';
+import usersController from './usersController';
 
 
 export const auth_C = authController;
@@ -16,3 +17,4 @@ export const brand_C = brandController;
 export const product_C = productController;
 export const order_C = orderController;
 export const attribute_C = attributeController;
+export const users_C = usersController;

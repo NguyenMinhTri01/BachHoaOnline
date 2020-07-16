@@ -1,6 +1,8 @@
 import users_M from '../models/users.model';
-import { transSuccess, transErrors } from "../../lang/vi";
+import { transSuccess, transErrors, transMail } from "../../lang/vi";
 import bcrypt from "bcrypt";
+import sendMail from "../config/mailler";
+import { use } from 'passport';
 const saltRounds = 10;
 
 
@@ -11,6 +13,13 @@ const getProfileUser = (id) => {
       return resolve(user)
     }
     return resolve(null)
+  })
+};
+
+const getListUsers = () => {
+  return new Promise( async (resolve, reject) => {
+    const users = await users_M.findAll();
+    return resolve(users);
   })
 }
 
@@ -48,11 +57,56 @@ const updateProfileUser = (data, id) => {
       });
     }
   })
+};
 
+const deleteUser = (id) => {
+  return new Promise( async (resolve, reject) => {
+    let result = await users_M.deleteUser(id);
+    if (result.deletedCount != 0) {
+      return resolve({
+        type: true,
+        message: transSuccess.remove_data_successful
+      });
+    }
+    return resolve({
+      type: false,
+      message: transErrors.remove_data_failed
+    })
+  })
+};
 
+const getUserByEmail = (email) =>{
+  return new Promise( async (resolve, reject) => {
+    const user = await users_M.findUserByEmail(email);
+    if(user){
+      const newPassword = Math.floor(100000 + Math.random() * 900000).toString();
+      const salt = bcrypt.genSaltSync(saltRounds);
+      const hash = bcrypt.hashSync(newPassword, salt);
+      let profile = new Object({
+        u_localPassword : hash
+      })
+      const result = await users_M.updateProfile(user._id, profile);
+      if (result){
+       const resSendMail = await sendMail(email, transMail.subject, transMail.contentSetPassword(newPassword, process.env.BASE_URL));
+       if(resSendMail) {
+        return resolve({
+          type : true,
+          message : 'Mật khẩu đã được đăt lại thành công vui lòng kiểm tra email của bạn!'
+        })
+       }
+      }
+    }
+    return resolve({
+      type : false,
+      message : 'email chưa đăng ký hoặc không tồn tại!'
+    })
+  })
 }
 
 module.exports = {
   updateProfileUser,
-  getProfileUser
+  getProfileUser,
+  getListUsers,
+  deleteUser,
+  getUserByEmail
 }

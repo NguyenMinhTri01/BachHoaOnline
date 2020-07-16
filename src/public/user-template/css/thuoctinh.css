@@ -797,10 +797,10 @@ z-index:3
   top: -1px;
   bottom: 0;
   z-index: 1;
-  border: 2px solid #dd4814;
+  border: 2px solid #f28330;
 }
 
-.gw-nav-list>li .gw-submenu>li.active>a { color: #dd4814 }
+.gw-nav-list>li .gw-submenu>li.active>a { color: #f28330 }
 
 .gw-nav-list>li .gw-submenu>li a>[class*="icon-"]:first-child {
   display: none;
@@ -820,7 +820,7 @@ z-index:3
 .gw-nav-list>li .gw-submenu>li.active>a>[class*="icon-"]:first-child,
 .gw-nav-list>li .gw-submenu>li:hover>a>[class*="icon-"]:first-child { display: inline-block }
 
-.gw-nav-list>li .gw-submenu>li.active>a>[class*="icon-"]:first-child { color: #c86139 }
+.gw-nav-list>li .gw-submenu>li.active>a>[class*="icon-"]:first-child { color: #f28330 }
 
 .gw-nav-list>li>.gw-submenu>li:first-child>a { border-top: 0px; }
 
@@ -909,7 +909,7 @@ button.btn.btn-success {
 /* Thương hiệu sản phẩm */
 .manufacture.top {
   border-radius: 4px 4px 0 0;
-  border-bottom: 1px solid #e9edf0;
+  /* border-bottom: 1px solid #e9edf0; */
   /* margin-top: 5px; */
   background: #fff;
   position: relative;
@@ -917,6 +917,11 @@ button.btn.btn-success {
   height: 64px;
   padding: 10px 0px;
 }
+
+.brandList {
+  margin-bottom: 20px;
+}
+
 .manufacture .top {
   display: block;
   background: #fff;
@@ -999,6 +1004,7 @@ button.btn.btn-success {
   left: 0;
   right: 0;
   bottom: 0;
+  padding: 2px;
 }
 .manufacture a i {
   display: none;
@@ -1010,7 +1016,7 @@ span.moremanu.top {
   font-size: 15px;
   position: absolute;
   right: 10px;
-  color: #d45a00;
+  color: #f28330;
   cursor: pointer;
   top: 15px;
 }
@@ -1026,7 +1032,7 @@ span.moremanu.top {
 
 .fatm {
   content: '';
-  border-top: 5px solid #d45a00;
+  border-top: 5px solid #f28330;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   display: block;
@@ -1046,11 +1052,22 @@ span.moremanu.top {
 
 .fatmShow {
   border-top: 0;
-  border-bottom: 5px solid #d45a00;
+  border-bottom: 5px solid #f28330;
   top: 2px;
   width: 0;
   display: block;
+  left: 23px;
 }
+
+.manufacture ul li a :hover{
+  border : 2px solid #f28330;
+  border-radius : 6px;
+  
+}
+.activeBrand {
+  background: rgba(247, 162, 5, 0.774);
+}
+
 
 /* lịch sử mua hàng */
 .orderhistory{

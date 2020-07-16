@@ -44,6 +44,13 @@ brandSchema.statics = {
       return brand.save();
     })    
   },
+
+  findBrandsByCategory(c_id){
+    return this.find({ 
+      c_id : c_id
+    })
+  }
+
 }
 
 module.exports = mongoose.model("brand", brandSchema);

@@ -105,3 +105,35 @@ update avatar admin
 
 
 có bug ơ trang products nhấp nhiều sẽ bị duplicate
+
+
+<div class="manufacture top " style="" data-ismaincate="False" data-iscatesearch="True">
+	<ul>
+		<% if(brands.length < 11) {%>
+		<% brands.forEach(function(brand){ %>
+		<li>
+			<a data-id="<%= brand._id %>" data-hash="<%= brand.br_name %>" title="<%= brand.br_name %>" >
+				<img width="65" height="40" src="<%= SECURE_DELIVERY_URL + brand.br_image %>"
+					alt="<%= brand.br_name %>">
+				<em></em>
+				<i class="bhx-checkmanu"></i>
+			</a>
+		</li>
+		<% })} else {%>
+			<% for (var i=0 ; i < 11 ; i++) {%>
+				<li>
+					<a data-id="<%= brands[i]._id %>" data-hash="<%= brand.br_name %>" title="<%= brands[i].br_name %>" >
+						<img width="65" height="40" src="<%= SECURE_DELIVERY_URL + brands[i].br_image %>"
+							alt="<%= brands[i].br_name %>">
+						<em></em>
+						<i class="bhx-checkmanu"></i>
+					</a>
+				</li>
+			<% } %>
+		<% } %>
+
+	</ul>
+	<span class="moremanu top">Xem thêm <i class="fatm"></i></span>
+</div>
+
+background: rgba(247, 162, 5, 0.774);

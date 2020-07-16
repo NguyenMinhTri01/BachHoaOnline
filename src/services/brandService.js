@@ -174,12 +174,23 @@ const deleteBrand = (id) => {
       message: transErrors.remove_data_failed
     })
   })
+};
+
+const getBrandsByCategory = (c_id) => {
+  return new Promise(async (resolve, reject) => {
+    const brands = await brand_M.findBrandsByCategory(c_id);
+    if(brands.length > 0) {
+      return resolve(brands);
+    }
+    return resolve([]);
+  })
 }
 module.exports = {
-  editBrand: editBrand,
-  deleteBrand: deleteBrand,
-  activeBrand: activeBrand,
-  getBrandById: getBrandById,
-  getListBrands: getListBrands,
-  createNewBrand: createNewBrand,
+  editBrand,
+  deleteBrand,
+  activeBrand,
+  getBrandById,
+  getListBrands,
+  createNewBrand,
+  getBrandsByCategory,
 }

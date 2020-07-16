@@ -425,6 +425,34 @@ const getProductsByCategorySl = (c_slug, skip, sort) => {
 };
 
 
+const getProductsByBrand = (c_slug, br_id) => {
+  return new Promise(async (resolve, reject) => {
+    let category = await category_M.findBySlug(c_slug);
+    if(category){
+      let products = await product_M.findProductByBr_id(br_id);
+      if (products.length > 0) {
+        products = products.map(product => {
+          const priceString = {
+            pr_priceNewString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_priceNew),
+            pr_priceString: formatNumber({ suffix: '₫', integerSeparator: ".", decimal: "," })(product.pr_price)
+          }
+          const object = _.assign(product._doc, priceString);
+          return object;
+        })
+        return resolve({
+          products,
+          category 
+        });
+      }
+    }
+    return resolve({
+      products: [],
+      category: '',
+    });
+  });
+};
+
+
 module.exports = {
   editProduct,
   getProductsHot,
@@ -435,6 +463,7 @@ module.exports = {
   getListProducts,
   deleteImageById,
   activeProductById,
+  getProductsByBrand,
   getProductsAddCart,
   getAlbumImageByPrId,
   getProductsByCategorySl,

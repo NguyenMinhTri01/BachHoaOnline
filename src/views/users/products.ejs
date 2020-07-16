@@ -7,83 +7,54 @@
 	</ol>
 </div>
 <!-- Thương hiệu sản phẩm -->
-<div class="manufacture top " style="" data-ismaincate="False" data-iscatesearch="True">
-	<ul>
-		<li>
-			<a data-id="19789" data-hash="shower-mate" title="Shower Mate" href="/sua-tam-shower-mate">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/shower-mate-2206202011286.jpg"
-					alt="Shower Mate">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="2890" data-hash="dove" title="Dove" href="/sua-tam-dove">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Dove2483-s_1.png" alt="Dove">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="10256" data-hash="on-the-body" title="ON THE BODY" href="/sua-tam-on-the-body">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/ON-THE-BODY2444-s_59.png" alt="ON THE BODY">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="2584" data-hash="lifebuoy" title="Lifebuoy" href="/sua-tam-lifebuoy">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Lifebuoy2444-s_43.jpg" alt="Lifebuoy">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="18782" data-hash="feira" title="Feira" href="/sua-tam-feira">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/feira-1909201915134.png" alt="Feira">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="2582" data-hash="enchanteur" title="Enchanteur" href="/sua-tam-enchanteur">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Enchanteur2444-s_19.png" alt="Enchanteur">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="2845" data-hash="lux" title="Lux" href="/sua-tam-lux">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Lux2483-s_13.png" alt="Lux">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="2845" data-hash="lux" title="Lux" href="/sua-tam-lux">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Lux2483-s_13.png" alt="Lux">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="2584" data-hash="lifebuoy" title="Lifebuoy" href="/sua-tam-lifebuoy">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Lifebuoy2444-s_43.jpg" alt="Lifebuoy">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-		<li>
-			<a data-id="2584" data-hash="lifebuoy" title="Lifebuoy" href="/sua-tam-lifebuoy">
-				<img width="65" height="40" src="//cdn.tgdd.vn/Brand/11/Lifebuoy2444-s_43.jpg" alt="Lifebuoy">
-				<em></em>
-				<i class="bhx-checkmanu"></i>
-			</a>
-		</li>
-
+<% if (products.length > 0) {%>
+<div class="brandList">
+	<div class="manufacture top " style="" data-ismaincate="False" data-iscatesearch="True">
+		<ul>
+			<% if(brands.length < 11) {%>
+			<% brands.forEach(function(brand){ %>
+			<li class=''>
+				<a class="brandItem" data-id="<%= brand._id %>" data-hash="<%= brand.br_name %>" title="<%= brand.br_name %>" >
+					<img width="65" height="40" src="<%= SECURE_DELIVERY_URL + brand.br_image %>"
+						alt="<%= brand.br_name %>">
+					<em></em>
+					<i class="bhx-checkmanu"></i>
+				</a>
+			</li>
+			<% })} else {%>
+				<% for (var i=0 ; i < 11 ; i++) {%>
+					<li>
+						<a class="brandItem" data-id="<%= brands[i]._id %>" data-hash="<%= brand.br_name %>" title="<%= brands[i].br_name %>" >
+							<img width="65" height="40" src="<%= SECURE_DELIVERY_URL + brands[i].br_image %>"
+								alt="<%= brands[i].br_name %>">
+							<em></em>
+							<i class="bhx-checkmanu"></i>
+						</a>
+					</li>
+				<% } %>
+			<% } %>
+		</ul>
+		<span data-status = '1' class="moremanu top">Xem thêm <i class="fatm"></i></span>
+	</div>
+	<div class="manufacture top brandListMore" style="display: none" data-ismaincate="False" data-iscatesearch="True">
+		<ul>
+		<% for (var i=10 ; i < brands.length - 1 ; i++) {%>
+			<li>
+				<a class="brandItem" data-id="<%= brands[i]._id %>" data-hash="<%= brand.br_name %>" title="<%= brands[i].br_name %>" >
+					<img width="65" height="40" src="<%= SECURE_DELIVERY_URL + brands[i].br_image %>"
+						alt="<%= brands[i].br_name %>">
+					<em></em>
+					<i class="bhx-checkmanu"></i>
+				</a>
+			</li>
+		<% } %>
 	</ul>
-	<span class="moremanu top">Xem thêm <i class="fatm"></i></span>
+	</div>
 </div>
+<% } else {%>
+	<h4 style="margin-bottom: 50px;"> Không có dữ liệu!</h4>
+<% } %>
+
 
 <% if(typeof products != "undefined") {%>
 	<% if(products.length > 0) {%>

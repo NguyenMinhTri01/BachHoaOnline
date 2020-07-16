@@ -32,6 +32,7 @@ const getViewAdd = async (req, res) => {
     adminInfo: req.adminInfo,
     brandList,
     categories,
+    units,
     title: "Bach Hóa Online | Thêm Sản Phẩm",
   });
 };

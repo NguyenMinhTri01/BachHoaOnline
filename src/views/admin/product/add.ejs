@@ -76,16 +76,9 @@
                     <label for="tensanpham"> Đơn Vị </label>
                     <select class="custom-select mr-sm-2" id="pr_unit" name="pr_unit">
                       <option value="0" selected>Chọn đơn vị phù hợp...</option>
-                      <option value="gam">gam</option>
-                      <option value="kg">kg</option>
-                      <option value="ml">ml</option>
-                      <option value="lít">lít</option>
-                      <option value="Hộp">Hộp</option>
-                      <option value="Thùng">Thùng</option>
-                      <option value="Chai">Chai</option>
-                      <option value="Cây">Cây</option>
-                      <option value="Gói">Gói</option>
-                      <option value="Lon">Lon</option>
+                      <% units.forEach(function(unit) { %>
+                      <option value="<%= unit %>"><%= unit %></option>
+                      <% }) %>
                     </select>
                   </div>
                 </div>

@@ -1077,8 +1077,15 @@ span.moremanu.top {
   color:rgb(74, 74, 74);;
 }
 .active,.tab-menu a:hover{
- background-color:#d45a00;
+ background-color:#f28330;
+ color: #fff;
 }
+
+.ac.active{
+  color: #fff !important;
+}
+
+
 .wp-name-and-avatar-user {
   margin-bottom: 25px;
   margin-right: 0px;

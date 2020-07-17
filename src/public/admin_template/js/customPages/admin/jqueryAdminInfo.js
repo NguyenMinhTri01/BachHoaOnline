@@ -98,6 +98,7 @@ $(document).ready(function() {
   var notifications = $('#notifications');
   var image_Preview = $("#image-preview");
   var mainWrapper = $('#main-wrapper');
+  var adminAvatar =$('#admin-avatar');
   mainWrapper.attr({
     "data-sidebartype" : "mini-sidebar",
     "class" : "mini-sidebar"
@@ -143,12 +144,14 @@ $(document).ready(function() {
                 alert('server không phản hồi');
               }
               else {
+                
                 if (res.type){
                   notifications.html("<div class='alert alert-success alert-dismissible show' role='alert'>" +
                   `<i class='fa fa-check'></i> ${res.notify.action} <strong>${res.notify.status}</strong>`+
                   "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"+
                   "<span aria-hidden='true'>&times;</span>" + 
                   "</button></div>");
+                  loadImage(ad_avatar, adminAvatar);
                 }
                 else {
                   notifications.html("<div class='alert alert-danger alert-dismissible show' role='alert'>" +

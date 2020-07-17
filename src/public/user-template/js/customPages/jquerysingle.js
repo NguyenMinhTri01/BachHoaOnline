@@ -36,28 +36,40 @@ function btnAddCartDetailClick (numberOfProduct) {
   var sumPriceTotal = $("#sumPriceTotal");
   $(".btnAddCartDetail").on('click', function () {
     var numberCart = $('.numberCart');
-    numberCart.text(`${+numberCart.text() + +numberOfProduct.val()}`);
-    toastr.options = {
-      "timeOut": "2000",
-      "positionClass": "toast-bottom-right",
-    }
-    toastr.success('vào giỏ hàng', 'Đã thêm sản phẩm');                    
-    var id = $(this).attr('data-id');
-    var carts = localStorage.getItem('carts');
-    carts = carts ? carts.split('@') : [];
-    if (carts.length > 0) {
-      var currentLength = carts.length;
-      var _carts = carts.filter( cart => JSON.parse(cart)._id !== id)
-      var newLength = _carts.length;
-      if (currentLength > newLength) {
-        var _cart = carts.find( cart => JSON.parse(cart)._id === id)
-        var oldQuantity = JSON.parse(_cart).quantity
-        var objectCart = {
-          _id: id,
-          quantity : +oldQuantity + +numberOfProduct.val()
+    if(+numberOfProduct.val() > 0) {
+      numberCart.text(`${+numberCart.text() + +numberOfProduct.val()}`);
+      toastr.options = {
+        "timeOut": "2000",
+        "positionClass": "toast-bottom-right",
+      }
+      toastr.success('vào giỏ hàng', 'Đã thêm sản phẩm');                    
+      var id = $(this).attr('data-id');
+      var carts = localStorage.getItem('carts');
+      carts = carts ? carts.split('@') : [];
+      if (carts.length > 0) {
+        var currentLength = carts.length;
+        var _carts = carts.filter( cart => JSON.parse(cart)._id !== id)
+        var newLength = _carts.length;
+        if (currentLength > newLength) {
+          var _cart = carts.find( cart => JSON.parse(cart)._id === id)
+          var oldQuantity = JSON.parse(_cart).quantity
+          var objectCart = {
+            _id: id,
+            quantity : +oldQuantity + +numberOfProduct.val()
+          }
+          var stringCart = JSON.stringify(objectCart);
+          _carts.push(stringCart);
         }
-        var stringCart = JSON.stringify(objectCart);
-        _carts.push(stringCart);
+        else {
+          var objectCart = {
+            _id: id,
+            quantity : 1
+          }
+          var stringCart = JSON.stringify(objectCart);
+          _carts.push(stringCart);
+        }
+        stringCarts = _carts.join('@');
+        localStorage.setItem('carts', stringCarts);
       }
       else {
         var objectCart = {
@@ -65,21 +77,12 @@ function btnAddCartDetailClick (numberOfProduct) {
           quantity : 1
         }
         var stringCart = JSON.stringify(objectCart);
-        _carts.push(stringCart);
+        carts.push(stringCart);
+        localStorage.setItem('carts', carts.toString());
       }
-      stringCarts = _carts.join('@');
-      localStorage.setItem('carts', stringCarts);
+      appendToCart(bodyCart, sumPriceTotal);
+  
     }
-    else {
-      var objectCart = {
-        _id: id,
-        quantity : 1
-      }
-      var stringCart = JSON.stringify(objectCart);
-      carts.push(stringCart);
-      localStorage.setItem('carts', carts.toString());
-    }
-    appendToCart(bodyCart, sumPriceTotal);
   })
 }
 

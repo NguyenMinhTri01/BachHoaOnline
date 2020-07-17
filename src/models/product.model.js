@@ -170,6 +170,9 @@ productSchema.statics = {
       br_id: br_id, 
       pr_status : true
     })
-  }
+  },
+  // updateAmountProduct () {
+  //   return this.updateMany({}, {pr_amount : 1000});
+  // }
 }
 module.exports = mongoose.model("product", productSchema);

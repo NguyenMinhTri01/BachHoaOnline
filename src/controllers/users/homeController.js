@@ -91,8 +91,10 @@ const getCheckOut = async (req, res) => {
 }
 const getContact = async (req, res) => {
   try {
+    const menu = await category_S.getMenuCategory();
     const user = req.user ? await user_S.getProfileUser(req.user._id) : undefined
     return res.render('users/contact', {
+      menu,
       infoUser: user,
       title: "Bách Hóa Online | Mua Gì Cũng Có",
       BASE_URL: process.env.BASE_URL
@@ -104,8 +106,11 @@ const getContact = async (req, res) => {
 }
 const getAbout = async (req, res) => {
   try {
+    const menu = await category_S.getMenuCategory();
+
     const user = req.user ? await user_S.getProfileUser(req.user._id) : undefined
     return res.render('users/about', {
+      menu,
       infoUser: user,
       title: "Bách Hóa Online | Mua Gì Cũng Có",
       BASE_URL: process.env.BASE_URL

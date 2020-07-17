@@ -17,6 +17,7 @@ let getDashboard = async (req, res) => {
       categoryCount,
       orderNotResolved,
       base_Url: process.env.BASE_URL,
+      SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
       adminInfo: req.adminInfo,
       title: "Trang Quản Trị Web Bach Hóa Online"
     });

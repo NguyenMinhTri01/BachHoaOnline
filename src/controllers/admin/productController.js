@@ -3,7 +3,7 @@ import configStorage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 import fs from 'fs-extra';
 
-const units = ["gam", "kg", "ml", "lit", "Hộp", "Thùng", "Chai", "Cây", "Gói", "Lon","mm", "cm" , "m"];
+const units = ["gam", "kg", "ml", "lit", "Hộp", "Thùng", "Chai", "Cây", "Gói", "Lon","mm", "cm" , "m", "cái", "miếng"];
 const storageProductAvatar = configStorage('/product/productAvatar');
 let uploadProductAvatar = multer({
   storage: storageProductAvatar

@@ -9,6 +9,7 @@ let uploadImageLocal = multer({
 
 let getInfoAdmin = async (req, res) => {
   res.render("admin/form_InfoAndEditAdmin", {
+    SECURE_DELIVERY_URL : process.env.SECURE_DELIVERY_URL,
     base_Url: process.env.BASE_URL,
     adminInfo: req.adminInfo,
     title: "Bach Hóa Online Admin | Thông tin Admin"

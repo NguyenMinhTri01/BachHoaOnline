@@ -36,7 +36,7 @@ adminSchema.statics = {
       );
   },
   updateInfo(id, item){
-    return this.findOneAndUpdate(id, item);
+    return this.updateOne({_id : id}, item);
   }
 };
 

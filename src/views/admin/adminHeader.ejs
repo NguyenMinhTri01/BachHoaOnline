@@ -247,11 +247,11 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="adminAvatar" src="<%= adminInfo.ad_avatar %>" alt="user" class="rounded-circle" width="30" height="33"></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="adminAvatar" src="<%= SECURE_DELIVERY_URL + adminInfo.ad_avatar %>" alt="user" class="rounded-circle" width="30" height="33"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                                 <div class="dropdown-divider"></div>
                                 <h3 class = "text-center">
-                                    <img src="<%= adminInfo.ad_avatar %>" alt="user" class="rounded-circle" width="40" height="43" >
+                                    <img src="<%= SECURE_DELIVERY_URL + adminInfo.ad_avatar %>" alt="user" class="rounded-circle" width="40" height="43" >
                                     <%= adminInfo.ad_name %>
                                 </h3>
                                 <div class="dropdown-divider"></div>

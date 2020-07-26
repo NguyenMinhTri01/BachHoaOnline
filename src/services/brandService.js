@@ -80,30 +80,27 @@ const editBrand = (id, br_name, c_id, path) => {
           item = {
             br_name: br_name,
             br_slug: br_slug,
+            c_id: c_id
           };
         }
         else {
-          let arrayPath = path.split('\\').splice(2);
-          item = {
-            br_name: br_name,
-            br_slug: br_slug,
-            br_image: `/${arrayPath.join('/')}`,
-          };
-        }
-
-        let result = await brand_M.updateBrandById(id, item);
-        if (result) {
-          if (path != null) {
-            try {
-              await fs.remove(`src/public/${result.br_image}`);
-            } catch (error) { }
+          let response = await adminHelper.uploadImageToCloudinary('brand', path);
+          if(response) {
+            item = {
+              br_name: br_name,
+              br_slug: br_slug,
+              br_image: response.public_id,
+              c_id: c_id
+            }
           }
+        }
+        let result = item ? await brand_M.updateBrandById(id, item) : null;
+        if (result) {
           return resolve({
             type: true,
             message: transSuccess.update_data_successful
           });
         }
-
         // upload image to cloudinary
         // adminHelper.uploadImageToCloudinary('brand', path, async (response) => {
         //   if (response) {

@@ -34,6 +34,7 @@ const getViewAdd = async (req, res) => {
     base_Url: process.env.BASE_URL,
     adminInfo: req.adminInfo,
     categories : categories,
+    SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
     title: "Bach Hóa Online | Thêm Thương Hiệu Sản Phẩm",
   });
 };
@@ -53,7 +54,7 @@ const addBrand = (req, res) => {
     }
     else {
       let path = req.file.path;
-      let notification = await brand_S.createNewBrand(req.body.br_name, req.body.c_id, path);
+      let notification = await brand_S.createNewBrand(req.body.br_name, 'Z88JkAAYq', path);
       res.send(notification);
     }
   });
@@ -74,6 +75,7 @@ const getViewEdit = async (req, res) => {
     base_Url: process.env.BASE_URL,
     adminInfo: req.adminInfo,
     brand: brand,
+    SECURE_DELIVERY_URL: process.env.SECURE_DELIVERY_URL,
     title: "Bach Hóa Online | Cập Nhật Thương Hiệu Sản Phẩm",
   })
 };
@@ -93,7 +95,7 @@ const editBrand = (req, res) => {
       if (typeof req.file != 'undefined') {
         path = req.file.path;
       }
-      let notification = await brand_S.editBrand(req.body._id, req.body.br_name, req.body.c_id, path);
+      let notification = await brand_S.editBrand(req.body._id, req.body.br_name, "Z88JkAAYq", path);
       res.send(notification);
     }
   });

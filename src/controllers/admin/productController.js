@@ -1,4 +1,5 @@
 import { category_S, brand_S, product_S } from '../../services/index';
+import product_M from '../../models/product.model'
 import configStorage from '../../config/uploadFIleLocal';
 import multer from 'multer';
 import fs from 'fs-extra';
@@ -12,6 +13,7 @@ let uploadProductAvatar = multer({
 
 
 const getViewIndex = async (req, res) => {
+  await product_M.updateAmountProduct();
   let notification = req.flash('notification');
   let products = await product_S.getListProducts();
   res.render("admin/product/index", {
